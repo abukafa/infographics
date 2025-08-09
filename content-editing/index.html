@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Interaktif: Editing & Content Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony Neutrals -->
+    <!-- Application Structure Plan: Aplikasi ini dirancang sebagai SPA (Single Page Application) dengan navigasi 'sticky' untuk akses cepat ke setiap bagian kurikulum. Struktur ini dipilih untuk mengubah dokumen yang padat teks menjadi pengalaman yang lebih ringan dan terkelola. Sesi-sesi utama seperti 'Alur Konten', 'Detail Editing', dan 'Skill Profesional' disajikan dalam format interaktif seperti diagram alir yang dapat diklik dan akordeon. Pendekatan ini memungkinkan pengguna untuk fokus pada satu topik pada satu waktu, mengurangi beban kognitif dan meningkatkan keterlibatan dibandingkan dengan halaman gulir yang panjang. Tujuannya adalah untuk memandu pengguna melalui perjalanan belajar yang jelas dan menarik. -->
+    <!-- Visualization & Content Choices: 1. Alur Konten (Diagram Alir Interaktif HTML/CSS): Tujuan: Mengatur. Mengubah daftar linier menjadi diagram proses visual yang dapat diklik. Ini lebih intuitif untuk memahami sebuah alur kerja. Interaksi: Klik untuk menyorot. 2. Detail Editing (Akordeon JS): Tujuan: Mengatur. Materi editing yang padat dipecah menjadi bagian-bagian yang dapat diciutkan, memungkinkan pengguna untuk mendalami topik tertentu tanpa merasa kewalahan. Interaksi: Klik untuk membuka/menutup. 3. Storyboard (Tabel HTML): Tujuan: Menginformasikan. Menggunakan tabel yang ditata dengan baik untuk mereplikasi contoh storyboard, membuatnya jelas dan mudah dibaca. 4. Grafik Distribusi Upaya (Chart.js Doughnut Chart): Tujuan: Membandingkan. Memberikan ringkasan visual cepat tentang di mana sebagian besar upaya dalam pembuatan konten dihabiskan, memperkuat salah satu poin pembelajaran utama workshop. Interaksi: Hover untuk tooltip. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #3D3D3D;
+        }
+        .bg-brand-primary { background-color: #FDFBF8; }
+        .bg-brand-secondary { background-color: #F4EFEA; }
+        .text-brand-dark { color: #3D3D3D; }
+        .text-brand-accent { color: #D9534F; }
+        .border-brand-accent { border-color: #D9534F; }
+        .bg-brand-accent { background-color: #D9534F; }
+        .bg-brand-dark { background-color: #3D3D3D; }
+        .btn-primary {
+            background-color: #D9534F;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #C9302C;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #D9534F;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .process-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-primary">
+
+    <header id="navbar" class="bg-brand-primary/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-brand-dark">Kreator<span class="text-brand-accent">Kit</span></div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#alur" class="nav-link">Alur Konten</a>
+                    <a href="#editing" class="nav-link">Detail Editing</a>
+                    <a href="#profesional" class="nav-link">Skill Profesional</a>
+                    <a href="#praktik" class="nav-link">Sesi Praktik</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 md:py-32">
+            <div class="container mx-auto text-center px-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-brand-dark leading-tight">Kuasai Alur Konten & Detail Editing</h1>
+                <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">Sebuah workshop intensif yang dirancang untuk mengubah Anda dari pemula menjadi kreator visual yang kompeten dan siap bersaing di era digital.</p>
+                <div class="mt-10">
+                    <a href="#daftar" class="btn-primary px-8 py-4 rounded-full font-bold text-lg">Amankan Tempat Anda</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="alur" class="py-16 bg-brand-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Alur Lengkap Pembuatan Konten</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Dari ide hingga publikasi, pahami setiap tahapan krusial untuk menghasilkan konten yang terstruktur dan berkualitas tinggi. Klik setiap fase untuk melihat detailnya.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div id="step-pra-produksi" class="process-step bg-white p-8 rounded-xl shadow-md cursor-pointer border-2 border-transparent">
+                        <div class="text-5xl mb-4 text-brand-accent">❶</div>
+                        <h3 class="text-2xl font-semibold mb-2">Pra-Produksi</h3>
+                        <p class="text-gray-500">Fondasi kuat sebelum kamera menyala. Meliputi ideasi, riset, penulisan skrip, hingga storyboard.</p>
+                    </div>
+                    <div id="step-produksi" class="process-step bg-white p-8 rounded-xl shadow-md cursor-pointer border-2 border-transparent">
+                        <div class="text-5xl mb-4 text-brand-accent">❷</div>
+                        <h3 class="text-2xl font-semibold mb-2">Produksi</h3>
+                        <p class="text-gray-500">Proses eksekusi ide menjadi rekaman visual. Menguasai teknik komposisi, pencahayaan, dan audio.</p>
+                    </div>
+                    <div id="step-pasca-produksi" class="process-step bg-white p-8 rounded-xl shadow-md cursor-pointer border-2 border-transparent">
+                        <div class="text-5xl mb-4 text-brand-accent">❸</div>
+                        <h3 class="text-2xl font-semibold mb-2">Pasca-Produksi</h3>
+                        <p class="text-gray-500">Di sinilah keajaiban terjadi. Mengubah footage mentah menjadi karya utuh melalui editing, review, dan optimasi.</p>
+                    </div>
+                </div>
+
+                <div id="alur-detail" class="mt-12 bg-white p-8 rounded-xl shadow-inner hidden">
+                    <h4 id="detail-title" class="text-2xl font-bold text-center mb-6"></h4>
+                    <div id="detail-content" class="text-gray-700"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="storyboard" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <div>
+                         <div class="text-left mb-8 lg:mb-0">
+                            <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Visualisasikan Setiap Adegan</h2>
+                            <p class="mt-4 text-gray-600 max-w-2xl">Storyboard adalah peta jalan visual Anda. Dengan merencanakan setiap adegan, Anda memastikan alur cerita berjalan mulus dan proses syuting menjadi jauh lebih efisien. Berikut contoh sederhana untuk video tutorial membuat kopi.</p>
+                        </div>
+                    </div>
+                    <div class="w-full overflow-x-auto">
+                        <table class="min-w-full bg-white rounded-lg shadow-md">
+                            <thead class="bg-brand-secondary">
+                                <tr>
+                                    <th class="p-4 text-left font-semibold">Panel</th>
+                                    <th class="p-4 text-left font-semibold">Deskripsi Visual</th>
+                                    <th class="p-4 text-left font-semibold">Aksi / Narasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="p-4 align-top font-bold">1</td>
+                                    <td class="p-4 align-top">☕️ Close-up tangan memegang biji kopi di atas meja kayu.</td>
+                                    <td class="p-4 align-top italic">"Pernahkah Anda bertanya-tanya..."</td>
+                                </tr>
+                                <tr class="border-b bg-gray-50">
+                                    <td class="p-4 align-top font-bold">2</td>
+                                    <td class="p-4 align-top">⚙️ Medium shot alat penggiling kopi. Biji kopi dituangkan.</td>
+                                    <td class="p-4 align-top italic">"Rahasia utamanya dimulai dari..."</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="p-4 align-top font-bold">3</td>
+                                    <td class="p-4 align-top">💧 Close-up tangan menuangkan air panas melingkar ke V60.</td>
+                                    <td class="p-4 align-top italic">"Perlahan, tuangkan air panas..."</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="p-4 align-top font-bold">4</td>
+                                    <td class="p-4 align-top">🏆 Long shot cangkir kopi yang sudah jadi. Tangan mengambil cangkir.</td>
+                                    <td class="p-4 align-top italic">"Dan voilà! Kopi nikmat siap..."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="editing" class="py-16 bg-brand-secondary">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Detail Editing Video: Menguasai Tools & Teknik</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Selami lebih dalam setiap aspek teknis editing untuk mengubah rekaman biasa menjadi karya sinematik yang memukau. Klik setiap topik untuk membukanya.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="space-y-4 accordion-container">
+                        <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg">
+                                <span>Memahami Software Editing Video</span>
+                                <span class="accordion-icon text-2xl text-brand-accent transform transition-transform">+</span>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li>**Antarmuka Pengguna (UI):** Mengenal Project Panel, Source Monitor, Timeline, dan Effects Panel.</li>
+                                    <li>**Pengaturan Project:** Memilih resolusi (1080p, 4K), frame rate (24, 30, 60fps), dan aspek rasio (16:9, 9:16).</li>
+                                    <li>**Manajemen Media:** Pentingnya mengelola folder dan bins untuk efisiensi kerja.</li>
+                                    <li>**Tools Dasar Esensial:** Selection (V), Razor (C), Ripple Edit (B), Rolling Edit (N), Slip (Y), dan Slide (U).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg">
+                                <span>Teknik Editing Fundamental</span>
+                                 <span class="accordion-icon text-2xl text-brand-accent transform transition-transform">+</span>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                               <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li>**Basic Cuts:** Memahami Hard Cut, J-Cut (audio mendahului visual), dan L-Cut (visual mendahului audio).</li>
+                                    <li>**Transisi Efektif:** Kapan menggunakan dissolve, wipe, dan teknik 'Cutting on Action' untuk transisi yang mulus.</li>
+                                    <li>**Sound Design:** Kekuatan audio melalui volume leveling, noise reduction, musik latar, SFX, dan audio ducking.</li>
+                                    <li>**Teks & Grafis:** Membuat judul, lower thirds, dan animasi dasar menggunakan keyframe.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg">
+                                <span>Color Correction & Grading</span>
+                                 <span class="accordion-icon text-2xl text-brand-accent transform transition-transform">+</span>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                               <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li>**Color Correction:** Memperbaiki masalah warna agar footage terlihat natural (White Balance, Exposure, Contrast).</li>
+                                    <li>**Color Grading:** Memberikan 'mood' atau 'look' artistik pada video (Cinematic, Vintage).</li>
+                                    <li>**Tools:** Menggunakan LUTs (Look Up Tables) untuk gaya cepat dan HSL Secondary untuk penyesuaian warna spesifik.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-white rounded-lg shadow-sm">
+                            <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-lg">
+                                <span>Optimasi & Export</span>
+                                 <span class="accordion-icon text-2xl text-brand-accent transform transition-transform">+</span>
+                            </button>
+                            <div class="accordion-content px-5 pb-5">
+                               <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li>**Pengaturan Export:** Memilih format (MP4), codec (H.264), dan bitrate yang tepat.</li>
+                                    <li>**Best Practices:** Rekomendasi pengaturan untuk berbagai platform seperti YouTube, TikTok, dan Instagram.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profesional" class="py-16">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Menjadi Kreator Profesional</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Keterampilan teknis saja tidak cukup. Pelajari strategi untuk membangun audiens, personal branding, dan karier yang berkelanjutan.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Psikologi Konten</h4>
+                        <p class="text-gray-600">Pelajari cara membuat 'hook' yang menarik, CTA yang efektif, dan membangun narasi yang memikat audiens.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Branding & Konsistensi</h4>
+                        <p class="text-gray-600">Tentukan identitas visual unik Anda dan bangun kepercayaan melalui jadwal posting yang teratur.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Memahami Algoritma</h4>
+                        <p class="text-gray-600">Pahami metrik kunci seperti 'watch time' dan 'engagement' untuk YouTube, TikTok, dan Reels.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Monetisasi (Pengantar)</h4>
+                        <p class="text-gray-600">Jelajahi berbagai cara untuk menghasilkan pendapatan dari konten Anda: AdSense, sponsorship, dan lainnya.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Menghadapi Tantangan</h4>
+                        <p class="text-gray-600">Strategi untuk mengatasi 'kreator's block', kritik, dan 'burnout' agar tetap termotivasi.</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-xl mb-2">Interaksi Audiens</h4>
+                        <p class="text-gray-600">Pentingnya membangun komunitas dengan membalas komentar dan membuat konten interaktif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="praktik" class="py-16 bg-brand-secondary">
+             <div class="container mx-auto px-6">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <div>
+                         <div class="text-left mb-8 lg:mb-0">
+                            <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Distribusi Upaya Kreator</h2>
+                            <p class="mt-4 text-gray-600 max-w-2xl">Banyak yang berpikir syuting adalah bagian terberat, namun kenyataannya, perencanaan (Pra-Produksi) dan pemolesan (Pasca-Produksi) seringkali memakan waktu dan upaya paling besar. Grafik ini menunjukkan distribusi upaya yang umum dalam proses pembuatan konten berkualitas, menekankan pentingnya setiap fase.</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="effortChart"></canvas>
+                    </div>
+                </div>
+                <div class="text-center mt-20">
+                     <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Sesi Praktik & Evaluasi Langsung</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Teori tidak ada artinya tanpa praktik. Di akhir workshop, Anda akan mengerjakan proyek nyata, mendapatkan bimbingan personal, dan menerima feedback konstruktif untuk pertumbuhan Anda.</p>
+                    <div class="mt-8 flex justify-center items-center space-x-8 text-lg font-semibold">
+                        <span> Hands-on Project </span> <span class="text-brand-accent">&bull;</span>
+                        <span> Mentor's Corner </span> <span class="text-brand-accent">&bull;</span>
+                        <span> Peer Review </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="daftar" class="bg-brand-dark text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <h3 class="text-2xl font-bold">Siap Meningkatkan Skill Anda?</h3>
+            <p class="mt-2 max-w-md mx-auto">Jangan lewatkan kesempatan untuk belajar dari para ahli dan menjadi kreator visual yang handal.</p>
+            <div class="mt-8 border-t border-gray-700 pt-6">
+                <p>&copy; 2025 KreatorKit. Seluruh Hak Cipta.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alurData = {
+                'step-pra-produksi': {
+                    title: 'Detail Fase Pra-Produksi',
+                    content: `
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Ideasi & Riset Mendalam:</strong> Brainstorming topik, riset audiens, analisis tren, dan menemukan USP (Unique Selling Proposition).</li>
+                            <li><strong>Perencanaan Konsep Konten:</strong> Menentukan tujuan, format, dan durasi video.</li>
+                            <li><strong>Penulisan Skrip / Outline:</strong> Membuat struktur narasi (Hook, Inti, CTA) dan detail visual.</li>
+                            <li><strong>Storyboarding & Shot List:</strong> Memvisualisasikan setiap adegan dan membuat daftar rinci setiap bidikan yang diperlukan.</li>
+                            <li><strong>Persiapan Produksi:</strong> Menyiapkan peralatan, lokasi, dan properti.</li>
+                        </ul>
+                    `
+                },
+                'step-produksi': {
+                    title: 'Detail Fase Produksi',
+                    content: `
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Teknik Komposisi:</strong> Menerapkan 'Rule of Thirds', 'leading lines', dan 'framing'.</li>
+                            <li><strong>Pencahayaan:</strong> Memanfaatkan cahaya alami atau mengatur pencahayaan buatan untuk hasil terbaik.</li>
+                            <li><strong>Audio Berkualitas:</strong> Menggunakan mikrofon eksternal untuk suara yang jernih dan bebas noise.</li>
+                            <li><strong>Stabilitas Gambar:</strong> Menggunakan tripod atau gimbal untuk menghindari video yang goyang.</li>
+                            <li><strong>Variasi Sudut:</strong> Mengambil bidikan dari berbagai sudut untuk editing yang lebih dinamis.</li>
+                        </ul>
+                    `
+                },
+                'step-pasca-produksi': {
+                    title: 'Detail Fase Pasca-Produksi',
+                    content: `
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>Organisasi Footage:</strong> Mengatur semua aset media dalam folder yang rapi sebelum memulai.</li>
+                            <li><strong>Proses Editing:</strong> Merakit cerita menggunakan berbagai teknik pemotongan, transisi, dan audio.</li>
+                            <li><strong>Review & Feedback:</strong> Menonton ulang hasil draft dan meminta masukan untuk perbaikan.</li>
+                            <li><strong>Optimasi Konten:</strong> Membuat thumbnail, judul, deskripsi, dan tag yang menarik dan relevan.</li>
+                            <li><strong>Distribusi:</strong> Mengunggah video ke platform yang sesuai target audiens.</li>
+                        </ul>
+                    `
+                }
+            };
+            
+            const alurSteps = document.querySelectorAll('.process-step');
+            const detailBox = document.getElementById('alur-detail');
+            const detailTitle = document.getElementById('detail-title');
+            const detailContent = document.getElementById('detail-content');
+            let currentStep = null;
+
+            alurSteps.forEach(step => {
+                step.addEventListener('click', () => {
+                    if (currentStep === step.id) {
+                        detailBox.classList.add('hidden');
+                        step.classList.remove('border-brand-accent', 'scale-105');
+                        currentStep = null;
+                        return;
+                    }
+
+                    alurSteps.forEach(s => s.classList.remove('border-brand-accent', 'scale-105'));
+                    step.classList.add('border-brand-accent', 'scale-105');
+                    
+                    const data = alurData[step.id];
+                    detailTitle.textContent = data.title;
+                    detailContent.innerHTML = data.content;
+                    detailBox.classList.remove('hidden');
+                    currentStep = step.id;
+                });
+            });
+
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                const icon = item.querySelector('.accordion-icon');
+
+                header.addEventListener('click', () => {
+                    const isOpen = content.style.maxHeight;
+                    
+                    document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+                    document.querySelectorAll('.accordion-icon').forEach(i => {
+                        i.textContent = '+';
+                        i.classList.remove('rotate-45');
+                    });
+                    
+                    if (!isOpen) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.textContent = '-';
+                    }
+                });
+            });
+
+            const ctx = document.getElementById('effortChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pra-Produksi (Perencanaan)', 'Produksi (Syuting)', 'Pasca-Produksi (Editing)'],
+                    datasets: [{
+                        label: 'Distribusi Upaya',
+                        data: [40, 20, 40],
+                        backgroundColor: [
+                            'rgba(217, 83, 79, 0.7)',
+                            'rgba(91, 192, 222, 0.7)',
+                            'rgba(61, 61, 61, 0.7)'
+                        ],
+                        borderColor: [
+                            '#D9534F',
+                            '#5BC0DE',
+                            '#3D3D3D'
+                        ],
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#3D3D3D',
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed !== null) {
+                                        label += context.parsed + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section, footer');
+            const navbar = document.getElementById('navbar');
+            
+            const onScroll = () => {
+                const scrollPosition = window.pageYOffset;
+                
+                if(scrollPosition > 50){
+                   navbar.classList.add("shadow-lg");
+                } else {
+                   navbar.classList.remove("shadow-lg");
+                }
+
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPosition >= sectionTop - 100) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(currentSectionId)) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', onScroll);
+        });
+    </script>
+</body>
+</html>

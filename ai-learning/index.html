@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif Pembelajaran AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony Neutrals -->
+    <!-- Application Structure Plan: Aplikasi ini menggunakan struktur 'hub-and-spoke'. Halaman utama berfungsi sebagai 'hub' dengan empat pilar AI yang bisa dipilih. Setiap pilihan akan menampilkan 'spoke' atau bagian kontennya secara dinamis. Struktur ini dipilih untuk memberikan kebebasan eksplorasi kepada pengguna (siswa SMP) agar tidak merasa terikat pada urutan linier, sehingga meningkatkan rasa ingin tahu dan keterlibatan. Setiap bagian memiliki demo interaktif untuk mengubah konsep abstrak menjadi pengalaman nyata. -->
+    <!-- Visualization & Content Choices: 
+        1. ML: Report Info -> Prediksi kelulusan siswa. Goal -> Compare & Predict. Viz -> Scatter plot (Chart.js) dengan slider interaktif. Interaction -> Pengguna menggeser slider jam belajar untuk melihat prediksi kelulusan secara real-time di grafik. Justification -> Membuat konsep 'prediksi' menjadi visual dan mudah dipahami.
+        2. NLP: Report Info -> Analisis sentimen. Goal -> Classify. Viz -> Input teks dan output dinamis. Interaction -> Pengguna mengetik kalimat dan AI (simulasi JS) akan mengklasifikasikan sentimennya. Justification -> Memberikan pengalaman langsung tentang bagaimana AI 'memahami' bahasa.
+        3. Computer Vision: Report Info -> Deteksi objek. Goal -> Demonstrate a process. Viz -> Canvas 'sebelum' dan 'sesudah'. Interaction -> Tombol untuk menerapkan filter 'deteksi tepi'. Justification -> Menunjukkan secara visual salah satu langkah fundamental dalam Computer Vision.
+        4. Generative AI: Report Info -> Membuat teks. Goal -> Demonstrate creation. Viz -> Input prompt dan output teks. Interaction -> Pengguna memilih prompt dan AI (simulasi JS) akan 'menghasilkan' teks kreatif. Justification -> Mensimulasikan pengalaman menggunakan AI generatif populer seperti ChatGPT.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #37474F;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            border-width: 2px;
+            border-color: transparent;
+        }
+        .nav-button.active {
+            background-color: #3B82F6;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .nav-button:not(.active):hover {
+            transform: translateY(-2px);
+            border-color: #3B82F6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 mb-2">Modul Pembelajaran AI</h1>
+            <p class="text-lg text-gray-600">Jelajahi dunia Kecerdasan Buatan secara interaktif!</p>
+        </header>
+
+        <nav id="nav-hub" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <button data-target="ml" class="nav-button active flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md">
+                <span class="text-4xl mb-2">🧠</span>
+                <span class="font-semibold">Machine Learning</span>
+            </button>
+            <button data-target="nlp" class="nav-button flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md">
+                <span class="text-4xl mb-2">✍️</span>
+                <span class="font-semibold">NLP</span>
+            </button>
+            <button data-target="vision" class="nav-button flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md">
+                <span class="text-4xl mb-2">👁️</span>
+                <span class="font-semibold">Computer Vision</span>
+            </button>
+            <button data-target="gen-ai" class="nav-button flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md">
+                <span class="text-4xl mb-2">✨</span>
+                <span class="font-semibold">Generative AI</span>
+            </button>
+        </nav>
+
+        <main>
+            <!-- Machine Learning Section -->
+            <section id="ml-section" class="content-section bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-blue-600 mb-4">Machine Learning (ML) – AI Klasik</h2>
+                <p class="mb-6 text-gray-700">Machine Learning adalah jenis AI yang belajar dari data. Bayangkan kamu mengajari komputer untuk mengenali pola, sama seperti kamu belajar dari pengalaman. Komputer akan menganalisis banyak contoh untuk bisa membuat prediksi atau keputusan sendiri. Ini adalah fondasi dari banyak AI yang kita gunakan sehari-hari.</p>
+                
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-semibold mb-4">Demo Interaktif: Prediksi Kelulusan Siswa</h3>
+                    <p class="mb-4 text-gray-600">Geser slider di bawah untuk mengubah jumlah jam belajar seorang siswa. Lihat bagaimana AI memprediksi apakah siswa tersebut akan lulus atau tidak berdasarkan data yang telah dipelajarinya.</p>
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="w-full md:w-1/2">
+                            <div class="chart-container">
+                                <canvas id="mlChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <label for="studyHours" class="block font-medium mb-2">Jam Belajar: <span id="hoursValue" class="font-bold text-blue-600">6</span> jam</label>
+                            <input id="studyHours" type="range" min="0" max="12" value="6" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="mt-4 p-4 bg-blue-50 rounded-lg text-center">
+                                <p class="font-semibold">Prediksi AI:</p>
+                                <p id="predictionResult" class="text-2xl font-bold text-blue-700">LULUS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NLP Section -->
+            <section id="nlp-section" class="content-section hidden bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-blue-600 mb-4">Natural Language Processing (NLP) – AI Teks</h2>
+                <p class="mb-6 text-gray-700">NLP adalah cabang AI yang membuat komputer bisa mengerti bahasa manusia. Berkat NLP, kamu bisa berbicara dengan asisten virtual, menerjemahkan bahasa asing, atau bahkan meminta AI menganalisis perasaan di balik sebuah ulasan produk. NLP menjembatani komunikasi antara manusia dan mesin.</p>
+                
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-semibold mb-4">Demo Interaktif: Analisis Sentimen</h3>
+                    <p class="mb-4 text-gray-600">Ketik sebuah kalimat ulasan di bawah ini, lalu klik tombol "Analisis" untuk melihat bagaimana AI menebak apakah sentimen kalimat tersebut positif, negatif, atau netral.</p>
+                    <div class="flex flex-col gap-4">
+                        <textarea id="nlpInput" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" rows="3" placeholder="Contoh: Produk ini bagus sekali, saya sangat puas!"></textarea>
+                        <button id="nlpButton" class="w-full md:w-auto self-center px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Analisis Sentimen</button>
+                        <div id="nlpResult" class="mt-2 p-4 bg-gray-100 rounded-lg text-center hidden">
+                            <p class="font-semibold">Hasil Analisis:</p>
+                            <p id="sentimentText" class="text-2xl font-bold"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Computer Vision Section -->
+            <section id="vision-section" class="content-section hidden bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-blue-600 mb-4">Computer Vision – AI Gambar/Video</h2>
+                <p class="mb-6 text-gray-700">Computer Vision memberikan kemampuan "melihat" pada komputer. AI ini dilatih untuk menafsirkan dan memahami informasi dari gambar atau video. Dari membuka kunci HP dengan wajah hingga mobil tanpa pengemudi yang bisa membaca rambu lalu lintas, Computer Vision mengubah cara mesin berinteraksi dengan dunia visual.</p>
+                
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-semibold mb-4">Demo Interaktif: Deteksi Tepi</h3>
+                    <p class="mb-4 text-gray-600">Di bawah ini ada gambar sederhana. Klik tombol "Deteksi Tepi" untuk melihat bagaimana AI mengidentifikasi garis batas objek. Ini adalah langkah dasar bagi AI untuk bisa 'memahami' isi sebuah gambar.</p>
+                    <div class="text-center mb-4">
+                        <button id="visionButton" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition">Deteksi Tepi</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="text-center">
+                            <h4 class="font-semibold mb-2">Gambar Asli</h4>
+                            <canvas id="visionCanvasBefore" class="mx-auto bg-gray-100 rounded-lg" width="250" height="250"></canvas>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-semibold mb-2">Hasil Deteksi Tepi</h4>
+                            <canvas id="visionCanvasAfter" class="mx-auto bg-gray-100 rounded-lg" width="250" height="250"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generative AI Section -->
+            <section id="gen-ai-section" class="content-section hidden bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-blue-600 mb-4">Generative AI – AI Kreatif</h2>
+                <p class="mb-6 text-gray-700">Generative AI adalah jenis AI yang bisa menciptakan sesuatu yang baru, seperti menulis cerita, membuat gambar, atau bahkan menulis kode program, hanya dari perintah teks. AI ini tidak hanya menganalisis data, tetapi juga berkreasi, membuka kemungkinan tak terbatas untuk kreativitas manusia.</p>
+
+                <div class="border-t pt-6">
+                    <h3 class="text-xl font-semibold mb-4">Demo Interaktif: Asisten Penulis Kreatif</h3>
+                    <p class="mb-4 text-gray-600">Pilih sebuah ide cerita dari tombol di bawah, dan lihat bagaimana AI (simulasi) akan menghasilkan sebuah paragraf pembuka yang kreatif berdasarkan ide tersebut.</p>
+                    <div class="flex flex-wrap justify-center gap-3 mb-4">
+                        <button class="gen-ai-prompt-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-blue-200 transition" data-prompt="robot">Robot yang menemukan bunga</button>
+                        <button class="gen-ai-prompt-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-blue-200 transition" data-prompt="angkasa">Petualangan di luar angkasa</button>
+                        <button class="gen-ai-prompt-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-blue-200 transition" data-prompt="hutan">Hutan ajaib yang tersembunyi</button>
+                    </div>
+                    <div id="genAiResult" class="p-4 bg-gray-100 rounded-lg min-h-[150px]">
+                        <p id="genAiText" class="text-gray-700 italic">Hasil tulisan AI akan muncul di sini...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navButtons = document.querySelectorAll('.nav-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            const switchTab = (targetId) => {
+                contentSections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+
+                document.getElementById(`${targetId}-section`).classList.remove('hidden');
+                document.querySelector(`[data-target="${targetId}"]`).classList.add('active');
+            };
+
+            navButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    switchTab(targetId);
+                });
+            });
+
+            // --- Machine Learning Demo ---
+            const mlCtx = document.getElementById('mlChart').getContext('2d');
+            const studyHoursInput = document.getElementById('studyHours');
+            const hoursValueSpan = document.getElementById('hoursValue');
+            const predictionResultSpan = document.getElementById('predictionResult');
+
+            const baseData = [
+                { x: 2, y: 0 }, { x: 3, y: 0 }, { x: 4, y: 0 }, { x: 5, y: 0 },
+                { x: 7, y: 1 }, { x: 8, y: 1 }, { x: 9, y: 1 }, { x: 10, y: 1 }, { x: 11, y: 1 }
+            ];
+
+            const mlChart = new Chart(mlCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Data Siswa (0=Gagal, 1=Lulus)',
+                        data: baseData,
+                        backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1,
+                        pointRadius: 6,
+                    }, {
+                        label: 'Prediksi Kamu',
+                        data: [],
+                        backgroundColor: 'rgba(239, 68, 68, 1)',
+                        borderColor: 'rgba(199, 28, 28, 1)',
+                        borderWidth: 2,
+                        pointRadius: 8,
+                        pointStyle: 'star',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Jam Belajar' },
+                            min: 0,
+                            max: 12
+                        },
+                        y: {
+                            title: { display: true, text: 'Hasil Ujian' },
+                            min: -0.2,
+                            max: 1.2,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(value) {
+                                    if (value === 0) return 'Tidak Lulus';
+                                    if (value === 1) return 'Lulus';
+                                    return null;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const updateMlPrediction = () => {
+                const hours = parseFloat(studyHoursInput.value);
+                hoursValueSpan.textContent = hours;
+                
+                // Simple logistic regression model simulation
+                const prediction = 1 / (1 + Math.exp(-(hours - 5.5))); // Sigmoid function centered at 5.5 hours
+                const result = prediction > 0.5 ? 1 : 0;
+
+                mlChart.data.datasets[1].data = [{ x: hours, y: result }];
+                mlChart.update();
+
+                if (result === 1) {
+                    predictionResultSpan.textContent = 'LULUS';
+                    predictionResultSpan.className = 'text-2xl font-bold text-green-600';
+                } else {
+                    predictionResultSpan.textContent = 'TIDAK LULUS';
+                    predictionResultSpan.className = 'text-2xl font-bold text-red-600';
+                }
+            };
+
+            studyHoursInput.addEventListener('input', updateMlPrediction);
+            updateMlPrediction(); // Initial call
+
+            // --- NLP Demo ---
+            const nlpInput = document.getElementById('nlpInput');
+            const nlpButton = document.getElementById('nlpButton');
+            const nlpResultDiv = document.getElementById('nlpResult');
+            const sentimentTextSpan = document.getElementById('sentimentText');
+
+            const positiveWords = ['bagus', 'suka', 'puas', 'hebat', 'luar biasa', 'mantap', 'keren', 'terbaik'];
+            const negativeWords = ['kecewa', 'rusak', 'buruk', 'jelek', 'tidak suka', 'masalah', 'lambat'];
+
+            nlpButton.addEventListener('click', () => {
+                const text = nlpInput.value.toLowerCase();
+                if (!text) return;
+
+                let score = 0;
+                positiveWords.forEach(word => {
+                    if (text.includes(word)) score++;
+                });
+                negativeWords.forEach(word => {
+                    if (text.includes(word)) score--;
+                });
+
+                nlpResultDiv.classList.remove('hidden');
+                if (score > 0) {
+                    sentimentTextSpan.textContent = 'POSITIF 👍';
+                    sentimentTextSpan.className = 'text-2xl font-bold text-green-600';
+                } else if (score < 0) {
+                    sentimentTextSpan.textContent = 'NEGATIF 👎';
+                    sentimentTextSpan.className = 'text-2xl font-bold text-red-600';
+                } else {
+                    sentimentTextSpan.textContent = 'NETRAL 😐';
+                    sentimentTextSpan.className = 'text-2xl font-bold text-gray-600';
+                }
+            });
+
+            // --- Computer Vision Demo ---
+            const canvasBefore = document.getElementById('visionCanvasBefore');
+            const ctxBefore = canvasBefore.getContext('2d');
+            const canvasAfter = document.getElementById('visionCanvasAfter');
+            const ctxAfter = canvasAfter.getContext('2d');
+            const visionButton = document.getElementById('visionButton');
+
+            const drawOriginalShape = () => {
+                ctxBefore.clearRect(0, 0, canvasBefore.width, canvasBefore.height);
+                ctxBefore.fillStyle = '#3B82F6';
+                ctxBefore.beginPath();
+                ctxBefore.moveTo(75, 50);
+                ctxBefore.lineTo(175, 50);
+                ctxBefore.lineTo(200, 150);
+                ctxBefore.lineTo(125, 200);
+                ctxBefore.lineTo(50, 150);
+                ctxBefore.closePath();
+                ctxBefore.fill();
+            };
+            
+            const drawEdges = () => {
+                ctxAfter.clearRect(0, 0, canvasAfter.width, canvasAfter.height);
+                ctxAfter.strokeStyle = '#1E40AF';
+                ctxAfter.lineWidth = 3;
+                ctxAfter.beginPath();
+                ctxAfter.moveTo(75, 50);
+                ctxAfter.lineTo(175, 50);
+                ctxAfter.lineTo(200, 150);
+                ctxAfter.lineTo(125, 200);
+                ctxAfter.lineTo(50, 150);
+                ctxAfter.closePath();
+                ctxAfter.stroke();
+            };
+
+            visionButton.addEventListener('click', drawEdges);
+            drawOriginalShape();
+
+            // --- Generative AI Demo ---
+            const promptButtons = document.querySelectorAll('.gen-ai-prompt-btn');
+            const genAiText = document.getElementById('genAiText');
+            
+            const genAiResponses = {
+                robot: "Unit 734 mengaktifkan sensor optiknya untuk pertama kali. Di antara hamparan logam dan kabel, sebuah anomali terdeteksi: kelopak berwarna merah muda yang lembut, menari tertiup angin ventilasi. Logikanya berputar, mencoba memproses data yang belum pernah ada dalam databasenya. Ini... indah.",
+                angkasa: "Kapal Antariksa 'Harapan' meluncur tanpa suara di kehampaan yang tak terbatas. Di luar jendela, nebula berwarna ungu dan emas berputar seperti cat air raksasa. Kapten Anya menatap keajaiban itu, tahu bahwa di suatu tempat di antara triliunan bintang, petualangan baru menanti krunya.",
+                hutan: "Elara menyingkap sulur terakhir dan napasnya tertahan. Di hadapannya terbentang hutan yang tidak pernah ada di peta manapun. Pohon-pohonnya bersinar dengan cahaya lembut, dan udara beraroma seperti madu dan hujan. Ia tahu, langkah pertamanya ke hutan ini akan mengubah hidupnya selamanya."
+            };
+
+            promptButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const promptKey = button.dataset.prompt;
+                    genAiText.textContent = genAiResponses[promptKey];
+                    genAiText.classList.remove('italic');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Interaktif: Code for Freedom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: Infografis ini dirancang sebagai SPA vertikal yang memandu pengguna melalui narasi yang koheren. Dimulai dengan pengenalan konsep dualisme kode, diikuti oleh visualisasi konflik "Ancaman vs. Perlindungan". Bagian inti adalah diagram pilar teknologi yang menjadi pusat informasi. Selanjutnya, disajikan "arsenal" keterampilan praktis dan "misi" berupa proyek nyata dalam format tab interaktif. Sebuah Radar Chart digunakan untuk membandingkan karakteristik proyek secara kuantitatif. Struktur ini dipilih untuk mengubah materi workshop yang padat menjadi sebuah cerita visual yang mengalir, dari 'mengapa' (konflik), ke 'apa' (pilar teknologi), hingga 'bagaimana' (keterampilan dan proyek), yang memfasilitasi pemahaman dan retensi informasi. -->
+    <!-- Visualization & Content Choices: 1. Ancaman vs. Perlindungan (Comparison Columns): Goal: Compare. Method: Dua kolom berdampingan dengan ikon Unicode. Justification: Perbandingan langsung yang jelas untuk memperkenalkan konflik inti. Library: HTML/CSS. 2. Pilar Teknologi (Flowchart Diagram): Goal: Organize. Method: Diagram alir yang dibuat dengan HTML/CSS Flexbox. Justification: Memvisualisasikan hubungan antara konsep utama dan pilar pendukungnya secara efektif tanpa SVG/Mermaid. Library: HTML/CSS. 3. Arsenal Keterampilan (Cards): Goal: Inform. Method: Grid kartu yang responsif. Justification: Menyajikan setiap keterampilan sebagai unit informasi yang terpisah dan mudah dicerna. Library: HTML/CSS. 4. Misi/Proyek (Tabs): Goal: Compare/Inform. Method: Antarmuka tab interaktif. Justification: Menghemat ruang dan memungkinkan pengguna fokus pada satu proyek pada satu waktu. Library: JS. 5. Perbandingan Proyek (Radar Chart): Goal: Compare. Method: Chart.js Radar Chart untuk membandingkan 3 proyek pada 4 dimensi. Justification: Cara yang menarik dan kuantitatif untuk memvisualisasikan sifat dan fokus dari setiap proyek. Library: Chart.js (Canvas). -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #0B2D48;
+        }
+        .bg-dark-blue { background-color: #0B2D48; }
+        .bg-mid-blue { background-color: #145DA0; }
+        .bg-light-blue { background-color: #85C1E9; }
+        .text-lightest-blue { color: #D6EAF8; }
+        .border-light-blue { border-color: #85C1E9; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            max-height: 450px;
+            margin: auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 500px;
+                max-height: 550px;
+            }
+        }
+        .tab-button.active {
+            background-color: #145DA0;
+            color: #FFFFFF;
+        }
+        .pillar-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-primary">
+
+    <header class="bg-dark-blue text-white text-center py-20 px-6">
+        <h1 class="text-4xl md:text-6xl font-extrabold">Code for Freedom</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-lightest-blue">Di era digital, kode adalah pedang bermata dua. Ia bisa menjadi alat penindasan, atau menjadi senjata untuk memperjuangkan kebebasan. Pilihan ada di tangan kita.</p>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <section id="battlefield" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12">Medan Perang Digital: Ancaman vs. Perlindungan</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Setiap hari, terjadi pertarungan antara kekuatan yang ingin mengontrol informasi dan mereka yang berjuang untuk menjaganya tetap bebas dan aman. Memahami kedua sisi adalah langkah pertama untuk menjadi pejuang kebebasan digital.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-red-500">
+                    <h3 class="text-2xl font-bold mb-4">🔴 Ancaman</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="mr-3 text-xl">👁️</span><div><strong>Pengawasan Massal:</strong> Aktivitas online kita dipantau secara luas tanpa persetujuan.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🔒</span><div><strong>Sensor:</strong> Pembatasan akses terhadap informasi dan kebebasan berekspresi.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">📢</span><div><strong>Disinformasi:</strong> Penyebaran informasi palsu untuk memanipulasi opini publik.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🤖</span><div><strong>Algoritma Bias:</strong> Sistem otomatis yang membuat keputusan tidak adil berdasarkan data yang bias.</div></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-green-500">
+                    <h3 class="text-2xl font-bold mb-4">🟢 Perlindungan</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="mr-3 text-xl">🛡️</span><div><strong>Enkripsi:</strong> Mengubah data menjadi kode rahasia untuk melindungi privasi komunikasi.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🌍</span><div><strong>Open Source:</strong> Perangkat lunak dengan kode yang terbuka, transparan, dan dapat diaudit oleh siapa saja.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🔗</span><div><strong>Desentralisasi:</strong> Menyebar data dan kontrol ke banyak titik untuk menghindari satu titik kegagalan atau sensor.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">⚖️</span><div><strong>Etika Digital:</strong> Membangun teknologi dengan prinsip *Privacy by Design* dan keadilan.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillars" class="mb-20 py-16 bg-gray-50 rounded-xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Tiga Pilar Teknologi untuk Kebebasan</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Untuk membangun dunia digital yang lebih bebas, kita berdiri di atas tiga pilar teknologi yang kuat. Menguasai ketiganya akan memberi kita kekuatan untuk menciptakan perubahan.</p>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="pillar-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">📖</div>
+                    <h3 class="text-xl font-bold mb-2">Open Source</h3>
+                    <p class="text-gray-600">Transparansi dan kolaborasi melalui kode yang dapat diakses dan dimodifikasi oleh semua orang.</p>
+                </div>
+                <div class="pillar-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">🔐</div>
+                    <h3 class="text-xl font-bold mb-2">Privasi & Keamanan</h3>
+                    <p class="text-gray-600">Melindungi data dan komunikasi dari pengintaian melalui enkripsi dan praktik keamanan yang kuat.</p>
+                </div>
+                <div class="pillar-card bg-white p-8 rounded-lg shadow-md">
+                    <div class="text-5xl mb-4">🕸️</div>
+                    <h3 class="text-xl font-bold mb-2">Jaringan Desentralisasi</h3>
+                    <p class="text-gray-600">Membangun sistem yang tahan sensor dan tidak dikendalikan oleh satu entitas tunggal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="missions" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12">Misi Anda: Proyek "Code for Freedom"</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Teori saja tidak cukup. Inilah tiga contoh proyek nyata yang bisa Anda bangun untuk menerapkan pilar-pilar kebebasan digital. Pilih misi Anda dan mulailah berkontribusi.</p>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center border-b border-gray-300 mb-6">
+                    <button data-tab="tab1" class="tab-button active text-lg font-semibold py-3 px-6 -mb-px border-b-2 border-transparent hover:border-mid-blue hover:text-mid-blue transition-colors duration-300">Fokus Privasi</button>
+                    <button data-tab="tab2" class="tab-button text-lg font-semibold py-3 px-6 -mb-px border-b-2 border-transparent hover:border-mid-blue hover:text-mid-blue transition-colors duration-300">Fokus Transparansi</button>
+                    <button data-tab="tab3" class="tab-button text-lg font-semibold py-3 px-6 -mb-px border-b-2 border-transparent hover:border-mid-blue hover:text-mid-blue transition-colors duration-300">Fokus Ekspresi</button>
+                </div>
+                <div id="tab-content" class="bg-white p-8 rounded-lg shadow-lg">
+                    <div id="tab1" class="tab-pane active">
+                        <h3 class="text-2xl font-bold mb-3">Aplikasi Pesan Sederhana</h3>
+                        <p class="text-gray-700">Membangun aplikasi pesan yang mensimulasikan enkripsi *end-to-end*. Tujuannya adalah untuk memahami secara praktis bagaimana privasi komunikasi dapat dilindungi melalui kriptografi, memastikan hanya pengirim dan penerima yang dapat membaca pesan.</p>
+                    </div>
+                    <div id="tab2" class="tab-pane hidden">
+                        <h3 class="text-2xl font-bold mb-3">Alat Visualisasi Data Publik</h3>
+                        <p class="text-gray-700">Mengambil data terbuka (misalnya, anggaran pemerintah atau data polusi) dan mengubahnya menjadi grafik yang mudah dipahami. Tujuannya adalah untuk mempromosikan transparansi dan akuntabilitas dengan membuat data kompleks dapat diakses oleh publik.</p>
+                    </div>
+                    <div id="tab3" class="tab-pane hidden">
+                        <h3 class="text-2xl font-bold mb-3">"Freedom Wall" Digital</h3>
+                        <p class="text-gray-700">Membuat halaman web di mana pengguna dapat memposting pesan secara anonim. Tujuannya adalah untuk mengeksplorasi konsep kebebasan berekspresi dan tantangan moderasi konten dalam lingkungan yang melindungi identitas pengguna.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project-comparison" class="mb-20 py-16 bg-gray-50 rounded-xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Perbandingan Karakteristik Misi</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Setiap misi memiliki fokus dan tantangan yang unik. Grafik radar ini membandingkan ketiga proyek berdasarkan fokus utama dan kompleksitas teknisnya, membantu Anda memilih misi yang paling sesuai dengan minat dan keahlian Anda.</p>
+            <div class="chart-container">
+                <canvas id="projectRadarChart"></canvas>
+            </div>
+        </section>
+
+        <section id="call-to-action" class="text-center py-16">
+            <h2 class="text-4xl font-extrabold mb-4">Jadilah Bagian dari Gerakan</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">Setiap baris kode yang Anda tulis bisa menjadi langkah kecil menuju dunia digital yang lebih adil, transparan, dan bebas. Mulailah belajar, mulailah berkontribusi, mulailah membuat perubahan.</p>
+            <a href="#" class="bg-mid-blue text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-dark-blue transition-colors duration-300">Mulai Coding untuk Kebebasan</a>
+        </section>
+    </main>
+    
+    <footer class="bg-dark-blue text-white py-8 text-center">
+        <p>&copy; 2025 Code for Freedom Initiative. Dibangun dengan semangat keterbukaan.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    tabPanes.forEach(pane => {
+                        if (pane.id === button.dataset.tab) {
+                            pane.classList.remove('hidden');
+                            pane.classList.add('active');
+                        } else {
+                            pane.classList.add('hidden');
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const radarCtx = document.getElementById('projectRadarChart').getContext('2d');
+            const processLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine === '' ? '' : ' ') + word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+            
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        processLabel('Fokus Privasi'), 
+                        processLabel('Fokus Transparansi'), 
+                        processLabel('Fokus Ekspresi'), 
+                        processLabel('Kompleksitas Teknis')
+                    ],
+                    datasets: [{
+                        label: 'Aplikasi Pesan',
+                        data: [5, 1, 2, 4],
+                        backgroundColor: 'rgba(239, 71, 111, 0.2)',
+                        borderColor: 'rgba(239, 71, 111, 1)',
+                        borderWidth: 2,
+                    }, {
+                        label: 'Visualisasi Data',
+                        data: [2, 5, 3, 3],
+                        backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                        borderColor: 'rgba(6, 214, 160, 1)',
+                        borderWidth: 2,
+                    }, {
+                        label: 'Freedom Wall',
+                        data: [3, 2, 5, 2],
+                        backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                        borderColor: 'rgba(255, 209, 102, 1)',
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E5E7EB' },
+                            grid: { color: '#E5E7EB' },
+                            pointLabels: { 
+                                font: { size: 12, weight: 'bold' },
+                                color: '#0B2D48'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(248, 249, 250, 0.8)',
+                                color: '#4B5563',
+                                stepSize: 1
+                            },
+                            min: 0,
+                            max: 5
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
