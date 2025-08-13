@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Interaktif: Literasi Digital - Cerdas & Aman di Dunia Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: Infografis ini dirancang sebagai SPA vertikal yang memandu pengguna melalui narasi untuk menjadi "Warga Digital Cerdas". Dimulai dengan pengenalan konsep dan urgensi. Bagian inti menampilkan "6 Pilar Literasi Digital" sebagai diagram interaktif yang menjadi pusat informasi. Selanjutnya, disajikan "Tantangan vs. Perisai" untuk memvisualisasikan masalah dan solusi. Bagian akhir menyajikan "Aksi Nyata" dan "Cek Kesiapanmu" dengan Radar Chart interaktif untuk self-assessment. Struktur ini dipilih karena alur belajarnya yang logis, dari 'mengapa' (urgensi), ke 'apa' (pilar), hingga 'bagaimana' (aksi dan evaluasi), yang memfasilitasi pemahaman dan keterlibatan pengguna. -->
+    <!-- Visualization & Content Choices: 1. Pentingnya Literasi Digital (Cards): Goal: Inform. Method: Empat kartu dengan ikon Unicode dan statistik besar. Interaction: Hover effect. Justification: Menyajikan poin-poin nilai utama dengan cepat dan visual. Library: HTML/CSS. 2. 6 Pilar Literasi Digital (Interactive Diagram): Goal: Organize. Method: Diagram heksagonal yang dibuat dengan HTML/CSS Grid & Flexbox, di mana setiap pilar dapat diklik untuk menampilkan detail. Justification: Cara yang menarik dan interaktif untuk menyajikan inti materi, lebih baik daripada daftar biasa. Library: HTML/CSS/JS. 3. Tantangan vs. Perisai (Comparison Columns): Goal: Compare. Method: Dua kolom berdampingan dengan ikon Unicode. Justification: Perbandingan langsung yang jelas untuk membingkai masalah dan solusi. Library: HTML/CSS. 4. Cek Kesiapanmu (Radar Chart): Goal: Compare/Inform. Method: Chart.js Radar Chart untuk menilai tingkat literasi digital pengguna berdasarkan 6 pilar. Interaction: Tooltip saat hover. Justification: Memberikan representasi data yang personal dan kuantitatif dari konsep "kesiapan digital". Library: Chart.js (Canvas). 5. Aksi Nyata (Numbered List): Goal: Organize. Method: Daftar langkah yang ditata secara visual. Justification: Menyajikan langkah-langkah praktis dengan jelas dan mudah diikuti. Library: HTML/CSS. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            color: #073B4C;
+        }
+        .bg-dark-blue { background-color: #073B4C; }
+        .text-light-blue { color: #F8F9FA; }
+        .text-accent-blue { color: #118AB2; }
+        .text-accent-green { color: #06D6A0; }
+        .text-accent-yellow { color: #FFD166; }
+        .text-accent-pink { color: #EF476F; }
+        .bg-accent-blue { background-color: #118AB2; }
+        .bg-accent-green { background-color: #06D6A0; }
+        .bg-accent-yellow { background-color: #FFD166; }
+        .bg-accent-pink { background-color: #EF476F; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            max-height: 450px;
+            margin: auto;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 450px;
+                max-height: 500px;
+            }
+        }
+        .pillar-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+        .pillar-card:hover, .pillar-card.active {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .pillar-card.active {
+            border-color: #118AB2;
+        }
+    </style>
+</head>
+<body class="bg-primary">
+
+    <header class="bg-dark-blue text-white text-center py-20 px-6">
+        <h1 class="text-4xl md:text-6xl font-extrabold">Literasi Digital: Jadilah Warga Digital Cerdas & Aman!</h1>
+        <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-light-blue">Di dunia yang serba terhubung, kemampuan untuk memahami, mengevaluasi, dan menciptakan konten digital adalah kekuatan supermu.</p>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <section id="why-it-matters" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-dark mb-12">Mengapa Literasi Digital Penting?</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🛡️</div>
+                    <h3 class="text-xl font-bold text-dark">Lindungi Diri</h3>
+                    <p class="text-gray-500 mt-2">Terhindar dari hoax, penipuan, dan perundungan siber.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">✅</div>
+                    <h3 class="text-xl font-bold text-dark">Informasi Tepat</h3>
+                    <p class="text-gray-500 mt-2">Temukan dan gunakan informasi yang benar dan bermanfaat.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold text-dark">Interaksi Positif</h3>
+                    <p class="text-gray-500 mt-2">Berkomunikasi dan berkolaborasi secara sehat di dunia maya.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transition-transform transform hover:-translate-y-2">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold text-dark">Berkembang & Berkarya</h3>
+                    <p class="text-gray-500 mt-2">Manfaatkan teknologi untuk mengembangkan diri dan menciptakan karya.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pillars" class="mb-20 py-16 bg-gray-50 rounded-xl">
+            <h2 class="text-3xl font-bold text-center text-dark mb-12">6 Pilar Literasi Digital</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Ini adalah fondasi yang akan membuatmu menjadi warga digital yang cerdas. Klik setiap pilar untuk melihat penjelasannya.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div id="pilar1" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-accent-blue">💻</div>
+                    <h3 class="text-lg font-semibold text-dark">Akses & Pengetahuan Teknologi</h3>
+                </div>
+                <div id="pilar2" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-accent-green">🧠</div>
+                    <h3 class="text-lg font-semibold text-dark">Berpikir Kritis & Evaluasi</h3>
+                </div>
+                <div id="pilar3" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-accent-pink">🔐</div>
+                    <h3 class="text-lg font-semibold text-dark">Keamanan Digital & Privasi</h3>
+                </div>
+                <div id="pilar4" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-accent-yellow">💬</div>
+                    <h3 class="text-lg font-semibold text-dark">Komunikasi & Kolaborasi</h3>
+                </div>
+                <div id="pilar5" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-dark">🎨</div>
+                    <h3 class="text-lg font-semibold text-dark">Produksi Konten Digital</h3>
+                </div>
+                <div id="pilar6" class="pillar-card bg-white p-6 rounded-lg shadow-md border-2 border-transparent">
+                    <div class="text-4xl mb-3 text-gray-500">⚖️</div>
+                    <h3 class="text-lg font-semibold text-dark">Etika & Hak Digital</h3>
+                </div>
+            </div>
+
+            <div id="pillar-detail" class="bg-white p-8 rounded-lg shadow-inner min-h-[150px] flex items-center justify-center transition-opacity duration-500">
+                <p id="detail-text" class="text-center text-gray-700 text-lg">Pilih salah satu pilar di atas untuk melihat detailnya.</p>
+            </div>
+        </section>
+
+        <section id="challenges" class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-12">Tantangan vs. Perisai Digitalmu</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Dunia digital penuh tantangan, tapi dengan literasi digital, kamu punya perisai untuk melawannya.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-pink">
+                    <h3 class="text-2xl font-bold mb-4">🔴 Tantangan</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="mr-3 text-xl">🌊</span><div><strong>Banjir Informasi:</strong> Terlalu banyak info, sulit membedakan fakta dan hoax.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🕵️</span><div><strong>Ancaman Siber:</strong> Penipuan, peretasan, dan penyalahgunaan data pribadi mengintai.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">😥</span><div><strong>Tekanan Sosial:</strong> Perbandingan diri yang tidak sehat dan perundungan di media sosial.</div></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent-green">
+                    <h3 class="text-2xl font-bold mb-4">🟢 Perisai Digital</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><span class="mr-3 text-xl">🧠</span><div><strong>Berpikir Kritis:</strong> Selalu cek fakta sebelum percaya dan menyebar informasi.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">🛡️</span><div><strong>Keamanan Proaktif:</strong> Gunakan kata sandi kuat dan waspada terhadap link mencurigakan.</div></li>
+                        <li class="flex items-start"><span class="mr-3 text-xl">😊</span><div><strong>Kecerdasan Emosional:</strong> Fokus pada diri sendiri, sebarkan positivitas, dan laporkan perundungan.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="readiness-check" class="mb-20 py-16 bg-gray-50 rounded-xl">
+            <h2 class="text-3xl font-bold text-center mb-12">Cek Kesiapan Digitalmu!</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Seberapa siap kamu menjadi warga digital yang cerdas? Grafik radar ini menunjukkan tingkat kemahiran ideal pada setiap pilar literasi digital. Gunakan ini sebagai panduan untuk melihat area mana yang perlu kamu tingkatkan.</p>
+            <div class="chart-container">
+                <canvas id="readinessChart"></canvas>
+            </div>
+        </section>
+
+        <section id="call-to-action" class="text-center py-16">
+            <h2 class="text-4xl font-extrabold mb-4">Aksi Nyata: Mulai dari Sekarang!</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8">Literasi digital adalah perjalanan, bukan tujuan akhir. Mulai praktikkan 5 langkah sederhana ini setiap hari untuk menjadi warga digital yang lebih baik.</p>
+            <div class="max-w-2xl mx-auto text-left space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center"><span class="text-3xl font-bold text-accent-blue mr-4">1.</span><span><strong>Berhenti, Pikirkan, Cek:</strong> Sebelum menyebar informasi, selalu tanyakan: "Apakah ini benar? Dari mana sumbernya?"</span></div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center"><span class="text-3xl font-bold text-accent-green mr-4">2.</span><span><strong>Jaga Rahasia Digitalmu:</strong> Gunakan kata sandi kuat dan jangan klik link aneh.</span></div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center"><span class="text-3xl font-bold text-accent-yellow mr-4">3.</span><span><strong>Berinteraksi Positif:</strong> Berkata sopan, berpikir sebelum berkomentar atau memposting.</span></div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center"><span class="text-3xl font-bold text-accent-pink mr-4">4.</span><span><strong>Manfaatkan untuk Belajar:</strong> Gunakan internet untuk mencari ilmu baru, kursus online, atau mengembangkan bakatmu.</span></div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center"><span class="text-3xl font-bold text-dark mr-4">5.</span><span><strong>Jadi Teladan:</strong> Tunjukkan pada teman-teman bagaimana menjadi warga digital yang cerdas dan bertanggung jawab!</span></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-dark-blue text-white py-8 text-center">
+        <p>&copy; 2025 Literasi Digital Initiative. Cerdas, Aman, dan Bertanggung Jawab.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pillarDetails = {
+                pilar1: "<strong>Akses & Pengetahuan Teknologi:</strong> Kemampuan dasar menggunakan perangkat digital (ponsel, laptop) dan internet untuk mencari informasi, mengirim email, dan berinteraksi di media sosial.",
+                pilar2: "<strong>Berpikir Kritis & Evaluasi:</strong> Kemampuan super penting untuk membedakan fakta dan hoax, dengan selalu mengecek sumber dan membandingkan informasi sebelum mempercayainya.",
+                pilar3: "<strong>Keamanan Digital & Privasi:</strong> Cara melindungi datamu dengan kata sandi kuat, waspada terhadap penipuan, dan mengatur privasi akun agar tidak disalahgunakan.",
+                pilar4: "<strong>Komunikasi & Kolaborasi:</strong> Kemampuan berkomunikasi dengan sopan dan efektif di dunia maya, serta bekerja sama dalam tim menggunakan alat digital seperti Google Docs atau Zoom.",
+                pilar5: "<strong>Produksi Konten Digital:</strong> Kemampuan untuk menciptakan karyamu sendiri (tulisan, gambar, video) secara kreatif dan bertanggung jawab, serta menghargai hak cipta.",
+                pilar6: "<strong>Etika & Hak Digital:</strong> Memahami aturan tidak tertulis di dunia maya, menghormati privasi orang lain, dan mengetahui hak serta tanggung jawabmu sebagai warga digital."
+            };
+
+            const pillarCards = document.querySelectorAll('.pillar-card');
+            const detailText = document.getElementById('detail-text');
+            const detailBox = document.getElementById('pillar-detail');
+
+            pillarCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    pillarCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    
+                    detailBox.style.opacity = 0;
+                    setTimeout(() => {
+                        detailText.innerHTML = pillarDetails[card.id];
+                        detailBox.style.opacity = 1;
+                    }, 300);
+                });
+            });
+
+            const processLabel = (label) => {
+                const maxLength = 16;
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > maxLength && currentLine !== '') {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine += (currentLine === '' ? '' : ' ') + word;
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const radarCtx = document.getElementById('readinessChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        processLabel('Akses & Teknologi'), 
+                        processLabel('Berpikir Kritis'), 
+                        processLabel('Keamanan & Privasi'), 
+                        processLabel('Komunikasi'), 
+                        processLabel('Produksi Konten'), 
+                        processLabel('Etika Digital')
+                    ],
+                    datasets: [{
+                        label: 'Kesiapan Digital Ideal',
+                        data: [5, 5, 5, 4, 4, 5],
+                        backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                        borderColor: 'rgba(6, 214, 160, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(6, 214, 160, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E5E7EB' },
+                            grid: { color: '#E5E7EB' },
+                            pointLabels: { 
+                                font: { size: 12, weight: 'bold' },
+                                color: '#073B4C'
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(248, 249, 250, 0.8)',
+                                color: '#4B5563',
+                                stepSize: 1
+                            },
+                            min: 0,
+                            max: 5
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
