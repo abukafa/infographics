@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik Fikih Jual Beli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <!-- 
+      Palette Pilihan: Brilliant Blues (#00A6FB, #0582CA, #006494, #003554, #051923)
+      Rencana Narasi:
+      1. Header: Judul dan pengantar.
+      2. Hukum Asal: Visualisasi "Mubah" sebagai "Single Big Number" dan kutipan Dalil (QS. Al-Baqarah: 275).
+      3. Rukun Jual Beli: Pengantar, diikuti visualisasi (Chart.js Bar Chart) untuk memecah 3 komponen utama (Al-'Aqidain, Ma'qud 'Alaih, Shighah) dan sub-elemennya. Diikuti oleh 3 kartu (Material Design) yang menjelaskan Syarat untuk setiap Rukun.
+      4. Khiyar (Hak Pilih): Pengantar, diikuti kutipan Dalil (Hadis). Visualisasi (Chart.js Radar Chart) untuk membandingkan 3 jenis Khiyar (Majlis, Syart, 'Aib) berdasarkan atributnya (waktu, cacat, syarat).
+      5. Referensi: Daftar sumber dalil.
+      
+      Pilihan Visualisasi:
+      - Hukum Asal -> Goal: Inform -> Single Big Number (HTML/CSS). Justifikasi: Menyampaikan satu poin data kualitatif utama (Mubah) dengan jelas. (Tidak ada SVG/Mermaid).
+      - Komponen Rukun -> Goal: Organize/Compare -> Horizontal Bar Chart (Chart.js). Justifikasi: Memecah 3 komponen Rukun dan menunjukkan jumlah sub-elemennya (pihak, objek, akad) secara visual. (Tidak ada SVG/Mermaid).
+      - Jenis Khiyar -> Goal: Compare -> Radar Chart (Chart.js). Justifikasi: Cara efektif untuk membandingkan beberapa kategori (3 jenis Khiyar) pada beberapa atribut (basis waktu, basis cacat, perlu syarat, dll). (Tidak ada SVG/Mermaid).
+      - Alur/Diagram -> Goal: Organize -> HTML/CSS Cards & Lists. Justifikasi: Mengorganisir teks (syarat-syarat) dengan jelas menggunakan Material Design. (Tidak ada SVG/Mermaid).
+      
+      Konfirmasi: Tidak ada Mermaid JS yang digunakan.
+      Konfirmasi: Tidak ada SVG yang digunakan.
+    -->
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #051923;
+        }
+        .font-display {
+            font-family: 'Merriweather', serif;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #006494;
+            margin-bottom: 0.75rem;
+        }
+        .card-content {
+            font-size: 0.95rem;
+            color: #003554;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .dalil-quote {
+            background-color: #f0f9ff;
+            border-left: 5px solid #00A6FB;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin: 1.5rem 0;
+        }
+        .dalil-quote p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #003554;
+        }
+        .dalil-quote .reference {
+            display: block;
+            font-style: normal;
+            font-weight: 600;
+            color: #006494;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+        .khiyar-table th {
+            background-color: #006494;
+            color: white;
+            padding: 0.75rem;
+        }
+        .khiyar-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .khiyar-table tr:nth-child(even) {
+            background-color: #f4faff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-12 px-4 text-center bg-white shadow-md">
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-[#006494]">Fikih Jual Beli (Al-Bai')</h1>
+        <p class="mt-4 text-lg md:text-xl text-[#003554] max-w-3xl mx-auto">Memahami Hukum, Rukun, dan Hak dalam Transaksi Islam</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="card">
+            <h2 class="card-title">1. Hukum Asal Jual Beli</h2>
+            <div class="card-content grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div>
+                    <p class="text-lg">Hukum asal dari Jual Beli (Al-Bai') dalam Islam adalah Mubah (Dibolehkan).</p>
+                    <p class="mt-2">Artinya, segala bentuk transaksi perdagangan diizinkan oleh syariat, selama tidak mengandung unsur yang diharamkan seperti riba (bunga), gharar (ketidakpastian), maysir (spekulasi), atau menjual barang haram.</p>
+                </div>
+                <div class="text-center bg-[#f0f9ff] border-2 border-[#00A6FB] rounded-lg p-8 shadow-inner">
+                    <span class="text-xl font-semibold text-[#006494]">Hukum Asal</span>
+                    <h3 class="font-display text-7xl font-bold text-[#00A6FB] my-2">MUBAH</h3>
+                    <span class="text-xl font-semibold text-[#006494]">(Dibolehkan)</span>
+                </div>
+            </div>
+            <div class="dalil-quote">
+                <p>"...Padahal Allah telah menghalalkan jual beli dan mengharamkan riba..."</p>
+                <span class="reference">(QS. Al-Baqarah: 275)</span>
+            </div>
+            <p class="card-content">Ayat ini merupakan dalil pokok yang membedakan antara perdagangan yang sah dengan praktik riba yang diharamkan, menegaskan bahwa aktivitas ekonomi melalui jual beli adalah legal secara syariat.</p>
+        </section>
+
+        <section class="card mt-8">
+            <h2 class="card-title">2. Rukun Jual Beli (Pilar Transaksi)</h2>
+            <div class="card-content">
+                <p class="mb-4">Rukun adalah elemen fundamental yang harus ada agar akad jual beli dianggap sah. Jika salah satu rukun tidak terpenuhi, maka akad tersebut batal. Rukun ini terbagi menjadi 3 komponen utama yang mencakup 5 elemen spesifik, seperti yang ditunjukkan bagan di bawah.</p>
+                <div class="chart-container" style="height: 300px; max-height: 350px;">
+                    <canvas id="rukunChart"></canvas>
+                </div>
+                
+                <h3 class="font-display text-xl font-bold text-[#006494] mt-8 mb-4">Syarat Sah Masing-Masing Rukun</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-lg text-[#006494]">A. Al-'Aqidain (Pihak)</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                            <li>Cakap hukum (berakal, baligh).</li>
+                            <li>Atas dasar kemauan bebas (tidak dipaksa).</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-lg text-[#006494]">B. Ma'qud 'Alaih (Objek)</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                            <li>Barang harus suci dan bermanfaat.</li>
+                            <li>Milik penuh penjual (atau seizinnya).</li>
+                            <li>Spesifikasi jelas (tidak gharar).</li>
+                            <li>Harga jelas dan disepakati.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-lg text-[#006494]">C. Shighah (Akad)</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-1 text-sm">
+                            <li>Ijab (Penawaran) & Qabul (Penerimaan).</li>
+                            <li>Jelas dan saling bersesuaian.</li>
+                            <li>Menunjukkan kerelaan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card mt-8">
+            <h2 class="card-title">3. Hukum Khiyar (Hak Pilih)</h2>
+            <div class="card-content">
+                <p>Khiyar (memilih) adalah hak bagi pihak yang berakad untuk membatalkan (faskh) atau melanjutkan (imrâr) transaksi. Tujuannya adalah melindungi pihak yang bertransaksi dari kerugian atau penyesalan.</p>
+                
+                <div class="dalil-quote">
+                    <p>"Dua orang yang melakukan jual beli, masing-masing memiliki hak Khiyar (memilih) selama keduanya belum berpisah dan masih berada di tempat jual beli..."</p>
+                    <span class="reference">(Hadis Riwayat Bukhari dan Muslim)</span>
+                </div>
+                
+                <p class="mb-4">Terdapat beberapa jenis Khiyar, yang paling umum adalah Khiyar Majlis, Khiyar Syart, dan Khiyar 'Aib. Bagan radar di bawah membandingkan karakteristik utama dari ketiga jenis Khiyar tersebut.</p>
+                <div class="chart-container" style="max-width: 500px; height: 350px; max-height: 450px;">
+                    <canvas id="khiyarChart"></canvas>
+                </div>
+
+                <h3 class="font-display text-xl font-bold text-[#006494] mt-8 mb-4">Perbedaan dan Hukum Tiga Jenis Khiyar</h3>
+                <div class="overflow-x-auto">
+                    <table class="khiyar-table w-full text-sm rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="text-left rounded-tl-lg">Jenis Khiyar</th>
+                                <th class="text-left">Basis Hak Pilih</th>
+                                <th class="text-left">Batas Waktu</th>
+                                <th class="text-left rounded-tr-lg">Status Hukum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-semibold text-[#003554]">Khiyar Majlis</td>
+                                <td>Keberadaan fisik di tempat akad.</td>
+                                <td>Hingga kedua pihak berpisah dari tempat akad.</td>
+                                <td>Otomatis, ditetapkan oleh Sunnah (Wajib diikuti).</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-[#003554]">Khiyar Syart</td>
+                                <td>Disyaratkan/disepakati secara eksplisit dalam akad.</td>
+                                <td>Sesuai jangka waktu yang ditentukan (mis. 1, 2, atau 3 hari).</td>
+                                <td>Hukumnya Mubah (Boleh), tergantung syarat yang sah.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-[#003554]">Khiyar 'Aib</td>
+                                <td>Ditemukan cacat tersembunyi ('aib) pada barang.</td>
+                                <td>Segera setelah mengetahui cacat tersebut (tanpa penundaan yang disengaja).</td>
+                                <td>Otomatis, demi perlindungan konsumen dan keadilan.</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold text-[#003554]">Khiyar Ru'yah (Tambahan)</td>
+                                <td>Pembeli belum melihat objek akad saat transaksi.</td>
+                                <td>Hingga pembeli melihat objek akad (Hak gugur jika melihat dan diam saja).</td>
+                                <td>Otomatis (diberikan oleh sebagian mazhab untuk transaksi barang ghaib/belum dilihat).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card mt-8">
+            <h2 class="card-title">Daftar Referensi (Kitab Sumber Dalil)</h2>
+            <div class="card-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <h3 class="font-semibold text-lg text-[#006494] border-b-2 border-[#00A6FB] pb-1">1. Al-Qur'an</h3>
+                        <ul class="list-disc list-outside pl-5 mt-2">
+                            <li>QS. Al-Baqarah (2): 275</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-[#006494] border-b-2 border-[#00A6FB] pb-1">2. As-Sunnah (Hadis)</h3>
+                        <ul class="list-disc list-outside pl-5 mt-2">
+                            <li>Hadis Riwayat Bukhari & Muslim</li>
+                            <li>Hadis Riwayat Abu Daud</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-[#006494] border-b-2 border-[#00A6FB] pb-1">3. Kitab Fikih Muamalah</h3>
+                        <ul class="list-disc list-outside pl-5 mt-2">
+                            <li>Fikih Sunnah (Sayyid Sabiq)</li>
+                            <li>Al-Mughni (Ibnu Qudamah)</li>
+                            <li>Bidayatul Mujtahid (Ibnu Rusyd)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 mt-8 border-t border-gray-200">
+        <p class="text-gray-500">Infografik Interaktif Fikih Jual Beli.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const tooltipTitleCallback = {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    }
+                    return label;
+                }
+            };
+            
+            const processLabel = (label) => {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > 16) {
+                            lines.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    });
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            };
+
+            const rukunLabels = [
+                "Al-'Aqidain (Pihak)", 
+                "Ma'qud 'Alaih (Objek)", 
+                "Shighah (Pernyataan Akad)"
+            ].map(processLabel);
+            
+            const rukunCtx = document.getElementById('rukunChart').getContext('2d');
+            new Chart(rukunCtx, {
+                type: 'bar',
+                data: {
+                    labels: rukunLabels,
+                    datasets: [{
+                        label: 'Jumlah Elemen',
+                        data: [2, 2, 1],
+                        backgroundColor: [
+                            '#00A6FB',
+                            '#0582CA',
+                            '#006494'
+                        ],
+                        borderColor: '#051923',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#003554',
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: '#e0e0e0'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#003554',
+                                font: {
+                                    weight: '600'
+                                }
+                            },
+                             grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: tooltipTitleCallback
+                        },
+                        title: {
+                            display: true,
+                            text: 'Komponen Rukun Jual Beli & Elemennya',
+                            color: '#003554',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+
+            const khiyarCtx = document.getElementById('khiyarChart').getContext('2d');
+            new Chart(khiyarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Berbasis Waktu', 
+                        'Berbasis Cacat', 
+                        ['Perlu Syarat', 'Eksplisit'], 
+                        ['Otomatis', '(Selama di Majlis)']
+                    ],
+                    datasets: [
+                        {
+                            label: 'Khiyar Majlis',
+                            data: [1, 0, 0, 1],
+                            fill: true,
+                            backgroundColor: 'rgba(0, 166, 251, 0.2)',
+                            borderColor: '#00A6FB',
+                            pointBackgroundColor: '#00A6FB',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#00A6FB'
+                        },
+                        {
+                            label: 'Khiyar Syart',
+                            data: [1, 0, 1, 0],
+                            fill: true,
+                            backgroundColor: 'rgba(0, 100, 148, 0.2)',
+                            borderColor: '#006494',
+                            pointBackgroundColor: '#006494',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#006494'
+                        },
+                         {
+                            label: "Khiyar 'Aib",
+                            data: [0, 1, 0, 0],
+                            fill: true,
+                            backgroundColor: 'rgba(5, 130, 202, 0.2)',
+                            borderColor: '#0582CA',
+                            pointBackgroundColor: '#0582CA',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: '#0582CA'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: '#cccccc'
+                            },
+                            grid: {
+                                color: '#dddddd'
+                            },
+                            pointLabels: {
+                                color: '#003554',
+                                font: {
+                                    size: 13,
+                                    weight: '600'
+                                }
+                            },
+                            ticks: {
+                                backdropColor: '#f8fafc',
+                                color: '#006494',
+                                stepSize: 1,
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: tooltipTitleCallback
+                        },
+                         legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#051923'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

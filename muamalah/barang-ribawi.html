@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik Hukum Jual Beli Barang Ribawi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flow-line {
+            position: absolute;
+            background-color: #d1d5db;
+            z-index: 0;
+        }
+        .flow-line-h {
+            height: 2px;
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .flow-line-v {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .flow-card {
+             border: 2px solid #00A9E0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#00A9E0] mb-2">Hukum Jual Beli Barang Ribawi</h1>
+            <p class="text-lg md:text-xl text-gray-600">Panduan Visual Memahami Aturan Pertukaran Sesuai Syariat</p>
+        </header>
+
+        <section id="pengenalan" class="mb-16">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-center text-[#F7A823] mb-4">Apa itu Barang Ribawi?</h2>
+                <p class="text-center text-gray-700 leading-relaxed">
+                    Barang Ribawi adalah enam komoditas spesifik yang disebutkan dalam Hadis Rasulullah ﷺ. Karena perannya sebagai alat tukar atau makanan pokok, pertukarannya memiliki aturan ketat untuk mencegah <span class="font-bold text-[#F05A28]">riba</span>, yaitu segala bentuk tambahan yang tidak dibenarkan. Prinsip ini diperluas oleh ulama untuk mencakup barang-barang modern dengan fungsi serupa.
+                </p>
+            </div>
+        </section>
+
+        <section id="enam-barang" class="mb-16">
+             <h2 class="text-3xl font-bold text-center text-[#75B343] mb-8">Enam Komoditi Pokok dalam Hadis</h2>
+             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">💰</span>
+                    <h3 class="mt-4 font-bold text-lg">Emas</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">🔘</span>
+                    <h3 class="mt-4 font-bold text-lg">Perak</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">🌾</span>
+                    <h3 class="mt-4 font-bold text-lg">Gandum</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">🌱</span>
+                    <h3 class="mt-4 font-bold text-lg">Syair</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">🌴</span>
+                    <h3 class="mt-4 font-bold text-lg">Kurma</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform">
+                    <span class="text-5xl">🧂</span>
+                    <h3 class="mt-4 font-bold text-lg">Garam</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="illat" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#A64A97] mb-8">Dua 'Illat (Sebab Hukum) Utama</h2>
+             <p class="text-center max-w-3xl mx-auto mb-10 text-gray-700">
+                Keenam barang tersebut dikelompokkan berdasarkan dua sebab hukum atau 'illat. 'Illat inilah yang menjadi dasar para ulama untuk mengqiyaskan (menganalogikan) hukumnya kepada barang-barang lain di zaman modern.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 relative max-w-5xl mx-auto">
+                <div class="w-full md:w-1/2 flex flex-col items-center">
+                    <div class="flow-card bg-white rounded-xl shadow-lg p-6 w-full text-center z-10">
+                        <h3 class="text-2xl font-bold text-[#00A9E0]">1. Tsamaniyyah (Alat Tukar)</h3>
+                        <p class="mt-2 text-gray-600">Segala sesuatu yang berfungsi sebagai standar nilai dan medium pertukaran.</p>
+                        <div class="mt-4 bg-blue-50 p-3 rounded-lg">
+                           <p class="font-semibold">Contoh Qiyas: Uang Kertas (Rupiah, Dolar), Mata Uang Digital.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col items-center">
+                    <div class="flow-card bg-white rounded-xl shadow-lg p-6 w-full text-center z-10 border-[#75B343]">
+                        <h3 class="text-2xl font-bold text-[#75B343]">2. Qut wa Kayl (Makanan Pokok)</h3>
+                        <p class="mt-2 text-gray-600">Bahan makanan pokok yang bisa ditakar atau ditimbang serta dapat disimpan.</p>
+                         <div class="mt-4 bg-green-50 p-3 rounded-lg">
+                           <p class="font-semibold">Contoh Qiyas: Beras, Jagung, Sagu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="aturan-jual-beli" class="mb-12">
+            <h2 class="text-3xl font-bold text-center text-[#F05A28] mb-8">Tiga Aturan Emas Pertukaran Barang Ribawi</h2>
+             <p class="text-center max-w-3xl mx-auto mb-10 text-gray-700">
+                Aturan pertukaran barang ribawi bergantung pada kategori barang yang ditransaksikan. Memahami tiga skenario ini adalah kunci untuk menghindari riba dalam jual beli.
+            </p>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col">
+                    <h3 class="text-xl font-bold text-center mb-1">KATEGORI 1: SEJENIS</h3>
+                    <p class="text-gray-500 text-center mb-4 font-semibold">(Emas ↔ Emas, Beras ↔ Beras)</p>
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="sejenisChart"></canvas>
+                    </div>
+                     <div class="mt-4 text-center">
+                        <h4 class="text-lg font-bold text-[#75B343]">Syarat: Sama Takaran & Tunai</h4>
+                        <p class="text-gray-600 mt-2">Pertukaran harus memiliki nilai atau takaran yang 100% sama dan serah terima wajib dilakukan di tempat (tunai) untuk menghindari Riba Fadhl (kelebihan) dan Riba Nasi'ah (penundaan).</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col">
+                    <h3 class="text-xl font-bold text-center mb-1">KATEGORI 2: BEDA JENIS, SATU 'ILLAT</h3>
+                    <p class="text-gray-500 text-center mb-4 font-semibold">(Emas ↔ Perak, Rupiah ↔ Dolar)</p>
+                     <div class="chart-container h-64 md:h-72">
+                        <canvas id="bedaJenisChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                         <h4 class="text-lg font-bold text-[#F7A823]">Syarat: Boleh Beda Nilai, Wajib Tunai</h4>
+                        <p class="text-gray-600 mt-2">Nilai tukar boleh berbeda sesuai kesepakatan pasar. Namun, serah terima tetap wajib dilakukan secara tunai untuk menghindari Riba Nasi'ah (penundaan).</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-bold text-center mb-1">KATEGORI 3: BEDA 'ILLAT</h3>
+                    <p class="text-gray-500 text-center mb-4 font-semibold">(Emas ↔ Beras, Rupiah ↔ Garam)</p>
+                    <div class="text-center my-8">
+                        <span class="text-6xl">🤝</span>
+                        <p class="text-3xl font-extrabold text-[#00A9E0] mt-4">FLEKSIBEL</p>
+                    </div>
+                     <div class="text-center">
+                         <h4 class="text-lg font-bold text-[#00A9E0]">Syarat: Bebas & Akad Jelas</h4>
+                        <p class="text-gray-600 mt-2">Aturan menjadi longgar. Nilai boleh berbeda dan pembayaran boleh tidak tunai (kredit), selama akadnya jelas dan tidak mengandung unsur ketidakpastian (gharar).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 pt-8 border-t">
+            <p class="text-gray-600">Infografik ini merangkum prinsip dasar fiqih muamalat mengenai barang ribawi.</p>
+            <p class="text-sm text-gray-500 mt-1">Selalu konsultasikan dengan ahli untuk transaksi yang kompleks.</p>
+        </footer>
+    </div>
+
+    <script>
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            }
+        };
+
+        const sejenisData = {
+            labels: ['Sama Takaran / Nilai'],
+            datasets: [{
+                data: [100],
+                backgroundColor: ['#75B343'],
+                hoverBackgroundColor: ['#5a8e35'],
+                borderWidth: 0,
+                
+            }]
+        };
+
+        const sejenisChartCtx = document.getElementById('sejenisChart').getContext('2d');
+        new Chart(sejenisChartCtx, {
+            type: 'doughnut',
+            data: sejenisData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                ...tooltipTitleCallback
+            }
+        });
+
+        const bedaJenisData = {
+            labels: ['Emas (1 gram)', 'Rupiah (juta IDR)'],
+            datasets: [{
+                label: 'Nilai Tukar',
+                data: [1, 1.5],
+                backgroundColor: [
+                    '#F7A823',
+                    '#00A9E0'
+                ],
+                borderColor: [
+                    '#c4861c',
+                    '#0087b3'
+                ],
+                borderWidth: 1,
+                barThickness: 50,
+            }]
+        };
+
+        const bedaJenisChartCtx = document.getElementById('bedaJenisChart').getContext('2d');
+        new Chart(bedaJenisChartCtx, {
+            type: 'bar',
+            data: bedaJenisData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Nilai Relatif'
+                        }
+                    },
+                    y: {
+                       grid: {
+                           display: false
+                       }
+                    }
+                },
+                ...tooltipTitleCallback
+            }
+        });
+    </script>
+</body>
+</html>

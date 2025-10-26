@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik Konsep Muamalah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <!-- 
+      Selected Palette: Energetic & Playful (#FF6B6B, #FFD166, #06D6A0, #118AB2, #073B4C)
+      Konfirmasi: Tidak ada Mermaid JS yang digunakan.
+      Konfirmasi: Tidak ada SVG yang digunakan.
+    -->
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px;
+            max-height: 300px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .font-display {
+            font-family: 'Merriweather', serif;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #118AB2;
+            margin-bottom: 0.75rem;
+        }
+        .card-content {
+            font-size: 0.95rem;
+            color: #073B4C;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .flow-box {
+            background-color: #f0f8ff;
+            border: 1px solid #118AB2;
+            color: #073B4C;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #118AB2;
+            align-self: center;
+            margin: 0.5rem 0.25rem;
+        }
+    </style>
+</head>
+<body class="text-[#073B4C]">
+
+    <header class="py-12 px-4 text-center bg-white shadow-md">
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-[#118AB2]">Memahami Konsep Inti Muamalah</h1>
+        <p class="mt-4 text-lg md:text-xl text-[#073B4C] max-w-3xl mx-auto">Landasan Akad (Kontrak) dalam Transaksi Ekonomi Islam</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="card">
+            <h2 class="card-title">Apa itu Muamalah?</h2>
+            <div class="card-content">
+                <p>Dalam fikih Islam, muamalah adalah bagian yang mengatur hubungan antar manusia dalam hal transaksi duniawi, seperti jual beli, sewa, kemitraan, dan jaminan. Prinsip utamanya adalah keadilan, transparansi, dan larangan atas riba (bunga), gharar (ketidakpastian), dan maysir (spekulasi).</p>
+                <p class="mt-2">Infografik ini akan membahas empat akad (kontrak) fundamental yang menjadi pilar utama dalam sistem keuangan dan bisnis syariah.</p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-8">
+
+            <div class="card">
+                <h2 class="card-title">1. Syirkah (Perkongsian / Kemitraan)</h2>
+                <div class="card-content">
+                    <p>Akad kerja sama antara dua pihak atau lebih untuk menjalankan usaha dengan tujuan berbagi keuntungan dan kerugian. Inti dari Syirkah adalah percampuran modal (mal) dan/atau kerja sama usaha (amal).</p>
+                    
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-4 mb-2">Alur Proses Syirkah</h3>
+                    <div class="flex flex-col items-center space-y-2">
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <div class="flow-box">Pihak 1 (Modal/Kerja)</div>
+                            <div class="flow-box">+</div>
+                            <div class="flow-box">Pihak 2 (Modal/Kerja)</div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box bg-[#E0FDEF] border-[#06D6A0]">Usaha Bersama</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box">Keuntungan / Kerugian</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-box bg-gray-100 border-gray-400">Dibagi Sesuai Kesepakatan</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">2. Mudharabah (Bagi Hasil)</h2>
+                <div class="card-content">
+                    <p>Kerja sama khusus di mana satu pihak (Shahibul Mal) menyediakan 100% modal, dan pihak lain (Mudharib) menyediakan keahlian dan manajemen usaha.</p>
+                    
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-4 mb-2">Alur Proses Mudharabah</h3>
+                    <div class="flex flex-wrap justify-around items-center gap-2">
+                        <div class="flow-box">Shahibul Mal (100% Modal)</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-box bg-[#E0FDEF] border-[#06D6A0]">Mudharib (Pengelola Usaha)</div>
+                    </div>
+
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-6 mb-2">Prinsip Pembagian Hasil</h3>
+                    <p class="text-center mb-4">Jika usaha menghasilkan, hasilnya dibagi sesuai nisbah (proporsi) yang disepakati. Namun, jika terjadi kerugian (bukan karena kelalaian), bebannya ditanggung secara berbeda.</p>
+                    <div class="flex flex-col md:flex-row justify-around gap-4">
+                        <div class="flex-1">
+                            <p class="text-center font-semibold mb-2 text-[#06D6A0]">Distribusi Keuntungan</p>
+                            <div class="chart-container" style="height: 220px; max-height: 250px;">
+                                <canvas id="mudharabahProfitChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-center font-semibold mb-2 text-[#FF6B6B]">Penanggungan Kerugian</p>
+                            <div class="chart-container" style="height: 220px; max-height: 250px;">
+                                <canvas id="mudharabahLossChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">3. Ijarah (Sewa Menyewa)</h2>
+                <div class="card-content">
+                    <p>Akad pemanfaatan jasa atau barang dalam jangka waktu tertentu dengan pembayaran sewa (upah) yang telah disepakati. Ini adalah transfer hak guna, bukan hak milik.</p>
+                    
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-4 mb-2">Jenis-Jenis Ijarah</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li>
+                            <span class="font-semibold text-xl mr-2">🏠</span>
+                            <strong>Ijarah 'Ala A'yan (Sewa Barang):</strong> Memanfaatkan aset fisik seperti rumah, kendaraan, atau mesin.
+                        </li>
+                        <li>
+                            <span class="font-semibold text-xl mr-2">👨‍🔧</span>
+                            <strong>Ijarah 'Ala Al-A'mal (Sewa Jasa):</strong> Menggunakan jasa atau keahlian seseorang (upah kerja).
+                        </li>
+                    </ul>
+
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-4 mb-2">Alur Proses Ijarah</h3>
+                    <div class="flex items-center justify-center space-x-2 md:space-x-4">
+                         <div class="flow-box text-center">Pemberi Sewa / Jasa</div>
+                         <div class="flow-arrow text-2xl">⇆</div>
+                         <div class="flow-box text-center">Penerima Manfaat (Penyewa)</div>
+                    </div>
+                     <div class="flow-arrow text-center">↓</div>
+                     <div class="flow-box bg-gray-100 border-gray-400 max-w-xs mx-auto">Pembayaran Upah/Sewa (Ujrah)</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">4. Rahn (Gadai)</h2>
+                <div class="card-content">
+                    <p>Akad menjadikan suatu barang berharga (Marhun) sebagai jaminan atas hutang (pinjaman). Ini bertujuan memberi kepastian kepada pemberi hutang (Murtahin).</p>
+                    <p class="mt-2 font-semibold text-[#FF6B6B]">Prinsip Utama: Barang jaminan tidak boleh dimanfaatkan oleh penerima gadai.</p>
+                    
+                    <h3 class="font-semibold text-lg text-[#118AB2] mt-4 mb-2">Alur Proses Rahn</h3>
+                    <div class="flex flex-col space-y-2">
+                        <div class="flow-box">Pemberi Hutang (Murtahin)</div>
+                        <div class="flex items-center justify-center">
+                            <span class="flow-arrow">↑</span>
+                            <span class="mx-4 text-gray-500">(Memberi Hutang)</span>
+                        </div>
+                        <div class="flow-box">Penerima Hutang (Rahin)</div>
+                        <div class="flex items-center justify-center">
+                            <span class="flow-arrow">↓</span>
+                            <span class="mx-4 text-gray-500">(Memberi Jaminan)</span>
+                        </div>
+                        <div class="flow-box bg-[#FFF5E0] border-[#FFD166]">Barang Jaminan (Marhun)</div>
+                        <div class="flow-arrow text-center">↓</div>
+                        <div class="flow-box bg-gray-100 border-gray-400">Jaminan dipegang sampai hutang lunas</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="card mt-8 md:col-span-2">
+            <h2 class="card-title">Landasan Syariah (Dalil)</h2>
+            <div class="card-content">
+                <p>Seluruh akad ini bukanlah rekayasa modern, melainkan berakar kuat pada sumber hukum Islam yang utama untuk menjamin keabsahan dan keberkahan transaksi.</p>
+                <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border-l-4 border-[#118AB2] pl-4 py-2 bg-gray-50 rounded">
+                        <h3 class="font-semibold text-lg text-[#073B4C]">1. Al-Qur'an</h3>
+                        <ul class="list-disc list-outside pl-5 mt-2 space-y-1">
+                            <li><strong>Rahn (Gadai):</strong> QS. Al-Baqarah (2): 283</li>
+                            <li><strong>Ijarah (Sewa Jasa):</strong> QS. At-Talaq (65): 6</li>
+                            <li><strong>Semua Akad:</strong> QS. Al-Ma'idah (5): 1</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-[#06D6A0] pl-4 py-2 bg-gray-50 rounded">
+                        <h3 class="font-semibold text-lg text-[#073B4C]">2. As-Sunnah (Hadis)</h3>
+                         <ul class="list-disc list-outside pl-5 mt-2 space-y-1">
+                            <li><strong>Syirkah (Kemitraan):</strong> Hadis Qudsi Riwayat Abu Daud.</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-[#FFD166] pl-4 py-2 bg-gray-50 rounded">
+                        <h3 class="font-semibold text-lg text-[#073B4C]">3. Ijma' (Konsensus Ulama)</h3>
+                         <ul class="list-disc list-outside pl-5 mt-2 space-y-1">
+                            <li><strong>Mudharabah (Bagi Hasil):</strong> Disahkan melalui konsensus dan praktik para Sahabat.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 mt-8 border-t border-gray-200">
+        <p class="text-gray-500">Infografik Interaktif mengenai Konsep Muamalah.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const mudharabahProfitCtx = document.getElementById('mudharabahProfitChart').getContext('2d');
+            new Chart(mudharabahProfitCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Nisbah Shahibul Mal', 'Nisbah Mudharib'],
+                    datasets: [{
+                        label: 'Pembagian Untung',
+                        data: [60, 40], 
+                        backgroundColor: [
+                            '#118AB2', 
+                            '#06D6A0'  
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#073B4C'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const mudharabahLossCtx = document.getElementById('mudharabahLossChart').getContext('2d');
+            new Chart(mudharabahLossCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [['Kerugian Ditanggung', 'Shahibul Mal 100%']],
+                    datasets: [{
+                        label: 'Penanggungan Rugi',
+                        data: [100],
+                        backgroundColor: [
+                            '#FF6B6B'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#073B4C'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

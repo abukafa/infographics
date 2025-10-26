@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik Riba, Sharf, dan Qardh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <!-- 
+      Palette Pilihan: Energetic & Playful (#FF6B6B, #FFD166, #06D6A0, #118AB2, #073B4C)
+      Rencana Narasi:
+      1. Header: Judul dan pengantar.
+      2. Riba: Hukum (Haram), Dalil (Al-Baqarah 275), dan visualisasi (Donut Chart) 2 Jenis Riba (Fadhl & Nasii'ah).
+      3. Sharf: Hukum (Boleh), Dalil (HR. Muslim), dan visualisasi (2 Kartu HTML/CSS) untuk Syarat Sah (Sejenis vs Beda Jenis).
+      4. Qardh: Hukum (Sunnah), Dalil (Al-Baqarah 245), dan visualisasi (Tabel HTML/CSS) perbandingan Qardh vs Pinjaman Riba.
+      5. Referensi: Daftar sumber dalil.
+      
+      Pilihan Visualisasi:
+      - Hukum Riba/Sharf/Qardh -> Goal: Inform -> Single Big Number (HTML/CSS). Justifikasi: Menekankan status hukum yang tegas. (Tidak ada SVG/Mermaid).
+      - Jenis Riba -> Goal: Inform/Organize -> Donut Chart (Chart.js). Justifikasi: Menampilkan dua kategori utama Riba secara visual. (Tidak ada SVG/Mermaid).
+      - Syarat Sharf -> Goal: Organize/Compare -> HTML/CSS Cards (2 Kartu). Justifikasi: Membandingkan syarat untuk 2 skenario transaksi dengan jelas. (Tidak ada SVG/Mermaid).
+      - Qardh vs Riba -> Goal: Compare -> Table (HTML/CSS). Justifikasi: Membandingkan atribut kunci dari dua konsep yang sering tertukar. (Tidak ada SVG/Mermaid).
+      
+      Konfirmasi: Tidak ada Mermaid JS yang digunakan.
+      Konfirmasi: Tidak ada SVG yang digunakan.
+    -->
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #073B4C;
+        }
+        .font-display {
+            font-family: 'Merriweather', serif;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .card-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .dalil-quote {
+            border-left: 5px solid;
+            padding: 1rem 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin: 1.5rem 0;
+        }
+        .dalil-quote p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        .dalil-quote .reference {
+            display: block;
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            text-align: right;
+        }
+        .sharf-table th {
+            padding: 0.75rem;
+        }
+        .sharf-table td {
+            padding: 1rem;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="py-12 px-4 text-center bg-white shadow-md">
+        <h1 class="font-display text-4xl md:text-5xl font-bold text-[#073B4C]">Prinsip Keuangan Islam</h1>
+        <p class="mt-4 text-lg md:text-xl text-[#118AB2] max-w-3xl mx-auto">Membedah Hukum Riba, Sharf (Jual Beli Mata Uang), dan Qardh (Pinjaman)</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="card border-t-8 border-[#FF6B6B]">
+            <h2 class="card-title text-[#FF6B6B]">1. Hukum Riba</h2>
+            <div class="card-content grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="text-center bg-[#fff5f5] border-2 border-[#FF6B6B] rounded-lg p-8 shadow-inner">
+                    <span class="text-xl font-semibold text-[#FF6B6B]">Hukum Asal</span>
+                    <h3 class="font-display text-7xl font-bold text-[#FF6B6B] my-2">HARAM</h3>
+                    <span class="text-xl font-semibold text-[#FF6B6B]">(Dosa Besar)</span>
+                </div>
+                <div>
+                    <p class="text-lg">Riba adalah tambahan atau kelebihan yang disyaratkan dalam transaksi utang-piutang atau pertukaran barang ribawi, yang mengandung unsur kezaliman dan eksploitasi.</p>
+                    <p class="mt-2">Pengharamannya adalah prinsip fundamental dalam ekonomi Islam.</p>
+                </div>
+            </div>
+            <div class="dalil-quote bg-[#fff5f5] border-[#FF6B6B]">
+                <p>"...padahal Allah telah menghalalkan jual beli dan mengharamkan riba..."</p>
+                <span class="reference text-[#FF6B6B]">(QS. Al-Baqarah: 275)</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mt-4">
+                <div class="card-content">
+                    <h3 class="font-display text-xl font-bold text-[#073B4C] mb-4">Dua Jenis Riba Utama</h3>
+                    <p class="mb-2">Secara umum, riba dikategorikan menjadi dua jenis utama:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong class="text-[#FF6B6B]">Riba Fadhl:</strong> Kelebihan dalam pertukaran barang sejenis (misal: 1kg emas ditukar 1.1kg emas).</li>
+                        <li><strong class="text-[#FF6B6B]">Riba Nasii'ah:</strong> Kelebihan yang disyaratkan karena penangguhan waktu pembayaran utang (bunga pinjaman).</li>
+                    </ul>
+                     <div class="dalil-quote bg-gray-100 border-gray-400 mt-4">
+                        <p>"Rasulullah shallallahu ‘alaihi wa sallam melaknat pemakan riba, pemberi riba, dua saksi riba, dan penulis riba."</p>
+                        <span class="reference text-gray-600">(Hadis Riwayat Muslim)</span>
+                    </div>
+                </div>
+                <div class="chart-container" style="max-width: 350px;">
+                    <canvas id="ribaChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="card mt-8 border-t-8 border-[#06D6A0]">
+            <h2 class="card-title text-[#06D6A0]">2. Hukum Sharf (Jual Beli Mata Uang)</h2>
+            <div class="card-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="text-center bg-[#f0fefc] border-2 border-[#06D6A0] rounded-lg p-8 shadow-inner">
+                        <span class="text-xl font-semibold text-[#06D6A0]">Hukum Asal</span>
+                        <h3 class="font-display text-7xl font-bold text-[#06D6A0] my-2">BOLEH</h3>
+                        <span class="text-xl font-semibold text-[#06D6A0]">(Mubah)</span>
+                    </div>
+                    <div>
+                        <p class="text-lg">Sharf adalah akad pertukaran mata uang, baik yang sejenis maupun berbeda jenis. Hukumnya boleh asalkan memenuhi syarat syariah agar tidak jatuh ke dalam Riba.</p>
+                    </div>
+                </div>
+                
+                <h3 class="font-display text-xl font-bold text-[#073B4C] mt-8 mb-4">Syarat Sah Transaksi Sharf</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-lg text-[#118AB2]">A. Mata Uang Sejenis</h4>
+                        <p class="text-sm mb-2">(Misal: Rupiah ke Rupiah)</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li><strong>Tunai (Yadan bi Yadin):</strong> Serah terima di tempat.</li>
+                            <li><strong>Setara (Mistlan bi Mistlin):</strong> Jumlah harus sama persis.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-semibold text-lg text-[#118AB2]">B. Mata Uang Beda Jenis</h4>
+                        <p class="text-sm mb-2">(Misal: Rupiah ke Dolar AS)</p>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li><strong>Tunai (Yadan bi Yadin):</strong> Serah terima di tempat.</li>
+                            <li>(Tidak disyaratkan setara, boleh beda nilai sesuai kurs).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="dalil-quote bg-[#f0fefc] border-[#06D6A0] mt-6">
+                    <p>"Apabila jenisnya berbeda, maka juallah sesuka hatimu, asalkan harus yadan bi yadin (kontan)."</p>
+                    <span class="reference text-[#06D6A0]">(Potongan Hadis Riwayat Muslim)</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card mt-8 border-t-8 border-[#FFD166]">
+            <h2 class="card-title text-[#FFD166]">3. Hukum Qardh (Pinjaman Kebaikan)</h2>
+             <div class="card-content">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="text-center bg-[#fffbf0] border-2 border-[#FFD166] rounded-lg p-8 shadow-inner">
+                        <span class="text-xl font-semibold text-[#FFD166]">Hukum Memberi</span>
+                        <h3 class="font-display text-7xl font-bold text-[#FFD166] my-2">SUNNAH</h3>
+                        <span class="text-xl font-semibold text-[#FFD166]">(Dianjurkan)</span>
+                    </div>
+                    <div>
+                        <p class="text-lg">Qardh adalah pinjaman yang diberikan atas dasar tolong-menolong (ta'awun), bukan komersial. Peminjam wajib mengembalikan hanya pokok pinjaman, tanpa tambahan apapun yang disyaratkan.</p>
+                    </div>
+                </div>
+                
+                <h3 class="font-display text-xl font-bold text-[#073B4C] mt-8 mb-4">Perbandingan: Qardh vs Pinjaman Riba</h3>
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
+                    <table class="sharf-table w-full text-sm text-left">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="text-[#073B4C]">Aspek</th>
+                                <th class="text-[#06D6A0]">Qardh (Pinjaman Syariah)</th>
+                                <th class="text-[#FF6B6B]">Pinjaman Riba (Konvensional)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white">
+                                <td class="font-semibold">Tujuan Akad</td>
+                                <td>Sosial (Tolong-menolong)</td>
+                                <td>Komersial (Mencari Untung)</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="font-semibold">Pengembalian</td>
+                                <td>Sama persis dengan pokok</td>
+                                <td>Pokok + Tambahan (Bunga)</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="font-semibold">Hukum</td>
+                                <td class="font-bold text-[#06D6A0]">Sunnah (Pahala)</td>
+                                <td class="font-bold text-[#FF6B6B]">Haram (Dosa)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                 <div class="dalil-quote bg-[#fffbf0] border-[#FFD166] mt-6">
+                    <p>"Siapakah yang mau memberi pinjaman kepada Allah, pinjaman yang baik (Qardh Hasan)... maka Allah akan melipatgandakan pembayaran kepadanya..."</p>
+                    <span class="reference text-[#FFD166]">(QS. Al-Baqarah: 245)</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 mt-8 border-t border-gray-200">
+        <p class="text-gray-500">Infografik Interaktif Prinsip Keuangan Islam.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const tooltipTitleCallback = {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    }
+                    return label;
+                }
+            };
+
+            const ribaCtx = document.getElementById('ribaChart').getContext('2d');
+            new Chart(ribaCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Riba Nasii\'ah (Karena Waktu)', 'Riba Fadhl (Karena Kelebihan)'],
+                    datasets: [{
+                        label: 'Jenis Riba',
+                        data: [50, 50],
+                        backgroundColor: [
+                            '#FF6B6B',
+                            '#FFD166'
+                        ],
+                        borderColor: '#f8fafc',
+                        borderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#073B4C'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: tooltipTitleCallback
+                        },
+                        title: {
+                            display: true,
+                            text: 'Dua Kategori Utama Riba',
+                            color: '#073B4C',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
