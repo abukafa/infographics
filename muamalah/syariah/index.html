@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ensiklopedi Syariah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .nav-pill.active {
+        background-color: #0f766e;
+        color: white;
+      }
+
+      .content-section {
+        display: none;
+      }
+
+      .content-section.active {
+        display: block;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(226, 232, 240, 0.5);
+      }
+
+      .sanad-line {
+        position: relative;
+      }
+
+      .sanad-line::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(to bottom, #0d9488, transparent);
+        transform: translateX(-50%);
+      }
+
+      .avatar-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin: 0 auto 0.75rem;
+        background-repeat: no-repeat;
+      }
+
+      .avatar-circle:hover {
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        transform: scale(1.5);
+        transition: all 0.3s ease;
+      }
+
+      .bio-card {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 1.25rem;
+        height: 100%;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        width: calc(50% - 1rem);
+      }
+
+      @media (min-width: 1024px) {
+        .bio-card {
+          width: calc(25% - 1rem);
+        }
+      }
+
+      .bio-card:hover {
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+        border-color: #0d9488;
+      }
+
+      .years-badge {
+        background: #f1f5f9;
+        color: #475569;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 999px;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <!-- Header -->
+    <header
+      class="bg-teal-900 text-white py-12 px-6 text-center shadow-lg relative overflow-hidden"
+    >
+      <div class="relative z-10">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4">
+          Silsilah Keilmuan & Hukum Islam
+        </h1>
+        <p class="text-teal-100 max-w-2xl mx-auto text-sm md:text-lg">
+          Menelusuri Alur Transmisi Ilmu dari Wahyu hingga Madzhab
+        </p>
+      </div>
+      <div
+        class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
+      >
+        <i class="fas fa-pattern fa-10x"></i>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav
+      class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b py-4 px-4 overflow-x-auto"
+    >
+      <div class="max-w-6xl mx-auto flex space-x-2">
+        <button
+          onclick="switchTab('sanad')"
+          class="nav-pill active px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all"
+        >
+          <i class="fas fa-sitemap mr-2"></i> Alur Sanad
+        </button>
+        <button
+          onclick="switchTab('syariah')"
+          class="nav-pill px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all"
+        >
+          <i class="fas fa-shield-alt mr-2"></i> Syariah & Maqashid
+        </button>
+        <button
+          onclick="switchTab('hukum')"
+          class="nav-pill px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all"
+        >
+          <i class="fas fa-balance-scale mr-2"></i> Hukum Syara & Ushul
+        </button>
+        <button
+          onclick="switchTab('ijtihad')"
+          class="nav-pill px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all"
+        >
+          <i class="fas fa-podcast mr-2"></i> Ijtihad & Taqlid
+        </button>
+        <button
+          onclick="switchTab('referensi')"
+          class="nav-pill px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all"
+        >
+          <i class="fas fa-book mr-2"></i> Referensi
+        </button>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6">
+      <!-- SECTION 1: SANAD -->
+      <section
+        id="sanad"
+        class="content-section active animate-in fade-in duration-500"
+      >
+        <!-- Rasulullah -->
+        <div class="text-center mb-16 sanad-line">
+          <div
+            class="avatar-circle bg-amber-500 scale-125 flex items-center justify-center"
+          >
+            <i class="fas fa-sun"></i>
+          </div>
+          <h3 class="font-extrabold text-2xl">Rasulullah Muhammad SAW</h3>
+          <p class="text-amber-600 font-bold text-sm mb-2">570 M - 632 M</p>
+          <div
+            class="max-w-2xl mx-auto bg-amber-50 p-4 rounded-2xl border border-amber-100 text-sm text-amber-900 italic"
+          >
+            Sumber segala hukum dan wahyu dalam Islam. Beliau menerima Al-Qur'an
+            dan mencontohkan As-Sunnah sebagai panduan hidup bagi seluruh umat
+            manusia hingga akhir zaman.
+          </div>
+        </div>
+
+        <!-- Sahabat Section -->
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <span
+              class="bg-teal-100 text-teal-700 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest"
+              >Generasi Sahabat (Al-Muktsirun al-Futya)</span
+            >
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <!-- Umar -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 520% 380%;
+                  background-position: 4% 5%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Umar bin Khattab
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Ahli Maqashid
+              </p>
+              <div class="text-center">
+                <span class="years-badge">40 SH - 23 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Khalifah kedua yang dikenal sebagai Al-Faruq. Beliau memiliki
+                ijtihad yang sangat tajam dalam urusan kemaslahatan umum
+                (Maqashid) & sistem administrasi negara
+              </p>
+            </div>
+            <!-- Ali -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 480% 300%;
+                  background-position: 33% 5%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Ali bin Abi Thalib
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Pakar Peradilan
+              </p>
+              <div class="text-center">
+                <span class="years-badge">23 SH - 40 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Sepupu sekaligus menantu Nabi yang dijuluki pintu ilmu. Beliau
+                adalah rujukan tertinggi dalam urusan sengketa hukum dan
+                kerumitan fatwa peradilan.
+              </p>
+            </div>
+            <!-- Ibnu Mas'ud -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 480% 300%;
+                  background-position: 68% 3%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Abdullah bin Mas'ud
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Madrasah Kufah
+              </p>
+              <div class="text-center">
+                <span class="years-badge">Wafat 32 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Sahabat yang sangat dekat dengan Nabi. Beliau membangun pondasi
+                keilmuan di Irak yang lebih menekankan pada kedalaman makna teks
+                dan nalar hukum.
+              </p>
+            </div>
+            <!-- Ibnu Abbas -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 520% 380%;
+                  background-position: 96% 5%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Abdullah bin Abbas
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Bahrul 'Ulum
+              </p>
+              <div class="text-center">
+                <span class="years-badge">3 SH - 68 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Pakar tafsir Al-Qur'an utama di kalangan Sahabat. Beliau
+                didoakan Nabi agar faqih dalam agama, menjadikannya rujukan luas
+                di Mekkah.
+              </p>
+            </div>
+            <!-- Ibnu Umar -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 480% 320%;
+                  background-position: 36% 78%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Abdullah bin Umar
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Ketelitian Atsar
+              </p>
+              <div class="text-center">
+                <span class="years-badge">10 SH - 73 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Putra Umar bin Khattab yang sangat teliti dalam meniru sunnah
+                Nabi. Beliau menjadi rujukan utama bagi Madrasah Ahlul Hadits di
+                Madinah.
+              </p>
+            </div>
+            <!-- Zaid -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 480% 320%;
+                  background-position: 65% 78%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Zaid bin Tsabit
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Ahli Faraidh
+              </p>
+              <div class="text-center">
+                <span class="years-badge">11 SH - 45 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Sekretaris Nabi yang pakar dalam pembagian waris dan kodifikasi
+                Al-Qur'an. Keahlian teknisnya sangat dikagumi oleh para Sahabat
+                lainnya.
+              </p>
+            </div>
+            <!-- Aisyah -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('sahabahs.png');
+                  background-size: 480% 320%;
+                  background-position: 95% 78%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Aisyah binti Abu Bakar
+              </h4>
+              <p
+                class="text-[10px] text-teal-600 font-bold text-center mb-1 uppercase"
+              >
+                Hukum Domestik
+              </p>
+              <div class="text-center">
+                <span class="years-badge">9 SH - 58 H</span>
+              </div>
+              <p
+                class="text-[11px] leading-relaxed text-slate-600 text-justify"
+              >
+                Istri tercinta Nabi yang sangat cerdas. Beliau adalah sumber
+                primer dalam urusan ibadah privat, hukum rumah tangga, dan
+                kewanitaan.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabi'in Section -->
+        <div class="mb-24">
+          <div class="text-center mb-12">
+            <span
+              class="bg-blue-100 text-blue-700 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest"
+              >Generasi Tabi'in (7 Fuqaha Madinah)</span
+            >
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <!-- Said -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 450% 300%;
+                  background-position: 6% 2%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Said bin Musayyib
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">15 H - 94 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Pemimpin Tabi'in di Madinah yang sangat ahli dalam hadits mursal
+                dan ijtihad yang kuat menyambung ke Umar bin Khattab.
+              </p>
+            </div>
+            <!-- Qasim -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 480% 320%;
+                  background-position: 46% 5%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Al-Qasim bin Muh.
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">37 H - 107 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Cucu Abu Bakar Ash-Shiddiq yang mewarisi ilmu bibinya, Aisyah
+                RA. Beliau dikenal sangat wara' dan teliti dalam berfatwa.
+              </p>
+            </div>
+            <!-- Urwah -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 450% 300%;
+                  background-position: 92% 4%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Urwah bin Zubair
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">23 H - 94 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Pakar sejarah (Sirah) dan Fiqih. Beliau banyak meriwayatkan
+                hadits dari Aisyah RA dan menjadi rujukan utama di Madinah.
+              </p>
+            </div>
+            <!-- Kharijah -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 480% 320%;
+                  background-position: 4% 80%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Kharijah bin Zaid
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">29 H - 100 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Putra Zaid bin Tsabit yang melanjutkan spesialisasi ayahnya
+                dalam ilmu waris (Faraidh) dan urusan kesaksian di Madinah.
+              </p>
+            </div>
+            <!-- Abu Bakar -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 480% 320%;
+                  background-position: 35% 80%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Abu Bakar bin Abdurrahman
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">Wafat 94 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Seorang ulama dari Quraisy yang dijuluki Rahib (pendeta/ahli
+                ibadah) karena kesalehannya yang luar biasa di samping keluasan
+                ilmunya.
+              </p>
+            </div>
+            <!-- Sulaiman -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 480% 320%;
+                  background-position: 66% 80%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Sulaiman bin Yasar
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">34 H - 107 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Seorang mantan budak yang merdeka. Beliau menjadi ulama besar
+                yang sangat disegani karena kejujuran dan pemahamannya.
+              </p>
+            </div>
+            <!-- Ubaidillah -->
+            <div class="bio-card">
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('fuqohas.png');
+                  background-size: 480% 320%;
+                  background-position: 98% 80%;
+                "
+              ></div>
+              <h4 class="font-extrabold text-sm text-center">
+                Ubaidillah bin Abdullah
+              </h4>
+              <div class="text-center">
+                <span class="years-badge">Wafat 98 H</span>
+              </div>
+              <p class="text-[10px] leading-relaxed text-slate-600">
+                Guru dari Khalifah Umar bin Abdul Aziz. Beliau pakar dalam
+                mengintegrasikan ilmu hadits dengan praktik peradilan yang adil.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imam Madzhab Section -->
+        <div class="mb-10">
+          <div class="text-center mb-12">
+            <span
+              class="bg-rose-100 text-rose-700 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest"
+              >Imam 4 Madzhab (Kodifikasi)</span
+            >
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Hanafi -->
+            <div
+              class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-rose-500 flex flex-col items-center"
+            >
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('imams.png');
+                  background-size: 480% 320%;
+                  background-position: 4% 40%;
+                "
+              ></div>
+              <h3 class="font-extrabold text-lg text-center">
+                Imam Abu Hanifah
+              </h3>
+              <p class="text-xs text-center text-bold">
+                An-Nu'man bin Tsabit bin Zuwatha
+              </p>
+              <p class="text-rose-600 font-bold text-xs mb-2">80 H - 150 H</p>
+              <p
+                class="text-xs leading-relaxed text-slate-600 text-center mb-4 italic"
+              >
+                "Mewarisi sanad Kufah dari Ibnu Mas'ud melalui Hammad. Beliau
+                sangat jenius dalam Qiyas (analogi) dan Istihsan untuk
+                memecahkan kerumitan hukum di Irak."
+              </p>
+              <div
+                class="mt-auto w-full bg-rose-50 p-3 rounded-2xl text-[10px] font-bold text-rose-700 text-center"
+              >
+                Madzhab Al-Ra'yi
+              </div>
+            </div>
+            <!-- Maliki -->
+            <div
+              class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-rose-500 flex flex-col items-center"
+            >
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('imams.png');
+                  background-size: 480% 320%;
+                  background-position: 34% 42%;
+                "
+              ></div>
+              <h3 class="font-extrabold text-lg text-center">
+                Imam Malik bin Anas
+              </h3>
+              <p class="text-xs text-center text-bold">
+                Malik bin Anas bin Malik bin 'Amr
+              </p>
+              <p class="text-rose-600 font-bold text-xs mb-2">93 H - 179 H</p>
+              <p
+                class="text-xs leading-relaxed text-slate-600 text-center mb-4 italic"
+              >
+                "Mewarisi sanad Madinah dari Ibnu Umar dan 7 Fuqaha Madinah.
+                Beliau sangat mementingkan tradisi penduduk Madinah sebagai
+                hujah yang kuat."
+              </p>
+              <div
+                class="mt-auto w-full bg-rose-50 p-3 rounded-2xl text-[10px] font-bold text-rose-700 text-center"
+              >
+                Madzhab Ahlul Hadits
+              </div>
+            </div>
+            <!-- Syafi'i -->
+            <div
+              class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-rose-500 flex flex-col items-center"
+            >
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('imams.png');
+                  background-size: 480% 320%;
+                  background-position: 66% 40%;
+                "
+              ></div>
+              <h3 class="font-extrabold text-lg text-center">
+                Imam Asy-Syafi'i
+              </h3>
+              <p class="text-xs text-center text-bold">
+                Abu Abdullah Muhammad bin Idris
+              </p>
+              <p class="text-rose-600 font-bold text-xs mb-2">150 H - 204 H</p>
+              <p
+                class="text-xs leading-relaxed text-slate-600 text-center mb-4 italic"
+              >
+                "Jembatan antara Madinah dan Irak. Beliau menyusun metodologi
+                Ushul Fiqh pertama kali lewat kitab Ar-Risalah untuk
+                menyeimbangkan teks dan logika."
+              </p>
+              <div
+                class="mt-auto w-full bg-rose-50 p-3 rounded-2xl text-[10px] font-bold text-rose-700 text-center"
+              >
+                Bapak Ushul Fiqh
+              </div>
+            </div>
+            <!-- Hanbali -->
+            <div
+              class="bg-white p-6 rounded-3xl shadow-lg border-t-8 border-rose-500 flex flex-col items-center"
+            >
+              <div
+                class="avatar-circle"
+                style="
+                  background-image: url('imams.png');
+                  background-size: 480% 320%;
+                  background-position: 96% 40%;
+                "
+              ></div>
+              <h3 class="font-extrabold text-lg text-center">
+                Imam Ahmad Hanbali
+              </h3>
+              <p class="text-xs text-center text-bold">
+                Ahmad bin Muhammad bin Hanbal
+              </p>
+              <p class="text-rose-600 font-bold text-xs mb-2">164 H - 241 H</p>
+              <p
+                class="text-xs leading-relaxed text-slate-600 text-center mb-4 italic"
+              >
+                "Murid Imam Syafi'i yang sangat pakar dalam hadits. Beliau
+                dikenal karena keteguhannya memegang Nash Al-Qur'an dan Sunnah
+                di atas segala logika manusia."
+              </p>
+              <div
+                class="mt-auto w-full bg-rose-50 p-3 rounded-2xl text-[10px] font-bold text-rose-700 text-center"
+              >
+                Madzhab Ahlus Sunnah
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: SYARIAH & MAQASHID -->
+      <section
+        id="syariah"
+        class="content-section animate-in fade-in duration-500"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <div class="glass-card p-8 rounded-3xl border-l-8 border-teal-600">
+            <h2 class="text-2xl font-bold mb-4 flex items-center text-teal-800">
+              <i class="fas fa-landmark-dome mr-3"></i> Fondasi Syariah
+            </h2>
+            <div class="space-y-4 text-slate-600">
+              <div>
+                <span class="font-bold text-teal-700">Definisi:</span>
+                <p class="text-sm">
+                  Syariah secara bahasa berarti "jalan menuju mata air". Secara
+                  terminologi, ia adalah seluruh aturan (akidah, ibadah, akhlak,
+                  muamalah) yang ditetapkan Allah untuk hamba-Nya melalui
+                  Rasulullah SAW.
+                </p>
+              </div>
+              <div>
+                <span class="font-bold text-teal-700">Urgensi:</span>
+                <p class="text-sm">
+                  Syariat adalah "kompas" kehidupan. Tanpanya, manusia akan
+                  kehilangan arah dalam menentukan standar baik-buruk dan tujuan
+                  hidup yang hakiki.
+                </p>
+              </div>
+              <div>
+                <span class="font-bold text-teal-700">Implementasi:</span>
+                <p class="text-sm">
+                  Islam adalah satu kesatuan yang tak terpisahkan antara
+                  keyakinan (Aqidah) dan aturan perbuatan (Syariat).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-3xl shadow-sm border">
+            <h2 class="text-2xl font-bold mb-6 flex items-center text-rose-800">
+              <i class="fas fa-bullseye mr-3"></i> Maqashid Syariah
+            </h2>
+            <p class="text-sm text-slate-500 mb-6">
+              Tujuan fundamental setiap hukum Islam (Ad-Dharuriyyat al-Khamsah):
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div
+                class="flex items-center p-3 bg-teal-50 rounded-xl border border-teal-100"
+              >
+                <i class="fas fa-mosque text-teal-600 mr-3"></i>
+                <div>
+                  <div class="text-xs font-bold">Hifdz ad-Din</div>
+                  <div class="text-[10px]">Melindungi integritas Agama</div>
+                </div>
+              </div>
+              <div
+                class="flex items-center p-3 bg-rose-50 rounded-xl border border-rose-100"
+              >
+                <i class="fas fa-heart text-rose-600 mr-3"></i>
+                <div>
+                  <div class="text-xs font-bold">Hifdz an-Nafs</div>
+                  <div class="text-[10px]">Melindungi Hak Hidup</div>
+                </div>
+              </div>
+              <div
+                class="flex items-center p-3 bg-blue-50 rounded-xl border border-blue-100"
+              >
+                <i class="fas fa-brain text-blue-600 mr-3"></i>
+                <div>
+                  <div class="text-xs font-bold">Hifdz al-Aql</div>
+                  <div class="text-[10px]">Melindungi Fungsi Akal</div>
+                </div>
+              </div>
+              <div
+                class="flex items-center p-3 bg-amber-50 rounded-xl border border-amber-100"
+              >
+                <i class="fas fa-child text-amber-600 mr-3"></i>
+                <div>
+                  <div class="text-xs font-bold">Hifdz an-Nasl</div>
+                  <div class="text-[10px]">Melindungi Keturunan</div>
+                </div>
+              </div>
+              <div
+                class="flex items-center p-3 bg-emerald-50 rounded-xl border border-emerald-100"
+              >
+                <i class="fas fa-coins text-emerald-600 mr-3"></i>
+                <div>
+                  <div class="text-xs font-bold">Hifdz al-Mal</div>
+                  <div class="text-[10px]">Melindungi Harta</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-sm border mb-12">
+          <h3
+            class="text-xl font-bold mb-8 text-center uppercase tracking-widest text-slate-400"
+          >
+            Pembahasan dalam Syariah
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="p-6 bg-teal-50 border border-teal-100 rounded-2xl">
+              <h5
+                class="font-bold text-teal-800 text-center border-b border-teal-200 pb-2 mb-2"
+              >
+                Aqidah
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Keyakinan mutlak pada tauhid sebagai fondasi keimanan."
+              </p>
+            </div>
+            <div class="p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+              <h5
+                class="font-bold text-blue-800 text-center border-b border-blue-200 pb-2 mb-2"
+              >
+                Adab
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Tata krama dan kesopanan dalam bersikap sesuai situasi."
+              </p>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
+              <h5
+                class="font-bold text-slate-800 text-center border-b border-slate-200 pb-2 mb-2"
+              >
+                Akhlaq
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Karakter atau perangai batin, terpancar dalam perilaku."
+              </p>
+            </div>
+            <div class="p-6 bg-amber-50 border border-amber-100 rounded-2xl">
+              <h5
+                class="font-bold text-amber-800 text-center border-b border-amber-200 pb-2 mb-2"
+              >
+                Ibadah
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Pengabdian dan kepatuhan langsung kepada Allah SWT."
+              </p>
+            </div>
+            <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+              <h5
+                class="font-bold text-rose-800 text-center border-b border-rose-200 pb-2 mb-2"
+              >
+                Muamalah
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Aturan hubungan sosial antar manusia dalam hidup."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: HUKUM SYARA & USHUL FIQH -->
+      <section
+        id="hukum"
+        class="content-section animate-in slide-in-from-right duration-500"
+      >
+        <div class="bg-white p-8 rounded-3xl shadow-sm border mb-8">
+          <h2 class="text-2xl font-bold text-indigo-800 pb-2">
+            Hukum Syara & Pengambilannya
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed border-b pb-4 mb-6">
+            <strong>Khitab asy-Syari’ (Seruan Allah)</strong> yang berkaitan
+            dengan perbuatan hamba.
+          </p>
+          <!-- Al-Ahkam Al-Khamsah Grid -->
+          <h3
+            class="text-xl font-bold mb-8 text-center uppercase tracking-widest text-slate-400"
+          >
+            Hukum Taklifi (Beban Kewajiban)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div class="p-6 bg-teal-50 border border-teal-100 rounded-2xl">
+              <h5
+                class="font-bold text-teal-800 text-center border-b border-teal-200 pb-2 mb-2"
+              >
+                Wajib
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Dikerjakan berpahala, ditinggal berdosa."
+              </p>
+            </div>
+            <div class="p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+              <h5
+                class="font-bold text-blue-800 text-center border-b border-blue-200 pb-2 mb-2"
+              >
+                Sunnah
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Dikerjakan berpahala, ditinggal tidak dosa."
+              </p>
+            </div>
+            <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
+              <h5
+                class="font-bold text-slate-800 text-center border-b border-slate-200 pb-2 mb-2"
+              >
+                Mubah
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Pilihan bebas tanpa ada beban hukum."
+              </p>
+            </div>
+            <div class="p-6 bg-amber-50 border border-amber-100 rounded-2xl">
+              <h5
+                class="font-bold text-amber-800 text-center border-b border-amber-200 pb-2 mb-2"
+              >
+                Makruh
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Ditinggal berpahala, dikerjakan tidak dosa."
+              </p>
+            </div>
+            <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+              <h5
+                class="font-bold text-rose-800 text-center border-b border-rose-200 pb-2 mb-2"
+              >
+                Haram
+              </h5>
+              <p class="text-[10px] text-slate-500 italic">
+                "Dikerjakan berdosa, ditinggal berpahala."
+              </p>
+            </div>
+          </div>
+          <!-- Hukum Wadl'i -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+            <div class="bg-white p-6 rounded-2xl border text-center">
+              <i class="fas fa-clock text-teal-600 mb-4 text-2xl"></i>
+              <h4 class="font-bold text-sm">Sebab</h4>
+              <p class="text-[10px] text-slate-500">
+                Indikator adanya hukum (Contoh: Waktu shalat).
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border text-center">
+              <i class="fas fa-check-circle text-blue-600 mb-4 text-2xl"></i>
+              <h4 class="font-bold text-sm">Syarat</h4>
+              <p class="text-[10px] text-slate-500">
+                Hal wajib agar hukum sah (Contoh: Wudhu).
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border text-center">
+              <i class="fas fa-ban text-rose-600 mb-4 text-2xl"></i>
+              <h4 class="font-bold text-sm">Mani'</h4>
+              <p class="text-[10px] text-slate-500">
+                Penghalang sahnya hukum (Contoh: Haid).
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-white rounded-3xl shadow-sm border mb-8">
+            <img src="syariah.jpeg" class="w-full rounded-3xl" alt="" />
+          </div>
+          <div
+            class="bg-indigo-900 text-white p-6 rounded-3xl shadow-sm border mb-8"
+          >
+            <h3 class="font-bold mb-4 flex items-center">
+              <i class="fas fa-cogs mr-2"></i> Ushul Fiqh
+            </h3>
+            <p class="text-xs opacity-80 my-4">
+              Pada masa awal pembentukannya sebagai disiplin ilmu yang
+              sistematis (terutama sejak era Imam Asy-Syafi'i melalui kitabnya,
+              Ar-Risalah), Ushul Fiqh membahas dasar-dasar yang menjadi jembatan
+              antara teks wahyu dengan hukum praktis.
+            </p>
+            <div class="grid grid-cols-4 text-center gap-4 mb-4">
+              <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+                <i class="fas fa-book text-red-400 mb-2"></i>
+                <p class="text-indigo-900 text-xs font-semibold">Alquran</p>
+              </div>
+              <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+                <i class="fa fa-comment text-red-400 mb-2"></i>
+                <p class="text-indigo-900 text-xs font-semibold">Sunnah</p>
+              </div>
+              <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+                <i class="fa fa-users text-red-400 mb-2"></i>
+                <p class="text-indigo-900 text-xs font-semibold">Ijma</p>
+              </div>
+              <div class="p-6 bg-rose-50 border border-rose-100 rounded-2xl">
+                <i class="fab fa-readme text-red-400 mb-2"></i>
+                <p class="text-indigo-900 text-xs font-semibold">Qiyas</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400"
+                  >Sumber Hukum Utama (Adillah Syar'iyyah):</span
+                >
+                Fokus awal adalah menetapkan hierarki sumber hukum, yaitu
+                Al-Qur'an sebagai dasar utama, diikuti oleh Sunnah (Hadis),
+                Ijma', dan Qiyas.
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400">kehujjahan Sunnah:</span> Menjelaskan
+                kedudukan Sunnah terhadap Al-Qur'an, termasuk bagaimana Hadis
+                dapat merinci ayat Al-Qur'an yang bersifat umum (global).
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400">Nasikh dan Mansukh:</span> Pembahasan
+                mengenai ayat atau hadis yang menghapus hukum sebelumnya dan
+                yang dihapus, untuk memastikan hukum mana yang berlaku.
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400"
+                  >Al-Am dan Al-Khas (Umum dan Khusus):</span
+                >
+                Bagaimana memahami kata-kata dalam teks wahyu yang bermakna umum
+                dan kapan teks tersebut harus dipahami secara khusus.
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400"
+                  >Al-Amr dan An-Nahy (Perintah dan Larangan):</span
+                >
+                Menentukan apakah sebuah perintah dalam Al-Qur'an berarti wajib
+                atau sunnah, serta apakah larangan berarti haram atau makruh.
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400">Metodologi Ijtihad dan Qiyas:</span>
+                Merumuskan cara mengambil hukum untuk masalah baru yang tidak
+                ada teksnya secara eksplisit dengan menyamakannya pada kasus
+                yang sudah ada hukumnya (analogi).
+              </p>
+              <p class="text-xs bg-indigo-700 p-2 rounded-lg">
+                <span class="text-red-400">Kualifikasi Mujtahid:</span>
+                Menetapkan syarat-syarat bagi seseorang agar diperbolehkan
+                melakukan penggalian hukum (istinbath) secara mandiri.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-sm mb-8">
+          <img src="hadits.png" class="w-full rounded-3xl" alt="" />
+        </div>
+      </section>
+
+      <!-- SECTION 4: IJTIHAD & TAQLID -->
+      <section
+        id="ijtihad"
+        class="content-section animate-in slide-in-from-bottom duration-500"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Ijtihad -->
+          <div
+            class="bg-white p-8 rounded-3xl shadow-sm border border-orange-100"
+          >
+            <h2
+              class="text-2xl font-bold mb-6 text-orange-800 flex items-center"
+            >
+              <i class="fas fa-microchip mr-3"></i> Ijtihad: Inovasi Hukum
+            </h2>
+            <div class="space-y-4">
+              <div class="bg-orange-50 p-4 rounded-xl">
+                <h4 class="font-bold text-sm text-orange-900 mb-1 italic">
+                  Siapa yang berhak Ijtihad?
+                </h4>
+                <p class="text-xs text-orange-700 leading-tight">
+                  Para Mujtahid yang menguasai Bahasa Arab (mendalam), Ilmu
+                  Al-Quran/Tafsir, Ilmu Hadits, Ilmu Ushul, dan Maqashid
+                  Syariah.
+                </p>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm mb-1">Batasan Ijtihad:</h4>
+                <ul class="text-[11px] list-disc list-inside text-slate-600">
+                  <li>
+                    Tidak boleh pada perkara <em>Qath'i</em> (Pasti), seperti
+                    jumlah shalat 5 waktu.
+                  </li>
+                  <li>
+                    Hanya pada perkara <em>Dzanni</em> (Cabang/Detail) atau
+                    peristiwa baru.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Taqlid -->
+          <div
+            class="bg-white p-8 rounded-3xl shadow-sm border border-blue-100"
+          >
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 flex items-center">
+              <i class="fas fa-user-check mr-3"></i> Etika Taqlid (Anti-FOMO)
+            </h2>
+            <p class="text-sm text-slate-600 mb-4">
+              Bagi kita yang bukan mujtahid, kita mengikuti pendapat ulama. Tapi
+              bagaimana caranya agar tidak sekadar ikut-ikutan?
+            </p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div
+                  class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs"
+                >
+                  1
+                </div>
+                <p class="text-xs">
+                  <strong>Cari Guru Berotoritas:</strong> Ikuti ulama yang
+                  dikenal wara' (hati-hati), berilmu luas, dan memiliki silsilah
+                  ilmu yang jelas.
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs"
+                >
+                  2
+                </div>
+                <p class="text-xs">
+                  <strong>Tanyakan Dalil:</strong> Meski belum paham sepenuhnya,
+                  bertanya "Apa dalilnya?" adalah hak penuntut ilmu agar
+                  keyakinan lebih mantap.
+                </p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs"
+                >
+                  3
+                </div>
+                <p class="text-xs">
+                  <strong>Konsistensi:</strong> Jangan "Cherry Picking" (Memilih
+                  yang paling mudah dari setiap madzhab hanya untuk menuruti
+                  hawa nafsu).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+          <div class="bg-white rounded-3xl shadow-sm border mb-8">
+            <img src="ijtihad.jpg" class="w-full rounded-3xl" alt="" />
+          </div>
+          <div class="bg-white rounded-3xl shadow-sm border mb-8">
+            <img src="syubhat.jpg" class="w-full rounded-3xl" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: REFERENSI -->
+      <section
+        id="referensi"
+        class="content-section animate-in slide-in-from-bottom duration-500"
+      >
+        <div
+          class="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-lg border"
+        >
+          <h2 class="text-2xl font-bold mb-8 text-center text-teal-800">
+            Otoritas Sumber Rujukan
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-4">
+              <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                <div
+                  class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                >
+                  1
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold">Al-Wajiz fi Ushulul Fiqh</h4>
+                  <p class="text-[10px] text-slate-500">
+                    Wahbah Az-Zuhaili (2015 M) • Damaskus: Dar al-Fikr
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                <div
+                  class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                >
+                  2
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold">
+                    As-Syakhshiyyah al-Islamiyyah
+                  </h4>
+                  <p class="text-[10px] text-slate-500">
+                    Taqiyuddin an-Nabhani (1977 M) • Beirut: Dar al-Ummah
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                <div
+                  class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                >
+                  3
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold">Nizhamul Islam</h4>
+                  <p class="text-[10px] text-slate-500">
+                    Taqiyuddin an-Nabhani (1977 M) • Beirut: Dar al-Ummah
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                <div
+                  class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                >
+                  4
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold">Tarikh At-Tasyri' al-Islami</h4>
+                  <p class="text-[10px] text-slate-500">
+                    Muhammad al-Khudari (1927 M) • Kairo: Dar Ihya al-Kutub
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                <div
+                  class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                >
+                  5
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold">Siyar A'lam an-Nubala</h4>
+                  <p class="text-[10px] text-slate-500">
+                    Imam Adz-Dzahabi (748 H) • Beirut: Muassasah ar-Risalah
+                  </p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                  <div
+                    class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                  >
+                    6
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold">Al-Muwafaqat</h4>
+                    <p class="text-[10px] text-slate-500">
+                      Imam Al-Syathibi (790 H) • Kairo: Dar Ibnu 'Affan
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start p-4 bg-slate-50 rounded-2xl">
+                  <div
+                    class="w-10 h-10 bg-teal-600 text-white rounded-lg flex items-center justify-center font-bold mr-4 shrink-0"
+                  >
+                    7
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold">Al-Mustashfa</h4>
+                    <p class="text-[10px] text-slate-500">
+                      Imam Al-Ghazali (505 H) • Beirut: Dar al-Kutub al-Ilmiyyah
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 p-6 bg-teal-900 rounded-2xl text-center text-white">
+            <p class="text-xs italic leading-relaxed opacity-80">
+              "Setiap hukum yang kita pelajari hari ini telah melewati
+              penyaringan para ulama besar yang sanadnya bersambung langsung dan
+              terus menerus hingga ke lisan Rasulullah SAW."
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-slate-900 text-slate-400 py-12 px-6 text-center mt-12 border-t border-slate-800"
+    >
+      <p class="text-xs uppercase tracking-widest mb-1">
+        Ensiklopedi Syariah & Hukum Syara
+      </p>
+      <p class="text-[10px] opacity-50 mb-4">
+        Dibuat untuk tujuan edukasi & pemahaman literatur Islam klasik.
+      </p>
+      <div class="flex justify-center space-x-6 text-xl mb-6">
+        <i class="fab fa-readme"></i>
+        <i class="fas fa-shield-alt"></i>
+        <i class="fas fa-history"></i>
+      </div>
+    </footer>
+
+    <script>
+      function switchTab(tabId) {
+        // Hide all sections
+        document.querySelectorAll(".content-section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        // Deactivate all pills
+        document.querySelectorAll(".nav-pill").forEach((pill) => {
+          pill.classList.remove("active");
+        });
+
+        // Show target section
+        document.getElementById(tabId).classList.add("active");
+        // Activate target pill
+        event.currentTarget.classList.add("active");
+
+        // Scroll to top of content
+        window.scrollTo({ top: 200, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

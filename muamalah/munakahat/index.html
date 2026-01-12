@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mastery Fikih Munakahat & Psikologi Keluarga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
+      body {
+        background-color: #f8fafc;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .nav-tab.active {
+        border-bottom: 3px solid #0d9488;
+        color: #0d9488;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <!-- Header Section -->
+      <header
+        class="bg-teal-700 text-white p-8 rounded-3xl mb-8 shadow-2xl relative overflow-hidden"
+      >
+        <div class="relative z-10 text-center">
+          <h1 class="text-3xl md:text-5xl font-extrabold mb-3">
+            Ensiklopedi Fikih Munakahat
+          </h1>
+          <p class="text-teal-100 text-lg max-w-2xl mx-auto">
+            Panduan Lengkap Syariat & Kesiapan Psikologis dalam Membangun
+            Keluarga
+          </p>
+        </div>
+        <div class="absolute top-0 right-0 p-4 opacity-10">
+          <i class="fas fa-mosque fa-9x"></i>
+        </div>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav
+        class="flex overflow-x-auto space-x-8 mb-8 border-b border-slate-200 sticky top-0 bg-slate-50 z-20 py-2"
+      >
+        <button
+          onclick="showTab('tab-nikah')"
+          class="nav-tab active pb-2 font-bold whitespace-nowrap"
+        >
+          1. Pernikahan & Persiapan
+        </button>
+        <button
+          onclick="showTab('tab-perpisahan')"
+          class="nav-tab pb-2 font-bold whitespace-nowrap"
+        >
+          2. Thalaq & Perpisahan
+        </button>
+        <button
+          onclick="showTab('tab-hak-asuh')"
+          class="nav-tab pb-2 font-bold whitespace-nowrap"
+        >
+          3. Iddah, Nafkah & Hadhanah
+        </button>
+      </nav>
+
+      <!-- Tab 1: Pernikahan & Persiapan -->
+      <div
+        id="tab-nikah"
+        class="tab-content active animate-in fade-in duration-500"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Psikologi Persiapan -->
+          <div class="lg:col-span-2 glass-card p-6 rounded-2xl shadow-sm">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+              <i class="fas fa-brain text-teal-600 mr-3"></i> Persiapan &
+              Psikologi Pernikahan
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div>
+                <canvas id="prepChart" width="200" height="200"></canvas>
+              </div>
+              <div class="flex flex-col justify-center">
+                <h4 class="font-bold text-teal-700 mb-2">
+                  4 Pilar Kesiapan Psikologis:
+                </h4>
+                <ul class="space-y-3">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                    <span
+                      ><strong>Self-Awareness:</strong> Mengenal diri, emosi,
+                      dan kekurangan diri.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                    <span
+                      ><strong>Emotional Regulation:</strong> Kemampuan
+                      mengelola konflik tanpa kekerasan.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                    <span
+                      ><strong>Communication:</strong> Berbicara asertif dan
+                      menjadi pendengar aktif.</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-teal-500 mt-1 mr-2"></i>
+                    <span
+                      ><strong>Vision Alignment:</strong> Kesamaan nilai agama
+                      dan tujuan hidup.</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dasar Fikih Nikah -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"
+          >
+            <h3 class="text-xl font-bold mb-4 text-slate-800 border-b pb-2">
+              Dasar Hukum Nikah
+            </h3>
+            <div class="space-y-4">
+              <div class="p-3 bg-teal-50 rounded-xl">
+                <p class="font-bold text-teal-800 text-sm">Hukum Nikah:</p>
+                <p class="text-xs text-teal-700">
+                  Wajib, Sunnah, Mubah, Makruh, atau Haram (Tergantung kondisi
+                  individu).
+                </p>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-xl">
+                <p class="font-bold text-slate-800 text-sm">Rukun Nikah:</p>
+                <ul class="text-xs list-disc list-inside text-slate-600">
+                  <li>Mempelai Laki-laki & Perempuan</li>
+                  <li>Wali (Ayah/Saudara)</li>
+                  <li>2 Saksi Adil</li>
+                  <li>Ijab & Qabul (Shighat)</li>
+                  <li>Mahar (Wajib dibayar)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hak & Kewajiban & Nusyuz -->
+          <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+              <h4 class="font-bold mb-3">
+                <i class="fas fa-user-shield mr-2"></i> Hak Istri
+              </h4>
+              <ul class="text-sm space-y-2">
+                <li>Mahar & Nafkah (Lahir/Batin)</li>
+                <li>Perlakuan Baik (Mu'asyarah bil Ma'ruf)</li>
+                <li>Bimbingan Agama dari Suami</li>
+              </ul>
+            </div>
+            <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+              <h4 class="font-bold mb-3">
+                <i class="fas fa-crown mr-2"></i> Hak Suami
+              </h4>
+              <ul class="text-sm space-y-2">
+                <li>Ketaatan dalam kebaikan</li>
+                <li>Penjagaan kehormatan rumah</li>
+                <li>Izin keluar rumah oleh istri</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+              <h4 class="font-bold mb-3">
+                <i class="fas fa-exclamation-triangle mr-2"></i> Nusyuz
+              </h4>
+              <p class="text-sm italic">
+                Pembangkangan istri terhadap perintah syar'i suami. Diselesaikan
+                dengan: Nasihat → Pisah Ranjang → Pukulan Edukatif (Ringan).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Perpisahan -->
+      <div
+        id="tab-perpisahan"
+        class="tab-content animate-in slide-in-from-right duration-500"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Thalaq Section -->
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <h3 class="text-2xl font-bold text-red-700 mb-6 border-b pb-4">
+              Thalaq (Perceraian)
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-bold text-slate-700">
+                  Jenis Thalaq Berdasarkan Cara:
+                </h4>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 text-sm">
+                  <li class="bg-slate-50 p-2 rounded border">
+                    <strong>Sharih:</strong> Kata tegas ("Cerai")
+                  </li>
+                  <li class="bg-slate-50 p-2 rounded border">
+                    <strong>Kinayah:</strong> Kata kiasan (+Niat)
+                  </li>
+                  <li class="bg-slate-50 p-2 rounded border">
+                    <strong>Sunni:</strong> Sesuai syariat
+                  </li>
+                  <li class="bg-slate-50 p-2 rounded border">
+                    <strong>Bid'i:</strong> Melanggar syariat
+                  </li>
+                </ul>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-1/2 bg-red-50 p-4 rounded-xl">
+                  <h5 class="font-bold text-red-800 mb-1">Thalaq Raj'i</h5>
+                  <p class="text-xs">
+                    Boleh rujuk kembali tanpa akad baru selama masa iddah
+                    (Thalaq 1 & 2).
+                  </p>
+                </div>
+                <div class="w-1/2 bg-gray-100 p-4 rounded-xl">
+                  <h5 class="font-bold text-gray-800 mb-1">Thalaq Bain</h5>
+                  <p class="text-xs">
+                    Ikatan putus total. Bain Kubra (Thalaq 3) butuh 'Muhallil'
+                    untuk balik.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khulu, Ila, Zhihar, Lian -->
+          <div class="grid grid-cols-1 gap-4">
+            <div class="bg-orange-50 p-4 rounded-xl border border-orange-200">
+              <h4 class="font-bold text-orange-800 mb-1">Khulu'</h4>
+              <p class="text-xs italic">
+                Permintaan cerai dari istri dengan kompensasi pengembalian mahar
+                (Iwadl).
+              </p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
+              <h4 class="font-bold text-purple-800 mb-1">Ila' & Zhihar</h4>
+              <p class="text-xs">
+                <strong>Ila':</strong> Sumpah suami tak menggauli istri >4
+                bulan. <br />
+                <strong>Zhihar:</strong> Menyamakan istri dengan ibu sendiri
+                (Haram).
+              </p>
+            </div>
+            <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+              <h4 class="font-bold text-rose-800 mb-1">Li'an</h4>
+              <p class="text-xs italic">
+                Saling melaknat karena tuduhan zina tanpa saksi 4 orang.
+                Mengakibatkan perpisahan selamanya.
+              </p>
+            </div>
+            <div class="bg-slate-800 text-white p-4 rounded-xl">
+              <h4 class="font-bold mb-1">
+                <i class="fas fa-times-circle text-red-400 mr-2"></i>Nikah yang
+                Rusak
+              </h4>
+              <p class="text-[10px] leading-tight opacity-80">
+                Mut'ah (Kontrak), Syighar (Tukar wali), Muhallil (Rekayasa),
+                Muhrim (Ihram), Tanpa Wali, atau Menikahi Mahram/Wanita dalam
+                Iddah.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Iddah, Nafkah & Hadhanah -->
+      <div
+        id="tab-hak-asuh"
+        class="tab-content animate-in slide-in-from-bottom duration-500"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Iddah -->
+          <div class="bg-white p-6 rounded-2xl shadow-sm border">
+            <h3 class="text-xl font-bold mb-4 text-blue-700">
+              Iddah (Masa Tunggu)
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between border-b py-2">
+                <span>Cerai (Haid)</span> <span class="font-bold">3x Suci</span>
+              </div>
+              <div class="flex justify-between border-b py-2">
+                <span>Cerai (Menopause)</span>
+                <span class="font-bold">3 Bulan</span>
+              </div>
+              <div class="flex justify-between border-b py-2">
+                <span>Ditinggal Mati</span>
+                <span class="font-bold">4 Bln 10 Hari</span>
+              </div>
+              <div class="flex justify-between border-b py-2 text-teal-600">
+                <span>Sedang Hamil</span>
+                <span class="font-bold">Sampai Melahirkan</span>
+              </div>
+              <p class="text-xs italic text-gray-500 pt-2">
+                Istibra': Memastikan rahim kosong dari benih suami sebelumnya.
+              </p>
+            </div>
+          </div>
+
+          <!-- Nafkah -->
+          <div class="bg-white p-6 rounded-2xl shadow-sm border">
+            <h3 class="text-xl font-bold mb-4 text-emerald-700">
+              Nafkah (Kebutuhan Hidup)
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3">
+                <div class="bg-emerald-100 p-2 rounded-full text-emerald-600">
+                  <i class="fas fa-home"></i>
+                </div>
+                <div class="text-sm">
+                  <strong>Pangan, Sandang, Papan</strong>
+                </div>
+              </li>
+              <li class="flex items-center gap-3">
+                <div class="bg-emerald-100 p-2 rounded-full text-emerald-600">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="text-sm">
+                  <strong>Biaya Medis & Kebersihan</strong>
+                </div>
+              </li>
+              <li class="text-xs text-slate-500">
+                Kewajiban nafkah gugur jika istri melakukan Nusyuz atau sudah
+                bercerai (Bain), kecuali jika sedang hamil.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hadhanah -->
+          <div class="bg-white p-6 rounded-2xl shadow-sm border">
+            <h3 class="text-xl font-bold mb-4 text-purple-700">
+              Hadhanah (Asuh Anak)
+            </h3>
+            <div class="space-y-3 text-sm">
+              <p class="font-bold">Siapa yang Berhak?</p>
+              <ol class="list-decimal list-inside space-y-1 text-slate-600">
+                <li>Ibu Kandung (Paling Utama)</li>
+                <li>Nenek Jalur Ibu</li>
+                <li>Ayah (Jika Ibu berhalangan)</li>
+              </ol>
+              <div class="mt-4 p-3 bg-purple-50 rounded-lg text-xs">
+                <strong>Hak Gugur Jika:</strong> Murtad, Fasiq (Akhlak buruk),
+                atau Ibu menikah lagi dengan pria bukan mahram si anak.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-12 text-center text-slate-400 text-sm">
+        <p>
+          "Keluarga Sakinah dimulai dari Ilmu, dirawat dengan Akhlak, dan dijaga
+          dengan Syariat."
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Tab System
+      function showTab(tabId) {
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.querySelectorAll(".nav-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.getElementById(tabId).classList.add("active");
+        event.currentTarget.classList.add("active");
+      }
+
+      // Chart.js - Persiapan Psikologis
+      const ctx = document.getElementById("prepChart").getContext("2d");
+      new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: [
+            "Visi & Agama",
+            "Kesiapan Mental",
+            "Finansial",
+            "Komunikasi",
+          ],
+          datasets: [
+            {
+              label: "Porsi Penting Persiapan",
+              data: [35, 30, 15, 20],
+              backgroundColor: ["#0d9488", "#2dd4bf", "#fbbf24", "#38bdf8"],
+              borderWidth: 0,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: { boxWidth: 10, font: { size: 10 } },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
