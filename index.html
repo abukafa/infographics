@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pustaka Grafis - Jaz Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+      }
+      .hero-gradient {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      /* Animasi Transisi Filter */
+      .module-card {
+        transition: all 0.4s ease-in-out;
+      }
+      .hidden-card {
+        opacity: 0;
+        transform: scale(0.95);
+        pointer-events: none;
+        display: none;
+      }
+      .badge-active {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: white !important;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800">
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-16 px-6 shadow-lg">
+      <div class="max-w-6xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Pustaka Grafis - Jaz Academy
+        </h1>
+        <p
+          class="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed"
+        >
+          Portal Belajar Visual. Pusat materi pembelajaran kreatif melalui
+          Tampilan Visual yang sederhana untuk Generasi Digital.
+        </p>
+
+        <!-- Search & Filter Area -->
+        <div class="mt-10 max-w-xl mx-auto">
+          <!-- Filter Badges -->
+          <div
+            class="flex flex-wrap justify-center gap-3"
+            id="filter-container"
+          >
+            <button
+              onclick="setCategory('all')"
+              id="btn-all"
+              class="badge-active border border-slate-500 px-6 py-2 rounded-full text-sm transition-all hover:bg-white/10"
+            >
+              Semua Modul
+            </button>
+            <button
+              onclick="setCategory('informatika')"
+              id="btn-informatika"
+              class="border border-blue-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-blue-500/20"
+            >
+              Informatika
+            </button>
+            <button
+              onclick="setCategory('multimedia')"
+              id="btn-multimedia"
+              class="border border-purple-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-purple-500/20"
+            >
+              Multimedia
+            </button>
+            <button
+              onclick="setCategory('syariah')"
+              id="btn-syariah"
+              class="border border-emerald-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-emerald-500/20"
+            >
+              Syariah
+            </button>
+          </div>
+
+          <!-- Search Box -->
+          <div class="relative mt-6">
+            <span
+              class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400"
+            >
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </span>
+            <input
+              type="text"
+              id="search-input"
+              onkeyup="runFilter()"
+              placeholder="Cari judul materi atau penulis (misal: AI, Abu Kafa...)"
+              class="w-full bg-white/10 border border-slate-500 text-white placeholder-slate-400 rounded-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white/20 transition-all"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto py-12 px-6">
+      <div
+        id="module-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <!-- --- INFORMATIKA --- -->
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/literasi-digital/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="shield-check"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Literasi Digital
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Panduan bijak menggunakan internet dan menjaga keamanan data
+              pribadi kita.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/evolusi-informasi/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="history"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Evolusi Informasi
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Melihat sejarah perkembangan informasi dari zaman dulu hingga
+              serba digital sekarang.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/prompt-mastery/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="message-square-code"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Prompt Mastery
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Cara jago berkomunikasi dengan AI agar mendapatkan hasil yang
+              paling akurat.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/ai-learning/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="brain-circuit"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              AI Learning
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Mengenal dasar kecerdasan buatan dan bagaimana mesin belajar dari
+              data.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/code-freedom/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="code-2"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Code Freedom
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Memahami konsep merdeka dalam berkarya lewat pemrograman sumber
+              terbuka (Open Source).
+            </p>
+          </a>
+        </div>
+
+        <!-- --- MULTIMEDIA --- -->
+        <div class="module-card" data-category="multimedia">
+          <a
+            href="multimedia/editing-toolkit/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="video"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-purple-500 uppercase tracking-wider"
+              >Multimedia</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Editing Toolkit
+            </h3>
+            <p class="text-purple-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Alat bantu kreatif untuk mengolah video dan audio menjadi karya
+              yang menarik.
+            </p>
+          </a>
+        </div>
+
+        <!-- --- SYARIAH & MUAMALAH --- -->
+        <div class="module-card" data-category="syariah">
+          <a
+            href="syariah/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="library"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Syariah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Ensiklopedi Syariah
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Pusat istilah dan pengetahuan dasar tentang hukum-hukum Islam
+              secara umum.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/prinsip-keuangan/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="landmark"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Prinsip Keuangan Islam
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Dasar-dasar mengelola uang secara halal dan berkah dalam pandangan
+              Islam.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/jual-beli/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="shopping-cart"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Jual Beli
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Aturan dasar dalam berdagang agar transaksi sah dan saling
+              menguntungkan.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/akad-akad/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="scroll"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Akad-Akad Muamalah
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Mengenal berbagai jenis perjanjian dalam kerjasama ekonomi islami.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/barang-ribawi/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="package-search"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Barang Ribawi
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Daftar barang-barang yang memiliki aturan khusus dalam
+              pertukarannya agar terhindar dari riba.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/jenis-riba/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="alert-triangle"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Jenis-Jenis Riba
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Waspada terhadap macam-macam riba dalam transaksi sehari-hari agar
+              harta tetap bersih.
+            </p>
+          </a>
+        </div>
+
+        <div class="module-card" data-category="syariah">
+          <a
+            href="muamalah/munakahat/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="heart-handshake"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
+              >Muamalah</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Munakahat
+            </h3>
+            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Ilmu tentang membangun keluarga yang sakinah dan penuh tanggung
+              jawab sosial.
+            </p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <i
+          data-lucide="search-x"
+          class="mx-auto w-16 h-16 text-slate-300 mb-4"
+        ></i>
+        <p class="text-slate-500">
+          Materi tidak ditemukan. Coba kata kunci lain ya!
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-10 text-center">
+      <p class="text-slate-500 text-sm font-medium">
+        &copy; 2024 Jaz Academy - Pustaka Grafis Terpadu
+      </p>
+      <p class="text-slate-400 text-xs mt-1">
+        Edukasi Menyenangkan Melalui Pendekatan Visual
+      </p>
+    </footer>
+
+    <script>
+      // Inisialisasi Ikon
+      lucide.createIcons();
+
+      // State Filter Global
+      let currentCategory = "all";
+
+      // Fungsi untuk ganti kategori
+      function setCategory(category) {
+        currentCategory = category;
+
+        // Update tampilan tombol kategori
+        const buttons = document.querySelectorAll("#filter-container button");
+        buttons.forEach((btn) => {
+          btn.classList.remove("badge-active");
+          if (btn.id === `btn-${category}`) {
+            btn.classList.add("badge-active");
+          }
+        });
+
+        runFilter();
+      }
+
+      // Fungsi Filter Gabungan (Search + Category)
+      function runFilter() {
+        const searchText = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const cards = document.querySelectorAll(".module-card");
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const title = card
+            .querySelector(".module-title")
+            .innerText.toLowerCase();
+          const author = card
+            .querySelector(".module-author")
+            .innerText.toLowerCase();
+          const category = card.getAttribute("data-category");
+
+          // Logika: Kategori harus cocok (atau 'all')
+          // DAN (judul harus mengandung teks cari ATAU author mengandung teks cari)
+          const categoryMatch =
+            currentCategory === "all" || category === currentCategory;
+          const searchMatch =
+            title.includes(searchText) || author.includes(searchText);
+
+          if (categoryMatch && searchMatch) {
+            card.classList.remove("hidden-card");
+            visibleCount++;
+          } else {
+            card.classList.add("hidden-card");
+          }
+        });
+
+        // Tampilkan pesan jika kosong
+        const emptyState = document.getElementById("empty-state");
+        if (visibleCount === 0) {
+          emptyState.classList.remove("hidden");
+        } else {
+          emptyState.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
