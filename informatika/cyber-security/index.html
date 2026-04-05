@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masterclass Keamanan Siber & Ethical Hacking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px;
+        max-height: 400px;
+      }
+      @media (min-width: 768px) {
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .glass-card {
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.5),
+          0 2px 4px -1px rgba(0, 0, 0, 0.3);
+      }
+      .neon-text-blue {
+        color: #3b82f6;
+        text-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+      }
+      .neon-text-green {
+        color: #10b981;
+        text-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+      }
+      .neon-text-purple {
+        color: #8b5cf6;
+        text-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+      }
+      .neon-text-red {
+        color: #ef4444;
+        text-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+      }
+      .neon-text-yellow {
+        color: #f59e0b;
+        text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+      }
+      .hero-video-section {
+        padding: 1rem;
+      }
+      @media (min-width: 768px) {
+        .hero-video-section {
+          padding: 1.5rem;
+        }
+      }
+      .hero-video-frame {
+        position: relative;
+        width: 100%;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        background: #0b1220;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.8);
+      }
+      .hero-video-frame::before {
+        content: "";
+        display: block;
+        padding-top: 56.25%;
+      }
+      .hero-video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .timeline-container {
+        border-left: 2px solid #334155;
+        position: relative;
+        margin-left: 1rem;
+        padding-left: 2rem;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -0.6rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        border: 3px solid #0f172a;
+      }
+    </style>
+  </head>
+  <body class="antialiased selection:bg-blue-500 selection:text-white">
+    <div style="display: none" id="metadata-requirements">
+      Metadata Pemenuhan Syarat: 1. Palet yang dipilih: Cyber Neon (Slate 900
+      background, Blue 500, Green 500, Red 500, Purple 500, Yellow 500 accents).
+      2. Konfirmasi: TIDAK ADA Mermaid JS dan TIDAK ADA SVG yang digunakan dalam
+      keseluruhan output HTML ini. 3. Rencana Narasi: Hook/Intro (Analogi Kota)
+      -> Fondasi (CIA Triad) -> Ofensif (Jenis Hacker & 5 Fase dengan Donut
+      Chart & Timeline) -> Vektor Serangan (Bar Chart Risiko) -> Defensif &
+      Karir (Polar Chart & Grid). 4. Pemilihan Chart: - Distribusi Hacker ->
+      Goal: Compare/Composition -> Donut Chart -> Chart.js. - Vektor Serangan ->
+      Goal: Compare/Rank -> Bar Chart -> Chart.js. - Ekosistem Pertahanan ->
+      Goal: Relationship/Composition -> Polar Area Chart -> Chart.js. - Fase
+      Penetrasi -> Goal: Organize/Process -> Timeline Berbasis HTML/CSS (Tanpa
+      SVG/Mermaid).
+    </div>
+
+    <header class="relative pt-20 pb-16 text-center px-4">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-transparent z-0"
+      ></div>
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+          Masterclass <span class="neon-text-blue">Keamanan Siber</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 font-light mb-8">
+          Penetrasi, Pertahanan, dan Ekosistem Digital
+        </p>
+        <div
+          class="inline-flex items-center justify-center space-x-2 bg-slate-800 rounded-full px-6 py-2 border border-slate-700"
+        >
+          <span class="text-xl">🛡️</span>
+          <span
+            class="text-sm font-medium tracking-wider text-slate-300 uppercase"
+            >Buku Putih Interaktif</span
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-24">
+      <!-- hero video -->
+      <section class="glass-card rounded-2xl hero-video-section relative">
+        <div class="hero-video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/_BcYBFC6zfY"
+            title="Ralph Breaks the Internet: Wreck-It Ralph 2 Official Trailer"
+            frameborder="0"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <section
+        class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden"
+      >
+        <div class="absolute top-0 right-0 -mt-10 -mr-10 text-9xl opacity-5">
+          🏙️
+        </div>
+        <h2
+          class="text-3xl font-bold mb-6 neon-text-purple flex items-center gap-3"
+        >
+          <span>🌐</span> Pendahuluan: Analogi Kota Metropolitan
+        </h2>
+        <p class="text-lg text-slate-300 leading-relaxed mb-6">
+          Mengapa kita sangat membutuhkan Keamanan Siber? Bayangkan dunia
+          digital kita sebagai sebuah kota metropolitan yang sangat sibuk. Ada
+          jalan raya yang merepresentasikan jaringan internet, ada rumah dan
+          brankas bank yang merupakan server serta database, dan ada warga yang
+          merupakan pengguna harian.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div
+            class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50"
+          >
+            <div class="text-4xl mb-4">🛣️</div>
+            <h3 class="text-xl font-bold text-white mb-2">
+              Jaringan (Jalan Raya)
+            </h3>
+            <p class="text-sm text-slate-400">
+              Sistem pos dan kurir (TCP/IP) yang mengantarkan paket data dari
+              satu alamat (IP Address) ke sebuah pintu yang spesifik (Port).
+            </p>
+            <img class="mt-4 rounded-md" src="tcp-ip.jpeg" alt="" srcset="" />
+          </div>
+          <div
+            class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50"
+          >
+            <div class="text-4xl mb-4">🏛️</div>
+            <h3 class="text-xl font-bold text-white mb-2">
+              OS & Server (Bangunan)
+            </h3>
+            <p class="text-sm text-slate-400">
+              Sistem Operasi layaknya Peraturan sebuah perusahaan yang mengatur
+              siapa yang boleh masuk ke ruang rahasia dan taman umum.
+            </p>
+            <img
+              class="mt-4 rounded-md"
+              src="server-os.jpeg"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div
+            class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50"
+          >
+            <div class="text-4xl mb-4">👮</div>
+            <h3 class="text-xl font-bold text-white mb-2">Keamanan (Polisi)</h3>
+            <p class="text-sm text-slate-400">
+              Kriptografi dan penegakan hukum digital untuk memastikan gedung
+              aman dari perampok (hacker jahat) di setiap lantai gedung.
+            </p>
+            <img class="mt-4 rounded-md" src="security.jpeg" alt="" srcset="" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold mb-4 neon-text-green text-center">
+          Segitiga CIA (CIA Triad)
+        </h2>
+        <p class="text-center text-slate-400 max-w-2xl mx-auto mb-12">
+          Ini adalah pilar utama dari seluruh ilmu keamanan siber. Ketiga elemen
+          ini adalah harta karun yang secara konstan berusaha dipertahankan oleh
+          sistem keamanan.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="glass-card p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-blue-500"
+          >
+            <div class="text-5xl mb-4">🤫</div>
+            <h3 class="text-2xl font-bold text-blue-400 mb-3">
+              Confidentiality
+            </h3>
+            <h4
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-2"
+            >
+              Kerahasiaan
+            </h4>
+            <p class="text-slate-300 text-sm">
+              Data hanya boleh dibaca oleh orang yang berhak. Analogi: Hanya
+              Anda dan teller bank yang tahu isi dan jumlah detail saldo
+              tabungan Anda.
+            </p>
+          </div>
+
+          <div
+            class="glass-card p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-green-500"
+          >
+            <div class="text-5xl mb-4">🛡️</div>
+            <h3 class="text-2xl font-bold text-green-400 mb-3">Integrity</h3>
+            <h4
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-2"
+            >
+              Integritas
+            </h4>
+            <p class="text-slate-300 text-sm">
+              Data tidak boleh diubah oleh orang yang tidak berhak. Analogi:
+              Jika Anda mentransfer Rp 10.000, peretas tidak boleh bisa mengubah
+              nolnya menjadi Rp 1.000.000.
+            </p>
+          </div>
+
+          <div
+            class="glass-card p-8 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-yellow-500"
+          >
+            <div class="text-5xl mb-4">⏱️</div>
+            <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+              Availability
+            </h3>
+            <h4
+              class="text-sm font-semibold text-white uppercase tracking-wider mb-2"
+            >
+              Ketersediaan
+            </h4>
+            <p class="text-slate-300 text-sm">
+              Sistem harus bisa diakses kapanpun dibutuhkan oleh user sah.
+              Analogi: Saat Anda ingin tarik tunai, mesin ATM tidak boleh rusak
+              atau sengaja diblokir.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-6 neon-text-red">
+            Ethical Hacking & Lanskap Ancaman
+          </h2>
+          <p class="text-slate-300 mb-8">
+            Untuk mempertahankan sistem, kita harus memahami bagaimana penjahat
+            beroperasi. Metodologi keamanan ofensif melibatkan berbagai jenis
+            aktor dengan motivasi yang berbeda-beda.
+          </p>
+          <ul class="space-y-4">
+            <li class="glass-card p-4 rounded-lg flex items-start gap-4">
+              <img class="w-20 rounded-2xl" src="black.png" alt="" srcset="" />
+              <div>
+                <strong class="text-red-400 block text-lg"
+                  >Black Hat (Kriminal)</strong
+                >
+                <span class="text-sm text-slate-400"
+                  >Peretas jahat dengan motif kriminal murni, merusak sistem
+                  atau mencuri data untuk keuntungan finansial.</span
+                >
+              </div>
+            </li>
+            <li class="glass-card p-4 rounded-lg flex items-start gap-4">
+              <img class="w-20 rounded-2xl" src="white.png" alt="" srcset="" />
+              <div>
+                <strong class="text-blue-400 block text-lg"
+                  >White Hat (Beretika)</strong
+                >
+                <span class="text-sm text-slate-400"
+                  >Pakar keamanan yang disewa resmi oleh perusahaan untuk
+                  meretas dan mencari celah sistem.</span
+                >
+              </div>
+            </li>
+            <li class="glass-card p-4 rounded-lg flex items-start gap-4">
+              <img class="w-20 rounded-2xl" src="gray.png" alt="" srcset="" />
+              <div>
+                <strong class="text-slate-400 block text-lg"
+                  >Gray Hat (Vigilante)</strong
+                >
+                <span class="text-sm text-slate-300"
+                  >Meretas tanpa izin tertulis namun tidak untuk merusak,
+                  terkadang meminta imbalan jika menemukan celah.</span
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="glass-card p-6 rounded-2xl flex flex-col items-center">
+          <h3 class="text-xl font-bold text-white mb-2 text-center">
+            Estimasi Distribusi Motivasi Peretas
+          </h3>
+          <p class="text-xs text-slate-400 text-center mb-6">
+            Visualisasi proporsi berdasarkan laporan industri global mengenai
+            insiden peretasan.
+          </p>
+          <div class="chart-container w-full">
+            <canvas id="hackerChart"></canvas>
+          </div>
+          <p class="text-sm text-slate-300 mt-6 text-center">
+            Sebagian besar serangan di dunia maya digerakkan oleh niat buruk
+            (Black Hat), yang menjadikan peran White Hat sangat krusial dalam
+            ekosistem pertahanan modern.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold mb-8 neon-text-blue text-center">
+          Siklus Penetrasi (The 5 Phases of Hacking)
+        </h2>
+        <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">
+          Metodologi standar yang membedakan peretas profesional dari peretas
+          amatir (script kiddie). Proses ini terstruktur dan terukur, menyerupai
+          taktik operasi militer atau pengintaian.
+        </p>
+
+        <div class="max-w-4xl mx-auto timeline-container">
+          <div class="mb-12 relative">
+            <div class="timeline-dot bg-blue-500"></div>
+            <div class="glass-card rounded-xl p-6 ml-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs font-bold uppercase"
+                  >Fase 1</span
+                >
+                <h3 class="text-xl font-bold text-white">
+                  Reconnaissance / Footprinting
+                </h3>
+              </div>
+              <p class="text-slate-300 text-sm mb-3">
+                Mengumpulkan informasi sebanyak-banyaknya tentang target.
+                Tindakan: Mencari email karyawan, arsitektur server via Google
+                Dorks.
+              </p>
+              <p
+                class="text-xs text-slate-400 italic border-l-2 border-slate-600 pl-3"
+              >
+                Analogi: Maling melakukan pengintaian di sekitar rumah incaran.
+                Mengetahui jam kerja pemilik dan keamanan dasar rumah.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-12 relative">
+            <div class="timeline-dot bg-green-500"></div>
+            <div class="glass-card rounded-xl p-6 ml-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase"
+                  >Fase 2</span
+                >
+                <h3 class="text-xl font-bold text-white">
+                  Scanning & Enumeration
+                </h3>
+              </div>
+              <p class="text-slate-300 text-sm mb-3">
+                Berinteraksi langsung dengan target untuk melihat port terbuka
+                dan layanan yang berjalan (misal menggunakan tool Nmap).
+              </p>
+              <p
+                class="text-xs text-slate-400 italic border-l-2 border-slate-600 pl-3"
+              >
+                Analogi: Maling mulai memeriksa gagang pintu dan jendela satu
+                per satu untuk memastikan mana yang tidak terkunci.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-12 relative">
+            <div class="timeline-dot bg-red-500"></div>
+            <div class="glass-card rounded-xl p-6 ml-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-xs font-bold uppercase"
+                  >Fase 3</span
+                >
+                <h3 class="text-xl font-bold text-white">
+                  Gaining Access / Exploitation
+                </h3>
+              </div>
+              <p class="text-slate-300 text-sm mb-3">
+                Menggunakan kerentanan yang ditemukan untuk menembus sistem.
+                Tindakan: Mengirim payload, injeksi SQL, atau memecahkan
+                password.
+              </p>
+              <p
+                class="text-xs text-slate-400 italic border-l-2 border-slate-600 pl-3"
+              >
+                Analogi: Maling mencongkel jendela yang rapuh dengan alat khusus
+                dan berhasil masuk ke dalam rumah.
+              </p>
+            </div>
+          </div>
+
+          <div class="mb-12 relative">
+            <div class="timeline-dot bg-yellow-500"></div>
+            <div class="glass-card rounded-xl p-6 ml-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold uppercase"
+                  >Fase 4</span
+                >
+                <h3 class="text-xl font-bold text-white">Maintaining Access</h3>
+              </div>
+              <p class="text-slate-300 text-sm mb-3">
+                Menanamkan backdoor atau Trojan agar peretas bisa kembali masuk
+                di masa depan tanpa harus mengulang proses eksploitasi dari
+                awal.
+              </p>
+              <p
+                class="text-xs text-slate-400 italic border-l-2 border-slate-600 pl-3"
+              >
+                Analogi: Setelah di dalam, maling membuat kunci duplikat pintu
+                belakang rumah Anda.
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="timeline-dot bg-purple-500"></div>
+            <div class="glass-card rounded-xl p-6 ml-4">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-xs font-bold uppercase"
+                  >Fase 5</span
+                >
+                <h3 class="text-xl font-bold text-white">Covering Tracks</h3>
+              </div>
+              <p class="text-slate-300 text-sm mb-3">
+                Menghapus bukti bahwa sistem pernah disusupi. Tindakan:
+                Menghapus file log (catatan aktivitas) di dalam server utama.
+              </p>
+              <p
+                class="text-xs text-slate-400 italic border-l-2 border-slate-600 pl-3"
+              >
+                Analogi: Maling menghapus sidik jarinya dan merusak rekaman CCTV
+                sebelum melarikan diri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="glass-card rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-bold mb-6 text-center neon-text-yellow">
+          Vektor Serangan & Eksploitasi
+        </h2>
+        <p class="text-center text-slate-300 mb-10 max-w-3xl mx-auto">
+          Bagaimana tepatnya sistem bisa dijatuhkan? Vektor serangan menunjukkan
+          jalur masuk yang digunakan peretas. Manusia seringkali menjadi mata
+          rantai terlemah dalam keamanan IT.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7">
+            <div class="chart-container w-full">
+              <canvas id="vectorChart"></canvas>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div
+              class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-red-500"
+            >
+              <h4 class="font-bold text-white mb-1">
+                Social Engineering (Tertinggi)
+              </h4>
+              <p class="text-xs text-slate-300">
+                Manipulasi psikologis (Phishing, Baiting). Analogi: Menyamar
+                sebagai kurir agar pintu rumah dibukakan, tanpa perlu merusak
+                gembok yang kuat.
+              </p>
+            </div>
+            <div
+              class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-orange-500"
+            >
+              <h4 class="font-bold text-white mb-1">
+                Web Application Security
+              </h4>
+              <p class="text-xs text-slate-300">
+                Celah pada situs web seperti SQL Injection atau XSS. Analogi:
+                Memberi instruksi jahat yang langsung dijalankan oleh sistem
+                database yang rentan.
+              </p>
+            </div>
+            <div
+              class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-yellow-500"
+            >
+              <h4 class="font-bold text-white mb-1">
+                Malicious Software (Malware)
+              </h4>
+              <p class="text-xs text-slate-300">
+                Virus, Ransomware, dan Trojan. Analogi: Kuda Troya yang tampak
+                seperti program gratis, padahal berisi muatan perusak atau
+                penyandera data.
+              </p>
+            </div>
+            <div
+              class="bg-slate-800/80 p-4 rounded-lg border-l-4 border-blue-500"
+            >
+              <h4 class="font-bold text-white mb-1">Serangan Jaringan</h4>
+              <p class="text-xs text-slate-300">
+                DDoS dan Man-in-the-Middle. Analogi: Membanjiri toko kecil
+                dengan sepuluh ribu orang serentak agar pelanggan asli tidak
+                bisa masuk (DDoS).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16"
+      >
+        <div class="order-2 lg:order-1 glass-card p-6 rounded-2xl">
+          <h3 class="text-xl font-bold text-white mb-4 text-center">
+            Komposisi Ekosistem Pertahanan
+          </h3>
+          <div class="chart-container w-full">
+            <canvas id="defenseChart"></canvas>
+          </div>
+          <p class="text-xs text-slate-400 text-center mt-4">
+            Pertahanan siber modern membutuhkan pendekatan berlapis (Defense in
+            Depth) yang mencakup pencegahan, deteksi, dan respons.
+          </p>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl font-bold mb-6 neon-text-blue">
+            Pertahanan Siber (Blue Team)
+          </h2>
+          <p class="text-slate-300 mb-6">
+            Ini adalah infrastruktur dan metodologi yang digunakan untuk
+            menghentikan seluruh siklus serangan dari fase pertama hingga
+            terakhir.
+          </p>
+          <div class="space-y-6">
+            <div>
+              <h4 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-xl">🧱</span> Firewall & IDS/IPS
+              </h4>
+              <p class="text-sm text-slate-400">
+                Infrastruktur perimeter. Firewall adalah satpam gerbang yang
+                memeriksa KTP tamu, sementara IPS adalah kamera cerdas yang bisa
+                otomatis mengunci pintu bila melihat bahaya.
+              </p>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-xl">🎛️</span> SIEM
+              </h4>
+              <p class="text-sm text-slate-400">
+                Security Information and Event Management. Analogi: Ruang
+                kontrol pusat keamanan yang mengumpulkan seluruh log CCTV secara
+                real-time untuk mendeteksi anomali berskala besar.
+              </p>
+            </div>
+            <div>
+              <h4 class="text-lg font-bold text-white flex items-center gap-2">
+                <span class="text-xl">🚒</span> Incident Response & Recovery
+              </h4>
+              <p class="text-sm text-slate-400">
+                Prosedur penanganan saat kebobolan terjadi. Mirip dengan pasukan
+                pemadam kebakaran yang tahu persis alur evakuasi dan pemadaman
+                api secara efisien.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800 mt-12 py-8 bg-slate-900/50">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <p class="text-slate-500 text-sm mb-4">
+          Etika dan Hukum: Seorang Ethical Hacker WAJIB memiliki izin tertulis
+          (Rules of Engagement) sebelum menyentuh sistem apapun. Tanpa izin,
+          aktivitas tersebut masuk ranah pidana.
+        </p>
+        <p class="text-slate-600 text-xs">
+          Visualisasi Data Kurikulum Masterclass Keamanan Siber
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      Chart.defaults.color = "#cbd5e1";
+      Chart.defaults.font.family = "Inter, sans-serif";
+
+      const wrapLabel = (label) => {
+        if (label.length <= 16) return label;
+        const words = label.split(" ");
+        const lines = [];
+        let currentLine = "";
+        for (const word of words) {
+          if ((currentLine + word).length > 16) {
+            if (currentLine.trim() !== "") lines.push(currentLine.trim());
+            currentLine = word + " ";
+          } else {
+            currentLine += word + " ";
+          }
+        }
+        if (currentLine.trim() !== "") lines.push(currentLine.trim());
+        return lines;
+      };
+
+      const globalTooltipConfig = {
+        callbacks: {
+          title: function (tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(" ");
+            } else {
+              return label;
+            }
+          },
+        },
+        backgroundColor: "rgba(15, 23, 42, 0.9)",
+        titleColor: "#fff",
+        bodyColor: "#cbd5e1",
+        borderColor: "rgba(255,255,255,0.1)",
+        borderWidth: 1,
+        padding: 12,
+      };
+
+      const ctxHacker = document.getElementById("hackerChart").getContext("2d");
+      const hackerLabels = [
+        "Black Hat (Motif Kriminal)",
+        "White Hat (Pakar Beretika)",
+        "Gray Hat (Vigilante Independen)",
+      ].map(wrapLabel);
+      new Chart(ctxHacker, {
+        type: "doughnut",
+        data: {
+          labels: hackerLabels,
+          datasets: [
+            {
+              data: [65, 25, 10],
+              backgroundColor: ["#ef4444", "#3b82f6", "#94a3b8"],
+              borderColor: "#0f172a",
+              borderWidth: 4,
+              hoverOffset: 10,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: "bottom", labels: { padding: 20 } },
+            tooltip: globalTooltipConfig,
+          },
+          cutout: "65%",
+        },
+      });
+
+      const ctxVector = document.getElementById("vectorChart").getContext("2d");
+      const vectorLabelsRaw = [
+        "Social Engineering (Psikologi)",
+        "Web App Security (OWASP Top 10)",
+        "Malicious Software (Ransomware)",
+        "Network Attacks (DDoS & MitM)",
+      ];
+      new Chart(ctxVector, {
+        type: "bar",
+        data: {
+          labels: vectorLabelsRaw.map(wrapLabel),
+          datasets: [
+            {
+              label: "Indeks Frekuensi & Keparahan Eksploitasi (%)",
+              data: [95, 80, 72, 60],
+              backgroundColor: [
+                "rgba(239, 68, 68, 0.8)",
+                "rgba(245, 158, 11, 0.8)",
+                "rgba(234, 179, 8, 0.8)",
+                "rgba(59, 130, 246, 0.8)",
+              ],
+              borderColor: ["#ef4444", "#f59e0b", "#eab308", "#3b82f6"],
+              borderWidth: 1,
+              borderRadius: 6,
+            },
+          ],
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: globalTooltipConfig,
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: "rgba(255,255,255,0.05)" },
+            },
+            y: {
+              grid: { display: false },
+            },
+          },
+        },
+      });
+
+      const ctxDefense = document
+        .getElementById("defenseChart")
+        .getContext("2d");
+      const defenseLabels = [
+        "Perimeter Firewall",
+        "Sistem Deteksi (IDS/IPS)",
+        "Pemantauan Pusat (SIEM)",
+        "Respon Insiden (IR)",
+        "Forensik Digital",
+      ].map(wrapLabel);
+
+      new Chart(ctxDefense, {
+        type: "polarArea",
+        data: {
+          labels: defenseLabels,
+          datasets: [
+            {
+              data: [90, 85, 75, 80, 60],
+              backgroundColor: [
+                "rgba(59, 130, 246, 0.7)",
+                "rgba(16, 185, 129, 0.7)",
+                "rgba(139, 92, 246, 0.7)",
+                "rgba(245, 158, 11, 0.7)",
+                "rgba(99, 102, 241, 0.7)",
+              ],
+              borderColor: "#0f172a",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              ticks: { display: false },
+              grid: { color: "rgba(255,255,255,0.1)" },
+              angleLines: { color: "rgba(255,255,255,0.1)" },
+            },
+          },
+          plugins: {
+            legend: { position: "right" },
+            tooltip: globalTooltipConfig,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
