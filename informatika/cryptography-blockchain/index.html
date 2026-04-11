@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infografis Ekosistem: Kriptografi & Blockchain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap");
+
+      :root {
+        --bg-deep: #020617;
+        --accent-blue: #38bdf8;
+        --accent-indigo: #6366f1;
+        --accent-purple: #a855f7;
+        --accent-green: #10b981;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-deep);
+        color: #f8fafc;
+        line-height: 1.6;
+      }
+
+      .glass-card {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 1.5rem;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .glass-card:hover {
+        border-color: rgba(56, 189, 248, 0.4);
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #7dd3fc 0%,
+          #a5b4fc 50%,
+          #d8b4fe 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .code-container {
+        background: #000000;
+        padding: 2rem;
+        border-radius: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        border: 1px solid #1e293b;
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .code-title {
+        background: #1e293b;
+        color: #94a3b8;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        display: inline-block;
+      }
+
+      .simulasi-box {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.1) 0%,
+          rgba(5, 150, 105, 0.05) 100%
+        );
+        border: 1px dashed var(--accent-green);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .highlight-box {
+        border-left: 4px solid var(--accent-blue);
+        background: rgba(56, 189, 248, 0.05);
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-blue-500/30">
+    <!-- Hero Header -->
+    <header class="relative overflow-hidden pt-24 pb-16 px-6">
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent -z-10"
+      ></div>
+      <div class="max-w-5xl mx-auto text-center">
+        <span
+          class="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-widest text-blue-400 uppercase border border-blue-400/30 rounded-full bg-blue-400/10"
+        >
+          Masterclass Teknologi 2024
+        </span>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">
+          EKOSISTEM <span class="gradient-text">DIGITAL TRUST</span>
+        </h1>
+        <p class="text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto">
+          Pelajari bagaimana algoritma matematika tingkat lanjut dan struktur
+          data terdistribusi menciptakan dunia baru yang transparan, aman, dan
+          tanpa perantara.
+        </p>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-24 space-y-32">
+      <!-- SECTION 1: KRIPTOGRAFI -->
+      <section id="fase-kripto">
+        <div class="flex items-center gap-4 mb-12">
+          <div
+            class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20"
+          >
+            <i class="fas fa-shield-halved text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold">
+              Fase 1: Akar Keamanan (Kriptografi)
+            </h2>
+            <p class="text-slate-400">
+              Seni mengamankan komunikasi di tengah kehadiran pihak ketiga.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-12">
+          <!-- Modul 1 Detail -->
+          <div class="glass-card p-8 md:p-12">
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-2xl font-bold text-blue-400 mb-6">
+                  1. Kriptografi Modern: Simetris vs Asimetris
+                </h3>
+                <div class="space-y-4 text-slate-300">
+                  <p>
+                    Kriptografi bukan sekadar sandi, melainkan fondasi
+                    integritas data. Dalam **Simetris**, satu kunci (Shared
+                    Secret) digunakan untuk mengunci dan membuka. Sangat cepat
+                    namun berisiko jika kunci dicuri saat pengiriman.
+                  </p>
+                  <p>
+                    **Asimetris (Public-Key)** memecahkan masalah ini dengan dua
+                    kunci: **Public Key** untuk mengenkripsi (seperti gembok
+                    terbuka yang disebar) dan **Private Key** untuk mendekripsi
+                    (kunci fisik yang disimpan rapat oleh pemilik).
+                  </p>
+                </div>
+
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                  <div
+                    class="p-4 bg-slate-800/50 rounded-xl border border-blue-500/20"
+                  >
+                    <i class="fas fa-key text-blue-400 mb-2"></i>
+                    <h4 class="font-bold text-sm">Public Key</h4>
+                    <p class="text-[11px] text-slate-400 italic">
+                      "Gunakan gembok ini untuk mengirimi saya data."
+                    </p>
+                  </div>
+                  <div
+                    class="p-4 bg-slate-800/50 rounded-xl border border-red-500/20"
+                  >
+                    <i class="fas fa-user-lock text-red-400 mb-2"></i>
+                    <h4 class="font-bold text-sm">Private Key</h4>
+                    <p class="text-[11px] text-slate-400 italic">
+                      "Hanya kunci saya yang bisa membuka data itu."
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <span class="code-title">Pseudocode: Enkripsi Asimetris</span>
+                <div class="code-container text-xl text-blue-300">
+                  <pre class="whitespace-pre-wrap">
+// Budi ingin mengirim pesan rahasia ke Iwan
+PESAN = "Data Penting Perusahaan"
+GEMBOK_IWAN = "Kunci_Publik_Iwan"
+
+FUNGSI KirimKeIwan(data, gembok):
+    PESAN_TERKUNCI = ASYMM_ENCRYPT(data, gembok)
+    KEMBALIKAN PESAN_TERKUNCI
+
+// Di sisi Iwan
+FUNGSI TerimaData(terkunci, kunci_fisik):
+    PESAN_ASLI = ASYMM_DECRYPT(terkunci, kunci_fisik)
+    TAMPILKAN(PESAN_ASLI)
+</pre
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- PENAMBAHAN SIMULASI KRIPTOGRAFI -->
+            <div class="simulasi-box border-blue-400/50 bg-blue-400/5">
+              <h4 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
+                <i class="fas fa-pencil-alt"></i> ANALOG WORKSHOP: Simulasi
+                Kertas Kriptografi (Caesar Cipher)
+              </h4>
+              <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <p class="text-slate-200 font-semibold">
+                    Langkah-Langkah (Enkripsi):
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-slate-400">
+                    <li>Siapkan kertas, tulis alfabet A-Z.</li>
+                    <li>Tentukan "Kunci" (Angka 1-25). Contoh Kunci = 3.</li>
+                    <li>
+                      Geser setiap huruf pada pesan Anda sebanyak 3 posisi ke
+                      kanan.
+                    </li>
+                    <li>Misal: Huruf 'A' menjadi 'D', 'B' menjadi 'E'.</li>
+                    <li>Tulis pesan rahasia hasil pergeseran tersebut.</li>
+                  </ol>
+                </div>
+                <div class="space-y-3">
+                  <p class="text-slate-200 font-semibold">
+                    Langkah-Langkah (Dekripsi):
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-slate-400">
+                    <li>Berikan kertas berisi pesan acak kepada rekan Anda.</li>
+                    <li>Berikan "Kunci" (Angka 3) secara rahasia.</li>
+                    <li>Rekan Anda akan menggeser huruf 3 posisi ke KIRI.</li>
+                    <li>Pesan asli akan terbaca kembali.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modul 2 & 3 Detail -->
+          <div class="glass-card p-8 md:p-12 border-l-4 border-blue-500">
+            <h3 class="text-2xl font-bold text-blue-400 mb-6">
+              2. Integritas dengan Hash & Digital Signature
+            </h3>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div class="space-y-6">
+                <div class="highlight-box">
+                  <h4 class="font-bold text-blue-300 mb-2">
+                    Fungsi Hash (Digital Fingerprint)
+                  </h4>
+                  <p class="text-sm text-slate-300">
+                    Fungsi satu arah (one-way) yang menghasilkan nilai tetap
+                    (misal 256-bit). Jika input "A" menghasilkan hash "XYZ",
+                    maka input "A." (tambah titik) akan menghasilkan hash yang
+                    sama sekali berbeda (Avalanche Effect).
+                  </p>
+                </div>
+                <div class="highlight-box border-indigo-500 bg-indigo-500/5">
+                  <h4 class="font-bold text-indigo-300 mb-2">
+                    Tanda Tangan Digital (Auth)
+                  </h4>
+                  <p class="text-sm text-slate-300">
+                    Memastikan pengirim adalah asli. Caranya: Pesan di-hash,
+                    lalu hasil hash di-enkripsi dengan **Private Key** pengirim.
+                    Penerima memverifikasi dengan **Public Key** pengirim.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <span class="code-title">Pseudocode: Verifikasi Digital</span>
+                <div class="code-container text-xl text-indigo-300">
+                  <pre class="whitespace-pre-wrap">
+// Memastikan integritas dan identitas
+FUNGSI VerifikasiTandaTangan(dokumen, ttd, kunci_publik):
+    // 1. Hitung hash dokumen saat ini
+    hash_cek = SHA256(dokumen)
+    
+    // 2. Dekripsi tanda tangan pengirim
+    hash_asli_pengirim = DECRYPT(ttd, kunci_publik)
+    
+    // 3. Bandingkan
+    JIKA hash_cek == hash_asli_pengirim:
+        KEMBALIKAN "Data Asli & Sah"
+    LAINNYA:
+        KEMBALIKAN "Data Palsu/Rusak!"
+</pre
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- PENAMBAHAN SIMULASI HASHING -->
+            <div class="simulasi-box border-green-400/50 bg-green-400/5">
+              <h4 class="text-green-400 font-bold mb-4 flex items-center gap-2">
+                <i class="fas fa-fingerprint"></i> ANALOG WORKSHOP: Simulasi
+                Logika Hashing (Modulo Hash)
+              </h4>
+              <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <p class="text-slate-200 font-semibold">
+                    Langkah Simulasi (Membuat Hash):
+                  </p>
+                  <ol class="list-decimal list-inside space-y-2 text-slate-400">
+                    <li>Tulis sebuah kata (Misal: "Kopi").</li>
+                    <li>
+                      Konversi huruf menjadi urutan angka (A=1, B=2, dst).
+                    </li>
+                    <li>Misal: K(11), O(15), P(16), I(9).</li>
+                    <li>Jumlahkan semua angka: 11+15+16+9 = 51.</li>
+                    <li>Hitung Sisa Bagi (Modulo) 10: 51 % 10 = **1**.</li>
+                    <li>Angka **1** adalah "Hash" dari kata "Kopi".</li>
+                  </ol>
+                </div>
+                <div class="space-y-3">
+                  <p class="text-slate-200 font-semibold">
+                    Eksperimen (Avalanche Effect):
+                  </p>
+                  <ul class="list-disc list-inside space-y-2 text-slate-400">
+                    <li>
+                      Coba ganti satu huruf saja: "Kopi" menjadi "Kopi." (tambah
+                      titik).
+                    </li>
+                    <li>Titik (simbol) memiliki nilai berbeda.</li>
+                    <li>
+                      Hasil penjumlahan dan sisa bagi akan berubah drastis.
+                    </li>
+                    <li>
+                      Inilah cara Blockchain tahu jika data diubah walau hanya 1
+                      karakter!
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: BLOCKCHAIN -->
+      <section id="fase-blockchain">
+        <div class="flex items-center gap-4 mb-12">
+          <div
+            class="w-12 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20"
+          >
+            <i class="fas fa-cubes text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-indigo-400">
+              Fase 2: Infrastruktur Terdesentralisasi
+            </h2>
+            <p class="text-slate-400">
+              Membangun buku besar yang tidak bisa dimanipulasi.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card p-8 md:p-12">
+          <h3
+            class="text-2xl font-bold mb-10 text-center text-indigo-300 underline underline-offset-8"
+          >
+            Visualisasi Rantai Blok (Blockchain)
+          </h3>
+
+          <!-- Expanded Flow Visualization -->
+          <div
+            class="flex flex-col lg:flex-row items-center justify-center gap-8 mb-16 overflow-x-auto py-8"
+          >
+            <!-- Block 1 -->
+            <div class="relative group">
+              <div
+                class="w-64 p-6 bg-slate-900 border-2 border-indigo-500 rounded-2xl shadow-2xl transition-transform hover:-translate-y-2"
+              >
+                <div class="text-xs font-bold text-indigo-400 mb-2">
+                  BLOK #1 (Genesis)
+                </div>
+                <div class="space-y-2 text-[10px] font-mono">
+                  <div class="bg-indigo-500/10 p-2 rounded">
+                    PREV_HASH: 00000000
+                  </div>
+                  <div class="bg-white/5 p-2 rounded">
+                    DATA: "Budi -> Iwan: 10 BTC"
+                  </div>
+                  <div class="bg-green-500/10 p-2 rounded text-green-400">
+                    HASH: 77A1BC92
+                  </div>
+                </div>
+              </div>
+              <div
+                class="hidden lg:block absolute -right-8 top-1/2 -translate-y-1/2 text-indigo-500 animate-pulse"
+              >
+                <i class="fas fa-link text-2xl"></i>
+              </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="relative group">
+              <div
+                class="w-64 p-6 bg-slate-900 border-2 border-indigo-500 rounded-2xl shadow-2xl transition-transform hover:-translate-y-2"
+              >
+                <div class="text-xs font-bold text-indigo-400 mb-2">
+                  BLOK #2
+                </div>
+                <div class="space-y-2 text-[10px] font-mono">
+                  <div class="bg-indigo-500/30 p-2 rounded text-indigo-200">
+                    PREV_HASH: 77A1BC92
+                  </div>
+                  <div class="bg-white/5 p-2 rounded">
+                    DATA: "Smart Contract Exec"
+                  </div>
+                  <div class="bg-green-500/10 p-2 rounded text-green-400">
+                    HASH: 99D3EF41
+                  </div>
+                </div>
+              </div>
+              <div
+                class="hidden lg:block absolute -right-8 top-1/2 -translate-y-1/2 text-indigo-500 animate-pulse"
+              >
+                <i class="fas fa-link text-2xl"></i>
+              </div>
+            </div>
+
+            <!-- Block 3 -->
+            <div
+              class="w-64 p-6 bg-slate-900/50 border-2 border-dashed border-slate-700 rounded-2xl flex flex-col items-center justify-center min-h-[180px]"
+            >
+              <i
+                class="fas fa-hammer text-slate-600 text-3xl mb-4 animate-bounce"
+              ></i>
+              <span class="text-xs font-bold text-slate-500"
+                >PENAMBANGAN (MINING)...</span
+              >
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h4 class="text-xl font-bold text-indigo-300 mb-4">
+                Logika Penambangan (Proof of Work)
+              </h4>
+              <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                Penambang (Miner) harus mencari angka acak (**Nonce**) sehingga
+                hash dari blok tersebut diawali oleh deretan nol tertentu. Ini
+                membutuhkan daya komputasi besar, sehingga mengubah satu blok
+                saja di masa lalu akan memerlukan pengerjaan ulang seluruh
+                rantai.
+              </p>
+              <span class="code-title">Pseudocode: Mining Engine</span>
+              <div class="code-container text-xl text-green-400">
+                <pre class="whitespace-pre-wrap">
+TARGET = "0000" // Kesulitan jaringan
+NONCE = 0
+
+FUNGSI TambangBlok(data_blok):
+    SELAMA BENAR:
+        HASIL = SHA256(data_blok + NONCE)
+        
+        JIKA HASIL.DIAWALI(TARGET):
+            TAMPILKAN "Blok Sah! Hash: " + HASIL
+            BERHENTI
+        LAINNYA:
+            NONCE = NONCE + 1
+</pre
+                >
+              </div>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold text-indigo-300 mb-4">
+                Smart Contracts (Kode Adalah Hukum)
+              </h4>
+              <p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                Protokol komputer yang memfasilitasi, memverifikasi, atau
+                menegakkan negosiasi kontrak secara otomatis tanpa memerlukan
+                pihak ketiga seperti bank atau notaris.
+              </p>
+              <span class="code-title"
+                >Pseudocode: Smart Contract Tabungan</span
+              >
+              <div class="code-container text-xl text-yellow-400">
+                <pre class="whitespace-pre-wrap">
+KONTRAK TabunganOtomatis:
+    DAFTAR_SALDO = {}
+
+    FUNGSI Setor():
+        JUMLAH = Uang_Diterima()
+        DAFTAR_SALDO[PENGIRIM] += JUMLAH
+
+    FUNGSI Tarik(nominal):
+        // Verifikasi otomatis
+        JIKA DAFTAR_SALDO[PENGIRIM] >= nominal:
+            KIRIM_KE_DOMPET(PENGIRIM, nominal)
+            DAFTAR_SALDO[PENGIRIM] -= nominal
+        LAINNYA:
+            ERROR "Dana Tidak Cukup"
+</pre
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: MASA DEPAN & KRIPTO -->
+      <section id="fase-masa-depan">
+        <div class="flex items-center gap-4 mb-12">
+          <div
+            class="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-purple-500/20"
+          >
+            <i class="fas fa-microchip text-2xl"></i>
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-purple-400">
+              Fase 3: Konvergensi & Ekonomi Baru
+            </h2>
+            <p class="text-slate-400">
+              Implementasi dunia nyata dari penggabungan Kriptografi &
+              Blockchain.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Cryptocurrency -->
+          <div class="glass-card p-10 relative overflow-hidden group">
+            <div
+              class="absolute -right-8 -top-8 w-32 h-32 bg-yellow-500/10 rounded-full blur-2xl group-hover:bg-yellow-500/20 transition-all"
+            ></div>
+            <i class="fas fa-bitcoin-sign text-4xl text-yellow-500 mb-6"></i>
+            <h3 class="text-2xl font-bold mb-4">Cryptocurrency</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Uang digital yang tidak dikontrol bank sentral. Menggunakan
+              Kriptografi untuk otorisasi (Private Key) dan Blockchain untuk
+              mencegah pengeluaran ganda (Double Spending).
+            </p>
+            <div class="bg-black/40 p-6 rounded-xl border border-yellow-500/20">
+              <h4 class="text-xs font-bold text-yellow-500 mb-4 uppercase">
+                Logika Transfer Aset
+              </h4>
+              <pre class="text-xs font-mono text-yellow-200">
+// Transfer 1.5 BTC ke Iwan
+1. CEK_SALDO(BUDI_ADDR)
+2. BUAT_TRANSAKSI(IWAN_ADDR, 1.5)
+3. TANDA_TANGANI(TRANS, BUDI_PRIV_KEY)
+4. KIRIM_KE_JARINGAN()
+5. MINER_VERIFIKASI_DAN_CATAT()
+</pre
+              >
+            </div>
+          </div>
+
+          <!-- SSI -->
+          <div class="glass-card p-10 relative overflow-hidden group">
+            <div
+              class="absolute -right-8 -top-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"
+            ></div>
+            <i class="fas fa-id-card-clip text-4xl text-blue-500 mb-6"></i>
+            <h3 class="text-2xl font-bold mb-4">Self-Sovereign Identity</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Identitas yang Anda miliki sepenuhnya. Institusi
+              (Pemerintah/Kampus) memberikan sertifikasi (Credential) yang Anda
+              simpan di dompet digital, dan Anda hanya membagikan bukti
+              validitasnya saat dibutuhkan.
+            </p>
+            <div class="bg-black/40 p-6 rounded-xl border border-blue-500/20">
+              <h4 class="text-xs font-bold text-blue-500 mb-4 uppercase">
+                Alur Verifikasi Ijazah Digital
+              </h4>
+              <div
+                class="flex justify-between items-center text-[10px] text-blue-200"
+              >
+                <span class="p-2 border border-blue-500/30 rounded"
+                  >Univ Tanda Tangani Hash</span
+                >
+                <i class="fas fa-arrow-right"></i>
+                <span class="p-2 border border-blue-500/30 rounded"
+                  >Simpan di Blockchain</span
+                >
+                <i class="fas fa-arrow-right"></i>
+                <span class="p-2 border border-blue-500/30 rounded"
+                  >HRD Cek Validitas</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manfaat Masa Depan Highlight -->
+        <div
+          class="mt-16 bg-gradient-to-br from-indigo-900/40 to-purple-900/40 rounded-3xl p-12 text-center border border-white/10"
+        >
+          <h3 class="text-3xl font-bold mb-8">
+            Mengapa Ini Penting Di Masa Depan?
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="space-y-2">
+              <div class="text-2xl font-bold text-blue-400">01</div>
+              <div class="font-bold">Efisien</div>
+              <p class="text-[10px] text-slate-400">
+                Tanpa perantara berarti transaksi lebih cepat dan biaya 90%
+                lebih murah.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <div class="text-2xl font-bold text-indigo-400">02</div>
+              <div class="font-bold">Imutabel</div>
+              <p class="text-[10px] text-slate-400">
+                Data yang sudah masuk tidak bisa dihapus oleh siapapun, termasuk
+                administrator.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <div class="text-2xl font-bold text-purple-400">03</div>
+              <div class="font-bold">Global</div>
+              <p class="text-[10px] text-slate-400">
+                Akses layanan keuangan bagi 2 miliar penduduk dunia yang tidak
+                punya akun bank.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <div class="text-2xl font-bold text-pink-400">04</div>
+              <div class="font-bold">Privasi</div>
+              <p class="text-[10px] text-slate-400">
+                Buktikan kepemilikan data tanpa harus menyerahkan data asli
+                kepada pihak ketiga.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="max-w-6xl mx-auto py-12 px-6 border-t border-slate-800 text-center text-gray-500 text-sm"
+    >
+      <div class="flex justify-center gap-6 mb-4 text-slate-400 text-lg">
+        <i
+          class="fab fa-github hover:text-white transition-colors cursor-pointer"
+        ></i>
+        <i
+          class="fab fa-linkedin hover:text-white transition-colors cursor-pointer"
+        ></i>
+        <i
+          class="fas fa-globe hover:text-white transition-colors cursor-pointer"
+        ></i>
+      </div>
+      <p>
+        &copy; 2024 Modul Praktikum Komprehensif TIK. Materi edukasi teknologi
+        masa depan.
+      </p>
+    </footer>
+  </body>
+</html>
