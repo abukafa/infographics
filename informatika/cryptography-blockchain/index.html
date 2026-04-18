@@ -145,15 +145,15 @@
                 <div class="space-y-4 text-slate-300">
                   <p>
                     Kriptografi bukan sekadar sandi, melainkan fondasi
-                    integritas data. Dalam **Simetris**, satu kunci (Shared
-                    Secret) digunakan untuk mengunci dan membuka. Sangat cepat
-                    namun berisiko jika kunci dicuri saat pengiriman.
+                    integritas data. Dalam Simetris, satu kunci (Shared Secret)
+                    digunakan untuk mengunci dan membuka. Sangat cepat namun
+                    berisiko jika kunci dicuri saat pengiriman.
                   </p>
                   <p>
-                    **Asimetris (Public-Key)** memecahkan masalah ini dengan dua
-                    kunci: **Public Key** untuk mengenkripsi (seperti gembok
-                    terbuka yang disebar) dan **Private Key** untuk mendekripsi
-                    (kunci fisik yang disimpan rapat oleh pemilik).
+                    Asimetris (Public-Key) memecahkan masalah ini dengan dua
+                    kunci: Public Key untuk mengenkripsi (seperti gembok terbuka
+                    yang disebar) dan Private Key untuk mendekripsi (kunci fisik
+                    yang disimpan rapat oleh pemilik).
                   </p>
                 </div>
 
@@ -181,19 +181,21 @@
 
               <div>
                 <span class="code-title">Pseudocode: Enkripsi Asimetris</span>
-                <div class="code-container text-xl text-blue-300">
+                <div class="code-container text-md text-blue-300">
                   <pre class="whitespace-pre-wrap">
 // Budi ingin mengirim pesan rahasia ke Iwan
+
 PESAN = "Data Penting Perusahaan"
 GEMBOK_IWAN = "Kunci_Publik_Iwan"
 
 FUNGSI KirimKeIwan(data, gembok):
-    PESAN_TERKUNCI = ASYMM_ENCRYPT(data, gembok)
+    PESAN_TERKUNCI = ENCRYPT(data, gembok)
     KEMBALIKAN PESAN_TERKUNCI
 
 // Di sisi Iwan
-FUNGSI TerimaData(terkunci, kunci_fisik):
-    PESAN_ASLI = ASYMM_DECRYPT(terkunci, kunci_fisik)
+
+FUNGSI TerimaData(terkunci, kunci):
+    PESAN_ASLI = DECRYPT(terkunci, kunci)
     TAMPILKAN(PESAN_ASLI)
 </pre
                   >
@@ -263,29 +265,29 @@ FUNGSI TerimaData(terkunci, kunci_fisik):
                   </h4>
                   <p class="text-sm text-slate-300">
                     Memastikan pengirim adalah asli. Caranya: Pesan di-hash,
-                    lalu hasil hash di-enkripsi dengan **Private Key** pengirim.
-                    Penerima memverifikasi dengan **Public Key** pengirim.
+                    lalu hasil hash di-enkripsi dengan Private Key pengirim.
+                    Penerima memverifikasi dengan Public Key pengirim.
                   </p>
                 </div>
               </div>
 
               <div>
                 <span class="code-title">Pseudocode: Verifikasi Digital</span>
-                <div class="code-container text-xl text-indigo-300">
+                <div class="code-container text-md text-indigo-300">
                   <pre class="whitespace-pre-wrap">
 // Memastikan integritas dan identitas
-FUNGSI VerifikasiTandaTangan(dokumen, ttd, kunci_publik):
+FUNGSI Verifikasi(dokumen, ttd, kunci):
     // 1. Hitung hash dokumen saat ini
     hash_cek = SHA256(dokumen)
     
     // 2. Dekripsi tanda tangan pengirim
-    hash_asli_pengirim = DECRYPT(ttd, kunci_publik)
+    hash_asli_pengirim = DECRYPT(ttd, kunci)
     
     // 3. Bandingkan
     JIKA hash_cek == hash_asli_pengirim:
-        KEMBALIKAN "Data Asli & Sah"
+        TAMPILKAN "Data Asli & Sah"
     LAINNYA:
-        KEMBALIKAN "Data Palsu/Rusak!"
+        TAMPILKAN "Data Palsu/Rusak!"
 </pre
                   >
                 </div>
@@ -310,8 +312,8 @@ FUNGSI VerifikasiTandaTangan(dokumen, ttd, kunci_publik):
                     </li>
                     <li>Misal: K(11), O(15), P(16), I(9).</li>
                     <li>Jumlahkan semua angka: 11+15+16+9 = 51.</li>
-                    <li>Hitung Sisa Bagi (Modulo) 10: 51 % 10 = **1**.</li>
-                    <li>Angka **1** adalah "Hash" dari kata "Kopi".</li>
+                    <li>Hitung Sisa Bagi (Modulo) 10: 51 % 10 = 1.</li>
+                    <li>Angka 1 adalah "Hash" dari kata "Kopi".</li>
                   </ol>
                 </div>
                 <div class="space-y-3">
@@ -441,14 +443,14 @@ FUNGSI VerifikasiTandaTangan(dokumen, ttd, kunci_publik):
                 Logika Penambangan (Proof of Work)
               </h4>
               <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                Penambang (Miner) harus mencari angka acak (**Nonce**) sehingga
-                hash dari blok tersebut diawali oleh deretan nol tertentu. Ini
+                Penambang (Miner) harus mencari angka acak (Nonce) sehingga hash
+                dari blok tersebut diawali oleh deretan nol tertentu. Ini
                 membutuhkan daya komputasi besar, sehingga mengubah satu blok
                 saja di masa lalu akan memerlukan pengerjaan ulang seluruh
                 rantai.
               </p>
               <span class="code-title">Pseudocode: Mining Engine</span>
-              <div class="code-container text-xl text-green-400">
+              <div class="code-container text-md text-green-400">
                 <pre class="whitespace-pre-wrap">
 TARGET = "0000" // Kesulitan jaringan
 NONCE = 0
@@ -458,7 +460,7 @@ FUNGSI TambangBlok(data_blok):
         HASIL = SHA256(data_blok + NONCE)
         
         JIKA HASIL.DIAWALI(TARGET):
-            TAMPILKAN "Blok Sah! Hash: " + HASIL
+            TAMPILKAN HASIL
             BERHENTI
         LAINNYA:
             NONCE = NONCE + 1
@@ -478,20 +480,20 @@ FUNGSI TambangBlok(data_blok):
               <span class="code-title"
                 >Pseudocode: Smart Contract Tabungan</span
               >
-              <div class="code-container text-xl text-yellow-400">
+              <div class="code-container text-md text-yellow-400">
                 <pre class="whitespace-pre-wrap">
 KONTRAK TabunganOtomatis:
-    DAFTAR_SALDO = {}
+    SALDO = {}
 
     FUNGSI Setor():
         JUMLAH = Uang_Diterima()
-        DAFTAR_SALDO[PENGIRIM] += JUMLAH
+        SALDO[PENGIRIM] += JUMLAH
 
     FUNGSI Tarik(nominal):
         // Verifikasi otomatis
-        JIKA DAFTAR_SALDO[PENGIRIM] >= nominal:
+        JIKA SALDO[PENGIRIM] >= nominal:
             KIRIM_KE_DOMPET(PENGIRIM, nominal)
-            DAFTAR_SALDO[PENGIRIM] -= nominal
+            SALDO[PENGIRIM] -= nominal
         LAINNYA:
             ERROR "Dana Tidak Cukup"
 </pre
