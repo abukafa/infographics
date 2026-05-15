@@ -54,7 +54,7 @@
         </p>
 
         <!-- Search & Filter Area -->
-        <div class="mt-10 max-w-xl mx-auto">
+        <div class="mt-10 max-w-3xl mx-auto">
           <!-- Filter Badges -->
           <div
             class="flex flex-wrap justify-center gap-3"
@@ -87,6 +87,13 @@
               class="border border-emerald-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-emerald-500/20"
             >
               Syariah
+            </button>
+            <button
+              onclick="setCategory('others')"
+              id="btn-others"
+              class="border border-gray-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-gray-500/20"
+            >
+              Others
             </button>
           </div>
 
@@ -305,6 +312,33 @@
           </a>
         </div>
 
+        <div class="module-card" data-category="informatika">
+          <a
+            href="informatika/data-visualization/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="bar-chart-3"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
+              >Informatika</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Data Visualization
+            </h3>
+            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Eksplorasi interaktif berbagai tipe chart berdasarkan jenis data
+              dan tujuannya.
+            </p>
+          </a>
+        </div>
+
         <!-- --- MULTIMEDIA --- -->
         <div class="module-card" data-category="multimedia">
           <a
@@ -518,6 +552,34 @@
             <p class="text-sm text-slate-600">
               Ilmu tentang membangun keluarga yang sakinah dan penuh tanggung
               jawab sosial.
+            </p>
+          </a>
+        </div>
+
+        <!-- --- OTHERS --- -->
+        <div class="module-card" data-category="others">
+          <a
+            href="others/mindset-keputusan/index.html"
+            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4"
+            >
+              <i data-lucide="brain-circuit"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-indigo-500 uppercase tracking-wider"
+              >Self Development</span
+            >
+            <h3 class="text-xl font-bold text-slate-800 module-title">
+              Mindset & Keputusan
+            </h3>
+            <p class="text-indigo-500 text-xs mb-2 font-medium module-author">
+              By. Abu Kafa
+            </p>
+            <p class="text-sm text-slate-600">
+              Panduan berpikir jernih dan mengambil keputusan berdasarkan
+              preferensi dan referensi.
             </p>
           </a>
         </div>

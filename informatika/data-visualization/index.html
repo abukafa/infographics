@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panduan Visualisasi Data - Infografis</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              slate: {
+                850: "#151e2e",
+                900: "#0f172a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Leaflet CSS & JS for Map Chart -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .glass-card {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+      .glass-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(45, 212, 191, 0.5); /* Teal accent */
+      }
+      .chart-container {
+        position: relative;
+        height: 300px;
+        width: 100%;
+      }
+      /* Heatmap styles */
+      .heatmap-grid {
+        display: grid;
+        grid-template-columns: auto repeat(3, 1fr);
+        gap: 4px;
+      }
+      .heatmap-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: 600;
+        color: white;
+        transition: transform 0.2s;
+      }
+      .heatmap-cell:hover {
+        transform: scale(1.05);
+        z-index: 10;
+      }
+      /* Leaflet custom dark theme overrides */
+      .leaflet-tooltip {
+        background-color: rgba(15, 23, 42, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #f8fafc !important;
+        border-radius: 6px !important;
+        font-family: "Inter", sans-serif;
+      }
+      .leaflet-tooltip-top:before {
+        border-top-color: rgba(15, 23, 42, 0.9) !important;
+      }
+      .leaflet-control-attribution {
+        background: rgba(15, 23, 42, 0.7) !important;
+        color: #94a3b8 !important;
+      }
+      .leaflet-control-attribution a {
+        color: #38bdf8 !important;
+      }
+      .leaflet-container {
+        background: #0f172a !important;
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased font-sans selection:bg-teal-500 selection:text-white"
+  >
+    <!-- Header -->
+    <header
+      class="relative overflow-hidden py-20 bg-gradient-to-b from-slate-900 to-slate-850"
+    >
+      <div
+        class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)]"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h1
+          class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-blue-400 to-purple-500"
+        >
+          Katalog Visualisasi Data
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+          Eksplorasi interaktif berbagai tipe chart berdasarkan jenis data dan
+          tujuannya. Dibuat dengan desain elegan untuk analisis yang memukau.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="container mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        <!-- 1. Bar Chart -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-teal-400">1. Bar Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Perbandingan Kategori • 1 Kategorikal, 1 Numerik
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart1"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Membandingkan jumlah penjualan unit berdasarkan kategori produk.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Kategori Produk</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Penjualan (Unit)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Laptop</td>
+                  <td class="px-3 py-2 text-right">150</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Smartphone</td>
+                  <td class="px-3 py-2 text-right">320</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Tablet</td>
+                  <td class="px-3 py-2 text-right">85</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Monitor</td>
+                  <td class="px-3 py-2 text-right">120</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 2. Multi-Line Chart -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-blue-400">2. Multi-Line Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Tren Waktu • 1 Temporal, >1 Numerik
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart2"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Melihat tren pendapatan Cabang A & B dari waktu ke waktu.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Bulan</th>
+                  <th class="px-3 py-2 text-right">Cabang A (Juta)</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Cabang B (Juta)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Januari</td>
+                  <td class="px-3 py-2 text-right">45</td>
+                  <td class="px-3 py-2 text-right">38</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Februari</td>
+                  <td class="px-3 py-2 text-right">52</td>
+                  <td class="px-3 py-2 text-right">41</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Maret</td>
+                  <td class="px-3 py-2 text-right">48</td>
+                  <td class="px-3 py-2 text-right">55</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">April</td>
+                  <td class="px-3 py-2 text-right">60</td>
+                  <td class="px-3 py-2 text-right">50</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3. Stacked Column -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-purple-400">
+              3. Stacked Column Chart
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Komposisi • 1 Kategori, >1 Numerik
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart3"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Total nilai keseluruhan sekaligus kontribusi tiap jenis penjualan.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Nama Sales</th>
+                  <th class="px-3 py-2 text-right">Produk Fisik</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Layanan Jasa
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Budi</td>
+                  <td class="px-3 py-2 text-right">200</td>
+                  <td class="px-3 py-2 text-right">50</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Ani</td>
+                  <td class="px-3 py-2 text-right">150</td>
+                  <td class="px-3 py-2 text-right">120</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Citra</td>
+                  <td class="px-3 py-2 text-right">180</td>
+                  <td class="px-3 py-2 text-right">30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. Scatter Plot -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-pink-400">4. Scatter Plot</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Korelasi • 2 Variabel Numerik
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart4"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Korelasi antara Durasi Belajar (Jam) dengan Skor Ujian.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md text-right">
+                    Durasi Belajar (Jam)
+                  </th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Skor Ujian (0-100)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2 text-right">2</td>
+                  <td class="px-3 py-2 text-right">65</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2 text-right">5</td>
+                  <td class="px-3 py-2 text-right">80</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2 text-right">7</td>
+                  <td class="px-3 py-2 text-right">85</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2 text-right">10</td>
+                  <td class="px-3 py-2 text-right">98</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 5. Donut Chart (Pie) -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-orange-400">5. Donut Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Proporsi Tunggal • Total 100%
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart5"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Pembagian pangsa pasar dari berbagai sumber trafik.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Sumber Trafik</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Persentase (%)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Google Search</td>
+                  <td class="px-3 py-2 text-right">45%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Social Media</td>
+                  <td class="px-3 py-2 text-right">30%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Direct Link</td>
+                  <td class="px-3 py-2 text-right">15%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Email Marketing</td>
+                  <td class="px-3 py-2 text-right">10%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 6. Combo Chart -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-yellow-400">6. Combo Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Dua Satuan • Bar (Pendapatan) & Line (Margin)
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart6"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Membandingkan nominal Total Pendapatan dengan % Profit Margin.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Bulan</th>
+                  <th class="px-3 py-2 text-right">Pendapatan (Juta)</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Profit Margin (%)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Jan</td>
+                  <td class="px-3 py-2 text-right">100</td>
+                  <td class="px-3 py-2 text-right">15%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Feb</td>
+                  <td class="px-3 py-2 text-right">120</td>
+                  <td class="px-3 py-2 text-right">18%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Mar</td>
+                  <td class="px-3 py-2 text-right">110</td>
+                  <td class="px-3 py-2 text-right">12%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 7. Radar Chart -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-green-400">7. Radar Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Analisis Multivariabel • Multi Kriteria
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart7"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Menilai performa Pemain A vs Pemain B di berbagai aspek.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Kriteria</th>
+                  <th class="px-3 py-2 text-right">Pemain A</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">Pemain B</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Kecepatan</td>
+                  <td class="px-3 py-2 text-right">90</td>
+                  <td class="px-3 py-2 text-right">70</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Kekuatan</td>
+                  <td class="px-3 py-2 text-right">75</td>
+                  <td class="px-3 py-2 text-right">85</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Akurasi</td>
+                  <td class="px-3 py-2 text-right">80</td>
+                  <td class="px-3 py-2 text-right">90</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Stamina</td>
+                  <td class="px-3 py-2 text-right">85</td>
+                  <td class="px-3 py-2 text-right">80</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 8. Histogram -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-indigo-400">8. Histogram</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Distribusi Data • Pengelompokan Rentang (Bins)
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart8"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Sebaran frekuensi pelanggan berdasarkan rentang umur.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Rentang Umur</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Jumlah Orang (Frekuensi)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">15 - 24</td>
+                  <td class="px-3 py-2 text-right">45</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">25 - 34</td>
+                  <td class="px-3 py-2 text-right">120</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">35 - 44</td>
+                  <td class="px-3 py-2 text-right">85</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">45 - 54</td>
+                  <td class="px-3 py-2 text-right">30</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 9. Bubble Chart -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-rose-400">9. Bubble Chart</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Relasi 3 Variabel • X, Y, dan Ukuran
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart9"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Analisis Harga (X), Penjualan (Y), dan Profitabilitas (Ukuran).
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Produk</th>
+                  <th class="px-3 py-2 text-right">Harga</th>
+                  <th class="px-3 py-2 text-right">Penjualan</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">Profit</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Produk A</td>
+                  <td class="px-3 py-2 text-right">Rp 50.000</td>
+                  <td class="px-3 py-2 text-right">500 Unit</td>
+                  <td class="px-3 py-2 text-right">15%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Produk B</td>
+                  <td class="px-3 py-2 text-right">Rp 150.000</td>
+                  <td class="px-3 py-2 text-right">200 Unit</td>
+                  <td class="px-3 py-2 text-right">45%</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Produk C</td>
+                  <td class="px-3 py-2 text-right">Rp 75.000</td>
+                  <td class="px-3 py-2 text-right">800 Unit</td>
+                  <td class="px-3 py-2 text-right">10%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 10. Heatmap (HTML Grid) -->
+        <div
+          class="glass-card rounded-2xl p-6 shadow-xl flex flex-col xl:col-span-1"
+        >
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-fuchsia-400">10. Heatmap</h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Matriks Kepadatan • Warna merepresentasikan nilai
+            </p>
+          </div>
+          <div class="grow flex flex-col justify-center">
+            <div class="heatmap-grid text-sm">
+              <!-- Header -->
+              <div></div>
+              <div class="text-center text-slate-400 pb-2">Pagi</div>
+              <div class="text-center text-slate-400 pb-2">Siang</div>
+              <div class="text-center text-slate-400 pb-2">Malam</div>
+
+              <!-- Row 1 -->
+              <div class="flex items-center text-slate-400 pr-2">Senin</div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.2)"
+              >
+                50
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.7)"
+              >
+                120
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.4)"
+              >
+                80
+              </div>
+
+              <!-- Row 2 -->
+              <div class="flex items-center text-slate-400 pr-2">Selasa</div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.15)"
+              >
+                45
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.8)"
+              >
+                130
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.35)"
+              >
+                75
+              </div>
+
+              <!-- Row 3 -->
+              <div class="flex items-center text-slate-400 pr-2">Sabtu</div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.9)"
+              >
+                150
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 1)"
+              >
+                200
+              </div>
+              <div
+                class="heatmap-cell"
+                style="background-color: rgba(236, 72, 153, 0.95)"
+              >
+                180
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Kepadatan aktivitas pengunjung berdasarkan Hari dan Waktu.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Hari</th>
+                  <th class="px-3 py-2 text-right">Pagi</th>
+                  <th class="px-3 py-2 text-right">Siang</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">Malam</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Senin</td>
+                  <td class="px-3 py-2 text-right">50</td>
+                  <td class="px-3 py-2 text-right">120</td>
+                  <td class="px-3 py-2 text-right">80</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Selasa</td>
+                  <td class="px-3 py-2 text-right">45</td>
+                  <td class="px-3 py-2 text-right">130</td>
+                  <td class="px-3 py-2 text-right">75</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Sabtu</td>
+                  <td class="px-3 py-2 text-right">150</td>
+                  <td class="px-3 py-2 text-right">200</td>
+                  <td class="px-3 py-2 text-right">180</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 11. Map Chart Alternative -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-sky-400">
+              11. Distribusi Geografis
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Visualisasi Spasial • Geo Location Map
+            </p>
+          </div>
+          <div class="chart-container grow" style="z-index: 0">
+            <div
+              id="map11"
+              style="height: 100%; width: 100%; border-radius: 8px; z-index: 1"
+            ></div>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Sebaran Total Penjualan (Miliar) berdasarkan wilayah Provinsi.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Provinsi</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Total Penjualan (Miliar)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">DKI Jakarta</td>
+                  <td class="px-3 py-2 text-right">500</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Jawa Barat</td>
+                  <td class="px-3 py-2 text-right">350</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Jawa Tengah</td>
+                  <td class="px-3 py-2 text-right">200</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">Jawa Timur</td>
+                  <td class="px-3 py-2 text-right">320</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 12. Candlestick Alternative -->
+        <div class="glass-card rounded-2xl p-6 shadow-xl flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-emerald-400">
+              12. Candlestick (OHLC)
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Analisis Trading • Floating Bar Proxy
+            </p>
+          </div>
+          <div class="chart-container grow">
+            <canvas id="chart12"></canvas>
+          </div>
+          <p class="text-xs text-slate-500 mt-4 mb-2">
+            Visualisasi fluktuasi harga (Open & Close). Hijau = Naik, Merah =
+            Turun.
+          </p>
+
+          <!-- Data Table -->
+          <div
+            class="mt-auto pt-4 border-t border-slate-700/50 overflow-x-auto"
+          >
+            <table
+              class="w-full text-xs text-left text-slate-300 border-collapse whitespace-nowrap"
+            >
+              <thead class="text-slate-400 bg-slate-800/80">
+                <tr>
+                  <th class="px-3 py-2 rounded-tl-md">Tanggal</th>
+                  <th class="px-3 py-2 text-right">Open (Buka)</th>
+                  <th class="px-3 py-2 rounded-tr-md text-right">
+                    Close (Tutup)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-700/50">
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">27 Apr</td>
+                  <td class="px-3 py-2 text-right">1500</td>
+                  <td class="px-3 py-2 text-right">1530</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">28 Apr</td>
+                  <td class="px-3 py-2 text-right">1530</td>
+                  <td class="px-3 py-2 text-right">1580</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">29 Apr</td>
+                  <td class="px-3 py-2 text-right">1580</td>
+                  <td class="px-3 py-2 text-right">1500</td>
+                </tr>
+                <tr class="hover:bg-slate-800/30 transition-colors">
+                  <td class="px-3 py-2">30 Apr</td>
+                  <td class="px-3 py-2 text-right">1500</td>
+                  <td class="px-3 py-2 text-right">1470</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="border-t border-slate-800 text-center py-8 text-slate-500 mt-8"
+    >
+      <p>
+        Infografis Panduan Visualisasi Data &copy; 2026. Dibuat dengan Tailwind
+        CSS & Chart.js.
+      </p>
+    </footer>
+
+    <!-- Chart Configs -->
+    <script>
+      // Global Configuration for elegance
+      Chart.defaults.color = "#94a3b8"; // text-slate-400
+      Chart.defaults.font.family = "'Inter', sans-serif";
+      Chart.defaults.plugins.tooltip.backgroundColor = "rgba(15, 23, 42, 0.9)";
+      Chart.defaults.plugins.tooltip.titleColor = "#fff";
+      Chart.defaults.plugins.tooltip.padding = 10;
+      Chart.defaults.plugins.tooltip.cornerRadius = 8;
+      Chart.defaults.plugins.legend.labels.usePointStyle = true;
+
+      // Common elegant color palette
+      const colors = {
+        teal: "rgba(45, 212, 191, 0.8)",
+        tealBorder: "rgba(45, 212, 191, 1)",
+        blue: "rgba(59, 130, 246, 0.8)",
+        purple: "rgba(168, 85, 247, 0.8)",
+        pink: "rgba(236, 72, 153, 0.8)",
+        orange: "rgba(249, 115, 22, 0.8)",
+        yellow: "rgba(234, 179, 8, 0.8)",
+        green: "rgba(34, 197, 94, 0.8)",
+        red: "rgba(239, 68, 68, 0.8)",
+        sky: "rgba(56, 189, 248, 0.8)",
+        grid: "rgba(255, 255, 255, 0.05)",
+      };
+
+      const gridOptions = {
+        scales: {
+          x: { grid: { color: colors.grid, drawBorder: false } },
+          y: { grid: { color: colors.grid, drawBorder: false } },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+      };
+
+      // 1. Bar Chart
+      new Chart(document.getElementById("chart1"), {
+        type: "bar",
+        data: {
+          labels: ["Laptop", "Smartphone", "Tablet", "Monitor"],
+          datasets: [
+            {
+              label: "Penjualan (Unit)",
+              data: [150, 320, 85, 120],
+              backgroundColor: [
+                colors.teal,
+                colors.blue,
+                colors.purple,
+                colors.pink,
+              ],
+              borderRadius: 6,
+            },
+          ],
+        },
+        options: { ...gridOptions, plugins: { legend: { display: false } } },
+      });
+
+      // 2. Multi-Line Chart
+      new Chart(document.getElementById("chart2"), {
+        type: "line",
+        data: {
+          labels: ["Januari", "Februari", "Maret", "April"],
+          datasets: [
+            {
+              label: "Cabang A",
+              data: [45, 52, 48, 60],
+              borderColor: colors.blue,
+              backgroundColor: colors.blue,
+              tension: 0.4,
+              borderWidth: 3,
+            },
+            {
+              label: "Cabang B",
+              data: [38, 41, 55, 50],
+              borderColor: colors.orange,
+              backgroundColor: colors.orange,
+              tension: 0.4,
+              borderWidth: 3,
+            },
+          ],
+        },
+        options: gridOptions,
+      });
+
+      // 3. Stacked Column Chart
+      new Chart(document.getElementById("chart3"), {
+        type: "bar",
+        data: {
+          labels: ["Budi", "Ani", "Citra"],
+          datasets: [
+            {
+              label: "Produk Fisik",
+              data: [200, 150, 180],
+              backgroundColor: colors.purple,
+            },
+            {
+              label: "Layanan Jasa",
+              data: [50, 120, 30],
+              backgroundColor: colors.pink,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { stacked: true, grid: { color: colors.grid } },
+            y: { stacked: true, grid: { color: colors.grid } },
+          },
+        },
+      });
+
+      // 4. Scatter Plot
+      new Chart(document.getElementById("chart4"), {
+        type: "scatter",
+        data: {
+          datasets: [
+            {
+              label: "Siswa (Durasi vs Skor)",
+              data: [
+                { x: 2, y: 65 },
+                { x: 5, y: 80 },
+                { x: 7, y: 85 },
+                { x: 10, y: 98 },
+              ],
+              backgroundColor: colors.pink,
+              pointRadius: 8,
+              pointHoverRadius: 10,
+            },
+          ],
+        },
+        options: {
+          ...gridOptions,
+          scales: {
+            x: {
+              title: { display: true, text: "Durasi (Jam)", color: "#94a3b8" },
+              grid: { color: colors.grid },
+            },
+            y: {
+              title: { display: true, text: "Skor", color: "#94a3b8" },
+              grid: { color: colors.grid },
+            },
+          },
+        },
+      });
+
+      // 5. Donut Chart
+      new Chart(document.getElementById("chart5"), {
+        type: "doughnut",
+        data: {
+          labels: [
+            "Google Search",
+            "Social Media",
+            "Direct Link",
+            "Email Marketing",
+          ],
+          datasets: [
+            {
+              data: [45, 30, 15, 10],
+              backgroundColor: [
+                colors.orange,
+                colors.blue,
+                colors.teal,
+                colors.purple,
+              ],
+              borderWidth: 0,
+              hoverOffset: 10,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: "70%",
+          plugins: { legend: { position: "right" } },
+        },
+      });
+
+      // 6. Combo Chart
+      new Chart(document.getElementById("chart6"), {
+        type: "bar",
+        data: {
+          labels: ["Jan", "Feb", "Mar"],
+          datasets: [
+            {
+              type: "line",
+              label: "Profit Margin (%)",
+              data: [15, 18, 12],
+              borderColor: colors.yellow,
+              backgroundColor: colors.yellow,
+              tension: 0.4,
+              borderWidth: 3,
+              yAxisID: "y1",
+            },
+            {
+              type: "bar",
+              label: "Pendapatan (Juta)",
+              data: [100, 120, 110],
+              backgroundColor: "rgba(59, 130, 246, 0.4)",
+              borderColor: colors.blue,
+              borderWidth: 1,
+              borderRadius: 4,
+              yAxisID: "y",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: { grid: { color: colors.grid } },
+            y: {
+              type: "linear",
+              display: true,
+              position: "left",
+              grid: { color: colors.grid },
+            },
+            y1: {
+              type: "linear",
+              display: true,
+              position: "right",
+              grid: { drawOnChartArea: false },
+            },
+          },
+        },
+      });
+
+      // 7. Radar Chart
+      new Chart(document.getElementById("chart7"), {
+        type: "radar",
+        data: {
+          labels: ["Kecepatan", "Kekuatan", "Akurasi", "Stamina"],
+          datasets: [
+            {
+              label: "Pemain A",
+              data: [90, 75, 80, 85],
+              backgroundColor: "rgba(34, 197, 94, 0.2)",
+              borderColor: colors.green,
+              pointBackgroundColor: colors.green,
+            },
+            {
+              label: "Pemain B",
+              data: [70, 85, 90, 80],
+              backgroundColor: "rgba(59, 130, 246, 0.2)",
+              borderColor: colors.blue,
+              pointBackgroundColor: colors.blue,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            r: {
+              angleLines: { color: colors.grid },
+              grid: { color: colors.grid },
+              pointLabels: { color: "#94a3b8" },
+              ticks: { display: false },
+            },
+          },
+        },
+      });
+
+      // 8. Histogram (using Bar chart with 0 gap)
+      new Chart(document.getElementById("chart8"), {
+        type: "bar",
+        data: {
+          labels: ["15-24", "25-34", "35-44", "45-54"],
+          datasets: [
+            {
+              label: "Frekuensi Orang",
+              data: [45, 120, 85, 30],
+              backgroundColor: colors.purple,
+              categoryPercentage: 1.0,
+              barPercentage: 1.0,
+              borderColor: "#0f172a",
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: { ...gridOptions, plugins: { legend: { display: false } } },
+      });
+
+      // 9. Bubble Chart
+      new Chart(document.getElementById("chart9"), {
+        type: "bubble",
+        data: {
+          datasets: [
+            {
+              label: "Produk A",
+              data: [{ x: 50, y: 500, r: 15 }],
+              backgroundColor: colors.teal,
+            },
+            {
+              label: "Produk B",
+              data: [{ x: 150, y: 200, r: 45 }],
+              backgroundColor: colors.pink,
+            },
+            {
+              label: "Produk C",
+              data: [{ x: 75, y: 800, r: 10 }],
+              backgroundColor: colors.yellow,
+            },
+          ],
+        },
+        options: {
+          ...gridOptions,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Harga (Ribuan)",
+                color: "#94a3b8",
+              },
+              grid: { color: colors.grid },
+            },
+            y: {
+              title: { display: true, text: "Penjualan", color: "#94a3b8" },
+              grid: { color: colors.grid },
+            },
+          },
+        },
+      });
+
+      // 11. Geo Location Map Chart (Leaflet)
+      const map11 = L.map("map11", {
+        zoomControl: true,
+        scrollWheelZoom: false, // Mencegah scroll tidak sengaja
+      }).setView([-7.2, 109.5], 6); // Set awal fokus pada titik tengah pulau Jawa
+
+      // Dark theme map tiles dari CartoDB
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          attribution:
+            '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+          subdomains: "abcd",
+          maxZoom: 19,
+        },
+      ).addTo(map11);
+
+      // Data Titik Koordinat (Latitude, Longitude) Provinsi
+      const geoData = [
+        { name: "DKI Jakarta", lat: -6.2088, lng: 106.8456, val: 500 },
+        { name: "Jawa Barat", lat: -6.92, lng: 107.6098, val: 350 }, // Koordinat area Bandung
+        { name: "Jawa Tengah", lat: -7.1509, lng: 110.1403, val: 200 }, // Koordinat area Semarang
+        { name: "Jawa Timur", lat: -7.2504, lng: 112.7688, val: 320 }, // Koordinat area Surabaya
+      ];
+
+      geoData.forEach((item) => {
+        // Menggambar lingkaran (bubble) di atas peta
+        L.circleMarker([item.lat, item.lng], {
+          radius: item.val / 20, // Ukuran disesuaikan dengan besar nilai (Miliar)
+          fillColor: colors.sky,
+          color: colors.sky,
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.4,
+        })
+          .bindTooltip(
+            `<b>${item.name}</b><br/>Penjualan: ${item.val} Miliar`,
+            {
+              direction: "top",
+              offset: [0, -10],
+            },
+          )
+          .addTo(map11);
+      });
+
+      // Pastikan render awal peta tidak terpotong oleh layout flexbox Tailwind
+      setTimeout(() => {
+        map11.invalidateSize();
+      }, 500);
+
+      // 12. Candlestick Alternative (Floating Bar)
+      new Chart(document.getElementById("chart12"), {
+        type: "bar",
+        data: {
+          labels: ["27 Apr", "28 Apr", "29 Apr", "30 Apr"],
+          datasets: [
+            {
+              label: "Pergerakan Harga (Open - Close)",
+              // Data format: [Open, Close]
+              data: [
+                [1500, 1530], // Green (Up)
+                [1530, 1580], // Green (Up)
+                [1580, 1500], // Red (Down)
+                [1500, 1470], // Red (Down)
+              ],
+              backgroundColor: (ctx) => {
+                const raw = ctx.raw;
+                if (!raw) return colors.grid;
+                return raw[1] >= raw[0] ? colors.green : colors.red;
+              },
+              borderRadius: 4,
+              barPercentage: 0.5,
+            },
+          ],
+        },
+        options: {
+          ...gridOptions,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let open = context.raw[0];
+                  let close = context.raw[1];
+                  return `Open: ${open} | Close: ${close}`;
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
