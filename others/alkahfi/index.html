@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decoding Al-Kahf: Algoritma Ilahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Palette: Cybernetic Neon (Deep Space #0f172a, Panel #1e293b, Cyan #06b6d4, Orange #f97316, Purple #8b5cf6) -->
+    <!-- Plan: 1. Hero (Intro), 2. Cybernetics (KPIs & Donut), 3. Ring Composition (HTML Diagram), 4. Threat Profile (Radar Chart), 5. System Restore (Cards) -->
+    <!-- Visualizations: 1. Data Integrity -> Inform -> Donut Chart (Chart.js, NO SVG). 2. Ring Composition -> Organize -> HTML/CSS Flex Diagram (NO SVG/Mermaid). 3. Modern Threats -> Compare -> Radar Chart (Chart.js, NO SVG). -->
+    <!-- CONFIRMATION: NEITHER Mermaid JS NOR SVG were used anywhere in this output. -->
+
+    <nav class="sticky top-0 z-50 glass-card border-b border-cyan-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">📖</span>
+                    <span class="font-bold text-xl tracking-wider text-cyan-400">AL-KAHF<span class="text-white">_SYS</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#prolog" class="hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Prolog</a>
+                        <a href="#arsitektur" class="hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Arsitektur</a>
+                        <a href="#ancaman" class="hover:bg-slate-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Ancaman Modern</a>
+                        <a href="#antivirus" class="hover:bg-cyan-600 bg-cyan-700 text-white px-3 py-2 rounded-md text-sm font-medium shadow-lg shadow-cyan-500/20 transition-all">Sistem Restore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative overflow-hidden py-20 sm:py-32 bg-slate-900 border-b border-slate-800">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-sm font-medium mb-6">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                Sistem Informasi & Panduan Hidup Canggih
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">DECODING</span> AL-KAHF
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-slate-300">
+                Algoritma Ilahi & Arsitektur Informasi yang Melampaui Zaman. Mengubah paradigma memandang Al-Qur'an di era Post-Truth, AI, dan disrupsi digital.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <section id="prolog" class="scroll-mt-24">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 border-l-4 border-cyan-500 pl-4">01 // Prolog: Era Algoritma</h2>
+                <p class="text-slate-400 text-lg max-w-4xl">
+                    Setiap hari kita bergantung pada enkripsi <i>End-to-End</i>, <i>Blockchain</i>, dan arsitektur <i>Cloud</i>. Jika satu baris kode (0 dan 1) rusak, sistem <i>crash</i>. Bagaimana sebuah kitab dari 1400 tahun lalu menjaga integritas datanya tanpa terkorupsi? Jawabannya ada pada <strong>Arsitektur Informasinya</strong>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="glass-card rounded-2xl p-8 shadow-xl">
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 border border-slate-700 rounded-xl bg-slate-800/50">
+                            <div class="text-4xl mb-2">🛡️</div>
+                            <div class="text-3xl font-bold text-cyan-400">0%</div>
+                            <div class="text-sm text-slate-400 uppercase tracking-wider mt-1">Data Corruption</div>
+                        </div>
+                        <div class="text-center p-4 border border-slate-700 rounded-xl bg-slate-800/50">
+                            <div class="text-4xl mb-2">⏱️</div>
+                            <div class="text-3xl font-bold text-orange-400">>1400</div>
+                            <div class="text-sm text-slate-400 uppercase tracking-wider mt-1">Tahun Uptime</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        Al-Qur'an tidak hanya dijaga lewat hafalan (eksternal), tapi memiliki struktur matematis dan simetri internal yang bertindak layaknya <strong>sistem verifikasi alami</strong> (seperti <i>checksum</i>). Jika satu ayat diubah, simetri hancur dan langsung terdeteksi.
+                    </p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 shadow-xl flex flex-col items-center">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Distribusi Beban Sistem (4 Pintu Ujian)</h3>
+                    <div class="chart-container">
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="arsitektur" class="scroll-mt-24">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 border-l-4 border-purple-500 pl-4">02 // Arsitektur "Ring Composition"</h2>
+                <p class="text-slate-400 text-lg max-w-4xl">
+                    Surah Al-Kahf tidak ditulis secara linear, melainkan menggunakan desain arsitektur simetri (A - B - C - B' - A'). Metode penyusunan pesan ini memastikan inti (Core) dari materi terjaga sempurna di tengah, dienkripsi oleh lapisan-lapisan narasi di luarnya.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-2xl p-6 md:p-12 shadow-2xl overflow-hidden relative">
+                <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl">🔄</div>
+                
+                <div class="flex flex-col items-center gap-4 relative z-10 w-full max-w-4xl mx-auto">
+                    
+                    <div class="w-full border-2 border-cyan-500 rounded-2xl p-4 md:p-6 bg-cyan-900/10">
+                        <div class="text-center mb-4">
+                            <span class="bg-cyan-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lapisan Luar (A & A') - Fisik & Kekuasaan</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-2xl">👥</span>
+                                        <h4 class="font-bold text-cyan-300">Kisah 1: Ashabul Kahfi</h4>
+                                    </div>
+                                    <span class="text-xs bg-slate-700 text-cyan-400 px-2 py-1 rounded font-mono border border-slate-600">Ayat 9-26</span>
+                                </div>
+                                <p class="text-sm text-slate-400 mb-3">Pemuda tak berdaya bersembunyi demi iman. Mendapat perlindungan absolut dari penguasa dzalim.</p>
+                                <div class="border-l-2 border-cyan-500 pl-3 italic text-xs text-slate-300 bg-slate-900/50 p-2 rounded-r">
+                                    "Mereka adalah pemuda-pemuda yang beriman kepada Tuhan mereka, dan Kami tambahkan petunjuk kepada mereka." <br><span class="text-cyan-500/70 not-italic font-semibold text-[10px] mt-1 inline-block">(QS. 18:13)</span>
+                                </div>
+                            </div>
+                            <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-inner">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-2xl">👑</span>
+                                        <h4 class="font-bold text-cyan-300">Kisah 4: Zulkarnain</h4>
+                                    </div>
+                                    <span class="text-xs bg-slate-700 text-cyan-400 px-2 py-1 rounded font-mono border border-slate-600">Ayat 83-98</span>
+                                </div>
+                                <p class="text-sm text-slate-400 mb-3">Raja super power menggunakan kekuasaannya untuk melindungi rakyat dan menegakkan keadilan.</p>
+                                <div class="border-l-2 border-cyan-500 pl-3 italic text-xs text-slate-300 bg-slate-900/50 p-2 rounded-r">
+                                    "Dia (Zulkarnain) berkata: 'Apa yang telah dikuasakan oleh Tuhanku kepadaku terhadapnya adalah lebih baik...'" <br><span class="text-cyan-500/70 not-italic font-semibold text-[10px] mt-1 inline-block">(QS. 18:95)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full mt-4 border-2 border-purple-500 rounded-xl p-4 md:p-6 bg-purple-900/10 relative">
+                            <div class="text-center mb-4">
+                                <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lapisan Dalam (B & B') - Psikologis & Internal</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-2xl">💰</span>
+                                            <h4 class="font-bold text-purple-300">Kisah 2: Pemilik Kebun</h4>
+                                        </div>
+                                        <span class="text-xs bg-slate-700 text-purple-400 px-2 py-1 rounded font-mono border border-slate-600">Ayat 32-44</span>
+                                    </div>
+                                    <p class="text-sm text-slate-400 mb-3">Ujian harta & kesombongan materialisme. Melupakan peran Sang Pencipta.</p>
+                                    <div class="border-l-2 border-purple-500 pl-3 italic text-xs text-slate-300 bg-slate-900/50 p-2 rounded-r">
+                                        "Dan dia memasuki kebunnya sedang dia zalim terhadap dirinya sendiri; dia berkata: 'Aku kira kebun ini tidak akan binasa selama-lamanya.'" <br><span class="text-purple-500/70 not-italic font-semibold text-[10px] mt-1 inline-block">(QS. 18:35)</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-2xl">🧠</span>
+                                            <h4 class="font-bold text-purple-300">Kisah 3: Musa & Khidir</h4>
+                                        </div>
+                                        <span class="text-xs bg-slate-700 text-purple-400 px-2 py-1 rounded font-mono border border-slate-600">Ayat 60-82</span>
+                                    </div>
+                                    <p class="text-sm text-slate-400 mb-3">Ujian ilmu & ego intelektual. Belajar dimensi takdir yang melampaui logika manusia.</p>
+                                    <div class="border-l-2 border-purple-500 pl-3 italic text-xs text-slate-300 bg-slate-900/50 p-2 rounded-r">
+                                        "Dia (Khidir) menjawab: 'Sesungguhnya engkau tidak akan sanggup sabar bersamaku.'" <br><span class="text-purple-500/70 not-italic font-semibold text-[10px] mt-1 inline-block">(QS. 18:67)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex justify-center">
+                                <div class="bg-gradient-to-br from-orange-500 to-red-600 p-1 rounded-lg shadow-[0_0_30px_rgba(249,115,22,0.5)]">
+                                    <div class="bg-slate-900 p-6 rounded-md text-center max-w-sm">
+                                        <div class="text-3xl mb-2">⚠️</div>
+                                        <h4 class="font-bold text-orange-400 text-lg mb-1">TITIK TENGAH (CORE)</h4>
+                                        <div class="bg-orange-500/20 border border-orange-500 text-orange-400 text-[10px] font-bold px-3 py-1 rounded uppercase mb-3 inline-block font-mono">Ayat 50</div>
+                                        <p class="text-sm text-slate-300 mb-4">Peringatan tentang <strong>Iblis (Satan)</strong>. Malware utama yang meretas sistem manusia melalui 4 lapisan ujian di atas.</p>
+                                        <div class="border-t border-orange-500/30 pt-3 italic text-xs text-slate-400">
+                                            "...iblis; ia adalah golongan jin, maka ia mendurhakai perintah Tuhannya. Pantaskah kamu menjadikan dia dan keturunannya sebagai pemimpin selain Aku...?" <br><span class="text-orange-500/70 not-italic font-semibold text-[10px] mt-1 inline-block">(QS. 18:50)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ancaman" class="scroll-mt-24">
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 border-l-4 border-orange-500 pl-4">03 // Fitnah Akhir Zaman & Era Digital</h2>
+                <p class="text-slate-400 text-lg max-w-4xl">
+                    Membaca Al-Kahf memproteksi dari "Dajjal" (sistem kebohongan global). Mari kita petakan 4 ujian kuno ini ke dalam bentuk ancaman siber sosial (Malware) di era modern saat ini.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 glass-card rounded-2xl p-6 flex flex-col justify-center">
+                    <h3 class="text-xl font-semibold mb-6 text-center">Threat Profile Analysis</h3>
+                    <div class="chart-container h-[300px]">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-cyan-500 transition-colors">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-cyan-300 text-lg">Ujian Iman</h4>
+                            <span class="text-2xl">👥</span>
+                        </div>
+                        <div class="text-xs text-orange-400 font-bold mb-1 uppercase tracking-wide">Modern Malware:</div>
+                        <p class="text-white font-medium mb-2">Cancel Culture & Algoritma Mayoritas</p>
+                        <p class="text-sm text-slate-400">Algoritma sosmed memaksa tren. Berani beda prinsip berisiko di-cancel.</p>
+                        <div class="mt-3 pt-3 border-t border-slate-700">
+                            <span class="text-xs text-green-400 font-bold">Solusi:</span>
+                            <span class="text-sm text-slate-300"> "Log out" sejenak, cari "gua" modern (komunitas/majelis ilmu).</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-purple-500 transition-colors">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-purple-300 text-lg">Ujian Harta</h4>
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <div class="text-xs text-orange-400 font-bold mb-1 uppercase tracking-wide">Modern Malware:</div>
+                        <p class="text-white font-medium mb-2">Flexing & Hustle Culture</p>
+                        <p class="text-sm text-slate-400">Era influencer, FOMO, metrik sukses dari follower dan saldo bank.</p>
+                        <div class="mt-3 pt-3 border-t border-slate-700">
+                            <span class="text-xs text-green-400 font-bold">Solusi:</span>
+                            <span class="text-sm text-slate-300"> Sadar server dunia ini <i>volatile</i>, kekayaan bisa crash dalam semalam.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-blue-300 text-lg">Ujian Ilmu</h4>
+                            <span class="text-2xl">🧠</span>
+                        </div>
+                        <div class="text-xs text-orange-400 font-bold mb-1 uppercase tracking-wide">Modern Malware:</div>
+                        <p class="text-white font-medium mb-2">AI, Deepfake & Post-Truth</p>
+                        <p class="text-sm text-slate-400">Banyak "Data" berkat ChatGPT/Google, tapi kehilangan "Wisdom". Banjir hoaks.</p>
+                        <div class="mt-3 pt-3 border-t border-slate-700">
+                            <span class="text-xs text-green-400 font-bold">Solusi:</span>
+                            <span class="text-sm text-slate-300"> Kerendahan hati intelektual. Ada Big Data Ilahi di balik realitas.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700 hover:border-red-500 transition-colors">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-red-300 text-lg">Ujian Kekuasaan</h4>
+                            <span class="text-2xl">👑</span>
+                        </div>
+                        <div class="text-xs text-orange-400 font-bold mb-1 uppercase tracking-wide">Modern Malware:</div>
+                        <p class="text-white font-medium mb-2">Monopoli Tech Giant</p>
+                        <p class="text-sm text-slate-400">Siapa yang menguasai algoritma, menguasai dunia dan memonopoli data.</p>
+                        <div class="mt-3 pt-3 border-t border-slate-700">
+                            <span class="text-xs text-green-400 font-bold">Solusi:</span>
+                            <span class="text-sm text-slate-300"> Teknologi harus jadi tembok pelindung kaum lemah, bukan eksploitasi.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="antivirus" class="scroll-mt-24 mb-20">
+            <div class="glass-card rounded-3xl p-8 md:p-12 text-center border-t-4 border-cyan-500 relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-500 opacity-20 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-600 opacity-20 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <div class="inline-block p-4 bg-slate-800 rounded-full mb-6 border border-slate-700 shadow-lg">
+                        <span class="text-4xl">⚓</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Digital Anchor: System Restore</h2>
+                    <p class="text-slate-300 text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
+                        Di tengah lautan informasi yang menyesatkan (<i>noise</i>), Surah Al-Kahf berfungsi sebagai <strong>JANGKAR SPIRITUAL</strong>. Rutinitas Jumat bukan sekadar ritual, melainkan proses <strong>'System Update'</strong> mingguan agar mindset tidak terinfeksi malware kesesatan.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                        <div class="bg-slate-900/80 p-6 rounded-2xl border border-cyan-900 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-3xl mb-4">📥</div>
+                            <h3 class="text-xl font-bold text-cyan-400 mb-2">1. BACA</h3>
+                            <p class="text-sm text-slate-400">Jadikan rutinitas Jumat sebagai proses <i>downloading grace</i> (mengunduh rahmat) ke dalam sistem hati.</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-6 rounded-2xl border border-blue-900 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-3xl mb-4">💡</div>
+                            <h3 class="text-xl font-bold text-blue-400 mb-2">2. PAHAMI</h3>
+                            <p class="text-sm text-slate-400">Pahami <i>framework</i> arsitekturnya. Gunakan sebagai kacamata saat menghadapi error/masalah hidup.</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-6 rounded-2xl border border-purple-900 hover:-translate-y-2 transition-transform duration-300">
+                            <div class="text-3xl mb-4">🌐</div>
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">3. SEBARKAN</h3>
+                            <p class="text-sm text-slate-400">Jadilah node jaringan yang membawa kejernihan. Ilmu modern dan agama bertemu dalam kebenaran.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm">
+            <span class="font-bold text-slate-400">Workshop: Decoding Al-Kahf</span> &bull; Arsitektur Informasi yang Melampaui Zaman
+        </p>
+    </footer>
+
+    <script>
+        const wrapLabel = (label, limit = 16) => {
+            if (label.length <= limit) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            
+            words.forEach(word => {
+                if ((currentLine + word).length > limit && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine.trim().length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+
+        const globalTooltipConfig = {
+            tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                titleColor: '#38bdf8',
+                bodyColor: '#e2e8f0',
+                borderColor: '#334155',
+                borderWidth: 1,
+                padding: 12,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+
+        const donutLabelsRaw = [
+            "Ujian Iman (Ashabul Kahfi)", 
+            "Ujian Harta (Pemilik Kebun)", 
+            "Ujian Ilmu (Musa & Khidir)", 
+            "Ujian Kekuasaan (Zulkarnain)"
+        ];
+        const donutLabels = donutLabelsRaw.map(l => wrapLabel(l, 18));
+
+        const ctxDonut = document.getElementById('donutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: donutLabels,
+                datasets: [{
+                    data: [25, 25, 25, 25],
+                    backgroundColor: [
+                        'rgba(6, 182, 212, 0.8)',
+                        'rgba(168, 85, 247, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(249, 115, 22, 0.8)'
+                    ],
+                    borderColor: '#1e293b',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    ...globalTooltipConfig
+                }
+            }
+        });
+
+        const radarLabelsRaw = [
+            "Cancel Culture (Iman)", 
+            "Flexing/Hustle (Harta)", 
+            "Post-Truth/AI (Ilmu)", 
+            "Tech Monopoly (Kekuasaan)"
+        ];
+        const radarLabels = radarLabelsRaw.map(l => wrapLabel(l, 14));
+
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: radarLabels,
+                datasets: [{
+                    label: 'Intensitas Ancaman Digital',
+                    data: [85, 90, 95, 80],
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: 'rgba(249, 115, 22, 1)',
+                    pointBackgroundColor: 'rgba(249, 115, 22, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(249, 115, 22, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        pointLabels: {
+                            color: '#cbd5e1',
+                            font: { size: 11, weight: 'bold' }
+                        },
+                        ticks: {
+                            display: false,
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    ...globalTooltipConfig
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis Berpikir Kritis - Fullscreen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #020617; /* Slate 950 */
+            font-family: 'Inter', sans-serif;
+            color: #cbd5e1;
+            overflow-x: hidden;
+            overflow-y: auto; /* Mengizinkan scroll ke bawah */
+            min-height: 100vh;
+        }
+
+        /* Aesthetic Background Blobs - Fixed to background */
+        .bg-blobs {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-blobs::before,
+        .bg-blobs::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+        }
+        .bg-blobs::before {
+            background: #38bdf8;
+            height: 600px; width: 600px;
+            top: -150px; left: -150px;
+        }
+        .bg-blobs::after {
+            background: #818cf8;
+            height: 700px; width: 700px;
+            bottom: -250px; right: -150px;
+        }
+
+        /* 2. MAIN NAVIGATION (Fixed Top) */
+        .tabs-nav {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            display: flex;
+            height: 70px;
+            width: 100%;
+            position: fixed; /* Menempel di atas */
+            top: 0; left: 0;
+            z-index: 100;
+        }
+
+        .tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+
+        .tab:hover {
+            color: #e2e8f0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab.active {
+            color: #38bdf8;
+            border-bottom-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.08);
+        }
+
+        /* 3. SLIDES WRAPPER */
+        .slides-wrapper {
+            margin-top: 70px; /* Margin agar konten tidak tertutup navbar fixed */
+            width: 100%;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            display: none; /* Sembunyikan semua slide secara default */
+            padding: 80px 40px; /* Padding yang lebih lega untuk scrolling */
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-direction: column;
+            gap: 60px; /* Jarak antar section vertikal */
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .slide.active {
+            display: flex; /* Tampilkan slide yang aktif */
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 4. TYPOGRAPHY & ELEMENTS */
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #f8fafc;
+            margin: 0;
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 54px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .slide-title span {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-subtitle {
+            font-size: 20px;
+            color: #94a3b8;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        p { font-size: 17px; line-height: 1.8; margin-bottom: 15px; color: #cbd5e1; }
+        strong { color: #f8fafc; font-weight: 600; }
+
+        /* Content Boxes */
+        .content-box {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .content-box:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .box-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+            padding-bottom: 15px;
+        }
+
+        /* 5. GRID LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.styled-list li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        ul.styled-list li::before {
+            content: '\f058'; /* Check-circle solid */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #10b981;
+            font-size: 22px;
+        }
+
+        /* Fallacy Cards */
+        .fallacy-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fallacy-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+        }
+        .fallacy-card.red::before { background: #ef4444; }
+        .fallacy-card.blue::before { background: #38bdf8; }
+        .fallacy-card.purple::before { background: #a855f7; }
+        .fallacy-card.orange::before { background: #f97316; }
+        .fallacy-card.green::before { background: #10b981; }
+        .fallacy-card.yellow::before { background: #eab308; }
+
+        .f-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .fallacy-card.red .f-icon { color: #ef4444; }
+        .fallacy-card.blue .f-icon { color: #38bdf8; }
+        .fallacy-card.purple .f-icon { color: #a855f7; }
+
+        .f-title { font-size: 22px; font-weight: 700; color: #f8fafc; }
+        .f-desc { font-size: 16px; color: #94a3b8; line-height: 1.6; }
+        
+        .f-example {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            font-style: italic;
+            font-size: 15px;
+            color: #cbd5e1;
+            border-left: 3px solid rgba(255,255,255,0.2);
+            margin-top: auto; /* Push to bottom */
+        }
+        
+        .f-example strong { color: #f8fafc; font-style: normal; display: block; margin-bottom: 5px; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* Syllogism Builder */
+        .syllogism-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px dashed #475569;
+        }
+        .s-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .s-badge {
+            background: #1e293b;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #38bdf8;
+            min-width: 120px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .s-text { font-size: 18px; color: #e2e8f0; }
+        .s-divider { height: 2px; background: #334155; margin: 10px 0; width: 100%; position: relative; }
+        .s-divider::after { content: '\f063'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 50%; top: -10px; transform: translateX(-50%); color: #38bdf8; background: #0f172a; padding: 0 10px; }
+
+        /* Charts */
+        .chart-container { display: flex; flex-direction: column; gap: 30px; }
+        .bar { display: flex; align-items: center; gap: 20px; }
+        .bar-label { flex: 0 0 200px; font-weight: 600; font-size: 18px; color: #f8fafc; }
+        .bar-track { background-color: #1e293b; border-radius: 12px; flex-grow: 1; height: 40px; overflow: hidden; }
+        .bar-fill {
+            align-items: center; border-radius: 12px; display: flex; font-weight: 600; font-size: 15px;
+            height: 100%; justify-content: flex-start; padding-left: 20px; color: #fff;
+            transform-origin: left; transform: scaleX(0); white-space: nowrap;
+        }
+        .bar-desc { flex: 0 0 350px; font-size: 15px; color: #94a3b8; line-height: 1.5; }
+
+        /* Highlight box for special examples */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(15, 23, 42, 0));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .tabs-nav { overflow-x: auto; white-space: nowrap; justify-content: flex-start; }
+            .tab { padding: 0 25px; flex: 0 0 auto; }
+            .bar { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .bar-label, .bar-desc { flex: auto; }
+            .bar-track { width: 100%; }
+            .slide-title { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blobs"></div>
+
+    <nav class="tabs-nav" id="mainNav">
+        <div class="tab active" data-target="slide1"><i class="fa-solid fa-home"></i> Beranda</div>
+        <div class="tab" data-target="slide2">Bab 1: Filsafat</div>
+        <div class="tab" data-target="slide3">Bab 2: Logika</div>
+        <div class="tab" data-target="slide4">Bab 3: Kritis</div>
+        <div class="tab" data-target="slide5">Bab 4: Fallacy</div>
+        <div class="tab" data-target="slide6">Bab 5: Bias</div>
+        <div class="tab" data-target="slide7">Bab 6: Data</div>
+    </nav>
+
+    <div class="slides-wrapper">
+        
+        <div class="slide active" id="slide1">
+            <div class="slide-header" style="margin-top: 50px; margin-bottom: 60px;">
+                <h1 class="slide-title" style="font-size: 72px;">Panduan Komprehensif<br><span>Berpikir Kritis</span></h1>
+                <p class="slide-subtitle" style="font-size: 22px;">Dari memahami fondasi filsafat hingga penguasaan logika praktis bebas sesat pikir (Logical Fallacy).</p>
+            </div>
+
+            <div class="content-box">
+                <div class="box-title"><i class="fa-solid fa-list-ul"></i> Daftar Isi Modul Pembelajaran</div>
+                <div class="grid-2">
+                    <ul class="styled-list">
+                        <li><strong>Bab 1: Fondasi Pemikiran (Pengantar Filsafat)</strong><br><span style="color:#94a3b8; font-size:15px;">Mengenal arena pikiran: Apa itu filsafat, Epistemologi, dan bedanya dengan sains.</span></li>
+                        <li><strong>Bab 2: Anatomi Pikiran (Pengantar Logika)</strong><br><span style="color:#94a3b8; font-size:15px;">Membangun argumen: Memahami premis, kesimpulan, deduktif, dan induktif.</span></li>
+                        <li><strong>Bab 3: Sistem Pertahanan Otak (Critical Thinking)</strong><br><span style="color:#94a3b8; font-size:15px;">Mempraktekkan filter informasi: Seni membongkar dan membangun argumen.</span></li>
+                    </ul>
+                    <ul class="styled-list">
+                        <li><strong>Bab 4: Ranjau Pikiran 1 (Logical Fallacy)</strong><br><span style="color:#94a3b8; font-size:15px;">Mendeteksi kecacatan argumen: Ad Hominem, Straw Man, Slippery Slope, dll.</span></li>
+                        <li><strong>Bab 5: Ranjau Pikiran 2 (Cognitive Bias)</strong><br><span style="color:#94a3b8; font-size:15px;">Mengenali cacat bawaan otak: Confirmation bias, Dunning-Kruger, Halo effect.</span></li>
+                        <li><strong>Bab 6: Aplikasi Praktis (Data & Keputusan)</strong><br><span style="color:#94a3b8; font-size:15px;">Membaca pola data secara logis: Korelasi vs Kausalitas, Texas Sharpshooter.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 1: Fondasi Pemikiran<br><span>Pengantar Filsafat</span></h2>
+                <p class="slide-subtitle">Sebelum kita belajar "cara berpikir yang benar", kita harus paham dulu arena tempat pikiran itu bermain. Arena itu bernama Filsafat.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="content-box">
+                    <div class="box-title" style="color:#a855f7;"><i class="fa-solid fa-question-circle"></i> Apa itu Filsafat?</div>
+                    <p>Secara sederhana, filsafat adalah aktivitas mempertanyakan segalanya hingga ke akar-akarnya (radikal). Jika sains mencari tahu "bagaimana" sesuatu terjadi, filsafat bertanya "mengapa" hal itu ada, dan "apa" makna keberadaannya.</p>
+                </div>
+                <div class="content-box">
+                    <div class="box-title" style="color:#38bdf8;"><i class="fa-solid fa-tree"></i> Ilmu Filsafat (Pohon)</div>
+                    <p>Cabang utama yang mengkaji pertanyaan fundamental manusia:</p>
+                    <ul style="padding-left: 20px; color: #cbd5e1; line-height: 1.6;">
+                        <li><strong>Epistemologi:</strong> Ilmu Pengetahuan.</li>
+                        <li><strong>Ontologi:</strong> Ilmu Keberadaan.</li>
+                        <li><strong>Aksiologi:</strong> Ilmu Nilai (Etika & Estetika).</li>
+                        <li><strong>Logika:</strong> Ilmu Penalaran.</li>
+                    </ul>
+                </div>
+                <div class="content-box">
+                    <div class="box-title" style="color:#10b981;"><i class="fa-solid fa-microscope"></i> Filsafat Ilmu (Cabang)</div>
+                    <p>Berbeda dengan Ilmu Filsafat, ini adalah "cabang yang mengkaji pohon lain". Analisis kritis terhadap metode, asumsi, dan batasan dari sains (ilmu pengetahuan). Contoh: Membedakan Astronomi (sains) dan Astrologi (pseudosains).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 2: Anatomi Pikiran<br><span>Pengantar Logika</span></h2>
+                <p class="slide-subtitle">Dari semua cabang ilmu filsafat, Logika adalah "sistem operasi"-nya. Tanpa logika yang valid, diskusi hanya menjadi adu emosi.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="content-box">
+                    <div class="box-title"><i class="fa-solid fa-cubes"></i> Batu Bata Argumen</div>
+                    <p>Argumen bukanlah perdebatan marah-marah. Dalam logika, sebuah argumen adalah bangunan yang terdiri dari bata penopang (Premis) dan atap (Kesimpulan).</p>
+                    
+                    <div class="syllogism-box">
+                        <div class="s-row">
+                            <div class="s-badge">Premis 1 (Mayor)</div>
+                            <div class="s-text">Semua mamalia berkembang biak dengan melahirkan.</div>
+                        </div>
+                        <div class="s-row">
+                            <div class="s-badge">Premis 2 (Minor)</div>
+                            <div class="s-text">Kucing adalah hewan mamalia.</div>
+                        </div>
+                        <div class="s-divider"></div>
+                        <div class="s-row">
+                            <div class="s-badge" style="background:#022c22; color:#34d399; border-color:#059669;">Kesimpulan</div>
+                            <div class="s-text" style="color:#34d399; font-weight:600;">Oleh karena itu, kucing berkembang biak dengan melahirkan.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title"><i class="fa-solid fa-code-branch"></i> Deduktif vs Induktif</div>
+                    <ul class="styled-list">
+                        <li>
+                            <strong>Logika Deduktif (Umum ke Khusus)</strong>
+                            <p style="font-size: 15px; margin-top: 5px;">Seperti contoh kucing di sebelah kiri. Jika premisnya benar dan strukturnya valid, maka kesimpulannya <strong>pasti benar</strong> (mutlak).</p>
+                        </li>
+                        <li>
+                            <strong>Logika Induktif (Khusus ke Umum)</strong>
+                            <p style="font-size: 15px; margin-top: 5px;">Melihat pola berulang untuk menebak hasil. Kesimpulan berupa <strong>probabilitas</strong> (kemungkinan terbesar). Contoh: Senin hujan, Selasa hujan, maka kemungkinan Rabu akan hujan.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 3: Sistem Pertahanan Otak<br><span>Critical Thinking</span></h2>
+                <p class="slide-subtitle">Sebuah jeda antara stimulus (informasi masuk) dan respons (tindakan kita). Kemampuan mengevaluasi informasi secara objektif dan sistematis.</p>
+            </div>
+
+            <div class="content-box" style="text-align: center; padding: 60px 40px;">
+                <h3 style="font-size: 32px; color: #f8fafc; margin-bottom: 20px;">Seni <span style="color:#38bdf8;">Reverse Engineering</span> Pikiran</h3>
+                <p style="max-width: 800px; margin: 0 auto 40px auto; font-size: 18px;">Pemikir kritis bukanlah orang yang skeptis buta atau hobi nyinyir. Mereka adalah orang yang mampu melakukan dua hal ini dengan sangat baik terhadap setiap klaim yang diterima:</p>
+                
+                <div class="grid-2">
+                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; padding: 40px; text-align: left;">
+                        <i class="fa-solid fa-hammer" style="font-size: 40px; color: #ef4444; margin-bottom: 20px;"></i>
+                        <h4 style="font-size: 24px; margin-bottom: 15px; color: #fca5a5;">1. Membongkar Argumen</h4>
+                        <p>Saat mendengar klaim provokatif, bedah strukturnya:</p>
+                        <ul style="color: #cbd5e1; padding-left: 20px; margin-top: 10px; line-height: 1.8;">
+                            <li>Apa premis utamanya?</li>
+                            <li>Dari mana data dan buktinya?</li>
+                            <li>Apakah ada sesat pikir (fallacy) di dalamnya?</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 20px; padding: 40px; text-align: left;">
+                        <i class="fa-solid fa-trowel-bricks" style="font-size: 40px; color: #10b981; margin-bottom: 20px;"></i>
+                        <h4 style="font-size: 24px; margin-bottom: 15px; color: #6ee7b7;">2. Membangun Argumen</h4>
+                        <p>Saat membuat klaim atau opini, pastikan fondasinya kuat:</p>
+                        <ul style="color: #cbd5e1; padding-left: 20px; margin-top: 10px; line-height: 1.8;">
+                            <li>Berbasis fakta (Evidence-based).</li>
+                            <li>Bukan sekadar opini emosional semata.</li>
+                            <li>Terbuka jika terbukti salah oleh data baru.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 4: Ranjau Pikiran<br><span>Logical Fallacy (Sesat Pikir)</span></h2>
+                <p class="slide-subtitle">Kesalahan dalam penalaran. Menyimpulkan hal yang salah dari premis yang benar, atau menggunakan alasan yang sama sekali tidak nyambung.</p>
+            </div>
+
+            <!-- Kategori 1 -->
+            <div style="margin-bottom: 20px;">
+                <h3 style="font-size: 28px; color: #ef4444; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;"><i class="fa-solid fa-link-slash"></i> Kategori 1: Sesat Pikir Relevansi</h3>
+                <p style="color: #94a3b8;">Kecacatan terjadi karena premis yang digunakan tidak ada hubungannya sama sekali dengan kesimpulan. Alih-alih membuktikan secara logis, argumen ini menyerang identitas atau emosi.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="fallacy-card red">
+                    <i class="fa-solid fa-user-xmark f-icon"></i>
+                    <div class="f-title">Ad Hominem</div>
+                    <div class="f-desc">Menolak argumen dengan menyerang karakter, identitas, atau gender lawan, bukan menyerang substansi diskusinya.</div>
+                    <div class="highlight-box" style="margin-top: auto; border-radius: 10px; padding: 15px;">
+                        <strong style="color: #fca5a5; font-size: 13px; text-transform: uppercase;">Contoh Populer:</strong>
+                        <p style="margin: 5px 0 0 0; font-style: italic; color: #fff;">"Perempuan kan selalu benar."</p>
+                        <p style="font-size: 13px; color: #94a3b8; margin: 10px 0 0 0; line-height: 1.4;">(Sarkasme yang menghentikan argumen dengan menyerang gender lawan, seolah perdebatan buntu murni karena sifat bawaan gender tersebut, bukan karena kurangnya fakta).</p>
+                    </div>
+                </div>
+                <div class="fallacy-card red">
+                    <i class="fa-solid fa-fish f-icon"></i>
+                    <div class="f-title">Red Herring</div>
+                    <div class="f-desc">Sengaja memasukkan isu baru yang tidak nyambung untuk mengalihkan perhatian dari topik utama yang sedang terpojok.</div>
+                    <div class="f-example">
+                        <strong>Konteks: Protes polusi pabrik</strong>
+                        "Pabrik ini kan rajin bagi sembako tiap bulan, masa kalian tega protes soal asap?"
+                    </div>
+                </div>
+                <div class="fallacy-card red">
+                    <i class="fa-solid fa-users f-icon"></i>
+                    <div class="f-title">Bandwagon</div>
+                    <div class="f-desc">Menganggap sesuatu itu benar, baik, atau valid hanya karena mayoritas orang melakukannya (Ikut-ikutan).</div>
+                    <div class="f-example">
+                        <strong>Konteks: Lalu Lintas</strong>
+                        "Nggak apa-apa kita lawan arah, toh motor di depan kita banyak yang lawan arah juga."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kategori 2 -->
+            <div style="margin-top: 40px; margin-bottom: 20px;">
+                <h3 style="font-size: 28px; color: #a855f7; margin-bottom: 10px; display: flex; align-items: center; gap: 15px;"><i class="fa-solid fa-ghost"></i> Kategori 2: Sesat Pikir Asumsi</h3>
+                <p style="color: #94a3b8;">Argumen dibangun di atas pondasi awal yang sudah salah, melebih-lebihkan keadaan, atau memutarbalikkan fakta lawan.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="fallacy-card purple">
+                    <i class="fa-solid fa-scarecrow f-icon"></i> <!-- Using alternative icon as scarecrow isn't free, fallback to user-astronaut or ghost -->
+                    <div class="f-title">Straw Man</div>
+                    <div class="f-desc">Sengaja memelintir/melebih-lebihkan argumen lawan agar mudah diserang, padahal lawan tidak bermaksud demikian.</div>
+                    <div class="f-example">
+                        <strong>Konteks: Dana Sekolah</strong>
+                        A: "Beli buku perpus yuk."<br>B: "Gila! Kamu mau biarin maling masuk gara-gara dana pagar dialihkan?!"
+                    </div>
+                </div>
+                <div class="fallacy-card purple">
+                    <i class="fa-solid fa-circle-half-stroke f-icon"></i>
+                    <div class="f-title">False Dilemma</div>
+                    <div class="f-desc">Memberikan ilusi seolah-olah hanya ada 2 opsi ekstrem, dan mengabaikan fakta bahwa ada opsi/jalan tengah lain.</div>
+                    <div class="f-example">
+                        <strong>Konteks: Pembangunan</strong>
+                        "Kamu protes tebang hutan? Oh, jadi kamu mau negara kita miskin terus?"
+                    </div>
+                </div>
+                <div class="fallacy-card purple">
+                    <i class="fa-solid fa-arrow-trend-down f-icon"></i>
+                    <div class="f-title">Slippery Slope</div>
+                    <div class="f-desc">Mengklaim satu tindakan kecil akan memicu efek domino berantai menuju kiamat/bencana tanpa bukti yang jelas.</div>
+                    <div class="f-example">
+                        <strong>Konteks: Aturan Gadget Anak</strong>
+                        "Dikasih main HP 1 jam, besok dia kecanduan, bolos sekolah, narkoba, hancur masa depannya!"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide6">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 5: Cacat Bawaan Hardware<br><span>Cognitive Bias (Bias Kognitif)</span></h2>
+                <p class="slide-subtitle">Jika Fallacy adalah kecacatan struktur argumen, Bias adalah kecacatan cara kerja otak (jalan pintas mental/Heuristics) untuk hemat energi yang sering mengecoh objektivitas kita.</p>
+            </div>
+
+            <div class="content-box">
+                <div class="chart-container">
+                    <div class="bar">
+                        <div class="bar-label">Confirmation Bias</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 95%; background: linear-gradient(90deg, #3b82f6, #60a5fa);" data-width="95%">Percaya mutlak 95%</div>
+                        </div>
+                        <div class="bar-desc">Hanya mencari, mempercayai, dan membagikan informasi yang <strong>mendukung opini awal kita</strong>, serta menolak keras fakta yang membantahnya. (Akar penyebaran Hoax).</div>
+                    </div>
+                    
+                    <div class="bar">
+                        <div class="bar-label">Sunk-Cost Fallacy</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 80%; background: linear-gradient(90deg, #8b5cf6, #a78bfa);" data-width="80%">Terlanjur investasi 80%</div>
+                        </div>
+                        <div class="bar-desc">Terus melanjutkan proyek/hubungan yang jelas merugikan hanya karena merasa <strong>sudah terlanjur menghabiskan waktu, uang, atau perasaan</strong> di dalamnya.</div>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-label">Halo Effect</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 65%; background: linear-gradient(90deg, #10b981, #34d399);" data-width="65%">Tampilan baik 65%</div>
+                        </div>
+                        <div class="bar-desc">Menilai positif seluruh karakter seseorang berdasarkan <strong>satu aspek fisik saja</strong>. "Orangnya cantik/ganteng, pasti dia pintar dan jujur."</div>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-label">Dunning-Kruger</div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: 50%; background: linear-gradient(90deg, #f59e0b, #fbbf24);" data-width="50%">Ilusi Ahli 50%</div>
+                        </div>
+                        <div class="bar-desc">Orang dengan pemahaman paling minim (amatir) justru <strong>merasa dirinya paling pintar</strong>. Sementara ahli sejati (karena tahu betapa luasnya ilmu) justru merasa dirinya masih kurang.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" id="slide7">
+            <div class="slide-header">
+                <h2 class="slide-title">Bab 6: Aplikasi Praktis<br><span>Logika dalam Data & Keputusan</span></h2>
+                <p class="slide-subtitle">Menerapkan filter berpikir kritis dalam kehidupan modern yang dibanjiri statistik dan grafik manipulatif.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="content-box">
+                    <div class="box-title" style="color:#ef4444;"><i class="fa-solid fa-chart-line"></i> Jebakan Data: Korelasi ≠ Kausalitas</div>
+                    <p style="margin-bottom: 20px;">Hanya karena Dua hal terjadi bersamaan (Korelasi), BUKAN berarti yang satu menyebabkan yang lain (Kausalitas).</p>
+                    
+                    <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; border-left: 4px solid #ef4444;">
+                        <strong style="color: #fca5a5;">Contoh Kasus Absurd:</strong>
+                        <p style="margin: 10px 0 0 0; font-size: 16px;">Saat musim panas, tingkat <strong>penjualan es krim meningkat</strong> drastis. Di saat yang sama, angka <strong>orang tenggelam di pantai juga meningkat</strong>.</p>
+                        <hr style="border-color: #334155; margin: 15px 0;">
+                        <p style="margin: 0; font-size: 16px;"><strong>Kesimpulan Salah:</strong> Makan es krim menyebabkan tenggelam.<br>
+                        <strong>Fakta Nyata:</strong> Keduanya meningkat akibat "Faktor Ketiga", yaitu suhu cuaca yang panas.</p>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="box-title" style="color:#10b981;"><i class="fa-solid fa-bullseye"></i> Filter Keputusan Anda</div>
+                    <ul class="styled-list">
+                        <li>
+                            <strong>Cek Bias Pribadi</strong>
+                            <p style="font-size: 15px; margin-top: 5px;">Sebelum bertindak, tanyakan: "Apakah saya sedang mencari kebenaran objektif, atau sekadar membenarkan opini saya sendiri (Confirmation Bias)?"</p>
+                        </li>
+                        <li>
+                            <strong>Pisahkan Opini dan Fakta</strong>
+                            <p style="font-size: 15px; margin-top: 5px;">Mulai abaikan gaya bicara dan fokus pada substansi. Argumen yang teriak-teriak tidak lebih benar dari yang tenang.</p>
+                        </li>
+                        <li>
+                            <strong>Berani Berubah</strong>
+                            <p style="font-size: 15px; margin-top: 5px;">Tanda utama pemikir kritis adalah berani mengatakan "Saya Salah" jika disajikan data baru yang valid.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab');
+            const slides = document.querySelectorAll('.slide');
+
+            // Fungsi animasi bar chart
+            const animateBars = (slide) => {
+                const bars = slide.querySelectorAll('.bar-fill');
+                bars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.transform = 'scaleX(0)'; // Reset
+                    bar.style.transition = 'none';
+                    
+                    // Force reflow
+                    void bar.offsetWidth;
+                    
+                    bar.style.transition = 'transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s';
+                    bar.style.transform = 'scaleX(1)';
+                });
+            };
+
+            // Trigger animasi awal untuk slide 1 (jika ada)
+            // Animasikan bar saat inisialisasi jika slide 6 adalah default (saat ini default slide 1)
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 1. Ganti state tab aktif
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // 2. Ganti slide yang tampil
+                    const targetId = tab.getAttribute('data-target');
+                    slides.forEach(s => {
+                        s.classList.remove('active');
+                        // Reset animasi class
+                        s.style.animation = 'none';
+                    });
+                    
+                    const targetSlide = document.getElementById(targetId);
+                    if(targetSlide) {
+                        targetSlide.classList.add('active');
+                        // Re-trigger CSS animation
+                        void targetSlide.offsetWidth;
+                        targetSlide.style.animation = 'fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                        
+                        // Scroll halaman ke atas (ke bawah navbar)
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+
+                        // 3. Trigger animasi khusus untuk chart di Bab 5
+                        if(targetId === 'slide6') {
+                            animateBars(targetSlide);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
