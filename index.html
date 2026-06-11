@@ -6,6 +6,7 @@
     <title>Pustaka Grafis - Jaz Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="modules.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -37,6 +38,101 @@
         border-color: white !important;
         font-weight: bold;
       }
+
+      /* Custom Select Dropdown Styling */
+      .custom-select-container {
+        position: relative;
+        z-index: 50;
+      }
+
+      .custom-select-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.75rem 1.25rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 1.25rem;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .custom-select-trigger:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .custom-select-trigger:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .custom-select-options {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        pointer-events: none;
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 60;
+        overflow: hidden;
+        padding: 0.375rem;
+      }
+
+      .custom-select-options.open {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+
+      .custom-select-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.625rem 1rem;
+        color: #94a3b8;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border-radius: 0.875rem;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .custom-select-option:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+      }
+
+      .custom-select-option.selected {
+        background: rgba(59, 130, 246, 0.15);
+        color: #60a5fa;
+        font-weight: 600;
+      }
+
+      .chevron-icon {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .chevron-rotate {
+        transform: rotate(180deg);
+        color: #fff;
+      }
     </style>
   </head>
   <body class="text-slate-800">
@@ -54,44 +150,23 @@
         </p>
 
         <!-- Search & Filter Area -->
-        <div class="mt-10 max-w-3xl mx-auto">
-          <!-- Filter Badges -->
-          <div
-            class="flex flex-wrap justify-center gap-3"
-            id="filter-container"
-          >
-            <button
-              onclick="setCategory('all')"
-              id="btn-all"
-              class="badge-active border border-slate-500 px-6 py-2 rounded-full text-sm transition-all hover:bg-white/10"
-            >
-              Semua Modul
+        <div class="mt-10 max-w-3xl mx-auto flex flex-col md:flex-row gap-4 items-stretch md:items-center">
+          <!-- Custom Select Filter -->
+          <div class="custom-select-container w-full md:w-72 shrink-0">
+            <button id="category-select-trigger" class="custom-select-trigger focus:outline-none">
+              <span id="selected-category-text" class="flex items-center gap-2">
+                <i data-lucide="grid" class="w-4 h-4"></i>
+                Semua Kategori
+              </span>
+              <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon" id="select-chevron"></i>
             </button>
-            <button
-              onclick="setCategory('informatika')"
-              id="btn-informatika"
-              class="border border-blue-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-blue-500/20"
-            >
-              Informatika
-            </button>
-            <button
-              onclick="setCategory('syariah')"
-              id="btn-syariah"
-              class="border border-emerald-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-emerald-500/20"
-            >
-              Tsaqofah
-            </button>
-            <button
-              onclick="setCategory('others')"
-              id="btn-others"
-              class="border border-gray-400/30 px-6 py-2 rounded-full text-sm transition-all hover:bg-gray-500/20"
-            >
-              Others
-            </button>
+            <div id="category-select-options" class="custom-select-options">
+              <!-- Dynamic options will render here -->
+            </div>
           </div>
 
           <!-- Search Box -->
-          <div class="relative mt-6">
+          <div class="relative flex-grow w-full">
             <span
               class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400"
             >
@@ -115,626 +190,7 @@
         id="module-container"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        <!-- --- INFORMATIKA --- -->
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/literasi-digital/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="shield-check"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Literasi Digital
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Panduan bijak menggunakan internet dan menjaga keamanan data
-              pribadi kita.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/evolusi-informasi/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="history"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Evolusi Informasi
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Melihat sejarah perkembangan informasi dari zaman dulu hingga
-              serba digital sekarang.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/prompt-mastery/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="message-square-code"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Prompt Mastery
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Cara jago berkomunikasi dengan AI agar mendapatkan hasil yang
-              paling akurat.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/cyber-security/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="shield"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Cyber Security
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Dasar-dasar keamanan siber untuk melindungi diri dari ancaman
-              digital.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/cryptography-blockchain/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="lock"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Cryptography & Blockchain
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Memahami cara kerja enkripsi dan teknologi blockchain yang
-              mendasari banyak inovasi digital saat ini.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/ai-learning/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="brain-circuit"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              AI Learning
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Mengenal dasar kecerdasan buatan dan bagaimana mesin belajar dari
-              data.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/code-freedom/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="code-2"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Code Freedom
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Memahami konsep merdeka dalam berkarya lewat pemrograman sumber
-              terbuka (Open Source).
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/data-visualization/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="bar-chart-3"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Data Visualization
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Eksplorasi interaktif berbagai tipe chart berdasarkan jenis data
-              dan tujuannya.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="informatika">
-          <a
-            href="informatika/editing-toolkit/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="video"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-blue-500 uppercase tracking-wider"
-              >Informatika</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Editing Toolkit
-            </h3>
-            <p class="text-blue-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Alat bantu kreatif untuk mengolah video dan audio menjadi karya
-              yang menarik.
-            </p>
-          </a>
-        </div>
-
-        <!-- --- SYARIAH --- -->
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/syariah/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="library"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-rose-500 uppercase tracking-wider"
-              >Syariah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Ensiklopedi Syariah
-            </h3>
-            <p class="text-rose-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Pusat istilah dan pengetahuan dasar tentang hukum-hukum Islam
-              secara umum.
-            </p>
-          </a>
-        </div>
-
-        <!-- --- MUAMALAH --- -->
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/prinsip-keuangan/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="landmark"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Prinsip Keuangan Islam
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Dasar-dasar mengelola uang secara halal dan berkah dalam pandangan
-              Islam.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/jual-beli/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="shopping-cart"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Jual Beli
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Aturan dasar dalam berdagang agar transaksi sah dan saling
-              menguntungkan.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/akad-akad/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="scroll"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Akad-Akad Muamalah
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Mengenal berbagai jenis perjanjian dalam kerjasama ekonomi islami.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/barang-ribawi/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="package-search"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Barang Ribawi
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Daftar barang-barang yang memiliki aturan khusus dalam
-              pertukarannya agar terhindar dari riba.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/jenis-riba/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="alert-triangle"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Jenis-Jenis Riba
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Waspada terhadap macam-macam riba dalam transaksi sehari-hari agar
-              harta tetap bersih.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="muamalah/munakahat/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="heart-handshake"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-emerald-500 uppercase tracking-wider"
-              >Muamalah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Munakahat
-            </h3>
-            <p class="text-emerald-600 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Ilmu tentang membangun keluarga yang sakinah dan penuh tanggung
-              jawab sosial.
-            </p>
-          </a>
-        </div>
-
-        <!-- --- TSAQOFAH --- -->
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/alkahfi/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="library"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-orange-500 uppercase tracking-wider"
-              >Tsaqofah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Decoding Al-Kahfi
-            </h3>
-            <p class="text-orange-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Algoritma Ilahi & Arsitektur Informasi di era Post-Truth, AI, dan
-              disrupsi digital.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/thariqul-iman/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="target"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-orange-500 uppercase tracking-wider"
-              >Tsaqofah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Thariqul Iman
-            </h3>
-            <p class="text-orange-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Rangkuman Bab 1 Nizham al-Islam Karya Syaikh Taqiyuddin An-Nabhani
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/qadha-qadar/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="zap"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-orange-500 uppercase tracking-wider"
-              >Tsaqofah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Qadha & Qadar
-            </h3>
-            <p class="text-orange-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Rangkuman Bab 2 Nizham al-Islam Karya Syaikh Taqiyuddin An-Nabhani
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/qiyadah-fikriyah/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="brain-circuit"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-orange-500 uppercase tracking-wider"
-              >Tsaqofah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Qiyadah Fikriyah
-            </h3>
-            <p class="text-orange-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Rangkuman Bab 3 Nizham al-Islam Karya Syaikh Taqiyuddin An-Nabhani
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="syariah">
-          <a
-            href="tsaqofah/pengemban-dakwah/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="message-circle-plus"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-orange-500 uppercase tracking-wider"
-              >Tsaqofah</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Pengemban Dakwah
-            </h3>
-            <p class="text-orange-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Rangkuman Bab 4 Nizham al-Islam Karya Syaikh Taqiyuddin An-Nabhani
-            </p>
-          </a>
-        </div>
-
-        <!-- --- OTHERS --- -->
-        <div class="module-card" data-category="others">
-          <a
-            href="others/mindset-keputusan/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="brain"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-indigo-500 uppercase tracking-wider"
-              >Self Development</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Mindset & Keputusan
-            </h3>
-            <p class="text-indigo-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Panduan berpikir jernih dan mengambil keputusan berdasarkan
-              preferensi dan referensi.
-            </p>
-          </a>
-        </div>
-
-        <div class="module-card" data-category="others">
-          <a
-            href="others/filsafat-logika/index.html"
-            class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full"
-          >
-            <div
-              class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-4"
-            >
-              <i data-lucide="lightbulb"></i>
-            </div>
-            <span
-              class="text-xs font-bold text-indigo-500 uppercase tracking-wider"
-              >Self Development</span
-            >
-            <h3 class="text-xl font-bold text-slate-800 module-title">
-              Filsafat & Logika
-            </h3>
-            <p class="text-indigo-500 text-xs mb-2 font-medium module-author">
-              By. Abu Kafa
-            </p>
-            <p class="text-sm text-slate-600">
-              Belajar filsafat dan logika untuk berpikir kritis dan mengambil
-              keputusan berdasarkan preferensi dan referensi.
-            </p>
-          </a>
-        </div>
+        <!-- Dynamic Cards -->
       </div>
 
       <!-- Empty State -->
@@ -760,51 +216,196 @@
     </footer>
 
     <script>
-      // Inisialisasi Ikon
-      lucide.createIcons();
+      // Helper function to dynamically extract unique categories
+      function getCategories(modules) {
+        const uniqueCategories = new Set(modules.map(m => m.category));
+        return ["all", ...Array.from(uniqueCategories)];
+      }
+
+      // Helper function to capitalize category names
+      function formatCategoryLabel(catKey) {
+        if (catKey === "all") return "Semua Kategori";
+        return catKey.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+      }
+
+      // Helper to get category icons with a fallback
+      function getCategoryIcon(catKey) {
+        const icons = {
+          "all": "grid",
+          "informatika": "cpu",
+          "muamalah": "landmark",
+          "tsaqofah": "book-open",
+          "self-development": "sparkles"
+        };
+        return icons[catKey] || "folder";
+      }
 
       // State Filter Global
-      let currentCategory = "all";
+      let activeCategory = "all";
+      let allModules = [];
 
-      // Fungsi untuk ganti kategori
-      function setCategory(category) {
-        currentCategory = category;
+      // Render Modules Dynamic Cards
+      function renderCards(cards) {
+        const container = document.getElementById("module-container");
+        container.innerHTML = "";
 
-        // Update tampilan tombol kategori
-        const buttons = document.querySelectorAll("#filter-container button");
-        buttons.forEach((btn) => {
-          btn.classList.remove("badge-active");
-          if (btn.id === `btn-${category}`) {
-            btn.classList.add("badge-active");
+        cards.forEach((card) => {
+          const cardEl = document.createElement("div");
+          cardEl.className = "module-card";
+          cardEl.setAttribute("data-category", card.category);
+
+          // Color themes mapping
+          let colorBg = "bg-blue-100";
+          let colorText = "text-blue-600";
+          let colorBadge = "text-blue-500";
+          let borderHover = "hover:border-blue-500";
+
+          if (card.color === "emerald") {
+            colorBg = "bg-emerald-100";
+            colorText = "text-emerald-600";
+            colorBadge = "text-emerald-500";
+            borderHover = "hover:border-emerald-500";
+          } else if (card.color === "rose") {
+            colorBg = "bg-rose-100";
+            colorText = "text-rose-600";
+            colorBadge = "text-rose-500";
+            borderHover = "hover:border-rose-500";
+          } else if (card.color === "orange") {
+            colorBg = "bg-orange-100";
+            colorText = "text-orange-600";
+            colorBadge = "text-orange-500";
+            borderHover = "hover:border-orange-500";
+          } else if (card.color === "indigo") {
+            colorBg = "bg-indigo-100";
+            colorText = "text-indigo-600";
+            colorBadge = "text-indigo-500";
+            borderHover = "hover:border-indigo-500";
+          }
+
+          const catLabel = formatCategoryLabel(card.category);
+
+          cardEl.innerHTML = `
+            <a
+              href="${card.path}"
+              class="bg-white p-6 rounded-2xl border border-slate-200 card-hover transition-all duration-300 block h-full border-t-4 ${borderHover}"
+            >
+              <div
+                class="w-12 h-12 ${colorBg} ${colorText} rounded-xl flex items-center justify-center mb-4"
+              >
+                <i data-lucide="${card.icon}"></i>
+              </div>
+              <span
+                class="text-xs font-bold ${colorBadge} uppercase tracking-wider"
+                >${catLabel}</span
+              >
+              <h3 class="text-xl font-bold text-slate-800 module-title mt-1">
+                ${card.title}
+              </h3>
+              <p class="text-blue-500 text-xs mb-2 font-medium module-author opacity-0 h-0 w-0 overflow-hidden">
+                ${card.author}
+              </p>
+              <p class="text-slate-500 text-xs mb-2 font-medium">
+                ${card.author}
+              </p>
+              <p class="text-sm text-slate-650">
+                ${card.description}
+              </p>
+            </a>
+          `;
+          container.appendChild(cardEl);
+        });
+
+        // Initialize dynamic Lucide icons
+        lucide.createIcons();
+      }
+
+      // Populate custom select options
+      function populateDropdown(modules) {
+        const optionsContainer = document.getElementById("category-select-options");
+        optionsContainer.innerHTML = "";
+
+        // Get all unique categories dynamically
+        const categories = getCategories(modules);
+
+        // Count elements per category
+        const counts = {};
+        categories.forEach(cat => {
+          counts[cat] = 0;
+        });
+        counts["all"] = modules.length;
+
+        modules.forEach(m => {
+          if (counts[m.category] !== undefined) {
+            counts[m.category]++;
           }
         });
 
+        categories.forEach(catKey => {
+          const label = formatCategoryLabel(catKey);
+          const iconName = getCategoryIcon(catKey);
+          const count = counts[catKey];
+
+          const optionEl = document.createElement("div");
+          optionEl.className = `custom-select-option ${catKey === activeCategory ? 'selected' : ''}`;
+          optionEl.setAttribute("data-value", catKey);
+          optionEl.innerHTML = `
+            <span class="flex items-center gap-2">
+              <i data-lucide="${iconName}" class="w-4 h-4"></i>
+              ${label}
+            </span>
+            <span class="text-xs px-2 py-0.5 bg-slate-800 text-slate-400 rounded-full font-semibold">${count}</span>
+          `;
+
+          optionEl.addEventListener("click", () => {
+            setCategory(catKey);
+          });
+
+          optionsContainer.appendChild(optionEl);
+        });
+
+        lucide.createIcons();
+      }
+
+      // Set category state and update UI
+      function setCategory(category) {
+        activeCategory = category;
+
+        // Update trigger text & icon
+        const triggerText = document.getElementById("selected-category-text");
+        const label = formatCategoryLabel(category);
+        const iconName = getCategoryIcon(category);
+        triggerText.innerHTML = `
+          <i data-lucide="${iconName}" class="w-4 h-4"></i>
+          ${label}
+        `;
+
+        // Update options selection
+        const options = document.querySelectorAll(".custom-select-option");
+        options.forEach(opt => {
+          if (opt.getAttribute("data-value") === category) {
+            opt.classList.add("selected");
+          } else {
+            opt.classList.remove("selected");
+          }
+        });
+
+        closeDropdown();
         runFilter();
       }
 
-      // Fungsi Filter Gabungan (Search + Category)
+      // Filter logic (combined select + search)
       function runFilter() {
-        const searchText = document
-          .getElementById("search-input")
-          .value.toLowerCase();
+        const searchText = document.getElementById("search-input").value.toLowerCase();
         const cards = document.querySelectorAll(".module-card");
         let visibleCount = 0;
 
         cards.forEach((card) => {
-          const title = card
-            .querySelector(".module-title")
-            .innerText.toLowerCase();
-          const author = card
-            .querySelector(".module-author")
-            .innerText.toLowerCase();
+          const title = card.querySelector(".module-title").innerText.toLowerCase();
+          const author = card.querySelector(".module-author").innerText.toLowerCase();
           const category = card.getAttribute("data-category");
 
-          // Logika: Kategori harus cocok (atau 'all')
-          // DAN (judul harus mengandung teks cari ATAU author mengandung teks cari)
-          const categoryMatch =
-            currentCategory === "all" || category === currentCategory;
-          const searchMatch =
-            title.includes(searchText) || author.includes(searchText);
+          const categoryMatch = activeCategory === "all" || category === activeCategory;
+          const searchMatch = title.includes(searchText) || author.includes(searchText);
 
           if (categoryMatch && searchMatch) {
             card.classList.remove("hidden-card");
@@ -814,7 +415,6 @@
           }
         });
 
-        // Tampilkan pesan jika kosong
         const emptyState = document.getElementById("empty-state");
         if (visibleCount === 0) {
           emptyState.classList.remove("hidden");
@@ -822,6 +422,50 @@
           emptyState.classList.add("hidden");
         }
       }
+
+      // Dropdown toggle controls
+      const selectTrigger = document.getElementById("category-select-trigger");
+      const selectOptions = document.getElementById("category-select-options");
+      const selectChevron = document.getElementById("select-chevron");
+
+      selectTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = selectOptions.classList.contains("open");
+        if (isOpen) {
+          closeDropdown();
+        } else {
+          openDropdown();
+        }
+      });
+
+      function openDropdown() {
+        selectOptions.classList.add("open");
+        selectChevron.classList.add("chevron-rotate");
+      }
+
+      function closeDropdown() {
+        selectOptions.classList.remove("open");
+        selectChevron.classList.remove("chevron-rotate");
+      }
+
+      document.addEventListener("click", () => {
+        closeDropdown();
+      });
+
+      // Load dynamic modules from offline modules.js
+      function init() {
+        if (typeof modulesData !== "undefined") {
+          allModules = modulesData;
+          console.log("Loaded data from modules.js");
+        } else {
+          console.error("No module data available in modules.js!");
+        }
+
+        renderCards(allModules);
+        populateDropdown(allModules);
+      }
+
+      window.addEventListener("DOMContentLoaded", init);
     </script>
   </body>
 </html>
