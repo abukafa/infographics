@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qadha & Qadar - Nizham al-Islam (Bab 2)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              emerald: {
+                50: "#f0fdf4",
+                100: "#dcfce7",
+                200: "#bbf7d0",
+                800: "#065f46",
+                900: "#064e3b",
+                950: "#022c22",
+              },
+              amber: {
+                500: "#f59e0b",
+                600: "#d97706",
+              },
+            },
+            fontFamily: {
+              serif: ["Georgia", "ui-serif", "serif"],
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap");
+      .font-arabic {
+        font-family: "Amiri", serif;
+      }
+      .font-sans-custom {
+        font-family: "Inter", sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #047857;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #065f46;
+      }
+        /* Watermark style for the big number */
+        .header-number-bg {
+            position: absolute;
+            right: 25%; 
+            top: 45%;
+            transform: translateY(-50%);
+            font-size: 22rem;
+            line-height: 1;
+            font-weight: 800;
+            color: rgba(245, 158, 11, 0.1); /* Amber with very low opacity */
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Georgia', serif;
+        }
+        @media (max-width: 768px) {
+            .header-number-bg { font-size: 12rem; right: -5%; }
+        }
+    </style>
+  </head>
+  <body
+    class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white"
+  >
+    <!-- Top Premium Banner -->
+    <header
+      class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-12 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"
+      ></div>
+
+      <div class="header-number-bg">2</div>
+
+      <div class="max-w-6xl mx-auto text-center relative z-10">
+        <span
+          class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30"
+          >Infografis Kitab Nizham al-Islam</span
+        >
+        <h1
+          class="text-3xl md:text-5xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200"
+        >
+          QADHA & QADAR
+        </h1>
+        <p
+          class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1"
+        >
+          القضاء والقدر • Keputusan & Ketetapan Allah
+        </p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav
+      class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200"
+    >
+      <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+        <div
+          class="flex space-x-1 py-3 justify-start md:justify-center min-w-max"
+        >
+          <!-- Tab Button 1 -->
+          <button
+            onclick="switchTab(1)"
+            id="tab-btn-1"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold"
+              >1</span
+            >
+            Dilema Pemikiran (3 Mazhab)
+          </button>
+          <!-- Tab Button 2 -->
+          <button
+            onclick="switchTab(2)"
+            id="tab-btn-2"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >2</span
+            >
+            Peta Kejadian Hidup
+          </button>
+          <!-- Tab Button 3 -->
+          <button
+            onclick="switchTab(3)"
+            id="tab-btn-3"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >3</span
+            >
+            Definisi Qadlo & Qodar
+          </button>
+          <!-- Tab Button 4 -->
+          <button
+            onclick="switchTab(4)"
+            id="tab-btn-4"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >4</span
+            >
+            Potensi Naluri (Gharizah)
+          </button>
+          <!-- Tab Button 5 -->
+          <button
+            onclick="switchTab(5)"
+            id="tab-btn-5"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >5</span
+            >
+            Ilmu & Iradah Allah
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <!-- ==================== TAB 1: DILEMA PEMIKIRAN (3 MAZHAB) ==================== -->
+      <section
+        id="tab-content-1"
+        class="tab-pane block space-y-8 animate-fade-in"
+      >
+        <!-- Central Question -->
+        <div
+          class="bg-amber-50 border-2 border-amber-200 rounded-3xl p-6 md:p-8 text-center max-w-4xl mx-auto shadow-sm"
+        >
+          <span
+            class="text-amber-600 font-bold text-xs uppercase tracking-widest block mb-2"
+            >Pertanyaan Mendasar Filsafat Islam</span
+          >
+          <h2
+            class="text-2xl md:text-3xl font-serif font-bold text-emerald-950 leading-relaxed"
+          >
+            "Apakah manusia dipaksa melakukan sesuatu atau diberi kebebasan
+            memilih perbuatannya?"
+          </h2>
+          <div class="w-16 h-1 bg-amber-500 mx-auto my-4 rounded-full"></div>
+          <p class="text-sm text-slate-600 max-w-2xl mx-auto">
+            Pertanyaan ini telah memicu perdebatan panjang di kalangan para
+            pemikir teologis Islam (Mutakallimin) dan melahirkan berbagai faksi
+            pemikiran yang ekstrem maupun moderat.
+          </p>
+        </div>
+
+        <!-- The Three Schools of Thought -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Mu'tazilah -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+          >
+            <div>
+              <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <h3 class="text-lg font-serif font-bold text-red-800">
+                  MU'TAZILAH
+                </h3>
+                <span
+                  class="bg-red-50 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase"
+                  >Kebebasan Mutlak</span
+                >
+              </div>
+              <p class="text-sm font-semibold text-slate-800 mb-2">
+                Manusia Sendiri yang Menciptakan Perbuatannya
+              </p>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Mazhab ini berpandangan bahwa manusia memiliki kehendak bebas
+                penuh (*free will*). Manusia adalah pencipta mutlak dari seluruh
+                amalnya sendiri secara mandiri tanpa adanya campur tangan
+                paksaan takdir dari Allah.
+              </p>
+            </div>
+            <div
+              class="mt-6 p-3 bg-red-50 text-red-900 rounded-xl text-center text-xs font-bold"
+            >
+              ❌ Manusia Tidak Dipaksa
+            </div>
+          </div>
+
+          <!-- Jabariyah -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+          >
+            <div>
+              <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <h3 class="text-lg font-serif font-bold text-red-800">
+                  JABARIYAH
+                </h3>
+                <span
+                  class="bg-red-50 text-red-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase"
+                  >Fatalisme Mutlak</span
+                >
+              </div>
+              <p class="text-sm font-semibold text-slate-800 mb-2">
+                Allah Ciptakan Hamba Beserta Perbuatannya
+              </p>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Mazhab ini berpandangan sebaliknya (*determinisme*). Manusia
+                tidak memiliki kehendak sama sekali, bagaikan bulu yang ditiup
+                angin. Seluruh perbuatan manusia diciptakan dan dipaksakan
+                secara langsung oleh Allah SWT.
+              </p>
+            </div>
+            <div
+              class="mt-6 p-3 bg-red-50 text-red-900 rounded-xl text-center text-xs font-bold"
+            >
+              ❌ Manusia Dipaksa (Fatalistik)
+            </div>
+          </div>
+
+          <!-- Ahlus Sunnah -->
+          <div
+            class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 shadow-md flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="flex items-center justify-between border-b border-emerald-200 pb-3 mb-4"
+              >
+                <h3 class="text-lg font-serif font-bold text-emerald-900">
+                  AHLUS SUNNAH
+                </h3>
+                <span
+                  class="bg-emerald-800 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase"
+                  >Sintesis Penengah</span
+                >
+              </div>
+              <p class="text-sm font-semibold text-emerald-950 mb-2">
+                Manusia Memiliki Kasb al-Ikhtiyari
+              </p>
+              <p
+                class="text-xs text-emerald-800/90 leading-relaxed font-arabic text-[14px]"
+              >
+                كسب الاختياري
+              </p>
+              <p class="text-xs text-slate-600 leading-relaxed mt-2">
+                Mazhab ini mengambil jalan tengah. Manusia memiliki daya usaha
+                pilihan (*kasb*) dalam perbuatannya yang disandingkan dengan
+                kehendak penciptaan Allah.
+              </p>
+            </div>
+            <div
+              class="mt-6 p-3 bg-emerald-850 text-emerald-950 rounded-xl text-center text-xs font-bold border border-emerald-200"
+            >
+              ✔ Memiliki Pilihan & Tanggung Jawab
+            </div>
+          </div>
+        </div>
+
+        <!-- Crucial Correction Banner -->
+        <div
+          class="bg-red-50 border border-red-200 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6"
+        >
+          <div class="bg-red-600 text-white rounded-full p-4 shrink-0 text-2xl">
+            ⚠️
+          </div>
+          <div>
+            <h3 class="text-lg font-serif font-bold text-red-950 mb-1">
+              DUDUK PERKARA YANG BENAR: Bukan Tentang Perbuatan Manusia!
+            </h3>
+            <p class="text-xs md:text-sm text-red-900/90 leading-relaxed">
+              Syaikh Taqiyuddin An-Nabhani meluruskan bahwa pangkal kekeliruan
+              pembahasan teologi klasik mengenai Qadha dan Qadar adalah karena
+              mereka
+              <strong
+                >mencampuradukkan perbuatan manusia dengan takdir Allah</strong
+              >. Padahal, Qadha dan Qadar membahas tentang
+              <strong>kejadian yang menimpa manusia</strong> (di luar
+              kontrolnya) serta <strong>khasiat/karakteristik</strong> ciptaan,
+              bukan tentang perbuatan sadar manusia yang dapat diikhtiarkan.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: PETA KEJADIAN HIDUP (MENGUASAI VS DIKUASAI) ==================== -->
+      <section
+        id="tab-content-2"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div class="max-w-3xl mx-auto text-center mb-6">
+          <span
+            class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+            >Metodologi Pemisahan Kejadian</span
+          >
+          <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">
+            Kejadian Dalam Hidup Manusia
+          </h3>
+          <p class="text-sm text-slate-500 mt-2">
+            Seluruh kejadian di dunia ini secara tegas terbagi menjadi dua ranah
+            utama berdasarkan kendali manusia:
+          </p>
+        </div>
+
+        <!-- Flowchart interactive visual -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch relative"
+        >
+          <!-- Left Branch: Area Menguasai Manusia (Dipaksa) -->
+          <div
+            class="bg-emerald-900 text-white rounded-3xl p-6 md:p-8 flex flex-col justify-between border-b-8 border-amber-500 shadow-md"
+          >
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class="bg-amber-500 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                  >RANAH 1: MENYIKSA & MENGUASAI MANUSIA</span
+                >
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-amber-300 mb-2">
+                Area Dipaksa (Beyond Control)
+              </h3>
+              <p class="text-xs text-emerald-200 mb-6 leading-relaxed">
+                Kejadian di mana manusia tidak memiliki pilihan dan mutlak
+                tunduk di bawah kendali hukum penciptaan Allah (*Nizhamul
+                Wujud*).
+              </p>
+
+              <!-- Sub-branches -->
+              <div class="space-y-4">
+                <!-- Sub 1 -->
+                <div
+                  class="bg-emerald-950/60 p-4 rounded-xl border border-emerald-800"
+                >
+                  <h4
+                    class="font-bold text-xs text-amber-400 uppercase tracking-widest mb-1"
+                  >
+                    A. Kejadian yang Menimpa Dirinya
+                  </h4>
+                  <p class="text-xs text-emerald-100">
+                    Bukan merupakan pilihan bebas dari manusia. Mutlak di luar
+                    kendali fisiknya.
+                  </p>
+                  <span
+                    class="inline-block mt-2 text-[10px] bg-emerald-800 text-emerald-200 px-2 py-0.5 rounded"
+                    >Sunnatullah / Nizhamul Wujud</span
+                  >
+                  <ul
+                    class="list-disc list-inside text-[11px] text-emerald-200/80 mt-2 space-y-1"
+                  >
+                    <li>Postur tubuh (tinggi/pendek)</li>
+                    <li>Bentuk kelopak mata</li>
+                    <li>Warna kulit asal melahirkan</li>
+                    <li>Kematian jasmaniah</li>
+                  </ul>
+                </div>
+
+                <!-- Sub 2 -->
+                <div
+                  class="bg-emerald-950/60 p-4 rounded-xl border border-emerald-800"
+                >
+                  <h4
+                    class="font-bold text-xs text-amber-400 uppercase tracking-widest mb-1"
+                  >
+                    B. Kejadian yang Berasal dari Dirinya
+                  </h4>
+                  <p class="text-xs text-emerald-100">
+                    Tindakan atau insiden refleksif tanpa adanya kesengajaan
+                    (*tidak terduga*).
+                  </p>
+                  <span
+                    class="inline-block mt-2 text-[10px] bg-red-800 text-red-200 px-2 py-0.5 rounded"
+                    >Tanpa Sengaja</span
+                  >
+                  <ul
+                    class="list-disc list-inside text-[11px] text-emerald-200/80 mt-2 space-y-1"
+                  >
+                    <li>Seseorang jatuh terpeleset menimpa orang lain</li>
+                    <li>Kecelakaan lalu lintas murni</li>
+                    <li>Peluru nyasar dalam latihan tentara</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-emerald-800/80 text-center">
+              <span
+                class="text-[10px] text-amber-400 uppercase font-bold tracking-widest"
+                >KESIMPULAN LOGIS</span
+              >
+              <div
+                class="bg-white text-emerald-950 font-serif font-bold text-lg p-3 rounded-xl mt-2 shadow-sm"
+              >
+                Keputusan ALLAH ➡️ QADLO
+              </div>
+              <p class="text-[10px] text-emerald-200/80 mt-2">
+                *Catatan: Manusia tidak dimintai pertanggungjawaban (tidak ada
+                dosa/pahala) pada ranah ini.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Branch: Area Dikuasai Manusia (Bebas Memilih) -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-sm"
+          >
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                  >RANAH 2: DIKUASAI MANUSIA</span
+                >
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-emerald-950 mb-2">
+                Area Bebas Memilih (Within Control)
+              </h3>
+              <p class="text-xs text-slate-500 mb-6 leading-relaxed">
+                Area perbuatan sadar yang dilakukan manusia atas kehendak bebas,
+                kesadaran penuh, dan kecerdasannya sendiri.
+              </p>
+
+              <!-- Details of right branch -->
+              <div class="space-y-4">
+                <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                  <h4
+                    class="font-bold text-xs text-emerald-900 uppercase tracking-widest mb-1"
+                  >
+                    Karakteristik Utama Perbuatan
+                  </h4>
+                  <ul class="space-y-2 mt-2 text-xs text-slate-600">
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-600">✔</span>
+                      <span
+                        >Berada dalam kesadaran & kehendak penuh manusia.</span
+                      >
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-600">✔</span>
+                      <span
+                        >Terjadi atas pilihan sadar, pertimbangan rasional, dan
+                        kesengajaan.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                  <h4
+                    class="font-bold text-xs text-emerald-900 uppercase tracking-widest mb-1"
+                  >
+                    Potensi Hasil Pilihan
+                  </h4>
+                  <div class="grid grid-cols-2 gap-3 mt-2">
+                    <div
+                      class="bg-emerald-50 p-2.5 rounded border border-emerald-150 text-center"
+                    >
+                      <span class="text-xs font-bold text-emerald-900"
+                        >BAIK (Sesuai Syariat)</span
+                      >
+                      <p class="text-[10px] text-emerald-700 mt-1">
+                        Diberi ganjaran pahala
+                      </p>
+                    </div>
+                    <div
+                      class="bg-red-50 p-2.5 rounded border border-red-150 text-center"
+                    >
+                      <span class="text-xs font-bold text-red-900"
+                        >BURUK (Melanggar Syariat)</span
+                      >
+                      <p class="text-[10px] text-red-700 mt-1">
+                        Dikenai dosa & sanksi
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-stone-100 text-center">
+              <span
+                class="text-[10px] text-emerald-800 uppercase font-bold tracking-widest"
+                >KESIMPULAN LOGIS</span
+              >
+              <div
+                class="bg-emerald-900 text-white font-serif font-bold text-lg p-3 rounded-xl mt-2 shadow-md"
+              >
+                KEPUTUSAN MANUSIA
+              </div>
+              <p class="text-[10px] text-slate-450 mt-2 italic">
+                *Catatan: Area pertanggungjawaban akhirat (Hisab, Surga, Neraka)
+                mutlak berlaku di sini.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 3: DEFINISI QADLO & QODAR ==================== -->
+      <section
+        id="tab-content-3"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Definition Card Qadlo -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <span
+                  class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+                  >Bagian 1: Qadlo (القضاء)</span
+                >
+                <span
+                  class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded"
+                  >Keputusan Allah</span
+                >
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-emerald-950 mb-3">
+                Qadlo: Kejadian & Peristiwa
+              </h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Qadlo adalah ketetapan Allah berupa peristiwa atau kejadian
+                nyata yang dipaksakan terjadi menimpa manusia tanpa bisa
+                dielakkan atau dipilih oleh manusia tersebut. Hal ini sepenuhnya
+                merupakan ketetapan iradah-Nya yang agung.
+              </p>
+            </div>
+            <div
+              class="mt-6 p-4 bg-emerald-50 rounded-xl border border-emerald-100"
+            >
+              <span class="text-[10px] text-emerald-800 font-bold block mb-1"
+                >Contoh Nyata Qadlo:</span
+              >
+              <p class="text-xs text-slate-600">
+                Terjadinya gempa bumi, waktu kematian seseorang, ataupun jenis
+                ras kelahiran manusia.
+              </p>
+            </div>
+          </div>
+
+          <!-- Definition Card Qodar -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between border-b pb-3 mb-4">
+                <span
+                  class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+                  >Bagian 2: Qodar (القدر)</span
+                >
+                <span
+                  class="bg-emerald-800 text-white text-[10px] font-bold px-2 py-0.5 rounded"
+                  >Ketetapan Karakter</span
+                >
+              </div>
+              <h3 class="text-2xl font-serif font-bold text-emerald-950 mb-3">
+                Qodar: Khasiat & Sifat Bawaan
+              </h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Qodar bukanlah takdir paksaan atas amal manusia, melainkan
+                <strong>ketetapan potensi (khasiat)</strong> serta sifat bawaan
+                yang telah Allah letakkan pada setiap benda, makhluk hidup,
+                maupun potensi naluri manusia sesuai aturan sunnatullah
+                (*Nizhamul Wujud*).
+              </p>
+            </div>
+            <div
+              class="mt-6 p-4 bg-emerald-50 rounded-xl border border-emerald-100"
+            >
+              <span class="text-[10px] text-emerald-800 font-bold block mb-1"
+                >Contoh Nyata Qodar:</span
+              >
+              <p class="text-xs text-slate-600">
+                Karakteristik panas membakar pada api, ketajaman baja pisau,
+                serta insting lapar-haus dalam metabolisme mahluk hidup.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khasiat Benda Table (Interactive) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <h3 class="text-xl font-serif font-bold text-emerald-950 mb-2">
+            Tabel Khasiat (Karakteristik Alami) Benda
+          </h3>
+          <p class="text-xs text-slate-500 mb-6">
+            Contoh sifat/khasiat baku yang diletakkan Allah pada ciptaan-Nya
+            sebagai bagian dari Qodar:
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr
+                  class="bg-emerald-900 text-white text-xs font-semibold uppercase"
+                >
+                  <th class="p-3 rounded-l-lg">Benda / Ciptaan</th>
+                  <th class="p-3 rounded-r-lg">
+                    Khasiat (Sifat & Ciri Khas Alami)
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-stone-150 text-xs">
+                <tr class="hover:bg-stone-50">
+                  <td class="p-3 font-bold text-emerald-950">Obat</td>
+                  <td class="p-3 text-slate-600">
+                    Memiliki senyawa kimiawi alami untuk menyembuhkan (atas izin
+                    Allah).
+                  </td>
+                </tr>
+                <tr class="hover:bg-stone-50">
+                  <td class="p-3 font-bold text-emerald-950">Pisau</td>
+                  <td class="p-3 text-slate-600">
+                    Memiliki ketajaman dan struktur logam yang berfungsi untuk
+                    memotong objek.
+                  </td>
+                </tr>
+                <tr class="hover:bg-stone-50">
+                  <td class="p-3 font-bold text-emerald-950">Api</td>
+                  <td class="p-3 text-slate-600">
+                    Memiliki energi termal tinggi yang melahirkan khasiat
+                    membakar benda lain.
+                  </td>
+                </tr>
+                <tr class="hover:bg-stone-50">
+                  <td class="p-3 font-bold text-emerald-950">Air</td>
+                  <td class="p-3 text-slate-600">
+                    Memiliki khasiat untuk membasahi, membersihkan kotoran, dan
+                    mengalir ke tempat rendah.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 4: POTENSI NALURI (GHARIZAH) ==================== -->
+      <section
+        id="tab-content-4"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div
+          class="bg-gradient-to-br from-emerald-950 to-emerald-900 text-white rounded-3xl p-6 md:p-8 text-center shadow-lg border-b-4 border-amber-500"
+        >
+          <span
+            class="text-amber-400 font-bold text-xs tracking-widest uppercase block mb-3"
+            >Potensi Fitrah Manusia</span
+          >
+          <h3 class="text-2xl md:text-3xl font-serif font-bold text-amber-100">
+            Naluri Manusia (غريزة) & Potensi Syariat
+          </h3>
+          <p
+            class="text-xs md:text-sm text-emerald-200 mt-2 max-w-2xl mx-auto leading-relaxed"
+          >
+            Allah membekali manusia dengan potensi hidup dasar berupa dorongan
+            instingtif (Gharizah) yang memiliki khasiat tertentu. Manusia bebas
+            menggunakan akalnya untuk memilih menyalurkan naluri ini sesuai
+            dengan aturan Allah (Baik) atau menyimpang (Buruk).
+          </p>
+        </div>
+
+        <!-- Three Gharizah Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Gharizah al-Baqa -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-emerald-300 transition-all"
+          >
+            <span class="text-amber-600 font-arabic text-lg font-bold"
+              >غريزة البقاء</span
+            >
+            <h4 class="font-serif font-bold text-emerald-950 mt-1 mb-3">
+              Gharizah al-Baqa'
+              <span class="text-xs text-slate-400">(Bertahan Hidup)</span>
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Naluri asali yang mendorong pertahanan hidup, mempertahankan diri
+              dari bahaya fisik, sosial, dan ekonomi.
+            </p>
+            <div
+              class="bg-stone-50 p-3 rounded-lg border text-[11px] text-slate-500"
+            >
+              <strong>Manifestasi Khasiat:</strong> Rasa takut terhadap ancaman,
+              kesenangan menumpuk harta, ambisi kedudukan, status sosial, lapar,
+              haus.
+            </div>
+          </div>
+
+          <!-- Gharizah an-Nau' -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-emerald-300 transition-all"
+          >
+            <span class="text-amber-600 font-arabic text-lg font-bold"
+              >غريزة النوع</span
+            >
+            <h4 class="font-serif font-bold text-emerald-950 mt-1 mb-3">
+              Gharizah an-Nau'
+              <span class="text-xs text-slate-400"
+                >(Kelestarian & Keturunan)</span
+              >
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Naluri asali untuk memelihara dan melestarikan kelangsungan jenis
+              mahluk hidup/keturunan.
+            </p>
+            <div
+              class="bg-stone-50 p-3 rounded-lg border text-[11px] text-slate-500"
+            >
+              <strong>Manifestasi Khasiat:</strong> Rasa suka mendalam kepada
+              lawan jenis, insting melindungi anak, kebutuhan jasmani seksual
+              biologis.
+            </div>
+          </div>
+
+          <!-- Gharizah ad-Dayn -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-emerald-300 transition-all"
+          >
+            <span class="text-amber-600 font-arabic text-lg font-bold"
+              >غريزة التدين</span
+            >
+            <h4 class="font-serif font-bold text-emerald-950 mt-1 mb-3">
+              Gharizah ad-Dayn
+              <span class="text-xs text-slate-400"
+                >(Beragama / Eksistensial)</span
+              >
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+              Naluri pensucian terhadap eksistensi yang lebih agung di luar
+              kemampuan dirinya (Al-Khaliq).
+            </p>
+            <div
+              class="bg-stone-50 p-3 rounded-lg border text-[11px] text-slate-500"
+            >
+              <strong>Manifestasi Khasiat:</strong> Kebutuhan melaksanakan
+              ritual ibadah, kerinduan mendekatkan diri kepada Pencipta,
+              pensucian asma-Nya.
+            </div>
+          </div>
+        </div>
+
+        <!-- Potensi Qabiliyah (Baik vs Buruk) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <h3
+            class="text-xl font-serif font-bold text-emerald-950 text-center mb-6"
+          >
+            Peta Potensi (Qabiliyah) Perbuatan Manusia
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <!-- Left: Flow Diagram -->
+            <div
+              class="bg-stone-50 p-6 rounded-2xl border border-stone-250 flex flex-col justify-center min-h-[220px]"
+            >
+              <div class="text-center font-bold text-slate-800 text-sm mb-4">
+                POTENSI PILIHAN MANUSIA (Qabiliyah)
+              </div>
+              <div class="flex items-center justify-between gap-4 w-full">
+                <div
+                  class="bg-emerald-900 text-white p-4 rounded-xl shadow-md text-center flex-1"
+                >
+                  <span class="text-xs font-bold block">BAIK</span>
+                  <span class="text-[10px] text-emerald-200 mt-1 block"
+                    >Sesuai Syariat</span
+                  >
+                </div>
+                <div class="text-slate-400 font-bold">↔</div>
+                <div
+                  class="bg-red-800 text-white p-4 rounded-xl shadow-md text-center flex-1"
+                >
+                  <span class="text-xs font-bold block">BURUK</span>
+                  <span class="text-[10px] text-red-200 mt-1 block"
+                    >Tidak Sesuai</span
+                  >
+                </div>
+              </div>
+              <div
+                class="mt-6 text-center text-xs text-emerald-950 font-bold bg-white p-3 rounded-lg border"
+              >
+                "Kedua potensi ini adalah murni perbuatan pilihan sadar
+                manusia!"
+              </div>
+            </div>
+
+            <!-- Right: Explanation and Syariah integration -->
+            <div class="space-y-4">
+              <h4 class="font-serif font-bold text-emerald-950 text-lg">
+                Bagaimana Aturan Syariat Masuk?
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Meskipun potensi berbuat baik dan buruk ada pada diri manusia
+                (sebagai fitrah potensi jasmaniahnya),
+                <strong>bagaimana ia menyalurkan nafsu naluri tersebut</strong>
+                (Gharizah) adalah pilihan pribadinya yang dipandu akal.
+              </p>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Allah menurunkan syariat-Nya bukan untuk mengekang atau
+                melenyapkan naluri alamiah tersebut, melainkan sebagai
+                <strong>manual panduan resmi</strong> agar pemuasan naluri
+                manusia selalu berbuah kebaikan (*pahala*) dan menghindarkannya
+                dari kerusakan (*dosa*).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 5: ILMU, IRADAH & KESIMPULAN ==================== -->
+      <section
+        id="tab-content-5"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <!-- Warning Box: Ilmu & Iradah Allah -->
+        <div
+          class="bg-amber-50 border border-amber-300 rounded-3xl p-6 md:p-8 shadow-sm"
+        >
+          <div class="flex items-start gap-4">
+            <div
+              class="bg-amber-500 text-white p-3 rounded-xl shrink-0 text-2xl"
+            >
+              ⚠️
+            </div>
+            <div>
+              <h3 class="text-xl font-serif font-bold text-amber-950 mb-2">
+                Pilar Penting: Hubungan Amal & Ilmu/Iradah Allah
+              </h3>
+              <p class="text-xs md:text-sm text-slate-700 leading-relaxed mb-4">
+                Seringkali terjadi kesalahpahaman fatal di mana seseorang
+                berdalih melakukan maksiat karena hal itu "sudah diketahui Allah
+                dan tercatat di Lauhul Mahfudz". Syaikh Taqiyuddin meluruskan
+                tiga poin esensial ini:
+              </p>
+
+              <div class="space-y-3">
+                <!-- 1 -->
+                <div
+                  class="bg-white p-4 rounded-xl border border-amber-200 shadow-xs"
+                >
+                  <h4 class="font-bold text-xs text-emerald-950 mb-1">
+                    1. Ilmu Allah (الله علم)
+                  </h4>
+                  <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Ilmu Allah bersifat menyeluruh (*Kasyif*) — Allah mengetahui
+                    apa yang akan dipilih dan dikerjakan oleh hamba-Nya di masa
+                    depan, namun
+                    <strong
+                      >pengetahuan Allah tersebut bukan merupakan
+                      paksaan</strong
+                    >
+                    yang mendikte perbuatan manusia. Manusia tetap beramal atas
+                    dasar pilihannya sendiri secara sadar.
+                  </p>
+                </div>
+                <!-- 2 -->
+                <div
+                  class="bg-white p-4 rounded-xl border border-amber-200 shadow-xs"
+                >
+                  <h4 class="font-bold text-xs text-emerald-950 mb-1">
+                    2. Iradah Allah (إرادة الله)
+                  </h4>
+                  <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Kehendak Allah atas seluruh ciptaan-Nya. Segala sesuatu
+                    tidak akan terjadi di alam semesta tanpa restu ketetapan
+                    iradah umum Allah, namun iradah ini tidak pernah mencabut
+                    sifat kebebasan pilihan moral (*ikhtiyar*) yang Allah
+                    anugerahkan pada akal manusia.
+                  </p>
+                </div>
+                <!-- 3 -->
+                <div
+                  class="bg-white p-4 rounded-xl border border-amber-200 shadow-xs"
+                >
+                  <h4 class="font-bold text-xs text-emerald-950 mb-1">
+                    3. Lauhul Mahfudz (لوح المحفوظ)
+                  </h4>
+                  <p class="text-[11px] text-slate-600 leading-relaxed">
+                    Lauhul Mahfudz merupakan lambang visual yang suci dari
+                    betapa luasnya samudera Ilmu Allah SWT yang mencatat seluruh
+                    jalannya takdir alam tanpa ada yang luput sekecil atom pun,
+                    bukan merupakan dalih pembatasan ikhtiar manusia.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion Matrix Card -->
+        <div
+          class="bg-emerald-950 text-white rounded-3xl p-6 md:p-8 shadow-xl border-l-4 border-amber-500 relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-12 -bottom-12 opacity-10 text-9xl font-arabic"
+          >
+            قدر
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-amber-300 mb-4">
+            Kesimpulan Akhir & Aqidah
+          </h3>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed"
+          >
+            <div>
+              <p class="text-emerald-100 mb-4">
+                Konsep Qadha dan Qadar dalam akidah Islam yang benar menetapkan
+                pembagian tanggung jawab moral manusia secara presisi:
+              </p>
+              <ul class="space-y-3 text-emerald-200">
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400 font-bold">✔</span>
+                  <span
+                    >Manusia adalah subjek bebas (*mukhtar*) yang bertanggung
+                    jawab penuh atas segala tindakan sadar yang berada di bawah
+                    kendalinya.</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-400 font-bold">✔</span>
+                  <span
+                    >Manusia adalah hamba yang pasrah (*musayyar*) terhadap
+                    seluruh takdir kejadian alamiah di luar kuasa kontrol
+                    jasmaninya (Qadha).</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="bg-emerald-900/60 p-4 rounded-2xl border border-emerald-800"
+            >
+              <span
+                class="text-amber-400 font-bold block mb-2 tracking-widest uppercase text-[10px]"
+                >Pesan Ideologis Syaikh</span
+              >
+              <p class="text-[11px] text-emerald-100 italic">
+                "Maka, ketimbang membuang energi berdebat tiada akhir mengenai
+                apakah kita dipaksa atau bebas secara teoritis mutlak,
+                fokuskanlah seluruh potensi akal dan raga kita untuk menjaga
+                amal perbuatan kita agar senantiasa berada dalam naungan
+                ketaatan Syariat Allah kaffah."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="bg-stone-50 text-center text-xs text-slate-500 py-4 mt-12 rounded-tl-3xl rounded-tr-3xl border-t border-stone-200"
+      >
+        &copy; 2024 Nizham al-Islam • Syaikh Taqiyuddin An-Nabhani • All rights reserved.
+        </p>
+      </footer>
+    </main>
+
+    <!-- Interactive Navigation Logic (JS) -->
+    <script>
+      function switchTab(tabId) {
+        // Hide all tab panes
+        const panes = document.querySelectorAll(".tab-pane");
+        panes.forEach((pane) => pane.classList.add("hidden"));
+
+        // Show target tab pane
+        document
+          .getElementById(`tab-content-${tabId}`)
+          .classList.remove("hidden");
+
+        // Reset tab button styles
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn, index) => {
+          const stepNum = index + 1;
+          btn.className =
+            "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+
+          const badge = btn.querySelector("span");
+          if (badge) {
+            badge.className =
+              "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+          }
+        });
+
+        // Set active styles for the clicked tab button
+        const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+        activeBtn.className =
+          "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+
+        const activeBadge = activeBtn.querySelector("span");
+        if (activeBadge) {
+          activeBadge.className =
+            "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peraturan Hidup dalam Islam - Nizham al-Islam (Bab 6)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+        .font-arabic { font-family: 'Amiri', serif; }
+        .font-sans-custom { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f4; }
+        ::-webkit-scrollbar-thumb { background: #047857; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #065f46; }
+        
+        /* Watermark style for the big number 6 */
+        .header-number-bg {
+            position: absolute;
+            right: 25%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24rem;
+            line-height: 1;
+            font-weight: 800;
+            color: rgba(245, 158, 11, 0.07);
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Georgia', serif;
+        }
+        @media (max-width: 768px) {
+            .header-number-bg { font-size: 14rem; right: -5%; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white">
+
+    <!-- Top Premium Banner with watermark 6 -->
+    <header class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-16 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <!-- Big Watermark 6 -->
+        <div class="header-number-bg">6</div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30">Infografis Kitab Nizham al-Islam</span>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200">PERATURAN HIDUP</h1>
+            <p class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1">نظام الإسلام • Aturan Komprehensif Pencipta</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200">
+        <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+            <div class="flex space-x-1 py-3 justify-start md:justify-center min-w-max">
+                <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md">
+                    <span class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold">1</span>
+                    Hubungan Manusia (Al-Alaqah)
+                </button>
+                <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">2</span>
+                    Sistem Aturan & Amal
+                </button>
+                <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">3</span>
+                    Kritik Sejarah & Teokrasi
+                </button>
+                <button onclick="switchTab(4)" id="tab-btn-4" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">4</span>
+                    Metode Ijtihad
+                </button>
+                <button onclick="switchTab(5)" id="tab-btn-5" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">5</span>
+                    Tantangan Imperialisme
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- ==================== TAB 1: HUBUNGAN MANUSIA (AL-ALAQAH) ==================== -->
+        <section id="tab-content-1" class="tab-pane block space-y-8 animate-fade-in">
+            <div class="bg-amber-50 border border-amber-200 rounded-3xl p-6 md:p-8 text-center max-w-4xl mx-auto shadow-sm">
+                <span class="text-amber-600 font-bold text-xs uppercase tracking-widest block mb-2">Konsep Relasi Sistemis</span>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-emerald-950">علاقة الإنسان (Hubungan Manusia)</h2>
+                <p class="text-sm text-slate-600 mt-2 max-w-2xl mx-auto leading-relaxed">
+                    Peraturan dalam Islam diturunkan untuk menyelesaikan problem interaksi manusia yang terbagi secara presisi menjadi 3 dimensi hubungan utama:
+                </p>
+            </div>
+
+            <!-- 3 Dimension Relationship Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 1. Dengan Pencipta -->
+                <div class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-3 mb-4">
+                            <span class="font-arabic text-emerald-800 text-lg font-bold">مع خالقه</span>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold uppercase">1. Dengan Pencipta</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Menghubungkan eksistensi mahluk yang lemah dengan Dzat Pencipta yang Agung melalui aturan keimanan dan kepatuhan ibadah.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Aqidah</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Keyakinan</span>
+                        </div>
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Ibadah</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Ritual / Penghambaan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Dengan Diri Sendiri -->
+                <div class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-3 mb-4">
+                            <span class="font-arabic text-emerald-800 text-lg font-bold">مع نفسه</span>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold uppercase">2. Dengan Diri Sendiri</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Mengatur pengelolaan potensi internal mahluk, dorongan naluri, serta kelayakan fisik jasmaninya.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Akhlaq</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Moralitas</span>
+                        </div>
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Kebutuhan (Nafse)</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Makanan, Pakaian, dsb</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Dengan Sesama -->
+                <div class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-3 mb-4">
+                            <span class="font-arabic text-emerald-800 text-lg font-bold">مع غيره</span>
+                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold uppercase">3. Dengan Sesama</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            Sistem interaksi antar individu di dalam masyarakat guna mencegah perselisihan kepentingan.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Mu'amalah</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Sosial, Politik, Ekonomi</span>
+                        </div>
+                        <div class="bg-stone-50 p-2.5 rounded border text-xs flex justify-between">
+                            <span class="font-bold text-slate-700">Uqubat</span>
+                            <span class="text-[10px] text-emerald-800 font-semibold uppercase">Sanksi & Pidana Hukum</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: SISTEM ATURAN & AMAL ==================== -->
+        <section id="tab-content-2" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Left: Aturan dari Allah SWT -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 border-b pb-4 mb-6">
+                            <span class="bg-emerald-800 text-white w-8 h-8 rounded-full flex items-center justify-center font-serif font-bold">A</span>
+                            <h3 class="text-xl font-serif font-bold text-emerald-950 uppercase tracking-wider">Aturan dari Allah SWT</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6">
+                            Islam menolak reduksi peran agama yang hanya membatasi diri pada perkara spiritual murni. Syariat Allah diturunkan secara kaffah guna mengatur berbagai sendi krusial:
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-stone-50 p-3 rounded-xl border text-center font-bold text-xs text-slate-700">Pemerintahan (Daulah)</div>
+                            <div class="bg-stone-50 p-3 rounded-xl border text-center font-bold text-xs text-slate-700">Ekonomi (Iqtishad)</div>
+                            <div class="bg-stone-50 p-3 rounded-xl border text-center font-bold text-xs text-slate-700">Sosial (Ijtima'i)</div>
+                            <div class="bg-stone-50 p-3 rounded-xl border text-center font-bold text-xs text-slate-700">Politik (Siyasah)</div>
+                            <div class="bg-stone-50 p-3 rounded-xl border text-center font-bold text-xs text-slate-700 col-span-2">Pendidikan (Tarbyah)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Konsep Amal dalam Islam -->
+                <div class="bg-emerald-900 text-white rounded-3xl p-6 md:p-8 shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 border-b border-emerald-800 pb-4 mb-6">
+                            <span class="bg-amber-500 text-emerald-950 w-8 h-8 rounded-full flex items-center justify-center font-serif font-bold">B</span>
+                            <h3 class="text-xl font-serif font-bold text-amber-300 uppercase tracking-wider">Amal (العمل) dalam Islam</h3>
+                        </div>
+                        <p class="text-xs text-emerald-100 leading-relaxed mb-6">
+                            Penerapan seluruh aturan Allah di atas bermuara pada aktivitas perbuatan (*Amal*) nyata manusia yang senantiasa memadukan dua dimensi esensial:
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- Dimensi Materi -->
+                            <div class="bg-emerald-950/60 p-4 rounded-xl border border-emerald-800">
+                                <span class="text-amber-400 font-bold text-xs uppercase tracking-widest block mb-1">1. Materi Perbuatan (Fisik)</span>
+                                <p class="text-xs text-emerald-150">Bentuk tindakan lahiriah fisik manusia yang tunduk pada koridor syariah.</p>
+                            </div>
+                            <!-- Dimensi Ruh -->
+                            <div class="bg-emerald-950/60 p-4 rounded-xl border border-emerald-800">
+                                <span class="text-amber-400 font-bold text-xs uppercase tracking-widest block mb-1">2. Ruh (Kesadaran Spiritual)</span>
+                                <p class="text-xs text-emerald-150">Pilar kesadaran hubungan makhluk dengan Allah (*Idrak as-shilah billah*) yang melahirkan keikhlasan niat.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: KRITIK SEJARAH & TEOKRASI ==================== -->
+        <section id="tab-content-3" class="tab-pane hidden space-y-8 animate-fade-in">
+            <!-- Central Warning: Tolak Kepastoran & Teokrasi -->
+            <div class="bg-red-50 border border-red-200 rounded-3xl p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="bg-red-600 text-white rounded-full p-4 shrink-0 text-2xl font-bold flex items-center justify-center w-12 h-12">
+                        ✖
+                    </div>
+                    <div>
+                        <span class="text-red-600 font-bold text-xs uppercase tracking-widest">Kritik Teologis & Sistemik</span>
+                        <h3 class="text-xl font-serif font-bold text-red-950 mt-1 mb-3">Islam Menolak Kepastoran & Teokrasi</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Islam secara mutlak tidak mengenal kekuasaan keagamaan eksklusif yang memonopolinya dalam satu kelompok tertentu (*Kepastoran / Agamawan*). Tidak ada konsep otokrasi teologis di mana sekelompok ahli/agamawan mendaku diri sebagai perantara murni antara makhluk dan Pencipta demi menguasai hukum.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs font-bold text-red-800">
+                            <span class="bg-white p-3 rounded-lg border border-red-100 text-center">❌ Teologi Kepastoran</span>
+                            <span class="bg-white p-3 rounded-lg border border-red-100 text-center">❌ Sistem Otokrasi</span>
+                            <span class="bg-white p-3 rounded-lg border border-red-100 text-center">❌ Hak Eksklusif Agamawan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sejarah Agama Masehi (Nasrani) -->
+            <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm">
+                <h3 class="text-xl font-serif font-bold text-emerald-950 mb-6">Akar Lahirnya Sekularisme (Agama Masehi)</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left: Skema Agama Masehi -->
+                    <div class="bg-stone-50 p-6 rounded-2xl border border-stone-250">
+                        <span class="text-amber-600 font-bold text-[10px] uppercase tracking-wider block mb-2">Tragedi Sejarah Eropa</span>
+                        <h4 class="font-bold text-slate-800 text-sm mb-4">Agama Masehi (Kristen)</h4>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="bg-white p-3 rounded border border-stone-200/80">
+                                <span class="font-bold text-red-600">• Kondisi Awal:</span> Wahyu terputus dan revisi kitab suci yang meluas merusak kemurnian hukum.
+                            </div>
+                            <div class="bg-white p-3 rounded border border-stone-200/80">
+                                <span class="font-bold text-red-600">• Spiritual:</span> Para Pastor dan Otoritas Gereja merumuskan aturan buatan manusia atas nama agama.
+                            </div>
+                            <div class="bg-white p-3 rounded border border-stone-200/80">
+                                <span class="font-bold text-red-600">• Politik:</span> Kaisar dan Raja menjalankan pemerintahan berdasarkan nafsu kekuasaannya sendiri.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Konflik & Solusi Palsu Sekuler -->
+                    <div class="flex flex-col justify-between">
+                        <div class="p-6 bg-red-100/50 border border-red-200 rounded-2xl">
+                            <h4 class="font-bold text-red-950 text-sm mb-2">Berebut Kekuasaan</h4>
+                            <p class="text-xs text-red-900 leading-relaxed">
+                                Terjadinya benturan hebat tanpa henti antara kubu Kaisar dengan kubu Gereja dalam memperebutkan hak mengatur hukum di Eropa. Hal ini melahirkan kesengsaraan panjang bagi rakyat.
+                            </p>
+                        </div>
+                        <div class="p-6 bg-emerald-900 text-white rounded-2xl border-b-4 border-amber-500 mt-4">
+                            <h4 class="font-serif font-bold text-amber-300 text-sm mb-1 uppercase tracking-widest">Solusi Kompromi (Sekularisme)</h4>
+                            <p class="text-[11px] text-emerald-100 leading-relaxed">
+                                Guna menyudahi konflik kekuasaan tersebut, peradaban Barat mengambil jalan tengah berupa: Pemisahan Agama dari Urusan Kehidupan (Sekularisme). Agama dikurung di dalam gereja, sementara publik diatur murni oleh undang-undang buatan manusia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: METODE IJTIHAD ==================== -->
+        <section id="tab-content-4" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm">
+                <div class="max-w-2xl mx-auto text-center mb-8">
+                    <span class="text-amber-600 font-bold text-xs uppercase tracking-wider">Mekanisme Penggalian Hukum</span>
+                    <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">Metode Pengambilan Hukum (Ijtihad)</h3>
+                    <p class="text-sm text-slate-500 mt-2">Dinamisme Islam dalam menjawab seluruh perkembangan problematika kekinian manusia:</p>
+                </div>
+
+                <div class="flex flex-col items-center relative py-6">
+                    <!-- Step 1: Mujtahid -->
+                    <div class="bg-emerald-900 text-white px-8 py-4 rounded-xl shadow-md text-center max-w-sm border-2 border-amber-500 z-10">
+                        <span class="font-arabic text-amber-400 block text-lg font-bold">مجتهد</span>
+                        <h4 class="font-bold text-xs uppercase tracking-widest">Mujtahid</h4>
+                        <p class="text-[10px] text-emerald-200 mt-1 leading-relaxed">Mempelajari secara mendalam fakta-fakta persoalan baru yang muncul di tengah kehidupan umat.</p>
+                    </div>
+
+                    <!-- Connection line 1 -->
+                    <div class="w-1 h-12 bg-emerald-900/20"></div>
+
+                    <!-- Step 2: Nash Syara' -->
+                    <div class="bg-stone-100 border border-stone-300 px-6 py-3 rounded-full text-xs font-bold text-slate-800 uppercase tracking-widest z-10 shadow-inner">
+                        Kembali Kepada Nash Syara'
+                    </div>
+
+                    <!-- Connection line 2 -->
+                    <div class="w-1 h-12 bg-emerald-900/20"></div>
+
+                    <!-- Step 3: Quran & Sunnah Grid -->
+                    <div class="grid grid-cols-2 gap-4 w-full max-w-lg z-10">
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center shadow-xs">
+                            <span class="font-serif font-bold text-emerald-950 text-sm block">Al-Qur'an</span>
+                            <span class="text-[9px] text-slate-500 block mt-1">Wahyu tertulis yang mutlak kebenarannya.</span>
+                        </div>
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center shadow-xs">
+                            <span class="font-serif font-bold text-emerald-950 text-sm block">As-Sunnah</span>
+                            <span class="text-[9px] text-slate-500 block mt-1">Sabda, ketetapan, dan perbuatan Rasulullah SAW.</span>
+                        </div>
+                    </div>
+
+                    <!-- Connection line 3 -->
+                    <div class="w-1 h-12 bg-emerald-900/20"></div>
+
+                    <!-- Output: Hukum Syara' -->
+                    <div class="bg-amber-500 text-emerald-950 px-10 py-3 rounded-xl font-serif font-bold text-sm uppercase shadow-md border border-amber-600">
+                        HUKUM SYARA' TERHADAP PERSOALAN BARU
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-stone-50 rounded-2xl p-5 text-center text-xs text-slate-500 leading-relaxed italic border border-stone-200">
+                    "Metodologi Ijtihad yang kokoh ini menutup rapat ruang bagi masuknya faham sekularisme sekaligus menjaga keluwesan syariat dalam memimpin peradaban dunia."
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: TANTANGAN IMPERIALISME ==================== -->
+        <section id="tab-content-5" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Left: Ancaman Imperialisme -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between border-t-8 border-red-600">
+                    <div>
+                        <div class="flex items-center gap-3 border-b pb-4 mb-6">
+                            <span class="text-red-600 text-2xl font-bold">⚠️</span>
+                            <h3 class="text-xl font-serif font-bold text-slate-900 uppercase">Dakwah Imperialisme</h3>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                            Sistem penjajahan (*Imperialisme*) Barat menyebar ke negeri-negeri muslim dengan membawa misi utama: Menyebarkan faham sekularisme (memisahkan syariat dari urusan tata negara) demi menghancurkan pilar kebangkitan umat Islam dari akarnya.
+                        </p>
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100 text-red-800 font-bold text-xs text-center">
+                            Target: Mematikan fungsi syariat dalam tatanan publik
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Solusi Islam Kaffah -->
+                <div class="bg-emerald-900 text-white rounded-3xl p-6 md:p-8 shadow-xl border-t-8 border-amber-500 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 border-b border-emerald-800 pb-4 mb-6">
+                            <span class="text-amber-400 text-2xl font-bold">✔</span>
+                            <h3 class="text-xl font-serif font-bold text-amber-300 uppercase">Solusi Pembebasan</h3>
+                        </div>
+                        <p class="text-xs text-emerald-100 leading-relaxed mb-6">
+                            Satu-satunya jalan kebangkitan dan keselamatan murni dari cengkeraman tersebut adalah dengan mengembalikan kedaulatan mutlak hanya di tangan Syariat Islam kaffah serta menolak segala regulasi sekuler buatan manusia.
+                        </p>
+                        <div class="bg-emerald-950 p-4 rounded-xl border border-emerald-800 text-white font-bold text-xs text-center uppercase tracking-widest">
+                            Tegakkan Islam kaffah dalam seluruh relasi kehidupan
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Quote / Core Principle -->
+            <div class="bg-gradient-to-r from-emerald-900 to-emerald-950 text-white rounded-3xl p-8 shadow-xl border-b-4 border-amber-500 text-center">
+                <span class="text-amber-400 font-bold text-xs tracking-widest uppercase block mb-3">Tujuan Utama Nizham al-Islam</span>
+                <p class="font-serif italic text-lg text-emerald-100 max-w-4xl mx-auto leading-relaxed">
+                    "Tujuan agung memahami Peraturan Hidup dalam Islam adalah guna melahirkan ketaatan mutlak yang tulus kepada Allah SWT dalam seluruh perbuatan, sehingga rahmat bagi seluruh alam (*Rahmatan lil 'Alamin*) benar-benar dapat dirasakan manusia."
+                </p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <span class="px-4 py-1.5 bg-emerald-850 rounded-full text-[10px] font-bold uppercase border border-emerald-700 tracking-wider">Syariat Islam Kaffah</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer of Page -->
+    <footer class="max-w-6xl mx-auto px-4 py-8 text-center border-t border-stone-200 text-slate-400 text-[10px] uppercase tracking-widest">
+        Nizham al-Islam • Bab 6 • Peraturan Hidup dalam Islam
+    </footer>
+
+    <!-- Tab switching pure JS (Absolute safety against ReferenceError) -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab panes
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.add('hidden'));
+            
+            // Show target tab pane
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+            // Reset tab button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, index) => {
+                btn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+                
+                const badge = btn.querySelector('span');
+                if (badge) {
+                    badge.className = "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+                }
+            });
+
+            // Set active styles for the clicked tab button
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            activeBtn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+            
+            const activeBadge = activeBtn.querySelector('span');
+            if (activeBadge) {
+                activeBadge.className = "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+            }
+        }
+    </script>
+</body>
+</html>

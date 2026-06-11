@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meneladani Rasulullah - Nizham al-Islam (Bab 8)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'ui-serif', 'serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+        .font-arabic { font-family: 'Amiri', serif; }
+        .font-sans-custom { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5f5f4; }
+        ::-webkit-scrollbar-thumb { background: #047857; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #065f46; }
+        
+        /* Watermark style for the big number 8 */
+        .header-number-bg {
+            position: absolute;
+            right: 25%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24rem;
+            line-height: 1;
+            font-weight: 800;
+            color: rgba(245, 158, 11, 0.07);
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Georgia', serif;
+        }
+        @media (max-width: 768px) {
+            .header-number-bg { font-size: 14rem; right: -5%; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white">
+
+    <!-- Top Premium Banner with watermark 8 -->
+    <header class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-16 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <!-- Big Watermark 8 -->
+        <div class="header-number-bg">8</div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30">Infografis Kitab Nizham al-Islam</span>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 uppercase">Teladan Hidup</h1>
+            <p class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1 italic">Meneladani Perbuatan Rasulullah saw.</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200">
+        <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+            <div class="flex space-x-1 py-3 justify-start md:justify-center min-w-max">
+                <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md">
+                    <span class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold">1</span>
+                    Klasifikasi Perbuatan
+                </button>
+                <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">2</span>
+                    Perbuatan Sebagai Dalil
+                </button>
+                <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">3</span>
+                    Status Hukum Taqarrub
+                </button>
+                <button onclick="switchTab(4)" id="tab-btn-4" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">4</span>
+                    Institusi Hukum
+                </button>
+                <button onclick="switchTab(5)" id="tab-btn-5" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">5</span>
+                    Legalisasi Syariat
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- ==================== TAB 1: KLASIFIKASI PERBUATAN ==================== -->
+        <section id="tab-content-1" class="tab-pane block space-y-8 animate-fade-in">
+            <div class="max-w-3xl mx-auto text-center mb-6">
+                <h3 class="text-2xl font-serif font-bold text-emerald-950 uppercase tracking-widest">Perbuatan Nabi saw.</h3>
+                <p class="text-sm text-slate-500 mt-2">Terbagi menjadi dua kategori besar berdasarkan sifat kemanusiaan dan kenabian:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Jibiliyah -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-4 mb-6">
+                            <h4 class="text-xl font-serif font-bold text-emerald-900">1. Jibiliyah</h4>
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Umum untuk Manusia</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                            Perbuatan yang dilakukan Nabi saw. sebagai sifat dasar kemanusiaan secara alami.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-semibold text-slate-700">
+                            <div class="flex items-center gap-3 bg-stone-50 p-3 rounded-xl">
+                                <span class="text-emerald-700">🍽️</span> Makan & Minum
+                            </div>
+                            <div class="flex items-center gap-3 bg-stone-50 p-3 rounded-xl">
+                                <span class="text-emerald-700">🛌</span> Tidur & Bangun
+                            </div>
+                            <div class="flex items-center gap-3 bg-stone-50 p-3 rounded-xl">
+                                <span class="text-emerald-700">🪑</span> Duduk & Berjalan
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-stone-100 text-center">
+                        <span class="text-xs font-bold text-emerald-800 uppercase tracking-widest">Status Hukum: MUBAH</span>
+                    </div>
+                </div>
+
+                <!-- Selainnya (Khusus Nabi) -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm flex flex-col justify-between hover:border-red-200 transition-all">
+                    <div>
+                        <div class="flex items-center justify-between border-b pb-4 mb-6">
+                            <h4 class="text-xl font-serif font-bold text-red-900">2. Selainnya (Khusus Nabi)</h4>
+                            <span class="bg-red-50 text-red-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Eksklusif Rasul</span>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                            Perbuatan yang didasari oleh kekhususan Rasulullah saw. yang tidak dimiliki umatnya.
+                        </p>
+                        <ul class="space-y-3 text-xs text-slate-700 italic">
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-500">•</span> Melanjutkan puasa malam (Wihsal)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-500">•</span> Menikah lebih dari 4 orang (Batas Huruf)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-red-50 text-center">
+                        <span class="text-xs font-bold text-red-700 uppercase tracking-widest">Bukan untuk Diikuti Umatnya</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: PERBUATAN SEBAGAI DALIL ==================== -->
+        <section id="tab-content-2" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-emerald-950 text-white rounded-3xl p-8 md:p-12 shadow-xl border-l-8 border-amber-500">
+                <h3 class="text-2xl font-serif font-bold text-amber-300 mb-6 uppercase tracking-widest">Kedudukan Perbuatan Sebagai Dalil</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- As Penjelas -->
+                    <div class="bg-emerald-900/50 p-6 rounded-2xl border border-emerald-800 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-amber-400 mb-4 uppercase tracking-widest">A. Sebagai Penjelas</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed">
+                                Perbuatan Nabi saw. yang berfungsi untuk menjelaskan perintah-perintah Allah yang bersifat global dalam Al-Qur'an.
+                            </p>
+                        </div>
+                        <div class="mt-6 bg-white/10 p-4 rounded-xl text-center">
+                            <p class="text-xs font-bold text-amber-200">Mengikuti Hukum Syariat yang dijelaskan:</p>
+                            <p class="text-[10px] mt-2 tracking-widest uppercase">Fardu | Mandub | Mubah | Haram | Makruh</p>
+                        </div>
+                    </div>
+
+                    <!-- Sebagai Indikasi -->
+                    <div class="bg-emerald-900/50 p-6 rounded-2xl border border-emerald-800 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-amber-400 mb-4 uppercase tracking-widest">B. Sebagai Indikasi</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed">
+                                Perbuatan yang menunjukkan status hukum tertentu berdasarkan indikasi niat dan konteks kejadiannya.
+                            </p>
+                        </div>
+                        <div class="mt-6 space-y-2">
+                            <div class="bg-amber-500 text-emerald-950 p-2 rounded text-center text-[11px] font-bold">Niat Taqarrub (Pendekatan diri)</div>
+                            <div class="bg-white/10 p-2 rounded text-center text-[11px] font-bold">Bukan Niat Taqarrub</div>
+                            <div class="bg-white/10 p-2 rounded text-center text-[11px] font-bold">Tidak Ada Indikasi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: STATUS HUKUM TAQARRUB ==================== -->
+        <section id="tab-content-3" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm">
+                <h3 class="text-xl font-serif font-bold text-emerald-950 mb-8 uppercase text-center tracking-widest">Alur Penentuan Status Hukum</h3>
+                
+                <div class="flex flex-col items-center">
+                    <!-- Top -->
+                    <div class="bg-emerald-900 text-white px-8 py-3 rounded-xl font-bold text-sm shadow-md uppercase">Indikasi Perbuatan</div>
+                    <div class="h-8 w-0.5 bg-stone-200"></div>
+
+                    <!-- Split -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl">
+                        <!-- Left -->
+                        <div class="flex flex-col items-center">
+                            <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl w-full text-center">
+                                <h5 class="text-xs font-bold text-emerald-900 mb-2">Niat Taqarrub</h5>
+                                <p class="text-[12px] text-slate-500 italic leading-relaxed">Dilakukan sebagai ibadah pendekatan diri kepada Allah.</p>
+                            </div>
+                            <div class="h-8 w-0.5 bg-stone-200"></div>
+                            <div class="bg-amber-500 text-emerald-950 px-6 py-2 rounded-full font-bold text-xs uppercase shadow-sm">MANDUB</div>
+                        </div>
+
+                        <!-- Center -->
+                        <div class="flex flex-col items-center">
+                            <div class="p-4 bg-stone-100 border border-stone-200 rounded-2xl w-full text-center">
+                                <h5 class="text-xs font-bold text-slate-700 mb-2">Tidak Ada Indikasi</h5>
+                                <p class="text-[12px] text-slate-500 italic leading-relaxed">Konteks perbuatan tidak menunjukkan niat ibadah khusus.</p>
+                            </div>
+                            <div class="h-8 w-0.5 bg-stone-200"></div>
+                            <div class="bg-emerald-800 text-white px-6 py-2 rounded-full font-bold text-xs uppercase shadow-sm">MANDUB</div>
+                        </div>
+
+                        <!-- Right -->
+                        <div class="flex flex-col items-center">
+                            <div class="p-4 bg-stone-50 border border-stone-200 rounded-2xl w-full text-center">
+                                <h5 class="text-xs font-bold text-slate-700 mb-2">Bukan Niat Taqarrub</h5>
+                                <p class="text-[12px] text-slate-500 italic leading-relaxed">Perbuatan bersifat teknis atau kebiasaan murni.</p>
+                            </div>
+                            <div class="h-8 w-0.5 bg-stone-200"></div>
+                            <div class="bg-stone-400 text-white px-6 py-2 rounded-full font-bold text-xs uppercase shadow-sm">MUBAH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: INSTITUSI HUKUM ==================== -->
+        <section id="tab-content-4" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm">
+                <h3 class="text-xl font-serif font-bold text-emerald-950 mb-10 uppercase text-center tracking-widest">Melegalisasi Hukum Syariat Islam</h3>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                    <!-- Mujtahid -->
+                    <div class="bg-emerald-50 border-2 border-emerald-800 p-6 rounded-2xl w-full md:w-64 text-center transform hover:scale-105 transition-transform">
+                        <div class="text-3xl mb-3">🔍</div>
+                        <h4 class="font-bold text-emerald-900 uppercase text-sm mb-2">Mujtahid</h4>
+                        <p class="text-[10px] text-slate-600 italic">Menggali hukum syara' secara umum berdasarkan dalil.</p>
+                    </div>
+
+                    <div class="text-amber-500 font-bold hidden md:block">→</div>
+
+                    <!-- Imam / Khalifah -->
+                    <div class="bg-emerald-900 text-white p-6 rounded-2xl w-full md:w-64 text-center border-2 border-amber-500 shadow-xl transform hover:scale-105 transition-transform">
+                        <div class="text-3xl mb-3">👑</div>
+                        <h4 class="font-bold text-amber-400 uppercase text-sm mb-2">Imam / Khalifah</h4>
+                        <p class="text-[10px] text-emerald-100 italic">Melakukan adopsi (Tabanni) hukum untuk diberlakukan secara resmi.</p>
+                    </div>
+
+                    <div class="text-amber-500 font-bold hidden md:block">→</div>
+
+                    <!-- Qadhi -->
+                    <div class="bg-emerald-50 border-2 border-emerald-800 p-6 rounded-2xl w-full md:w-64 text-center transform hover:scale-105 transition-transform">
+                        <div class="text-3xl mb-3">⚖️</div>
+                        <h4 class="font-bold text-emerald-900 uppercase text-sm mb-2">Qadhi</h4>
+                        <p class="text-[10px] text-slate-600 italic">Melegalkan/menerapkan hukum syara' pada kasus individu.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mt-12 max-w-lg mx-auto">
+                    <div class="p-3 bg-stone-100 rounded-full text-center border border-stone-200">
+                        <span class="text-[10px] font-bold text-emerald-900 uppercase">Al-Qur'an</span>
+                    </div>
+                    <div class="p-3 bg-stone-100 rounded-full text-center border border-stone-200">
+                        <span class="text-[10px] font-bold text-emerald-900 uppercase">As-Sunnah</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: LEGALISASI SYARIAT ==================== -->
+        <section id="tab-content-5" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-emerald-950 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden border-t-8 border-amber-500">
+                <div class="absolute -right-16 -top-16 opacity-10 text-9xl font-arabic">أحكام</div>
+                
+                <h3 class="text-2xl font-serif font-bold text-amber-300 mb-6 uppercase text-center tracking-widest">Prinsip Legalisasi Hukum Islam</h3>
+                
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <div class="p-6 bg-emerald-900/60 rounded-2xl border border-emerald-800">
+                        <h4 class="text-lg font-bold text-amber-400 mb-2 text-center uppercase tracking-widest">Hak Imam (Khalifah)</h4>
+                        <div class="w-16 h-0.5 bg-amber-500 mx-auto mb-6"></div>
+                        <p class="text-xs md:text-sm text-emerald-50 text-center leading-relaxed italic">
+                            "Legalisasi hukum syara' merupakan hak Imam (Khalifah). Ketika Khalifah melakukan tabanni (adopsi) terhadap suatu hukum ijtihad, maka hukum tersebut wajib ditaati dan menjadi qanun (undang-undang) yang mengikat."
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                            <span class="text-[10px] text-amber-200 uppercase font-bold block mb-1">Misi Dakwah</span>
+                            <p class="text-[11px] text-emerald-100 italic">Mewujudkan penerapan hukum Allah secara nyata.</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                            <span class="text-[10px] text-amber-200 uppercase font-bold block mb-1">Objek Hukum</span>
+                            <p class="text-[11px] text-emerald-100 italic">Seluruh perbuatan manusia dalam bingkai Syariat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Message -->
+            <div class="bg-stone-100 border border-stone-200 rounded-2xl p-6 text-center text-xs text-slate-500">
+                <p>Nizham al-Islam • Thoriqul Iman • Bab 8 • Meneladani Rasulullah saw.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Navigation Logic (JS) -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab panes
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.add('hidden'));
+            
+            // Show target tab pane
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+            // Reset tab button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, index) => {
+                btn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+                
+                const badge = btn.querySelector('span');
+                if (badge) {
+                    badge.className = "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+                }
+            });
+
+            // Set active styles for the clicked tab button
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            activeBtn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+            
+            const activeBadge = activeBtn.querySelector('span');
+            if (activeBadge) {
+                activeBadge.className = "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+            }
+        }
+    </script>
+</body>
+</html>

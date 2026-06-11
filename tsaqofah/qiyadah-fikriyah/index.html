@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qiyadah Fikriyah - Nizham al-Islam (Bab 3)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              emerald: {
+                50: "#f0fdf4",
+                100: "#dcfce7",
+                200: "#bbf7d0",
+                800: "#065f46",
+                900: "#064e3b",
+                950: "#022c22",
+              },
+              amber: {
+                500: "#f59e0b",
+                600: "#d97706",
+              },
+            },
+            fontFamily: {
+              serif: ["Georgia", "ui-serif", "serif"],
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap");
+      .font-arabic {
+        font-family: "Amiri", serif;
+      }
+      .font-sans-custom {
+        font-family: "Inter", sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #047857;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #065f46;
+      }
+
+      .header-number-bg {
+        position: absolute;
+        right: 25%;
+        top: 30%;
+        transform: translateY(-50%);
+        font-size: 22rem;
+        line-height: 1;
+        font-weight: 800;
+        color: rgba(245, 158, 11, 0.08);
+        user-select: none;
+        pointer-events: none;
+        z-index: 0;
+        font-family: "Georgia", serif;
+      }
+      @media (max-width: 768px) {
+        .header-number-bg {
+          font-size: 12rem;
+          right: -5%;
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white"
+  >
+    <!-- Top Premium Banner -->
+    <header
+      class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-16 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"
+      ></div>
+
+      <!-- WATERMARK BAB 3 -->
+      <div class="header-number-bg">3</div>
+
+      <div class="max-w-6xl mx-auto text-center relative z-10">
+        <span
+          class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30"
+          >Infografis Kitab Nizham al-Islam</span
+        >
+        <h1
+          class="text-4xl md:text-6xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200"
+        >
+          INTELECTUAL LEADERSHIP
+        </h1>
+        <p
+          class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1"
+        >
+          القيادة الفكرية • Kepemimpinan Berpikir dalam Islam
+        </p>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav
+      class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200"
+    >
+      <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+        <div
+          class="flex space-x-1 py-3 justify-start md:justify-center min-w-max"
+        >
+          <button
+            onclick="switchTab(1)"
+            id="tab-btn-1"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold"
+              >1</span
+            >
+            Asas Ideologi
+          </button>
+          <button
+            onclick="switchTab(2)"
+            id="tab-btn-2"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >2</span
+            >
+            Kapitalisme & Sosialisme
+          </button>
+          <button
+            onclick="switchTab(3)"
+            id="tab-btn-3"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >3</span
+            >
+            Dampak Sekularisme
+          </button>
+          <button
+            onclick="switchTab(4)"
+            id="tab-btn-4"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >4</span
+            >
+            Struktur Negara Islam
+          </button>
+          <button
+            onclick="switchTab(5)"
+            id="tab-btn-5"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >5</span
+            >
+            Penerapan Sistem
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <!-- ==================== TAB 1: ASAS IDEOLOGI ==================== -->
+      <section
+        id="tab-content-1"
+        class="tab-pane block space-y-8 animate-fade-in"
+      >
+        <div
+          class="bg-white border-2 border-emerald-100 rounded-3xl p-8 shadow-sm text-center max-w-4xl mx-auto"
+        >
+          <span
+            class="text-amber-600 font-bold text-xs uppercase tracking-widest block mb-2"
+            >Definisi Fundamental</span
+          >
+          <h2
+            class="text-2xl md:text-3xl font-serif font-bold text-emerald-950 mb-4 italic"
+          >
+            "Sebuah Tuntunan Pemikiran"
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed italic">
+            "Kepemimpinan yang tegak di atas asas pemikiran fundamental
+            (Ideologi) yang melahirkan sistem aturan hidup."
+            <br />
+            Ideologi (Mabda') adalah sebuah keyakinan/pemikiran mendasar yang
+            melahirkan peraturan hidup.
+          </p>
+          <div
+            class="mt-6 inline-flex items-center gap-4 bg-emerald-50 px-6 py-3 rounded-full border border-emerald-100"
+          >
+            <span class="font-bold text-emerald-900">Aqidah</span>
+            <span class="text-amber-500 font-bold">➡️</span>
+            <span class="font-bold text-emerald-900">Peraturan (Nizham)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Gagasan Seseorang -->
+          <div
+            class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600"
+              >
+                👤
+              </div>
+              <h3 class="font-serif font-bold text-lg text-slate-900">
+                Gagasan Seseorang (Man-made)
+              </h3>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-600">
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span
+                  >Karangan manusia cenderung mengarah kepada kepentingan
+                  tertentu.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>Banyak pertentangan.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span
+                  >Terpengaruh lingkungan sekitarnya secara berlebihan.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-500 mt-1">•</span>
+                <span>Membawa kesengsaraan karena keterbatasan akal.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Dari Wahyu Tuhan -->
+          <div
+            class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-10 h-10 bg-emerald-200 rounded-full flex items-center justify-center text-emerald-800"
+              >
+                📖
+              </div>
+              <h3 class="font-serif font-bold text-lg text-emerald-950">
+                Dari Wahyu Tuhan (Divine)
+              </h3>
+            </div>
+            <ul class="space-y-3 text-xs text-emerald-900">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 mt-1">✔</span>
+                <span
+                  >Bersumber dari Pencipta: Dzat yang membuat aturan untuk
+                  ciptaannya.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 mt-1">✔</span>
+                <span>Bersifat Qath'i (Mutlak).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 mt-1">✔</span>
+                <span>Tidak bisa dibantah kebenarannya.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-600 mt-1">✔</span>
+                <span>Membawa Maslahat (Kebaikan hakiki).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tiga Ideologi Dunia -->
+        <div class="bg-white rounded-3xl border border-stone-200 p-8 shadow-sm">
+          <h3
+            class="text-xl font-serif font-bold text-center text-emerald-950 mb-8"
+          >
+            Tiga Arus Ideologi Besar
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              class="bg-stone-50 p-6 rounded-2xl border-b-4 border-amber-500 text-center"
+            >
+              <h4 class="font-bold text-emerald-900 mb-2">KAPITALISME</h4>
+              <p class="text-[10px] text-slate-500">
+                Demokrasi: Manusia/Rakyat berhak membuat peraturan sendiri.
+              </p>
+            </div>
+            <div
+              class="bg-stone-50 p-6 rounded-2xl border-b-4 border-slate-400 text-center"
+            >
+              <h4 class="font-bold text-slate-900 mb-2">SOSIALISME</h4>
+              <p class="text-[10px] text-slate-500">
+                Materialisme: Manusia & Alam berasal dari evolusi materi.
+              </p>
+            </div>
+            <div
+              class="bg-emerald-900 p-6 rounded-2xl border-b-4 border-amber-500 text-center text-white"
+            >
+              <h4 class="font-bold text-amber-300 mb-2">ISLAMISME</h4>
+              <p class="text-[10px] text-emerald-100">
+                Aqidah Islam: Iman kepada Pencipta sebagai satu-satunya pembuat
+                aturan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: KAPITALISME & SOSIALISME ==================== -->
+      <section
+        id="tab-content-2"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Kapitalisme Detail -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm"
+          >
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-2xl font-serif font-bold text-amber-600">
+                KAPITALISME
+              </h3>
+              <span
+                class="text-[10px] bg-amber-100 px-3 py-1 rounded-full font-bold uppercase"
+                >Pemilik Modal</span
+              >
+            </div>
+            <div
+              class="relative bg-amber-50 p-6 rounded-2xl border border-amber-100 mb-6 text-center"
+            >
+              <h4 class="text-lg font-bold text-emerald-950 mb-2">
+                Demokrasi ???
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed italic">
+                Hanya sebuah "Topeng" & "Tameng". Pada kenyataannya para
+                Kapitalis (Pemilik Modal) yang menjadi penguasa sebenarnya.
+                Bahkan ideologi Komunisme pun menyuarakan demokrasi sebagai
+                alat.
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div class="p-4 bg-stone-50 rounded-xl">
+                <h5
+                  class="font-bold text-xs text-emerald-900 uppercase tracking-widest mb-2"
+                >
+                  Akar Sejarah
+                </h5>
+                <p class="text-[11px] text-slate-600 italic leading-relaxed">
+                  Lahir saat Kaisar & Raja di Eropa menjadikan agama sebagai
+                  alat untuk memeras rakyat. Cendekiawan bereaksi dengan
+                  memisahkan agama dari peraturan hidup (Sekularisme).
+                </p>
+              </div>
+              <div
+                class="grid grid-cols-2 gap-2 text-[9px] font-bold text-amber-800 uppercase"
+              >
+                <span class="bg-amber-50 p-2 rounded border border-amber-100"
+                  >Nasionalisme</span
+                >
+                <span class="bg-amber-50 p-2 rounded border border-amber-100"
+                  >Liberalisme</span
+                >
+                <span class="bg-amber-50 p-2 rounded border border-amber-100"
+                  >Konservatisme</span
+                >
+                <span class="bg-amber-50 p-2 rounded border border-amber-100"
+                  >Eksistensialisme</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Sosialisme Komunisme -->
+          <div class="bg-stone-900 text-white rounded-3xl p-8 shadow-xl">
+            <div class="flex items-center justify-between mb-6">
+              <h3
+                class="text-2xl font-serif font-bold text-slate-300 uppercase"
+              >
+                Sosialis / Komunis
+              </h3>
+              <span
+                class="text-[10px] bg-red-900 px-3 py-1 rounded-full font-bold uppercase"
+                >Atheisme</span
+              >
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center mb-8">
+              <div class="p-2 border border-slate-700 rounded-lg">
+                <span class="text-[10px] block font-bold text-slate-400"
+                  >Alam</span
+                >
+              </div>
+              <div class="p-2 border border-slate-700 rounded-lg">
+                <span class="text-[10px] block font-bold text-slate-400"
+                  >Manusia</span
+                >
+              </div>
+              <div class="p-2 border border-slate-700 rounded-lg">
+                <span class="text-[10px] block font-bold text-slate-400"
+                  >Hidup</span
+                >
+              </div>
+              <div
+                class="col-span-3 py-2 bg-red-950 rounded-lg text-xs font-bold text-red-200"
+              >
+                SEMUA ADALAH MATERI
+              </div>
+            </div>
+            <ul class="space-y-4 text-xs text-slate-300">
+              <li class="flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span>Berevolusi (Materialisme Dialektika).</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span>Bersifat Azali (Tidak ada Pencipta).</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span>Tidak ada Tuhan / Tidak ada Hari Kiamat.</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span>Tidak ada alam lain (Surga/Neraka).</span>
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-slate-700 text-center italic">
+              <h4 class="text-amber-500 font-bold text-sm mb-1 uppercase">
+                Tujuan Akhir: Kebahagiaan
+              </h4>
+              <p class="text-[11px] text-slate-400">
+                Kesenangan Jasmani & Manfaat Maslahat Material.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 3: DAMPAK SEKULARISME ==================== -->
+      <section
+        id="tab-content-3"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div
+          class="bg-red-50 border-2 border-red-200 rounded-3xl p-8 text-center max-w-4xl mx-auto"
+        >
+          <h3 class="text-xl font-serif font-bold text-red-950 mb-4">
+            "Seandainya Seluruh Manusia Muslim Terpapar Sekularisme"
+          </h3>
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-4 text-[10px] font-bold text-red-800 uppercase"
+          >
+            <div class="bg-white p-3 rounded-xl border border-red-100">
+              Demokrasi (Suara Rakyat)
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-red-100">
+              Liberalisme
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-red-100">
+              Nasionalisme
+            </div>
+          </div>
+          <div
+            class="mt-6 p-4 bg-red-900 text-white rounded-2xl font-serif text-lg"
+          >
+            "Maka: Tidak akan tercipta Masyarakat Islami"
+          </div>
+        </div>
+
+        <!-- Timeline Infiltrasi Hukum Barat -->
+        <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm">
+          <h3 class="text-xl font-serif font-bold text-emerald-950 mb-8">
+            Sejarah Masuknya Undang-Undang Barat
+          </h3>
+          <div class="space-y-6 relative">
+            <div
+              class="absolute left-4 top-0 bottom-0 w-0.5 bg-emerald-100"
+            ></div>
+
+            <div class="relative pl-12">
+              <div
+                class="absolute left-2.5 top-1.5 w-3.5 h-3.5 bg-amber-500 rounded-full ring-4 ring-white"
+              ></div>
+              <span class="font-bold text-emerald-900">1857 M.</span>
+              <p class="text-xs text-slate-600">
+                UU Pidana Pemerintah Utsmani (Mulai mengadopsi model Barat).
+              </p>
+            </div>
+            <div class="relative pl-12">
+              <div
+                class="absolute left-2.5 top-1.5 w-3.5 h-3.5 bg-amber-500 rounded-full ring-4 ring-white"
+              ></div>
+              <span class="font-bold text-emerald-900">1858 M.</span>
+              <p class="text-xs text-slate-600">
+                UU Keuangan & Perdagangan (Melepaskan syariat dari muamalah
+                ekonomi).
+              </p>
+            </div>
+            <div class="relative pl-12">
+              <div
+                class="absolute left-2.5 top-1.5 w-3.5 h-3.5 bg-amber-500 rounded-full ring-4 ring-white"
+              ></div>
+              <span class="font-bold text-emerald-900">1870 M.</span>
+              <p class="text-xs text-slate-600">
+                Mahkamah Nidhomiyah (Sistem pengadilan sekuler mulai paralel
+                dengan syariah).
+              </p>
+            </div>
+            <div class="relative pl-12">
+              <div
+                class="absolute left-2.5 top-1.5 w-3.5 h-3.5 bg-red-600 rounded-full ring-4 ring-white"
+              ></div>
+              <span class="font-bold text-red-600">1918 M.</span>
+              <p class="text-xs text-slate-600">
+                Banyak persengketaan yang diselesaikan selain dengan Hukum
+                Islam.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="bg-emerald-900 p-6 rounded-2xl text-white text-center flex flex-col justify-center border-b-8 border-amber-500"
+          >
+            <h4 class="font-serif font-bold text-lg mb-2 uppercase">
+              Kenyataan Islam
+            </h4>
+            <p class="text-xs text-emerald-100 italic">
+              "1300+ tahun dunia damai di bawah aturan Islam. Kedaulatan mutlak
+              berada pada Syariat."
+            </p>
+          </div>
+          <div
+            class="bg-white p-6 rounded-2xl border border-stone-200 text-center flex flex-col justify-center border-b-8 border-slate-300"
+          >
+            <h4 class="font-serif font-bold text-lg mb-2 uppercase">
+              Kenyataan Sekuler
+            </h4>
+            <p class="text-xs text-slate-500 italic">
+              "Tidak ada satu perkara pun yang diselesaikan selain dengan aturan
+              Islam kecuali membawa perselisihan."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 4: STRUKTUR NEGARA ISLAM ==================== -->
+      <section
+        id="tab-content-4"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div
+          class="bg-white border-2 border-emerald-900 rounded-3xl p-8 shadow-md"
+        >
+          <h3
+            class="text-2xl font-serif font-bold text-center text-emerald-950 mb-12 uppercase tracking-widest"
+          >
+            STRUKTUR NEGARA ISLAM (KHILAFAH)
+          </h3>
+
+          <!-- Hierarchical Structure -->
+          <div class="flex flex-col items-center">
+            <!-- Khalifah -->
+            <div
+              class="bg-emerald-950 text-white px-10 py-4 rounded-xl shadow-lg border-2 border-amber-500 text-center z-10"
+            >
+              <span
+                class="text-[10px] text-amber-400 font-bold block uppercase mb-1"
+                >Kepala Negara</span
+              >
+              <h4 class="font-bold text-xl uppercase">KHALIFAH</h4>
+            </div>
+            <div class="w-0.5 h-8 bg-emerald-200"></div>
+
+            <!-- Middle Level -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+              <div
+                class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-center"
+              >
+                <h5
+                  class="text-[10px] font-bold text-emerald-800 uppercase mb-2"
+                >
+                  Asisten Terpilih
+                </h5>
+                <span class="font-bold text-xs">Muawin Tafwid</span>
+              </div>
+              <div
+                class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-center"
+              >
+                <h5
+                  class="text-[10px] font-bold text-emerald-800 uppercase mb-2"
+                >
+                  Asisten Admin
+                </h5>
+                <span class="font-bold text-xs">Muawin Tanfid</span>
+              </div>
+              <div
+                class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-center"
+              >
+                <h5
+                  class="text-[10px] font-bold text-emerald-800 uppercase mb-2"
+                >
+                  Angkatan & Senjata
+                </h5>
+                <span class="font-bold text-xs">Amirul Jihad</span>
+              </div>
+              <div
+                class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 text-center"
+              >
+                <h5
+                  class="text-[10px] font-bold text-emerald-800 uppercase mb-2"
+                >
+                  Peradilan
+                </h5>
+                <span class="font-bold text-xs">Qadhi</span>
+              </div>
+            </div>
+
+            <div class="w-full flex justify-around mt-4">
+              <div class="w-0.5 h-8 bg-emerald-200"></div>
+              <div class="w-0.5 h-8 bg-emerald-200"></div>
+            </div>
+
+            <!-- Bottom Level -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+              <div
+                class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-center"
+              >
+                <h4 class="font-bold text-emerald-950 mb-2 uppercase">
+                  Aparat Administrasi
+                </h4>
+                <p class="text-[10px] text-slate-500">
+                  Pelaksana teknis kenegaraan di seluruh departemen.
+                </p>
+              </div>
+              <div
+                class="bg-stone-50 p-6 rounded-2xl border border-stone-200 text-center"
+              >
+                <h4 class="font-bold text-emerald-950 mb-2 uppercase">
+                  Wali (Gubernur)
+                </h4>
+                <p class="text-[10px] text-slate-500">
+                  Pemimpin wilayah di bawah otoritas Khalifah.
+                </p>
+              </div>
+            </div>
+
+            <!-- Majelis Ummat -->
+            <div
+              class="mt-8 bg-amber-50 p-6 rounded-3xl border-2 border-amber-200 w-full max-w-xl text-center"
+            >
+              <h4 class="font-bold text-amber-900 mb-2 uppercase">
+                Majelis Ummat (Dewan Syura)
+              </h4>
+              <ul class="text-[10px] text-amber-800 space-y-2 italic">
+                <li>• Dipilih oleh Syura / Ditunjuk Khalifah.</li>
+                <li>
+                  • Suara tidak berhak mengganti Khalifah yang sudah dibai'at.
+                </li>
+                <li>• Syura: Hak rakyat untuk memberikan pendapat.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 5: PENERAPAN SISTEM ==================== -->
+      <section
+        id="tab-content-5"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Mekanisme Kekuasaan -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm"
+          >
+            <h3
+              class="text-xl font-serif font-bold text-emerald-950 mb-6 uppercase tracking-widest border-b pb-2"
+            >
+              Mekanisme Kekuasaan
+            </h3>
+            <div class="space-y-6">
+              <div
+                class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100"
+              >
+                <h4 class="font-bold text-sm text-emerald-900 mb-2 uppercase">
+                  Pengangkatan & Bai'at
+                </h4>
+                <ul class="text-[11px] text-slate-600 space-y-2">
+                  <li class="flex items-start gap-2">
+                    <span>1.</span> <span>Ditunjuk Khalifah sebelumnya.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span>2.</span> <span>Dipilih oleh Syura.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span>3.</span>
+                    <span
+                      >Pemberian Bai'at (Ahlul Halli Wal Aqdi & Syarkhol
+                      Islam).</span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="p-4 bg-amber-50 rounded-2xl border border-amber-100">
+                <h4 class="font-bold text-sm text-amber-900 mb-2 uppercase">
+                  Dua Tipe Pemimpin
+                </h4>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <span
+                      class="font-bold text-xs block text-emerald-900 uppercase"
+                      >Al-Qadhi</span
+                    >
+                    <span class="text-[10px] text-slate-500"
+                      >Langsung memimpin rakyat.</span
+                    >
+                  </div>
+                  <div>
+                    <span
+                      class="font-bold text-xs block text-emerald-900 uppercase"
+                      >Al-Hakim</span
+                    >
+                    <span class="text-[10px] text-slate-500"
+                      >Memimpin & Mengayomi rakyat.</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Penerapan Syara -->
+          <div class="bg-emerald-950 text-white rounded-3xl p-8 shadow-xl">
+            <h3
+              class="text-xl font-serif font-bold text-amber-300 mb-6 uppercase tracking-widest border-b border-emerald-800 pb-2"
+            >
+              Penerapan Syara' Kaffah
+            </h3>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div
+                class="bg-emerald-900 p-3 rounded-xl border border-emerald-800 text-center"
+              >
+                <span class="text-[11px] font-bold">I. SOSIAL</span>
+              </div>
+              <div
+                class="bg-emerald-900 p-3 rounded-xl border border-emerald-800 text-center"
+              >
+                <span class="text-[11px] font-bold">II. EKONOMI</span>
+              </div>
+              <div
+                class="bg-emerald-900 p-3 rounded-xl border border-emerald-800 text-center"
+              >
+                <span class="text-[11px] font-bold">III. PENDIDIKAN</span>
+              </div>
+              <div
+                class="bg-emerald-900 p-3 rounded-xl border border-emerald-800 text-center"
+              >
+                <span class="text-[11px] font-bold">IV. LUAR NEGERI</span>
+              </div>
+              <div
+                class="bg-emerald-900 p-3 rounded-xl border border-emerald-800 text-center col-span-2"
+              >
+                <span class="text-[11px] font-bold">V. PEMERINTAHAN</span>
+              </div>
+            </div>
+            <div
+              class="bg-amber-500 text-emerald-950 p-4 rounded-xl text-center"
+            >
+              <h4 class="font-bold text-xs uppercase mb-1">
+                Sumber Hukum Utama
+              </h4>
+              <p class="font-serif font-bold text-sm italic">
+                Kitabullah & Sunnah Rasullulah <br />
+                (Kitab Fiqih / Ahkam Syara')
+              </p>
+            </div>
+            <div
+              class="mt-6 text-[10px] text-emerald-300 italic leading-relaxed"
+            >
+              Catatan: Penggeneralisir satu sistem hukum di bawah pimpinan
+              Khalifah tanpa memilah kepentingan pribadi/golongan.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Credit -->
+    <footer
+      class="max-w-6xl mx-auto px-4 py-8 text-center border-t border-stone-200 text-slate-400 text-[10px] uppercase tracking-widest"
+    >
+      Nizham al-Islam • Al-Qiyadah al-Fikriyah • Bab 3
+    </footer>
+
+    <script>
+      function switchTab(tabId) {
+        const panes = document.querySelectorAll(".tab-pane");
+        panes.forEach((pane) => pane.classList.add("hidden"));
+        document
+          .getElementById(`tab-content-${tabId}`)
+          .classList.remove("hidden");
+
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn, index) => {
+          btn.className =
+            "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+          const badge = btn.querySelector("span");
+          if (badge)
+            badge.className =
+              "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+        });
+
+        const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+        activeBtn.className =
+          "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+        const activeBadge = activeBtn.querySelector("span");
+        if (activeBadge)
+          activeBadge.className =
+            "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+      }
+    </script>
+  </body>
+</html>

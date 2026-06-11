@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadharah Islam - Nizham al-Islam (Bab 5)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'ui-serif', 'serif'],
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+        .font-arabic { font-family: 'Amiri', serif; }
+        .font-sans-custom { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #047857; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #065f46; }
+        
+        /* Watermark style for the big number 5 */
+        .header-number-bg {
+            position: absolute;
+            right: 25%;
+            top: 30%;
+            transform: translateY(-50%);
+            font-size: 22rem;
+            line-height: 1;
+            font-weight: 800;
+            color: rgba(245, 158, 11, 0.08);
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            font-family: 'Georgia', serif;
+        }
+        @media (max-width: 768px) {
+            .header-number-bg { font-size: 12rem; right: -5%; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white">
+
+    <!-- Top Premium Banner -->
+    <header class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-16 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <!-- Big Watermark Background Number -->
+        <div class="header-number-bg">5</div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30">Infografis Kitab Nizham al-Islam</span>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 uppercase">Hadhoroh Islam</h1>
+            <p class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1">الحضارة الإسلامية • Peradaban Islam</p>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200">
+        <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+            <div class="flex space-x-1 py-3 justify-start md:justify-center min-w-max">
+                <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md">
+                    <span class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold">1</span>
+                    Definisi Dasar
+                </button>
+                <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">2</span>
+                    Klasifikasi Madaniyah
+                </button>
+                <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">3</span>
+                    Hadhoroh Islam
+                </button>
+                <button onclick="switchTab(4)" id="tab-btn-4" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">4</span>
+                    Hadhoroh Western
+                </button>
+                <button onclick="switchTab(5)" id="tab-btn-5" class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100">
+                    <span class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold">5</span>
+                    Komparasi Akhir
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- ==================== TAB 1: DEFINISI DASAR ==================== -->
+        <section id="tab-content-1" class="tab-pane block space-y-8 animate-fade-in">
+            <p class="text-sm md:text-base text-slate-700 font-light font-serif leading-relaxed mb-6 text-center">
+                "Memahami perbedaan antara <span class="font-bold">konsep kehidupan</span> (Hadharah) dan <span class="font-bold">benda-benda materi</span> (Madaniyah) dalam kacamata Islam."
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Hadharah Box -->
+                <div class="bg-emerald-900 text-white rounded-3xl p-8 border-b-8 border-amber-500 shadow-xl">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-serif font-bold text-amber-300 uppercase tracking-wider">Hadhoroh (الحضارة)</h3>
+                        <span class="bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Konsep Hidup</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6 italic">
+                        "Hadharah adalah sekumpulan mafahim (konsep/persepsi) tentang kehidupan."
+                    </p>
+                    <div class="bg-emerald-950/50 p-4 rounded-xl border border-emerald-800">
+                        <h4 class="font-bold text-amber-400 text-xs mb-2 uppercase tracking-widest">Karakteristik Utama:</h4>
+                        <ul class="text-xs space-y-2 text-emerald-100">
+                            <li class="flex items-start gap-2"><span>•</span> Ide-ide yang dianut tentang makna kehidupan di dunia.</li>
+                            <li class="flex items-start gap-2"><span>•</span> Pandangan hidup yang mendasar (Ideologi).</li>
+                            <li class="flex items-start gap-2"><span>•</span> Bersifat KHAS (Spesifik) bagi setiap umat/peradaban.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Madaniyah Box -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-serif font-bold text-emerald-900 uppercase tracking-wider">Madaniyah (المدنية)</h3>
+                        <span class="bg-stone-100 text-slate-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Benda Materi</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6 italic text-slate-600">
+                        "Madaniyah adalah benda-benda konkrit yang digunakan dalam berbagai aktivitas kehidupan."
+                    </p>
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-emerald-900 text-xs mb-2 uppercase tracking-widest">Karakteristik Utama:</h4>
+                        <ul class="text-xs space-y-2 text-slate-500">
+                            <li class="flex items-start gap-2"><span>•</span> Segala bentuk fisik/materi hasil kreativitas manusia.</li>
+                            <li class="flex items-start gap-2"><span>•</span> Benda-benda yang digunakan dalam kehidupan sehari-hari.</li>
+                            <li class="flex items-start gap-2"><span>•</span> Merupakan Produk (Hasil) dari Hadharah atau Ilmu Pengetahuan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contextual Note -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+                <p class="text-xs md:text-sm text-amber-900 leading-relaxed font-medium">
+                    <span class="font-bold text-lg">💡 Penting:</span> Madaniyah merupakan manifestasi fisik (produk) yang lahir dari rahim sebuah Hadharah atau hasil dari kemajuan Sains dan Teknologi.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 2: KLASIFIKASI MADANIYAH ==================== -->
+        <section id="tab-content-2" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="max-w-3xl mx-auto text-center mb-6">
+                <h3 class="text-2xl font-serif font-bold text-emerald-950 uppercase">Pembagian Madaniyah</h3>
+                <p class="text-sm text-slate-500 mt-2 italic">Tidak semua benda materi boleh diambil secara bebas oleh umat Islam.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Madaniyah UMUM -->
+                <div class="relative bg-white border border-stone-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+                    <div class="absolute -top-4 right-8 bg-emerald-600 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase">Universal / Boleh</div>
+                    <h4 class="text-lg font-bold text-emerald-900 mb-4 uppercase tracking-widest">1. Madaniyah Umum</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                        Benda-benda materi yang dihasilkan dari kemajuan sains dan teknologi, yang bersifat universal bagi seluruh umat manusia.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-100 text-center">
+                            <span class="text-2xl mb-2 block">🔬</span>
+                            <span class="text-[10px] font-bold text-slate-800 uppercase">Sains & Teknologi</span>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-100 text-center">
+                            <span class="text-2xl mb-2 block">🏭</span>
+                            <span class="text-[10px] font-bold text-slate-800 uppercase">Alat Industri</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-emerald-700 font-bold bg-emerald-50 p-3 rounded-lg border border-emerald-100">
+                        ✅ KONSEKUENSI: Umat Islam boleh mengambil dan memanfaatkannya tanpa melihat asal-usul peradabannya.
+                    </p>
+                </div>
+
+                <!-- Madaniyah KHUSUS -->
+                <div class="relative bg-white border border-stone-200 rounded-3xl p-8 shadow-sm hover:shadow-md transition-all">
+                    <div class="absolute -top-4 right-8 bg-red-600 text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase">Spesifik / Terikat Hadharah</div>
+                    <h4 class="text-lg font-bold text-red-900 mb-4 uppercase tracking-widest">2. Madaniyah Khas</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                        Benda-benda materi yang dihasilkan berdasarkan pandangan hidup (Hadharah) tertentu dan memiliki ciri khas ideologis.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100 text-center">
+                            <span class="text-2xl mb-2 block">⚖️</span>
+                            <span class="text-[10px] font-bold text-red-800 uppercase">Sistem Politik</span>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100 text-center">
+                            <span class="text-2xl mb-2 block">🎨</span>
+                            <span class="text-[10px] font-bold text-red-800 uppercase">Budaya/Seni Khas</span>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-[10px] text-red-700 font-bold bg-red-50 p-3 rounded-lg border border-red-100">
+                        ❌ KONSEKUENSI: Umat Islam TIDAK BOLEH mengambilnya jika bertentangan dengan aqidah dan syariat Islam.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 3: HADHOROH ISLAM ==================== -->
+        <section id="tab-content-3" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-emerald-950 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden border-l-8 border-amber-500">
+                <div class="absolute -right-20 -bottom-20 opacity-10 text-9xl font-arabic">إيمان</div>
+                
+                <h3 class="text-3xl font-serif font-bold text-amber-300 mb-6 uppercase tracking-widest">Konsep Hadhoroh Islam</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="bg-emerald-900/50 p-6 rounded-2xl border border-emerald-800">
+                            <h4 class="text-lg font-bold text-amber-400 mb-2 uppercase">Asas: AQIDAH (IMAN)</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed">
+                                Seluruh bangunan peradaban Islam berdiri tegak di atas landasan keimanan kepada Allah SWT. Hadharah Islam tidak memisahkan aspek materi dari aspek ruhani.
+                            </p>
+                        </div>
+                        <div class="bg-emerald-900/50 p-6 rounded-2xl border border-emerald-800">
+                            <h4 class="text-lg font-bold text-amber-400 mb-2 uppercase">Standar: ATURAN PENCIPTA</h4>
+                            <p class="text-xs text-emerald-100 leading-relaxed">
+                                Hidup manusia diatur sepenuhnya oleh syariat Allah (Khaliq). Perbuatan manusia senantiasa dikaitkan dengan kesadaran akan hubungan dengan Allah (Idrak Shilah Billah).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center">
+                        <div class="bg-white text-emerald-950 p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform">
+                            <span class="text-amber-600 font-bold text-xs uppercase tracking-widest block mb-2">Tujuan Hakiki</span>
+                            <h4 class="text-2xl font-serif font-bold uppercase mb-2">Ridho Allah</h4>
+                            <div class="w-12 h-1 bg-amber-500 mx-auto mb-4"></div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                "Mewujudkan nilai-nilai kehidupan yang luhur dan abadi demi mencapai keridhaan Sang Pencipta."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+                <p class="text-xs text-emerald-900 text-center font-bold uppercase tracking-wider">
+                    Perbuatan Manusia ➡️ Idrak Shilah Billah (Kesadaran Hubungan dengan Allah) ➡️ Amal Sholeh
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 4: HADHOROH WESTERN ==================== -->
+        <section id="tab-content-4" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-white border border-stone-200 rounded-3xl p-8 md:p-12 shadow-md relative overflow-hidden border-l-8 border-slate-400">
+                <div class="absolute -right-20 -bottom-20 opacity-5 text-9xl font-serif">West</div>
+                
+                <h3 class="text-3xl font-serif font-bold text-slate-800 mb-6 uppercase tracking-widest">Konsep Hadhoroh Western</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 uppercase">Asas: SEKULARISME</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Pemisahan total antara Agama dan Kehidupan. Agama hanya dianggap sebagai urusan pribadi (privat) yang tidak boleh mengatur tatanan publik.
+                            </p>
+                        </div>
+                        <div class="bg-stone-50 p-6 rounded-2xl border border-stone-200">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 uppercase">Standar: MANFAAT (UTILITY)</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Segala sesuatu diukur berdasarkan asas manfaat dan maslahat material. Kebenaran bersifat relatif tergantung pada kegunaannya.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col justify-center">
+                        <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-lg text-center transform hover:scale-105 transition-transform border-b-8 border-amber-500">
+                            <span class="text-slate-400 font-bold text-xs uppercase tracking-widest block mb-2">Tujuan Utama</span>
+                            <h4 class="text-2xl font-serif font-bold uppercase mb-2">Manfaat & Maslahat</h4>
+                            <div class="w-12 h-1 bg-amber-500 mx-auto mb-4"></div>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                "Pengejaran kebahagiaan duniawi melalui pemenuhan kebutuhan jasmani secara maksimal."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Western Norms Grid -->
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-stone-50 p-4 rounded-xl text-center border border-stone-100">
+                        <span class="text-xs font-bold text-slate-400 uppercase block mb-1">Norma</span>
+                        <p class="text-[11px] font-bold text-slate-700">Moral / Etika</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl text-center border border-stone-100">
+                        <span class="text-xs font-bold text-slate-400 uppercase block mb-1">Urusan</span>
+                        <p class="text-[11px] font-bold text-slate-700">Ruhani (Individu)</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl text-center border border-stone-100">
+                        <span class="text-xs font-bold text-slate-400 uppercase block mb-1">Fokus</span>
+                        <p class="text-[11px] font-bold text-slate-700">Kemanusiaan</p>
+                    </div>
+                    <div class="bg-stone-50 p-4 rounded-xl text-center border border-stone-100">
+                        <span class="text-xs font-bold text-slate-400 uppercase block mb-1">Wadah</span>
+                        <p class="text-[11px] font-bold text-slate-700">Privat / Ormas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TAB 5: KOMPARASI AKHIR ==================== -->
+        <section id="tab-content-5" class="tab-pane hidden space-y-8 animate-fade-in">
+            <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-sm">
+                <h3 class="text-2xl font-serif font-bold text-emerald-950 mb-8 uppercase text-center">Head-to-Head Comparison</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="bg-stone-100 text-slate-600 text-[10px] font-bold uppercase tracking-widest">
+                                <th class="p-4 text-left border-b border-stone-200">Aspek Perbandingan</th>
+                                <th class="p-4 text-center border-b border-stone-200 bg-emerald-900 text-amber-300">Hadhoroh Islam</th>
+                                <th class="p-4 text-center border-b border-stone-200 bg-slate-900 text-white">Hadhoroh Western</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs">
+                            <tr class="hover:bg-stone-50">
+                                <td class="p-4 font-bold border-b border-stone-100">Landasan Utama</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-emerald-800 font-semibold">Iman / Aqidah (الله)</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-slate-600 font-semibold">Sekularisme (Agama vs Dunia)</td>
+                            </tr>
+                            <tr class="hover:bg-stone-50">
+                                <td class="p-4 font-bold border-b border-stone-100">Standar Perbuatan</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-emerald-800 font-semibold">Hukum Syara' (Halal / Haram)</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-slate-600 font-semibold">Manfaat & Pragmatisme</td>
+                            </tr>
+                            <tr class="hover:bg-stone-50">
+                                <td class="p-4 font-bold border-b border-stone-100">Tujuan (Ghayah)</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-emerald-800 font-semibold">Mencapai Ridho Allah</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-slate-600 font-semibold">Pengejaran Kesenangan Jasmani</td>
+                            </li>
+                            <tr class="hover:bg-stone-50">
+                                <td class="p-4 font-bold border-b border-stone-100">Visi Kehidupan</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-emerald-800 font-semibold">Wujud Pola Hidup Baru</td>
+                                <td class="p-4 text-center border-b border-stone-100 text-slate-600 font-semibold">Kebebasan Berperilaku</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Final Conclusion Banner -->
+            <div class="bg-gradient-to-r from-emerald-900 to-emerald-950 text-white rounded-3xl p-8 shadow-xl border-t-4 border-amber-500 text-center">
+                <h4 class="text-xl font-serif font-bold text-amber-400 uppercase mb-4">Kesimpulan Strategis</h4>
+                <p class="text-sm italic text-emerald-100 leading-relaxed max-w-4xl mx-auto">
+                    "Umat Islam wajib mengadopsi Madaniyah yang bersifat umum (Sains & Teknologi), namun harus menolak keras segala bentuk Hadharah Western dan Madaniyah yang bersifat khas (ideologis) karena asasnya yang bertentangan dengan Akidah Islamiyah."
+                </p>
+                <div class="mt-6 flex justify-center gap-4">
+                    <span class="px-4 py-1 bg-emerald-800 rounded-full text-[10px] font-bold uppercase border border-emerald-700">Pure Islamic Mindset</span>
+                    <span class="px-4 py-1 bg-amber-600 rounded-full text-[10px] font-bold uppercase border border-amber-500">Nizhamul Islam</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Credit -->
+    <footer class="max-w-6xl mx-auto px-4 py-8 text-center border-t border-stone-200 text-slate-400 text-[10px] uppercase tracking-widest">
+        Nizham al-Islam • Hadhoroh Islam • Bab 5
+    </footer>
+
+    <!-- Interactive Navigation Logic (JS) -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab panes
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.add('hidden'));
+            
+            // Show target tab pane
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+            // Reset tab button styles
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach((btn, index) => {
+                btn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+                
+                const badge = btn.querySelector('span');
+                if (badge) {
+                    badge.className = "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+                }
+            });
+
+            // Set active styles for the clicked tab button
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            activeBtn.className = "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+            
+            const activeBadge = activeBtn.querySelector('span');
+            if (activeBadge) {
+                activeBadge.className = "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+            }
+        }
+    </script>
+</body>
+</html>

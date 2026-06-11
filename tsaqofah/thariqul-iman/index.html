@@ -1,0 +1,1989 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thariqul Iman - Nizham al-Islam (Bab 1)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              emerald: {
+                50: "#f0fdf4",
+                100: "#dcfce7",
+                200: "#bbf7d0",
+                800: "#065f46",
+                900: "#064e3b",
+                950: "#022c22",
+              },
+              amber: {
+                500: "#f59e0b",
+                600: "#d97706",
+              },
+            },
+            fontFamily: {
+              serif: ["Georgia", "ui-serif", "serif"],
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap");
+      .font-arabic {
+        font-family: "Amiri", serif;
+      }
+      .font-sans-custom {
+        font-family: "Inter", sans-serif;
+      }
+      /* Custom scrollbar for an elegant feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #047857;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #065f46;
+      }
+			/* Watermark style for the big number */
+			.header-number-bg {
+				position: absolute;
+				right: 25%; 
+				top: 45%;
+				transform: translateY(-50%);
+				font-size: 22rem;
+				line-height: 1;
+				font-weight: 800;
+				color: rgba(245, 158, 11, 0.1); /* Amber with very low opacity */
+				user-select: none;
+				pointer-events: none;
+				z-index: 0;
+				font-family: 'Georgia', serif;
+			}
+			@media (max-width: 768px) {
+				.header-number-bg { font-size: 12rem; right: -5%; }
+			}
+    </style>
+  </head>
+  <body
+    class="bg-stone-50 font-sans-custom text-slate-800 selection:bg-emerald-800 selection:text-white"
+  >
+    <!-- Top Premium Banner -->
+    <header
+      class="bg-gradient-to-r from-emerald-950 via-emerald-900 to-emerald-950 text-white py-12 px-4 shadow-xl relative overflow-hidden border-b-4 border-amber-500"
+    >
+      <div
+        class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:16px_16px]"
+      ></div>
+
+			<div class="header-number-bg">1</div>
+
+      <div class="max-w-6xl mx-auto text-center relative z-10">
+        <span
+          class="text-amber-500 font-semibold tracking-widest text-xs uppercase bg-emerald-950/80 px-4 py-1.5 rounded-full border border-amber-500/30"
+          >Infografis Kitab Nizham al-Islam</span
+        >
+        <h1
+          class="text-3xl md:text-5xl font-serif font-bold mt-4 mb-2 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200"
+        >
+          THE WAY OF FAITH
+        </h1>
+        <p
+          class="text-emerald-100 font-arabic text-xl md:text-2xl tracking-wide mt-1"
+        >
+          طريق الإيمان • Jalan Menuju Keimanan
+        </p>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav
+      class="sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-40 border-b border-stone-200"
+    >
+      <div class="max-w-6xl mx-auto px-2 overflow-x-auto">
+        <div
+          class="flex space-x-1 py-3 justify-start md:justify-center min-w-max"
+        >
+          <!-- Tab Button 1 -->
+          <button
+            onclick="switchTab(1)"
+            id="tab-btn-1"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold"
+              >1</span
+            >
+            Segitiga Hubungan
+          </button>
+          <!-- Tab Button 2 -->
+          <button
+            onclick="switchTab(2)"
+            id="tab-btn-2"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >2</span
+            >
+            Al-Qaidah Al-Fikriyah
+          </button>
+          <!-- Tab Button 3 -->
+          <button
+            onclick="switchTab(3)"
+            id="tab-btn-3"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >3</span
+            >
+            Fitrah & Akal
+          </button>
+          <!-- Tab Button 4 -->
+          <button
+            onclick="switchTab(4)"
+            id="tab-btn-4"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >4</span
+            >
+            Ibadah & Kemukjizatan
+          </button>
+          <!-- Tab Button 5 -->
+          <button
+            onclick="switchTab(5)"
+            id="tab-btn-5"
+            class="tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100"
+          >
+            <span
+              class="w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold"
+              >5</span
+            >
+            Fikr Mustanir & Aqidah
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <!-- ==================== TAB 1: THE WAY OF FAITH (SEGITIGA HUBUNGAN) ==================== -->
+      <section
+        id="tab-content-1"
+        class="tab-pane block space-y-8 animate-fade-in"
+      >
+        <!-- Intro & Sidebar Quote -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div
+            class="lg:col-span-2 bg-gradient-to-br from-emerald-900 to-emerald-950 text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between border-l-4 border-amber-500"
+          >
+            <div>
+              <span
+                class="text-amber-400 font-semibold text-xs uppercase tracking-wider"
+                >Premis Utama Bab 1</span
+              >
+              <h2 class="text-2xl font-serif font-bold mt-2 mb-4">
+                Pengaruh Pemahaman terhadap Tingkah Laku Manusia
+              </h2>
+              <p class="text-emerald-100 leading-relaxed text-sm md:text-base">
+                Tingkah laku manusia dalam kehidupan ini sangat erat kaitannya
+                dengan pemahamannya terhadap kehidupan itu sendiri. Sebelum
+                melangkah lebih jauh, manusia harus memiliki pemahaman mendasar
+                mengenai eksistensi dirinya, alam tempat ia bernaung, serta
+                kehidupan yang sedang dijalaninya.
+              </p>
+            </div>
+            <div
+              class="mt-6 pt-4 border-t border-emerald-800/60 flex items-center gap-3"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-emerald-950 font-bold shrink-0"
+              >
+                💡
+              </div>
+              <p class="text-xs text-amber-300 font-medium">
+                Asas Berpikir: Pemahaman yang benar akan menghasilkan tingkah
+                laku yang benar dan terarah.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-amber-50 border border-amber-200 rounded-2xl p-6 shadow-md flex flex-col justify-center"
+          >
+            <div class="text-amber-600 mb-2">
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <p
+              class="font-serif italic text-lg text-emerald-950 leading-relaxed"
+            >
+              "Pemahaman tentang hidup mempengaruhi perilaku & tujuan hidupnya."
+            </p>
+            <span
+              class="text-xs text-slate-500 mt-6 block font-semibold tracking-wider"
+              >— Syaikh Taqiyuddin An-Nabhani</span
+            >
+          </div>
+        </div>
+
+        <!-- Segitiga Hubungan (Interactive & Visual SVG) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <h3
+            class="text-xl font-serif font-bold text-center text-emerald-900 mb-2"
+          >
+            Segitiga Hubungan Hubungan Eksistensi
+          </h3>
+          <p class="text-xs text-slate-500 text-center max-w-lg mx-auto mb-8">
+            Pahami bagaimana hubungan antara Manusia, Alam Semesta, dan
+            Kehidupan dengan dimensi Sebelum dan Sesudah Kehidupan.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <!-- Interactive Visual SVG and HTML mapping -->
+            <div
+              class="relative flex justify-center py-6 bg-stone-50 rounded-2xl border border-stone-100 overflow-hidden"
+            >
+              <div
+                class="absolute top-2 left-2 text-[10px] text-emerald-800 bg-emerald-50 px-2 py-1 rounded border border-emerald-100"
+              >
+                Klik elemen segitiga untuk melihat penjelasan
+              </div>
+
+              <!-- The Triangle Box -->
+              <div class="w-80 h-80 relative flex items-center justify-center mt-6">
+                <!-- SVG Connection Lines -->
+                <svg
+                  class="absolute inset-0 w-full h-full"
+                  viewBox="0 0 320 320"
+                >
+                  <!-- Base Triangle -->
+                  <!-- <line
+                    x1="160"
+                    y1="60"
+                    x2="60"
+                    y2="240"
+                    stroke="#047857"
+                    stroke-width="2"
+                    stroke-dasharray="4 4"
+                  />
+                  <line
+                    x1="160"
+                    y1="60"
+                    x2="260"
+                    y2="240"
+                    stroke="#047857"
+                    stroke-width="2"
+                    stroke-dasharray="4 4"
+                  />
+                  <line
+                    x1="60"
+                    y1="240"
+                    x2="260"
+                    y2="240"
+                    stroke="#047857"
+                    stroke-width="2"
+                  /> -->
+
+                  <!-- Outer Dimension Lines (Before / After Life Connections) -->
+                  <!-- Before Life: top-rightish or bottom-rightish (Ma Qablahu) -->
+                  <path
+                    d="M 260 240 L 290 280"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M 160 60 L 290 280"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M 60 240 L 290 280"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+
+                  <!-- After Life: top-leftish (Ma Ba'dahu) -->
+                  <path
+                    d="M 60 240 L 30 40"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M 160 60 L 30 40"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M 260 240 L 30 40"
+                    stroke="#dc2626"
+                    stroke-width="1.5"
+                  />
+                </svg>
+
+                <!-- Node: Life (Al-Hayah) -->
+                <button
+                  onclick="showNodeDesc('life')"
+                  class="absolute top-6 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-emerald-800 text-white flex flex-col items-center justify-center border-4 border-white shadow-lg transition-transform hover:scale-110 active:scale-95 focus:outline-none"
+                >
+                  <span class="font-arabic text-lg font-bold">الحياة</span>
+                  <span class="text-[10px] font-semibold tracking-wider"
+                    >LIFE</span
+                  >
+                </button>
+
+                <!-- Node: Creation / Universe (Al-Kawn) -->
+                <button
+                  onclick="showNodeDesc('creation')"
+                  class="absolute top-[130px] left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-emerald-600 text-white flex flex-col items-center justify-center border-4 border-white shadow-lg transition-transform hover:scale-110 active:scale-95 focus:outline-none"
+                >
+                  <span class="font-arabic text-sm font-bold">الكون</span>
+                  <span class="text-[9px] font-semibold tracking-wider"
+                    >CREATION</span
+                  >
+                </button>
+
+                <!-- Node: Human (Al-Insan) -->
+                <button
+                  onclick="showNodeDesc('human')"
+                  class="absolute bottom-10 left-10 w-20 h-20 rounded-full bg-emerald-800 text-white flex flex-col items-center justify-center border-4 border-white shadow-lg transition-transform hover:scale-110 active:scale-95 focus:outline-none"
+                >
+                  <span class="font-arabic text-lg font-bold">الإنسان</span>
+                  <span class="text-[10px] font-semibold tracking-wider"
+                    >HUMAN</span
+                  >
+                </button>
+
+                <!-- Before Life (Ma Qablahu) -->
+                <button
+                  onclick="showNodeDesc('before')"
+                  class="absolute bottom-2 right-2 w-20 h-14 rounded-xl bg-red-50 text-red-800 border-2 border-red-200 flex flex-col items-center justify-center shadow-md transition-transform hover:scale-105 focus:outline-none"
+                >
+                  <span class="font-arabic text-xs font-bold">ما قبلها</span>
+                  <span class="text-[9px] font-bold">Before Life?</span>
+                </button>
+
+                <!-- After Life (Ma Ba'dahu) -->
+                <button
+                  onclick="showNodeDesc('after')"
+                  class="absolute top-2 left-2 w-20 h-14 rounded-xl bg-red-50 text-red-800 border-2 border-red-200 flex flex-col items-center justify-center shadow-md transition-transform hover:scale-105 focus:outline-none"
+                >
+                  <span class="font-arabic text-xs font-bold">ما بعدها</span>
+                  <span class="text-[9px] font-bold">After Life?</span>
+                </button>
+
+                <!-- Labels on lines -->
+                <div
+                  class="absolute top-1/2 left-4 text-[10px] font-medium text-emerald-900 bg-white/80 px-1 py-0.5 rounded border border-emerald-100"
+                >
+                  Korelasi (علاقة)
+                </div>
+                <div
+                  class="absolute top-1/2 right-4 text-[10px] font-medium text-emerald-900 bg-white/80 px-1 py-0.5 rounded border border-emerald-100"
+                >
+                  Korelasi (علاقة)
+                </div>
+              </div>
+            </div>
+
+            <!-- Explanations panel -->
+            <div
+              class="bg-stone-50 rounded-2xl p-6 border border-stone-200/60 min-h-[250px] flex flex-col justify-center"
+            >
+              <div id="node-desc-default" class="block">
+                <h4 class="font-serif font-bold text-emerald-950 text-lg mb-2">
+                  Analisis Tiga Unsur Utama & Dimensinya
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                  Masalah utama manusia di dunia ini berkisar pada tiga hal:
+                  <strong class="text-emerald-900">Manusia (Al-Insan)</strong>,
+                  <strong class="text-emerald-900"
+                    >Alam Semesta (Al-Kawn)</strong
+                  >, dan
+                  <strong class="text-emerald-900">Kehidupan (Al-Hayah)</strong
+                  >.
+                </p>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Keberadaan ketiganya melahirkan pertanyaan eksistensial
+                  terbesar (Al-Uqdah al-Kubro): Dari mana asal ketiganya? Untuk
+                  apa ada di dunia? Dan akan ke mana setelah kehidupan ini
+                  berakhir? Klik tombol pada diagram untuk mempelajari
+                  detailnya.
+                </p>
+              </div>
+
+              <!-- Specific Explanations (Hidden by default, shown via JS) -->
+              <div id="node-desc-life" class="hidden animate-fade-in">
+                <span
+                  class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded-full"
+                  >Kehidupan (الحياة - Al-Hayah)</span
+                >
+                <h4
+                  class="font-serif font-bold text-emerald-950 text-xl mt-2 mb-2"
+                >
+                  Dunia sebagai Tempat Beramal
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Kehidupan di dunia bukanlah akhir dari segalanya, melainkan
+                  koridor waktu sementara yang diberikan kepada manusia untuk
+                  menguji kepatuhannya terhadap aturan Sang Pencipta
+                  (Al-Khaliq). Kehidupan ini membutuhkan aturan penuntun agar
+                  tidak terjadi eksploitasi dan kerusakan.
+                </p>
+              </div>
+
+              <div id="node-desc-creation" class="hidden animate-fade-in">
+                <span
+                  class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded-full"
+                  >Alam Semesta (الكون - Al-Kawn)</span
+                >
+                <h4
+                  class="font-serif font-bold text-emerald-950 text-xl mt-2 mb-2"
+                >
+                  Makrokosmos yang Teratur
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Alam semesta diciptakan sebagai sarana penunjang bagi
+                  kehidupan manusia. Keteraturan hukum alam (sunnatullah)
+                  menunjukkan adanya perancangan yang sangat matang oleh Dzat
+                  Yang Maha Mengetahui dan Maha Kuasa.
+                </p>
+              </div>
+
+              <div id="node-desc-human" class="hidden animate-fade-in">
+                <span
+                  class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded-full"
+                  >Manusia (الإنسان - Al-Insan)</span
+                >
+                <h4
+                  class="font-serif font-bold text-emerald-950 text-xl mt-2 mb-2"
+                >
+                  Subjek Pemegang Amanah
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Manusia dibekali dengan potensi kehidupan berupa kebutuhan
+                  jasmani (Hajatul Adhowiyah), naluri-naluri (Gharaiz), dan akal
+                  pikiran. Akal inilah yang membedakan manusia dari makhluk
+                  lainnya dan menjadikannya subjek yang dimintai
+                  pertanggungjawaban di akhirat kelak.
+                </p>
+              </div>
+
+              <div id="node-desc-before" class="hidden animate-fade-in">
+                <span
+                  class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-1 rounded-full"
+                  >Sebelum Kehidupan (ما قبلها - Ma Qablahu)</span
+                >
+                <h4 class="font-serif font-bold text-red-950 text-xl mt-2 mb-2">
+                  Asal Mula Keberadaan
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Menjawab dari mana asal manusia, alam semesta, dan kehidupan.
+                  Ketiganya merupakan ciptaan Sang Pencipta (Al-Khaliq) yang
+                  bersifat Azali (Maha Terdahulu) dan tidak bergantung pada yang
+                  lain. Mengetahui asal-usul ini memberikan fondasi awal
+                  keimanan.
+                </p>
+              </div>
+
+              <div id="node-desc-after" class="hidden animate-fade-in">
+                <span
+                  class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-1 rounded-full"
+                  >Setelah Kehidupan (ما بعدها - Ma Ba'dahu)</span
+                >
+                <h4 class="font-serif font-bold text-red-950 text-xl mt-2 mb-2">
+                  Pertanggungjawaban Akhirat
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Menjawab apa yang akan terjadi setelah mati. Kematian bukanlah
+                  akhir eksistensi, melainkan gerbang menuju kehidupan akhirat
+                  yang kekal (Hari Kebangkitan, Hisab, Surga, dan Neraka) untuk
+                  mempertanggungjawabkan perbuatan selama di dunia.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bagian Pemahaman & Perilaku (Suka vs Benci) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div class="max-w-3xl mx-auto text-center mb-8">
+            <span
+              class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+              >Konsep Hubungan Nilai</span
+            >
+            <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">
+              Studi Kasus: Pemahaman Cinta & Benci
+            </h3>
+            <p class="text-sm text-slate-500 mt-2 leading-relaxed">
+              Tingkah laku seseorang terbentuk secara sistematis berdasarkan
+              pemahamannya (المفاهيم) terhadap objek yang dihadapi. Mari kita
+              lihat ilustrasi logis berikut:
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch relative"
+          >
+            <!-- Split Line with Diff Icon -->
+            <div
+              class="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-red-100 border-2 border-red-300 flex items-center justify-center text-red-600 font-bold text-sm"
+              >
+                ✖
+              </div>
+            </div>
+
+            <!-- Column Like -->
+            <div
+              class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-6 flex flex-col justify-between"
+            >
+              <div>
+                <span
+                  class="text-xs font-semibold text-emerald-800 tracking-wider"
+                  >KONDISI A</span
+                >
+                <h4
+                  class="text-xl font-bold font-serif text-emerald-950 mt-2 mb-3"
+                >
+                  Apa/Siapa yang Kamu SUKAI?
+                  <span class="text-emerald-600">(You Like)</span>
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                  Ketika Anda memahami seseorang sebagai orang yang Anda
+                  cintai/hargai, otak Anda menyusun informasi positif. Ini
+                  memicu respons empati dan rasa ingin memberi.
+                </p>
+              </div>
+              <div
+                class="bg-white p-4 rounded-xl border border-emerald-200/60 shadow-sm"
+              >
+                <span class="text-[10px] text-slate-400 font-bold block"
+                  >BAGAIMANA SIKAPNYA? (HOW?)</span
+                >
+                <p class="text-sm font-semibold text-emerald-900 mt-1 mb-2">
+                  سلوك الإنسان (Suluk al-Insan / Perilaku Manusia)
+                </p>
+                <span
+                  class="inline-block bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-medium"
+                  >Sopan, Peduli, Lembut, Menghormati</span
+                >
+              </div>
+            </div>
+
+            <!-- Column Hate -->
+            <div
+              class="bg-red-50/30 border border-red-100 rounded-2xl p-6 flex flex-col justify-between"
+            >
+              <div>
+                <span class="text-xs font-semibold text-red-800 tracking-wider"
+                  >KONDISI B</span
+                >
+                <h4 class="text-xl font-bold font-serif text-red-950 mt-2 mb-3">
+                  Apa/Siapa yang Kamu BENCI?
+                  <span class="text-red-600">(You Hate)</span>
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                  Ketika Anda memahami seseorang sebagai orang yang dibenci atau
+                  berbahaya, sistem pertahanan psikologis Anda akan memunculkan
+                  rasa curiga, waspada, atau penolakan.
+                </p>
+              </div>
+              <div
+                class="bg-white p-4 rounded-xl border border-red-200/60 shadow-sm"
+              >
+                <span class="text-[10px] text-slate-400 font-bold block"
+                  >BAGAIMANA SIKAPNYA? (HOW?)</span
+                >
+                <p class="text-sm font-semibold text-red-900 mt-1 mb-2">
+                  سلوك الإنسان (Suluk al-Insan / Perilaku Manusia)
+                </p>
+                <span
+                  class="inline-block bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full font-medium"
+                  >Menjauh, Dingin, Defensif, Kasar</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-slate-50 border border-slate-200 rounded-xl p-5 mt-8 text-center text-sm text-slate-600 leading-relaxed"
+          >
+            <strong class="text-emerald-900">Kesimpulan Hukum Sosial:</strong>
+            "Pemahaman seseorang terhadap orang yang dicintainya akan membentuk
+            perilaku yang berlawanan dengan perilakunya terhadap orang yang
+            dibencinya."
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: AL-QADHIYAH AL-FIKRIYAH (MASALAH UTAMA) ==================== -->
+      <section
+        id="tab-content-2"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <!-- Verse Banner QS Ar-Ra'd 13:11 -->
+        <div
+          class="bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900 text-white rounded-3xl p-6 md:p-8 shadow-md border-b-4 border-amber-500 text-center relative overflow-hidden"
+        >
+          <div
+            class="absolute -right-10 -bottom-10 opacity-10 text-9xl font-arabic"
+          >
+            الله
+          </div>
+          <span
+            class="text-amber-400 font-bold text-xs uppercase tracking-widest block mb-4"
+            >Landasan Kebangkitan Berpikir</span
+          >
+          <p
+            class="font-arabic text-2xl md:text-3xl leading-loose tracking-wide mb-3 text-amber-100"
+          >
+            إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا
+            بِأَنفُسِهِمْ
+          </p>
+          <p class="text-xs italic text-emerald-200 tracking-wide mb-4">
+            "Inna-llāha lā yugayyiru mā biqaumin ḥattā yugayyirū mā
+            bi'anfusihim"
+          </p>
+          <div class="w-16 h-0.5 bg-amber-500/50 mx-auto mb-4"></div>
+          <p
+            class="text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed"
+          >
+            "Sesungguhnya Allah tidak mengubah keadaan sesuatu kaum sehingga
+            mereka mengubah keadaan yang ada pada diri mereka sendiri."
+          </p>
+          <span class="text-xs text-amber-300 font-bold block mt-3"
+            >[ QS. Ar-Ra'd : 11 ]</span
+          >
+        </div>
+
+        <!-- Tiga Unsur & Sifat Makhluk -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Left Column: Sifat Makhluk -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center gap-2 text-red-600 mb-4">
+                <span class="font-arabic text-lg font-bold">صفة المخلوق</span>
+                <span class="text-xs font-bold uppercase tracking-wider"
+                  >(Sifat Makhluk)</span
+                >
+              </div>
+              <h3 class="text-xl font-serif font-bold text-slate-900 mb-4">
+                Unsur Alam, Kehidupan, & Manusia
+              </h3>
+
+              <div class="space-y-3">
+                <div
+                  class="flex items-start gap-3 p-3 bg-red-50/50 rounded-xl border border-red-100"
+                >
+                  <span
+                    class="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                    >1</span
+                  >
+                  <div>
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      Terbatas (Limited)
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                      Memiliki batas awal dan batas akhir yang mutlak.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-3 bg-red-50/50 rounded-xl border border-red-100"
+                >
+                  <span
+                    class="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                    >2</span
+                  >
+                  <div>
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      Lemah (Weak)
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                      Sangat rentan terhadap kerusakan dan kebinasaan.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-3 bg-red-50/50 rounded-xl border border-red-100"
+                >
+                  <span
+                    class="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                    >3</span
+                  >
+                  <div>
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      Serba Kurang (Deficient)
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                      Tidak pernah sempurna dalam memenuhi kebutuhannya sendiri.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="flex items-start gap-3 p-3 bg-red-50/50 rounded-xl border border-red-100"
+                >
+                  <span
+                    class="bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                    >4</span
+                  >
+                  <div>
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      Saling Membutuhkan
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                      Bergantung erat dengan unsur pendukung lain untuk eksis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-6 p-4 bg-red-600 text-white rounded-xl text-center shadow-md"
+            >
+              <span class="text-xs font-semibold block tracking-wider"
+                >KONSEKUENSI LOGIS</span
+              >
+              <p class="text-lg font-bold mt-1">
+                Sangat Membutuhkan Pencipta! (Need Creator)
+              </p>
+            </div>
+          </div>
+
+          <!-- Center & Right Columns: The 3 Existential Options & Solver -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- Solve Status -->
+            <div
+              class="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 shadow-sm"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="bg-emerald-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider"
+                  >Solved (Terpecahkan)</span
+                >
+                <div class="h-px bg-emerald-200 flex-grow"></div>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-emerald-950 mb-2">
+                Terpecahkannya Simpul Besar (Uqdah Al-Kubro)
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Simpul besar pemikiran manusia dapat terpecahkan secara sempurna
+                melalui konsep
+                <strong class="text-emerald-900 font-semibold"
+                  >Al-Aqidah (العقيدة)</strong
+                >. Hal ini dicapai dengan menggunakan
+                <strong class="text-amber-600 font-semibold"
+                  >Fikr Al-Mustanir (Pemikiran Cemerlang)</strong
+                >
+                yang memiliki karakteristik:
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div
+                  class="bg-white p-4 rounded-xl border border-emerald-200/60 shadow-sm"
+                >
+                  <span class="text-xs font-bold text-emerald-800 block mb-1"
+                    >1. Sesuai dengan Fitrah</span
+                  >
+                  <p class="text-xs text-slate-500">
+                    Menenangkan hati dan naluri pencarian tuhan dalam diri
+                    manusia.
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-4 rounded-xl border border-emerald-200/60 shadow-sm"
+                >
+                  <span class="text-xs font-bold text-emerald-800 block mb-1"
+                    >2. Memuaskan Akal</span
+                  >
+                  <p class="text-xs text-slate-500">
+                    Dapat dibuktikan secara logis dan empiris lewat akal sehat.
+                  </p>
+                </div>
+                <div
+                  class="bg-white p-4 rounded-xl border border-emerald-200/60 shadow-sm"
+                >
+                  <span class="text-xs font-bold text-emerald-800 block mb-1"
+                    >3. Memberi Ketenangan</span
+                  >
+                  <p class="text-xs text-slate-500">
+                    Menjawab kecemasan masa lalu, masa kini, dan masa depan
+                    manusia.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Who is the Creator? (Logical Trilemma) -->
+            <div
+              class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm"
+            >
+              <h3 class="text-xl font-serif font-bold text-slate-900 mb-4">
+                Siapa Pencipta Tersebut? (? Siapa الخالق)
+              </h3>
+
+              <div class="space-y-4">
+                <!-- Option 1 -->
+                <div
+                  class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-sm shrink-0"
+                  >
+                    ✖
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      1. Diciptakan oleh yang lain (Created by another)
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-1">
+                      Jika ia diciptakan oleh sesuatu yang lain, maka ia adalah
+                      makhluk, bukan Al-Khaliq yang mutlak. Teori rantai
+                      penciptaan tanpa akhir (tasalsul) tidak logis secara sains
+                      dan logika.
+                    </p>
+                    <span
+                      class="inline-block mt-2 bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded"
+                      >Jika diciptakan, maka dia Makhluk</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Option 2 -->
+                <div
+                  class="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-sm shrink-0"
+                  >
+                    ✖
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-bold text-slate-800 text-sm">
+                      2. Menciptakan diri-Nya sendiri (Created Himself)
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-1">
+                      Hal ini kontradiktif. Sesuatu yang belum ada tidak mungkin
+                      memiliki kemampuan untuk mengadakan dirinya sendiri dari
+                      ketiadaan.
+                    </p>
+                    <span
+                      class="inline-block mt-2 bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded"
+                      >Mustahil menjadi Kholik & Makhluk bersamaan</span
+                    >
+                  </div>
+                </div>
+
+                <!-- Option 3 -->
+                <div
+                  class="flex items-start gap-3 p-4 bg-emerald-50 rounded-xl border border-emerald-200"
+                >
+                  <div
+                    class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0"
+                  >
+                    ✔
+                  </div>
+                  <div class="flex-grow">
+                    <h4 class="font-bold text-emerald-900 text-sm">
+                      3. Azali & Wajib al-Wujud (Eternal & Necessary Existence)
+                    </h4>
+                    <p class="text-xs text-slate-600 mt-1">
+                      Dzat Pencipta tersebut bersifat Azali (ada tanpa
+                      permulaan) dan keberadaan-Nya bersifat mutlak (Wajib
+                      al-Wujud) untuk memulai segala penciptaan tanpa bergantung
+                      pada apa pun.
+                    </p>
+                    <span
+                      class="inline-block mt-2 bg-emerald-800 text-white text-[10px] font-bold px-2 py-0.5 rounded"
+                      >Sudah ada tanpa awal & akhir (tidak terbatas)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warning Box: Limit of Intellect -->
+        <div
+          class="bg-amber-50 border border-amber-300 rounded-2xl p-5 flex items-start gap-4"
+        >
+          <div class="bg-amber-500 text-white p-2 rounded-lg shrink-0">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-amber-950 text-sm">
+              Peringatan Kognitif: Batas Akal Manusia
+            </h4>
+            <p class="text-xs text-amber-900 leading-relaxed mt-1">
+              Akal manusia memiliki kapasitas yang terbatas. Akal dirancang
+              untuk mencerna objek indrawi (makhluk ciptaan) melalui pancaindra.
+              Karenanya, akal dapat membuktikan dengan yakin
+              <strong>adanya (keberadaan)</strong> Sang Pencipta, namun akal
+              mustahil untuk menggapai atau menggambarkan
+              <strong>hakikat dzat (essence)</strong> dari Pencipta tersebut.
+            </p>
+          </div>
+        </div>
+
+        <!-- Verse Footer QS Ali Imran 3:190 -->
+        <div
+          class="bg-stone-100 rounded-2xl p-6 border border-stone-200 text-center"
+        >
+          <p class="font-arabic text-xl text-emerald-950 leading-relaxed mb-2">
+            إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ
+            وَالنَّهَارِ لَآيَاتٍ لِّأُولِي الْأَلْبَابِ
+          </p>
+          <p class="text-xs italic text-slate-500 mb-2">
+            "Inna fī khalqis-samāwāti wal-arḍi wakhtilāfil-layli wan-nahāri
+            la'āyātil li'ulil-albāb"
+          </p>
+          <p class="text-xs text-slate-600 max-w-xl mx-auto italic">
+            "Sesungguhnya dalam penciptaan langit dan bumi, dan silih
+            bergantinya malam dan siang terdapat tanda-tanda bagi orang-orang
+            yang berakal."
+          </p>
+          <span class="text-xs font-bold text-emerald-800 mt-2 block"
+            >[ QS. Ali 'Imran : 190 ]</span
+          >
+        </div>
+      </section>
+
+      <!-- ==================== TAB 3: FITRAH, AKAL & HAKIKAT IMAN ==================== -->
+      <section
+        id="tab-content-3"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <!-- Verse QS Ar-Rum 30:30 -->
+        <div
+          class="bg-gradient-to-br from-emerald-950 to-emerald-900 text-white rounded-3xl p-6 md:p-8 text-center shadow-lg border-b-4 border-amber-500"
+        >
+          <span
+            class="text-amber-400 font-bold text-xs tracking-widest uppercase block mb-3"
+            >Tuntunan Fitrah Manusia</span
+          >
+          <p
+            class="font-arabic text-xl md:text-2xl leading-loose text-amber-100 mb-3"
+          >
+            فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا ۚ فِطْرَتَ اللَّهِ الَّتِي
+            فَطَرَ النَّاسَ عَلَيْهَا ۚ لَا تَبْدِيلَ لِخَلْقِ اللَّهِ
+          </p>
+          <p class="text-xs italic text-emerald-200 mb-3">
+            "Fa aqim wajhaka liddīni ḥanīfā, fiṭratallāhil-latī faṭaran-nāsa
+            'alayhā..."
+          </p>
+          <p class="text-xs font-light max-w-3xl mx-auto leading-relaxed">
+            "Maka hadapkanlah wajahmu dengan lurus kepada agama Allah; (tetaplah
+            atas) fitrah Allah yang telah menciptakan manusia menurut fitrah
+            itu. Tidak ada perubahan pada penciptaan Allah."
+          </p>
+          <span class="text-xs text-amber-300 font-bold block mt-3"
+            >[ QS. Ar-Rum : 30 ]</span
+          >
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Path A: Fitrah Tanpa Pemahaman -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <span
+                class="text-xs font-bold text-red-600 uppercase tracking-wider block mb-2"
+                >Jalur A: Emosi & Sentimen Fitrah</span
+              >
+              <h3 class="text-xl font-serif font-bold text-slate-900 mb-4">
+                Fitrah (Kecenderungan Adanya Pencipta)
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Setiap manusia memiliki kecenderungan bawaan (fitrah) untuk
+                menyembah sesuatu yang dianggap lebih kuat dan luhur. Namun,
+                jalur perasaan/nurani ini membutuhkan pemahaman akal penuntun.
+              </p>
+
+              <div class="bg-red-50 border border-red-200 rounded-xl p-4 mt-2">
+                <div
+                  class="flex items-center gap-2 text-red-700 font-bold text-sm mb-2"
+                >
+                  <span>⚠️</span>
+                  <h4>Jika Tanpa Pemahaman Akal:</h4>
+                </div>
+                <ul
+                  class="space-y-2 text-xs text-slate-600 list-disc list-inside"
+                >
+                  <li>
+                    Perasaan sering menambah-nambahkan hal di luar kenyataan
+                    objektif.
+                  </li>
+                  <li>
+                    Menghayalkan perwujudan tuhan dengan benda-benda lumrah di
+                    sekitarnya.
+                  </li>
+                  <li>Menyebabkan terjadinya penyembahan berhala (Syirik).</li>
+                  <li>
+                    Meluasnya Khurafat (kepercayaan mistis/cerita bohong tak
+                    berdasar).
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-6 text-xs text-slate-500 italic border-t pt-4">
+              *Catatan: Fitrah memberikan dorongan awal, tapi akal memvalidasi
+              kemurnian tujuannya.
+            </div>
+          </div>
+
+          <!-- Path B: Akal & Observasi -->
+          <div
+            class="bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <span
+                class="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-2"
+                >Jalur B: Logika & Observasi Indrawi</span
+              >
+              <h3 class="text-xl font-serif font-bold text-slate-900 mb-4">
+                Akal (Berpikir & Merenungkan Tanda)
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Akal bekerja dengan mengamati fakta indrawi dari ketiga
+                komponen:
+                <strong
+                  >Alam semesta (الكون), Kehidupan (الحياة), dan Manusia
+                  (الإنسان)</strong
+                >
+                untuk menarik kesimpulan logis.
+              </p>
+
+              <div class="space-y-3">
+                <div
+                  class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 flex items-start gap-2"
+                >
+                  <span class="text-emerald-800 font-bold shrink-0">✔</span>
+                  <div>
+                    <h4 class="font-bold text-xs text-emerald-950">
+                      Fokus pada Keadaan (State/Tanda-tanda)
+                    </h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5">
+                      Mengamati kerapian rotasi bumi, proses biologi sel
+                      manusia, keterbatasan umur hidup. Mengonfirmasi keberadaan
+                      Al-Khaliq secara kokoh.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-red-50 border border-red-100 rounded-xl p-3 flex items-start gap-2"
+                >
+                  <span class="text-red-700 font-bold shrink-0">✖</span>
+                  <div>
+                    <h4 class="font-bold text-xs text-red-950">
+                      Mencoba Memikirkan Hakikat (Essence) Pencipta
+                    </h4>
+                    <p class="text-[11px] text-slate-600 mt-0.5">
+                      Membayangkan zat fisik tuhan. Ini adalah kesalahan
+                      metodologis besar karena akal tidak memiliki input indrawi
+                      tentang Dzat-Nya, yang menyebabkan kebuntuan berpikir.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-xs text-slate-500 italic border-t pt-4">
+              *Catatan: Akal membuktikan kebenaran keberadaan Al-Khaliq lewat
+              tanda-tanda yang tampak.
+            </div>
+          </div>
+        </div>
+
+        <!-- Definisi Iman Modern -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div class="max-w-2xl mx-auto text-center">
+            <h3 class="text-2xl font-serif font-bold text-emerald-950 mb-2">
+              Formulasi Iman Yang Benar
+            </h3>
+            <p class="text-sm text-slate-500 mb-6">
+              Iman sejati bukanlah dogma buta, melainkan keyakinan bulat yang
+              memadukan perasaan fitrah dan logika akal.
+            </p>
+
+            <div
+              class="inline-flex flex-col md:flex-row items-center justify-center gap-4 bg-emerald-50 p-6 rounded-2xl border border-emerald-100 shadow-inner w-full"
+            >
+              <div
+                class="bg-white py-3 px-6 rounded-xl shadow-sm border border-emerald-200 text-center w-full md:w-auto"
+              >
+                <span
+                  class="text-[10px] text-emerald-800 font-bold uppercase tracking-widest"
+                  >PERASAAN</span
+                >
+                <p class="text-lg font-serif font-bold text-emerald-950">
+                  HATI
+                </p>
+              </div>
+              <span class="text-xl font-bold text-emerald-800">+</span>
+              <div
+                class="bg-white py-3 px-6 rounded-xl shadow-sm border border-emerald-200 text-center w-full md:w-auto"
+              >
+                <span
+                  class="text-[10px] text-emerald-800 font-bold uppercase tracking-widest"
+                  >LOGIKA</span
+                >
+                <p class="text-lg font-serif font-bold text-emerald-950">
+                  AKAL
+                </p>
+              </div>
+              <span class="text-xl font-bold text-emerald-800">=</span>
+              <div
+                class="bg-emerald-900 text-white py-3 px-8 rounded-xl shadow-md text-center w-full md:w-auto border-2 border-amber-500"
+              >
+                <span
+                  class="text-[10px] text-amber-400 font-bold uppercase tracking-widest"
+                  >KEYAKINAN BULAT</span
+                >
+                <p class="text-xl font-serif font-bold">IMAN (Yakin)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 4: IBADAH, ATURAN & KEMUKJIZATAN AL-QUR'AN ==================== -->
+      <section
+        id="tab-content-4"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <!-- Core Concept: Ibadah & Aturan -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Sidebar: Aturan & Ibadah -->
+          <div
+            class="bg-gradient-to-br from-emerald-900 to-emerald-950 text-white rounded-3xl p-6 shadow-md border-l-4 border-amber-500"
+          >
+            <span
+              class="text-amber-400 font-bold text-[10px] uppercase tracking-wider block"
+              >Gharizah ut-Tadayyun</span
+            >
+            <h3 class="text-xl font-serif font-bold text-white mt-1 mb-4">
+              Ibadah: Kebutuhan Ruhani
+            </h3>
+            <p class="text-xs text-emerald-100 leading-relaxed mb-4">
+              Manusia secara fitrah memiliki naluri beragama (Gharizah
+              ut-Tadayyun) untuk mensucikan Sang Pencipta (Taqdisul Khaliq).
+              Ekspresi pensucian ini diwujudkan dalam bentuk ibadah demi
+              ketenangan ruhaninya.
+            </p>
+            <div class="h-px bg-emerald-800 my-4"></div>
+            <span
+              class="text-amber-400 font-bold text-[10px] uppercase tracking-wider block"
+              >Pertanyaan Eksistensial</span
+            >
+            <p class="text-sm font-semibold text-white mt-1">
+              "Apakah Manusia Memerlukan Aturan Hidup?"
+            </p>
+          </div>
+
+          <!-- Main Flowchart: Dengan vs Tanpa Aturan -->
+          <div
+            class="lg:col-span-2 bg-white border border-stone-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg font-serif font-bold text-slate-900 mb-4">
+                Komparasi Konseptual: Sistem Aturan
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Tanpa Aturan -->
+                <div class="bg-red-50/50 border border-red-100 rounded-2xl p-4">
+                  <div class="flex items-center gap-2 text-red-600 mb-2">
+                    <span class="text-lg">✖</span>
+                    <h4 class="font-bold text-sm">Jika Tanpa Aturan:</h4>
+                  </div>
+                  <ul
+                    class="space-y-2 text-xs text-slate-600 list-disc list-inside"
+                  >
+                    <li>Terjadi benturan kepentingan individu.</li>
+                    <li>
+                      Perbedaan cara pandang memicu perselisihan berkepanjangan.
+                    </li>
+                    <li>Timbulnya pertentangan antarkelas sosial.</li>
+                    <li>
+                      Kekacauan (chaos) dan hancurnya tata sosial kemanusiaan.
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Dengan Aturan -->
+                <div
+                  class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-4"
+                >
+                  <div class="flex items-center gap-2 text-emerald-700 mb-2">
+                    <span class="text-lg">✔</span>
+                    <h4 class="font-bold text-sm">Dengan Aturan Ilahi:</h4>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                    Aturan tidak boleh dibuat oleh manusia karena sifat manusia
+                    yang terbatas dan subjektif (memicu perselisihan baru).
+                  </p>
+                  <p
+                    class="text-xs font-semibold text-emerald-900 bg-white p-2 rounded border border-emerald-100 shadow-sm"
+                  >
+                    "Aturan harus diturunkan langsung dari Sang Pencipta
+                    (Al-Khaliq) dan disampaikan kepada manusia lewat perantara
+                    Rasul dengan pembuktian mukjizat."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-3"
+            >
+              <div
+                class="w-8 h-8 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center font-bold text-sm"
+              >
+                📯
+              </div>
+              <p class="text-[11px] text-slate-500 leading-relaxed">
+                <strong>Fungsi Rasul:</strong> Sebagai pembawa aturan hidup yang
+                luhur yang dikukuhkan dengan Mukjizat indrawi yang mustahil
+                ditiru oleh manusia biasa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quran Authenticity Proof Flow -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div class="max-w-2xl mx-auto text-center mb-8">
+            <span
+              class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+              >Verifikasi Kebenaran Rasional</span
+            >
+            <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">
+              Uji Otentisitas Al-Qur'an (القرآن)
+            </h3>
+            <p class="text-sm text-slate-500 mt-2">
+              Mari kita uji secara logis dari mana asal Al-Qur'an melalui tiga
+              alternatif berikut:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Option 1 -->
+            <div
+              class="bg-stone-50 border border-stone-200 rounded-2xl p-5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded"
+                    >Ditolak</span
+                  >
+                  <span class="text-lg font-bold text-red-600">✖</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-sm mb-2">
+                  Karangan Orang Arab?
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  Jika Al-Qur'an buatan sastrawan Arab klasik, semestinya mereka
+                  bisa meniru minimal satu surat. Namun, mereka semua gagal.
+                </p>
+              </div>
+              <div
+                class="bg-white p-3 rounded-lg border border-stone-200 text-[10px] text-slate-500"
+              >
+                <strong>Tantangan Al-Qur'an:</strong> "Datangkan sepuluh surat
+                yang dibuat-buat yang menyamainya..." (QS. Hud: 13)
+              </div>
+            </div>
+
+            <!-- Option 2 -->
+            <div
+              class="bg-stone-50 border border-stone-200 rounded-2xl p-5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="bg-red-100 text-red-800 text-[10px] font-bold px-2 py-0.5 rounded"
+                    >Ditolak</span
+                  >
+                  <span class="text-lg font-bold text-red-600">✖</span>
+                </div>
+                <h4 class="font-bold text-slate-800 text-sm mb-2">
+                  Karangan Muhammad SAW?
+                </h4>
+                <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  Rasulullah adalah seorang yang *Ummi* (tidak bisa membaca &
+                  menulis). Ditambah lagi, gaya bahasa (uslub) Al-Qur'an berbeda
+                  180 derajat dengan uslub Hadits beliau.
+                </p>
+              </div>
+              <div
+                class="bg-white p-3 rounded-lg border border-stone-200 text-[10px] text-slate-500"
+              >
+                <strong>Uji Uslub:</strong> Perbedaan gaya bahasa antara
+                Al-Qur'an dan Hadits sangat kontras dan konsisten.
+              </div>
+            </div>
+
+            <!-- Option 3 -->
+            <div
+              class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 flex flex-col justify-between"
+            >
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span
+                    class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded"
+                    >Terbukti Benar</span
+                  >
+                  <span class="text-lg font-bold text-emerald-600">✔</span>
+                </div>
+                <h4 class="font-bold text-emerald-950 text-sm mb-2">
+                  Berasal dari Sisi Allah SWT
+                </h4>
+                <p class="text-xs text-slate-700 leading-relaxed mb-4">
+                  Karena tidak mungkin berasal dari bangsa Arab maupun dari
+                  lisan Muhammad, maka satu-satunya kesimpulan yang logis adalah
+                  bahwa Al-Qur'an merupakan mukjizat mutlak yang bersumber dari
+                  Allah SWT.
+                </p>
+              </div>
+              <div class="bg-emerald-900 text-white p-3 rounded-lg text-[10px]">
+                <strong>Kesimpulan:</strong> Al-Qur'an adalah wahyu ilahi yang
+                terjaga keasliannya sepanjang zaman.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quran Verses & Bantahan Kaum Quraisy -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <h3 class="text-lg font-serif font-bold text-emerald-950 mb-4">
+            Dalil & Bantahan terhadap Tuduhan Quraisy
+          </h3>
+
+          <div class="space-y-6">
+            <!-- Dalil Hud 11:13 -->
+            <div class="p-5 bg-stone-50 rounded-2xl border border-stone-100">
+              <span
+                class="text-amber-600 text-[10px] font-bold uppercase tracking-wider block mb-2"
+                >Tantangan untuk Meniru Al-Qur'an</span
+              >
+              <p
+                class="font-arabic text-xl text-emerald-950 leading-relaxed mb-2 text-right"
+              >
+                قُلْ فَأْتُوا بِعَشْرِ سُوَرٍ مِّثْلِهِ مُفْتَرَيَاتٍ وَادْعُوا
+                مَنِ اسْتَطَعْتُم مِّن دُونِ اللَّهِ إِن كُنتُمْ صَادِقِينَ
+              </p>
+              <p class="text-xs italic text-slate-500 mb-2">
+                "...Qul fa'tū bi'asri suwarim-mithlihī muftarayātiw-wad'ū
+                manis-taṭa'tum min-dūnillāhi in-kuntum ṣādiqīn"
+              </p>
+              <p class="text-xs text-slate-600">
+                "Katakanlah: '(Jika demikian), maka datangkanlah sepuluh surat
+                yang dibuat-buat yang menyamainya, dan panggillah orang-orang
+                yang kamu sanggup (memanggilnya) selain Allah, jika kamu memang
+                orang-orang yang benar'."
+                <strong class="text-emerald-900">[ QS. Hud : 13 ]</strong>
+              </p>
+            </div>
+
+            <!-- Dalil An-Nahl 16:103 -->
+            <div class="p-5 bg-stone-50 rounded-2xl border border-stone-100">
+              <span
+                class="text-amber-600 text-[10px] font-bold uppercase tracking-wider block mb-2"
+                >Bantahan Tuduhan Guru Asing (Ajam)</span
+              >
+              <p
+                class="font-arabic text-xl text-emerald-950 leading-relaxed mb-2 text-right"
+              >
+                لِّسَانُ الَّذِي يُلْحِدُونَ إِلَيْهِ أَعْجَمِيٌّ وَهَٰذَا
+                لِسَانٌ عَرَبِيٌّ مُّبِينٌ
+              </p>
+              <p class="text-xs italic text-slate-500 mb-2">
+                "...Lisānulladhī yulḥidūna ilayhi 'a'jamiyyuw-wahādhā lisānun
+                'arabiyyum-mubīn"
+              </p>
+              <p class="text-xs text-slate-600">
+                "...Padahal bahasa orang yang mereka tuduhkan (bahwa Muhammad
+                belajar kepadanya) adalah bahasa 'Ajam (non-Arab), sedang
+                Al-Qur'an ini dalam bahasa Arab yang terang."
+                <strong class="text-emerald-900">[ QS. An-Nahl : 103 ]</strong>
+              </p>
+            </div>
+          </div>
+
+          <!-- Perbedaan Al-Qur'an vs As-Sunnah -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 pt-6 border-t border-stone-100"
+          >
+            <div
+              class="bg-emerald-50/40 p-4 rounded-xl border border-emerald-100"
+            >
+              <h4
+                class="font-bold text-emerald-900 text-xs uppercase tracking-wider mb-2"
+              >
+                1. Karakteristik Al-Qur'an
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Baik lafaz maupun maknanya diturunkan langsung dari Allah SWT.
+                Merupakan mukjizat sastra tertinggi yang mustahil tertandingi.
+              </p>
+            </div>
+            <div class="bg-amber-50/40 p-4 rounded-xl border border-amber-100">
+              <h4
+                class="font-bold text-amber-900 text-xs uppercase tracking-wider mb-2"
+              >
+                2. Karakteristik As-Sunnah
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Maknanya berasal dari Allah SWT lewat ilham/wahyu, namun lafaz
+                dan penyampaian redaksinya menggunakan gaya bahasa Rasulullah
+                sendiri.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orbit Ghaibiyat (Interactive Grid) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div
+            class="flex flex-col md:flex-row gap-6 justify-between items-start mb-6"
+          >
+            <div>
+              <span
+                class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+                >Konsekuensi Keimanan terhadap Islam</span
+              >
+              <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">
+                Sikap Berserah Diri (Taslim) & Hal Ghaib
+              </h3>
+            </div>
+            <div
+              class="bg-amber-50 border border-amber-200 text-amber-900 text-xs px-4 py-2 rounded-xl flex items-center gap-2"
+            >
+              <span>⚠️</span>
+              <strong>Konsekuensi Penting!</strong>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-600 leading-relaxed mb-6">
+            Setelah akal membuktikan dengan pasti bahwa Al-Qur'an adalah firman
+            Allah, maka segala berita ghaib yang diceritakan di dalamnya wajib
+            diyakini sepenuhnya, meskipun di luar jangkauan indra manusia.
+          </p>
+
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <!-- Ghaibiyat Cards -->
+            <button
+              onclick="showGhaib('malaikat')"
+              class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center hover:bg-emerald-50 hover:border-emerald-300 transition-all focus:outline-none"
+            >
+              <div class="text-2xl mb-1">🕊️</div>
+              <h4 class="font-bold text-slate-800 text-xs">Malaikat & Ruh</h4>
+              <span class="text-[10px] text-slate-400 block mt-1"
+                >Lihat Detail</span
+              >
+            </button>
+            <button
+              onclick="showGhaib('kitab')"
+              class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center hover:bg-emerald-50 hover:border-emerald-300 transition-all focus:outline-none"
+            >
+              <div class="text-2xl mb-1">📖</div>
+              <h4 class="font-bold text-slate-800 text-xs">Kitab-Kitab</h4>
+              <span class="text-[10px] text-slate-400 block mt-1"
+                >Lihat Detail</span
+              >
+            </button>
+            <button
+              onclick="showGhaib('rasul')"
+              class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center hover:bg-emerald-50 hover:border-emerald-300 transition-all focus:outline-none"
+            >
+              <div class="text-2xl mb-1">👑</div>
+              <h4 class="font-bold text-slate-800 text-xs">Nabi & Rasul</h4>
+              <span class="text-[10px] text-slate-400 block mt-1"
+                >Lihat Detail</span
+              >
+            </button>
+            <button
+              onclick="showGhaib('kiamat')"
+              class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center hover:bg-emerald-50 hover:border-emerald-300 transition-all focus:outline-none"
+            >
+              <div class="text-2xl mb-1">⌛</div>
+              <h4 class="font-bold text-slate-800 text-xs">Hari Kiamat</h4>
+              <span class="text-[10px] text-slate-400 block mt-1"
+                >Lihat Detail</span
+              >
+            </button>
+            <button
+              onclick="showGhaib('qadha')"
+              class="bg-stone-50 border border-stone-200 rounded-xl p-4 text-center hover:bg-emerald-50 hover:border-emerald-300 transition-all focus:outline-none"
+            >
+              <div class="text-2xl mb-1">🌌</div>
+              <h4 class="font-bold text-slate-800 text-xs">Qadha & Qadar</h4>
+              <span class="text-[10px] text-slate-400 block mt-1"
+                >Lihat Detail</span
+              >
+            </button>
+          </div>
+
+          <!-- Explanation display -->
+          <div
+            class="bg-stone-50 rounded-2xl p-5 border border-stone-200/80 mt-6 min-h-[100px] flex items-center justify-center"
+          >
+            <p
+              id="ghaib-text"
+              class="text-xs md:text-sm text-slate-600 text-center italic"
+            >
+              Klik salah satu perkara ghaib di atas untuk menampilkan landasan
+              konseptual keimanannya berdasarkan Nizham al-Islam.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 5: FIKR MUSTANIR & AQIDAH ISLAMIYAH ==================== -->
+      <section
+        id="tab-content-5"
+        class="tab-pane hidden space-y-8 animate-fade-in"
+      >
+        <!-- Fikr Mustanir Cloud Map -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div class="max-w-2xl mx-auto text-center mb-8">
+            <span
+              class="text-amber-600 font-bold text-xs uppercase tracking-wider"
+              >Puncak Pemikiran</span
+            >
+            <h3 class="text-2xl font-serif font-bold text-emerald-950 mt-1">
+              Struktur Fikr Al-Mustanir (Pemikiran Cemerlang)
+            </h3>
+            <p class="text-sm text-slate-500 mt-2">
+              Bagaimana Fikr Mustanir memetakan dan merangkum seluruh aspek
+              esensial dalam kehidupan manusia.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Fikr Nodes -->
+            <div
+              class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-center"
+            >
+              <span
+                class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest block mb-2"
+                >LANDASAN DASAR</span
+              >
+              <h4 class="font-serif font-bold text-emerald-950 text-sm">
+                Eksistensi Allah
+              </h4>
+              <p class="text-[10px] text-slate-500 mt-1">
+                Dapat dibuktikan secara mutlak lewat akal sehat.
+              </p>
+            </div>
+
+            <div
+              class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-center"
+            >
+              <span
+                class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest block mb-2"
+                >PEMBAWA ATURAN</span
+              >
+              <h4 class="font-serif font-bold text-emerald-950 text-sm">
+                Risalah Rasulullah
+              </h4>
+              <p class="text-[10px] text-slate-500 mt-1">
+                Penyampai syariat dan petunjuk operasional hidup.
+              </p>
+            </div>
+
+            <div
+              class="bg-emerald-50 border border-emerald-100 rounded-xl p-4 text-center"
+            >
+              <span
+                class="text-[10px] font-bold text-emerald-800 uppercase tracking-widest block mb-2"
+                >MUKJIZAT</span
+              >
+              <h4 class="font-serif font-bold text-emerald-950 text-sm">
+                Kebenaran Al-Qur'an
+              </h4>
+              <p class="text-[10px] text-slate-500 mt-1">
+                Telah dibuktikan validitasnya secara rasional.
+              </p>
+            </div>
+
+            <div
+              class="bg-red-50 border border-red-100 rounded-xl p-4 text-center"
+            >
+              <span
+                class="text-[10px] font-bold text-red-800 uppercase tracking-widest block mb-2"
+                >KONSEKUENSI</span
+              >
+              <h4 class="font-serif font-bold text-red-950 text-sm">
+                Kehidupan Akhirat
+              </h4>
+              <p class="text-[10px] text-slate-500 mt-1">
+                Hisab, Syurga, Neraka, dan pertanggungjawaban.
+              </p>
+            </div>
+          </div>
+
+          <!-- Decision Flow (Sudah Tuntas?) -->
+          <div
+            class="mt-8 bg-stone-50 rounded-2xl p-6 border border-stone-200/60 text-center flex flex-col items-center justify-center"
+          >
+            <h4 class="font-serif font-bold text-slate-900 text-sm mb-3">
+              Pemeriksaan Kelayakan Berpikir (Decision Box)
+            </h4>
+            <div
+              class="flex flex-col md:flex-row items-center gap-6 justify-center w-full max-w-lg"
+            >
+              <div
+                class="bg-red-50 border border-red-200 rounded-xl p-4 flex-1"
+              >
+                <span class="text-xs font-bold text-red-700 block mb-1"
+                  >🔴 Belum Tuntas?</span
+                >
+                <p class="text-[11px] text-slate-600">
+                  Apabila masih ada keraguan rasional, ulangi proses analisis
+                  dari awal.
+                </p>
+              </div>
+              <div
+                class="bg-emerald-100 border border-emerald-300 rounded-xl p-4 flex-1"
+              >
+                <span class="text-xs font-bold text-emerald-800 block mb-1"
+                  >🟢 Sudah Tuntas!</span
+                >
+                <p class="text-[11px] text-slate-700">
+                  Melahirkan pondasi ideologis kokoh yang tak tergoyahkan.
+                </p>
+              </div>
+            </div>
+            <div class="mt-4 text-xs font-bold text-emerald-900">
+              ➡️ Menuju terbentuknya:
+              <span class="underline"
+                >العقيدة الإسلامية (Al-Aqidah Al-Islamiyah)</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Aqidah Islamiyah Breakdown -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <h3 class="text-xl font-serif font-bold text-slate-950 mb-6">
+            Arsitektur Pemikiran Aqidah Islamiyah
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="border-t-4 border-emerald-800 pt-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="font-arabic text-emerald-800 font-bold"
+                  >الطريقة</span
+                >
+                <span class="text-xs font-bold text-slate-500"
+                  >(Metode / Thariqah)</span
+                >
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Langkah operasional yang baku untuk merealisasikan ide dasar
+                (Fikrah) ke dalam dunia nyata, seperti penerapan syariah secara
+                kaffah.
+              </p>
+            </div>
+
+            <div class="border-t-4 border-emerald-600 pt-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="font-arabic text-emerald-700 font-bold"
+                  >الفكرة</span
+                >
+                <span class="text-xs font-bold text-slate-500"
+                  >(Ide Dasar / Fikrah)</span
+                >
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Konsep keimanan asas yang melahirkan seluruh cabang pemahaman
+                kehidupan, hukum syara, dan ibadah.
+              </p>
+            </div>
+
+            <div class="border-t-4 border-amber-500 pt-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="font-arabic text-amber-600 font-bold"
+                  >المفاهيم</span
+                >
+                <span class="text-xs font-bold text-slate-500"
+                  >(Pemahaman / Mafahim)</span
+                >
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Pemahaman praktis yang membuahkan lahirnya pandangan hidup
+                (Mabda) serta peradaban mulia (Hadharah).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shariah Command Center (Konsekuensi Hukum) -->
+        <div
+          class="bg-white rounded-3xl border border-stone-200 p-6 md:p-8 shadow-sm"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-2.5 h-6 bg-red-600 rounded-full"></div>
+            <h3 class="text-2xl font-serif font-bold text-slate-900">
+              Konsekuensi Hukum Syariat (Konsekuensi [!])
+            </h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-6">
+            Wajib beriman secara utuh kepada syariat, tunduk patuh menjalankan
+            perintah, serta menjauhi segala larangan Allah SWT tanpa ragu.
+            Berikut adalah pilar hukum praktis yang dicontohkan:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Shalat -->
+            <div class="bg-stone-50 border border-stone-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-emerald-800 block mb-2"
+                >I. ASPEK RITUAL</span
+              >
+              <h4 class="font-bold text-slate-800 text-sm mb-1">
+                Mendirikan Shalat
+              </h4>
+              <p class="font-arabic text-emerald-950 text-xs mb-2">
+                وَأَقِيمُوا الصَّلَاةَ
+              </p>
+              <p class="text-[10px] text-slate-500">
+                "...Dan dirikanlah shalat."
+              </p>
+            </div>
+
+            <!-- Muamalah -->
+            <div class="bg-stone-50 border border-stone-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-emerald-800 block mb-2"
+                >II. ASPEK EKONOMI</span
+              >
+              <h4 class="font-bold text-slate-800 text-sm mb-1">
+                Ekonomi Syariah
+              </h4>
+              <p class="font-arabic text-emerald-950 text-xs mb-2">
+                وَأَحَلَّ اللَّهُ الْبَيْعَ وَحَرَّمَ الرِّبَا
+              </p>
+              <p class="text-[10px] text-slate-500">
+                "...Allah telah menghalalkan jual beli dan mengharamkan riba."
+              </p>
+            </div>
+
+            <!-- Hukum Sanksi -->
+            <div class="bg-stone-50 border border-stone-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-emerald-800 block mb-2"
+                >III. ASPEK HUKUM</span
+              >
+              <h4 class="font-bold text-slate-800 text-sm mb-1">
+                Sanksi Pidana (Hudud)
+              </h4>
+              <p class="font-arabic text-emerald-950 text-xs mb-2">
+                وَالسَّارِقُ وَالسَّارِقَةُ فَاقْطَعُوا أَيْدِيَهُمَا
+              </p>
+              <p class="text-[10px] text-slate-500">
+                "Laki-laki yang mencuri dan perempuan yang mencuri, potonglah
+                kedua tangannya..."
+              </p>
+            </div>
+
+            <!-- Makanan Haram -->
+            <div class="bg-stone-50 border border-stone-200 rounded-xl p-4">
+              <span class="text-xs font-bold text-emerald-800 block mb-2"
+                >IV. ASPEK KONSUMSI</span
+              >
+              <h4 class="font-bold text-slate-800 text-sm mb-1">
+                Makanan Haram
+              </h4>
+              <p class="font-arabic text-emerald-950 text-xs mb-2">
+                حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ وَلَحْمُ الْخِنزِيرِ
+              </p>
+              <p class="text-[10px] text-slate-500">
+                "Diharamkan bagimu (memakan) bangkai, darah, daging babi..."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Verse QS An-Nisa 4:65 -->
+        <div
+          class="bg-gradient-to-br from-emerald-900 to-emerald-950 text-white rounded-3xl p-6 md:p-8 text-center shadow-lg border-b-4 border-amber-500"
+        >
+          <span
+            class="text-amber-400 font-bold text-xs uppercase tracking-widest block mb-4"
+            >Kepatuhan Mutlak kepada Syariat Rasul</span
+          >
+          <p
+            class="font-arabic text-xl md:text-2xl leading-loose text-amber-100 mb-3"
+          >
+            فَلَا وَرَبِّكَ لَا يُؤْمِنُونَ حَتَّىٰ يُحَكِّمُوكَ فِيمَا شَجَرَ
+            بَيْنَهُمْ ثُمَّ لَا يَجِدُوا فِي أَنفُسِهِمْ حَرَجًا مِّمَّا
+            قَضَيْتَ وَيُسَلِّمُوا تَسْلِيمًا
+          </p>
+          <p class="text-xs italic text-emerald-200 mb-3">
+            "Falā wa rabbika lā yu'minūna ḥattā yuḥakkimūka fīmā shajara
+            baynahum..."
+          </p>
+          <p class="text-xs font-light max-w-3xl mx-auto leading-relaxed">
+            "Maka demi Tuhanmu, mereka (pada hakikatnya) tidak beriman hingga
+            mereka menjadikan kamu hakim terhadap perkara yang mereka
+            perselisihkan, kemudian mereka tidak merasa dalam hati mereka
+            sesuatu keberatan terhadap putusan yang kamu berikan, dan mereka
+            menerima dengan sepenuhnya."
+          </p>
+          <span class="text-xs text-amber-300 font-bold block mt-3"
+            >[ QS. An-Nisa : 65 ]</span
+          >
+        </div>
+      </section>
+
+      <footer
+        class="bg-stone-50 text-center text-xs text-slate-500 py-4 mt-12 rounded-tl-3xl rounded-tr-3xl border-t border-stone-200"
+      >
+        &copy; 2024 Nizham al-Islam • Syaikh Taqiyuddin An-Nabhani • All rights reserved.
+        </p>
+      </footer>
+    </main>
+
+    <!-- Interactive Navigation Logic (JS) -->
+    <script>
+      // Tab switching logic
+      function switchTab(tabId) {
+        // Hide all tab panes
+        const panes = document.querySelectorAll(".tab-pane");
+        panes.forEach((pane) => pane.classList.add("hidden"));
+
+        // Show target tab pane
+        document
+          .getElementById(`tab-content-${tabId}`)
+          .classList.remove("hidden");
+
+        // Reset tab button styles
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn, index) => {
+          const stepNum = index + 1;
+          btn.className =
+            "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 hover:bg-stone-100";
+
+          // Reset circular index inside buttons
+          const badge = btn.querySelector("span");
+          if (badge) {
+            badge.className =
+              "w-5 h-5 rounded-full bg-stone-200 text-slate-700 flex items-center justify-center text-xs font-bold";
+          }
+        });
+
+        // Set active styles for the clicked tab button
+        const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+        activeBtn.className =
+          "tab-btn px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-emerald-900 text-white shadow-md";
+
+        const activeBadge = activeBtn.querySelector("span");
+        if (activeBadge) {
+          activeBadge.className =
+            "w-5 h-5 rounded-full bg-amber-500 text-emerald-950 flex items-center justify-center text-xs font-bold";
+        }
+      }
+
+      // Segitiga Hubungan click handler
+      function showNodeDesc(nodeId) {
+        // Hide all descriptions
+        const descIds = [
+          "default",
+          "life",
+          "creation",
+          "human",
+          "before",
+          "after",
+        ];
+        descIds.forEach((id) => {
+          const el = document.getElementById(`node-desc-${id}`);
+          if (el) el.classList.add("hidden");
+        });
+
+        // Show selected description
+        const selectedEl = document.getElementById(`node-desc-${nodeId}`);
+        if (selectedEl) {
+          selectedEl.classList.remove("hidden");
+        }
+      }
+
+      // Ghaibiyat click handler
+      function showGhaib(itemKey) {
+        const displayEl = document.getElementById("ghaib-text");
+
+        const ghaibMap = {
+          malaikat:
+            "👼 <strong>Malaikat & Ruh:</strong> Eksistensi malaikat sebagai makhluk ghaib pelaksana perintah Allah, serta perihal ruh manusia wajib diyakini sepenuhnya dari dalil Al-Qur'an dan as-Sunnah, sekalipun hakikat substansinya tak teraba oleh indra.",
+          kitab:
+            "📖 <strong>Kitab-Kitab:</strong> Mengimani bahwa Allah SWT telah menurunkan kitab-kitab suci kepada para Rasul terdahulu sebelum Al-Qur'an (Taurat, Zabur, Injil) sebagai petunjuk hidup pada zamannya.",
+          rasul:
+            "👑 <strong>Nabi & Rasul:</strong> Mengimani rantai utusan Allah sejak Nabi Adam AS hingga Nabi Muhammad SAW sebagai pembawa risalah kebenaran mutlak.",
+          kiamat:
+            "⌛ <strong>Hari Kiamat:</strong> Mengimani hari kehancuran alam semesta dan hari kebangkitan kembali seluruh manusia untuk diadili seadil-adilnya.",
+          qadha:
+            "🌌 <strong>Qadha & Qadar:</strong> Mengimani ketetapan hukum sebab-akibat (Qadar) alam ciptaan serta takdir keputusan yang diturunkan langsung dari Allah SWT.",
+        };
+
+        displayEl.innerHTML = ghaibMap[itemKey] || "Silakan pilih salah satu.";
+        displayEl.className =
+          "text-xs md:text-sm text-emerald-900 bg-emerald-50/70 p-4 rounded-xl border border-emerald-100 animate-fade-in";
+      }
+    </script>
+  </body>
+</html>
