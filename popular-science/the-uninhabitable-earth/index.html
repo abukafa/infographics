@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Uninhabitable Earth - Infografis Interaktif</title>
+    <!-- Google Fonts: Sora (Display) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for symbols/icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        carbon: {
+                            950: '#060813',
+                            900: '#0c0f1d',
+                            800: '#181d30',
+                            700: '#252d47',
+                            400: '#94a3b8'
+                        },
+                        climate: {
+                            fire: '#f97316', // Orange
+                            alert: '#ef4444', // Red
+                            ice: '#38bdf8', // Light blue
+                            earth: '#10b981' // Green
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #060813;
+            color: #f1f5f9;
+        }
+        .glassmorphism {
+            background: rgba(12, 15, 29, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .fire-glow {
+            box-shadow: 0 0 30px rgba(249, 115, 22, 0.15);
+        }
+        .ice-glow {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(6, 8, 19, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(249, 115, 22, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(249, 115, 22, 0.6);
+        }
+        .tab-btn-active {
+            background: rgba(249, 115, 22, 0.15);
+            color: #f97316;
+            border-color: rgba(249, 115, 22, 0.4);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-orange-500 selection:text-white custom-scrollbar">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 glassmorphism border-b border-carbon-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-climate-fire to-climate-alert flex items-center justify-center shadow-lg shadow-orange-500/20">
+                    <i class="fa-solid fa-fire-flame-curved text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white to-carbon-400">THE UNINHABITABLE EARTH</span>
+                    <p class="text-[10px] text-climate-fire font-semibold tracking-widest uppercase">Eksplorasi Krisis Iklim Eksistensial</p>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-2 text-sm text-carbon-400 bg-carbon-950/60 p-1.5 rounded-full border border-carbon-800">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-climate-fire/10 text-climate-fire border border-climate-fire/20">
+                    Bestseller Internasional
+                </span>
+                <span class="px-3 py-1 text-xs text-carbon-400">
+                    Penulis: David Wallace-Wells
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Title Section -->
+    <section class="relative overflow-hidden py-16 lg:py-24 border-b border-carbon-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-950/20 via-carbon-950 to-carbon-950">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=80')] opacity-[0.02] mix-blend-overlay"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full glassmorphism text-xs text-climate-fire mb-6 border border-climate-fire/20">
+                <span class="w-2 h-2 rounded-full bg-climate-fire animate-pulse"></span>
+                <span class="font-semibold uppercase tracking-wider">Peringatan Keras Bagi Peradaban Kita</span>
+            </div>
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-8xl tracking-tight mb-6 leading-tight">
+                Bumi yang <span class="text-transparent bg-clip-text bg-gradient-to-r from-climate-fire to-climate-alert">Tidak Dapat Dihuni</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-carbon-400 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+                Sebuah visualisasi interaktif menyeluruh berdasarkan karya jurnalisme investigatif ilmiah <strong class="text-white font-semibold">David Wallace-Wells</strong>.
+            </p>
+            
+            <!-- Quick Stat Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 text-left">
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-climate-alert fire-glow">
+                    <span class="text-carbon-400 text-xs block font-semibold mb-1">Kenaikan Suhu Global</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-climate-alert">+3°C</span>
+                    <span class="text-[10px] text-carbon-400 block mt-1">Jalur Emisi Saat Ini</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-climate-fire">
+                    <span class="text-carbon-400 text-xs block font-semibold mb-1">Populasi Panas Mematikan</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-climate-fire">1 Miliar</span>
+                    <span class="text-[10px] text-carbon-400 block mt-1">Terpapar Wet-Bulb 35°C</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-climate-ice ice-glow">
+                    <span class="text-carbon-400 text-xs block font-semibold mb-1">Kenaikan Air Laut 2100</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-climate-ice">2 - 7 Meter</span>
+                    <span class="text-[10px] text-carbon-400 block mt-1">Ancaman Kota Pesisir</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-yellow-500">
+                    <span class="text-carbon-400 text-xs block font-semibold mb-1">Pengungsi Iklim 2050</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-yellow-500">143 Juta</span>
+                    <span class="text-[10px] text-carbon-400 block mt-1">Proyeksi Bank Dunia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Tab Navigation Bar -->
+    <div class="sticky top-20 z-40 bg-carbon-950/95 border-b border-carbon-800 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 overflow-x-auto custom-scrollbar">
+            <nav class="flex space-x-1 py-4 min-w-[850px] lg:min-w-0 lg:justify-center" aria-label="Tabs">
+                <button onclick="switchTab('tab-home')" id="btn-tab-home" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 tab-btn-active">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Buku &amp; Penulis</span>
+                </button>
+                <button onclick="switchTab('tab-bag1')" id="btn-tab-bag1" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-carbon-400 hover:text-slate-200 hover:bg-carbon-900">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <span>Bagian 1: Kecepatan</span>
+                </button>
+                <button onclick="switchTab('tab-bag2')" id="btn-tab-bag2" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-carbon-400 hover:text-slate-200 hover:bg-carbon-900">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                    <span>Bagian 2: 12 Bencana</span>
+                </button>
+                <button onclick="switchTab('tab-bag34')" id="btn-tab-bag34" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-carbon-400 hover:text-slate-200 hover:bg-carbon-900">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Bagian 3-4: Mengapa &amp; Solusi</span>
+                </button>
+                <button onclick="switchTab('tab-bag5')" id="btn-tab-bag5" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-carbon-400 hover:text-slate-200 hover:bg-carbon-900">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Bagian 5: Skenario &amp; Kuis</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- TAB 1: BUKU & PENULIS (HOME) -->
+        <div id="tab-home" class="tab-content block space-y-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Left Sidebar Info -->
+                <div class="lg:col-span-4 glassmorphism rounded-3xl p-8 flex flex-col justify-between border border-carbon-850 relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-climate-fire/5 rounded-full blur-3xl"></div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-xs uppercase tracking-widest text-climate-fire font-bold">Profil Publikasi</span>
+                            <h3 class="font-display font-extrabold text-2xl mt-1 text-white">The Uninhabitable Earth</h3>
+                            <p class="text-sm text-carbon-400 italic mt-1">"Life After Warming" (2019)</p>
+                        </div>
+                        <div class="space-y-4 text-carbon-300 text-sm">
+                            <p><strong>Rilis:</strong> 2019 (Bestseller Global)</p>
+                            <p><strong>Latar Belakang:</strong> Dikembangkan dari artikel esai monumental karyanya di *New York Magazine* tahun 2017 yang memecahkan rekor keterbacaan terbanyak.</p>
+                            <p><strong>Metodologi:</strong> Bersandar kokoh pada ratusan hasil penelitian ilmiah iklim yang telah melalui proses penelaahan sejawat (*peer-reviewed*).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-carbon-800 flex items-center space-x-4">
+                        <div class="w-12 h-16 bg-carbon-800 rounded-lg flex items-center justify-center text-carbon-400 border border-carbon-700 shadow-inner">
+                            <i class="fa-solid fa-user-pen text-lg text-climate-fire"></i>
+                        </div>
+                        <div>
+                            <p class="font-display font-bold text-sm text-white">David Wallace-Wells</p>
+                            <p class="text-[10px] text-carbon-400">Deputy Editor di *New York Magazine*. Penulis yang menolak filter optimisme palsu dalam memaparkan ancaman nyata iklim.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Welcome Article -->
+                <div class="lg:col-span-8 glassmorphism rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-climate-alert font-bold">Kebenaran yang Tidak Nyaman</span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl mt-1 mb-4 text-white">Bumi akan Bertahan—Peradaban Manusia Belum Tentu</h2>
+                        <div class="prose prose-invert max-w-none text-carbon-300 text-sm sm:text-base space-y-4">
+                            <p>
+                                Tahun <strong class="text-white font-semibold">2050</strong>. Hanya 24 tahun dari sekarang. Seumur hidup anak yang lahir hari ini.
+                            </p>
+                            <p>
+                                Jakarta tidak lagi ada—tenggelam di bawah air laut. Miami adalah kota hantu, ditinggalkan setelah badai kelima dalam tiga tahun menghancurkan infrastruktur yang tersisa. India dan Pakistan baru saja mengalami gelombang panas luar biasa mematikan yang membunuh 20 juta orang dalam satu musim panas.
+                            </p>
+                            <blockquote class="border-l-4 border-climate-fire pl-4 italic text-carbon-400 py-1 bg-carbon-900/60 rounded-r-lg">
+                                "David Wallace-Wells menulis buku ini bukan untuk membuat kita panik. Dia menulis karena kita belum cukup panik."
+                            </blockquote>
+                            <p>
+                                Selama puluhan tahun, gerakan lingkungan mencoba menghaluskan pesan perubahan iklim agar orang tidak berputus asa. Mereka berbicara tentang beruang kutub dan es di Arktik—sesuatu yang terasa jauh dari kenyataan hidup kita sehari-hari. 
+                            </p>
+                            <p>
+                                Namun Wallace-Wells memaparkan dengan lantang: Ini bukan tentang menyelamatkan planet. Bumi akan baik-baik saja. Bumi telah bertahan dari lima kepunahan massal dan akan bertahan lagi. Ini adalah tentang menyelamatkan peradaban manusia seperti yang kita kenal.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-climate-fire/10 p-4 rounded-2xl border border-climate-fire/20 mt-6 flex items-start space-x-3 text-xs sm:text-sm">
+                        <i class="fa-solid fa-bell text-climate-fire mt-1"></i>
+                        <p class="text-carbon-200">
+                            <strong>Aksi Nyata Dimulai dari Sini:</strong> Jika Anda merasa tidak nyaman membaca data di dalam infografis ini, itu bagus. Karena rasa tidak nyaman adalah awal dari tindakan nyata.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Temperature Anomaly Projections Interactive Widget -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-6">
+                    <div>
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">Visualisasi Data: Proyeksi Suhu Global &amp; Jalur Emisi</h3>
+                        <p class="text-xs sm:text-sm text-carbon-400">Menghubungkan peningkatan derajat suhu rata-rata global dengan konsekuensi kehancuran peradaban.</p>
+                    </div>
+                </div>
+                <div class="w-full h-80 sm:h-96 lg:h-[400px]">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <p class="text-xs text-carbon-500 mt-4 italic text-center">Visualisasi berdasarkan riset komparatif IPCC dan data buku "The Uninhabitable Earth".</p>
+            </div>
+        </div>
+
+        <!-- TAB 2: BAGIAN 1 - LEBIH CEPAT DARI YANG KITA PIKIR -->
+        <div id="tab-bag1" class="tab-content hidden space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-climate-fire/10 text-climate-fire border border-climate-fire/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 1</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Lebih Cepat dari Yang Kita Pikir</h2>
+                <p class="text-carbon-400 text-sm sm:text-base mt-2">Memecahkan ilusi waktu dan memahami betapa eksponensialnya kecepatan pemanasan global di masa hidup kita sendiri.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Ilusi Waktu -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4 border border-carbon-850 relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-climate-fire/5 rounded-full blur-3xl"></div>
+                    <div class="w-12 h-12 bg-climate-fire/10 border border-climate-fire/20 rounded-2xl flex items-center justify-center text-climate-fire text-xl shadow-md">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">1. Ilusi Waktu</h3>
+                    <p class="text-carbon-300 text-sm leading-relaxed">
+                        Kita kerap membayangkan krisis iklim adalah masalah masa depan yang lambat dan jauh. Padahal, malapetaka ini diproduksi dengan kecepatan mengerikan dalam kurun waktu yang sangat singkat.
+                    </p>
+                    <div class="space-y-3 pt-2 text-xs text-carbon-400">
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-exclamation text-climate-alert mt-0.5"></i>
+                            <span><strong>Separuh dari semua emisi karbon</strong> dalam sejarah manusia diproduksi hanya dalam <strong>30 tahun terakhir</strong>.</span>
+                        </div>
+                        <div class="flex items-start space-x-2">
+                            <i class="fa-solid fa-circle-exclamation text-climate-alert mt-0.5"></i>
+                            <span>Lebih dari setengah karbon dilepaskan ke atmosfer setelah Al Gore menulis <em>"Earth in the Balance"</em> pada 1992—artinya kita merusaknya justru setelah kita mengetahuinya secara ilmiah.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kecepatan Eksponensial -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4 border border-carbon-850 relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-climate-alert/5 rounded-full blur-3xl"></div>
+                    <div class="w-12 h-12 bg-climate-alert/10 border border-climate-alert/20 rounded-2xl flex items-center justify-center text-climate-alert text-xl shadow-md">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-xl text-white">2. Kecepatan yang Mengejutkan</h3>
+                    <p class="text-carbon-300 text-sm leading-relaxed">
+                        Setiap sepersepuluh derajat kenaikan suhu bukanlah penambahan linier biasa, melainkan pemicu reaksi berantai bencana alam global.
+                    </p>
+                    <div class="space-y-3 pt-2 text-xs text-carbon-400">
+                        <div class="flex justify-between items-center border-b border-carbon-800 pb-2">
+                            <span>Kenaikan Pra-2000 (Selama sejarah manusia):</span>
+                            <span class="text-white font-bold">+0.75°C</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-carbon-800 pb-2">
+                            <span>Kenaikan 2000–2020 (Hanya dalam 20 tahun):</span>
+                            <span class="text-climate-fire font-bold">+0.50°C</span>
+                        </div>
+                        <p class="text-[11px] text-carbon-500 italic">Dua pertiga dari total pemanasan global terjadi di masa hidup kita sendiri.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Temperature-Consequence Matrix Cards -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-6 text-center">Matriks Ancaman Eksponensial Per Derajat Kenaikan</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 1.5 C -->
+                    <div class="p-5 rounded-2xl bg-carbon-900 border border-emerald-500/10 hover:border-emerald-500/30 transition-all flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase border border-emerald-500/20">Ambang Batas Paris</span>
+                            <h4 class="font-display font-bold text-2xl text-white mt-2">+1.5°C</h4>
+                        </div>
+                        <ul class="text-xs text-carbon-400 space-y-2 border-t border-carbon-800 pt-3">
+                            <li><i class="fa-solid fa-caret-right text-emerald-400 mr-1"></i> Gelombang panas ekstrem melanda setiap 5 tahun sekali.</li>
+                            <li><i class="fa-solid fa-caret-right text-emerald-400 mr-1"></i> Kepunahan 70-90% terumbu karang dunia.</li>
+                            <li><i class="fa-solid fa-caret-right text-emerald-400 mr-1"></i> 14% populasi terpapar gelombang panas parah.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2.0 C -->
+                    <div class="p-5 rounded-2xl bg-carbon-900 border border-yellow-500/10 hover:border-yellow-500/30 transition-all flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-400 font-bold text-xs uppercase border border-yellow-500/20">Titik Bahaya Kritis</span>
+                            <h4 class="font-display font-bold text-2xl text-white mt-2">+2.0°C</h4>
+                        </div>
+                        <ul class="text-xs text-carbon-400 space-y-2 border-t border-carbon-800 pt-3">
+                            <li><i class="fa-solid fa-caret-right text-yellow-400 mr-1"></i> Gelombang panas ekstrem melanda setiap 2 tahun sekali.</li>
+                            <li><i class="fa-solid fa-caret-right text-yellow-400 mr-1"></i> Musnahnya 99% terumbu karang (terumbu karang punah total).</li>
+                            <li><i class="fa-solid fa-caret-right text-yellow-400 mr-1"></i> Arktik tanpa es sama sekali di musim panas.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3.0 C -->
+                    <div class="p-5 rounded-2xl bg-carbon-900 border border-climate-fire/10 hover:border-climate-fire/30 transition-all flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-climate-fire/10 text-climate-fire font-bold text-xs uppercase border border-climate-fire/20">Jalur Kita Saat Ini</span>
+                            <h4 class="font-display font-bold text-2xl text-white mt-2">+3.0°C</h4>
+                        </div>
+                        <ul class="text-xs text-carbon-400 space-y-2 border-t border-carbon-800 pt-3">
+                            <li><i class="fa-solid fa-caret-right text-climate-fire mr-1"></i> Kota-kota pesisir global mulai tenggelam secara permanen.</li>
+                            <li><i class="fa-solid fa-caret-right text-climate-fire mr-1"></i> Keruntuhan total sistem pertanian di banyak belahan dunia.</li>
+                            <li><i class="fa-solid fa-caret-right text-climate-fire mr-1"></i> Ratusan juta orang bermigrasi mencari air/makanan.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4.0 C -->
+                    <div class="p-5 rounded-2xl bg-carbon-900 border border-climate-alert/10 hover:border-climate-alert/30 transition-all flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-climate-alert/10 text-climate-alert font-bold text-xs uppercase border border-climate-alert/20">Kehancuran Sistemik</span>
+                            <h4 class="font-display font-bold text-2xl text-white mt-2">+4.0°C</h4>
+                        </div>
+                        <ul class="text-xs text-carbon-400 space-y-2 border-t border-carbon-800 pt-3">
+                            <li><i class="fa-solid fa-caret-right text-climate-alert mr-1"></i> Wilayah tropis bumi menjadi sepenuhnya tidak layak huni.</li>
+                            <li><i class="fa-solid fa-caret-right text-climate-alert mr-1"></i> Keruntuhan ekonomi global total secara permanen.</li>
+                            <li><i class="fa-solid fa-caret-right text-climate-alert mr-1"></i> Peradaban manusia seperti yang kita kenal resmi berakhir.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: BAGIAN 2 - DUA BELAS BENCANA YANG SALING TERKAIT -->
+        <div id="tab-bag2" class="tab-content hidden space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-climate-fire/10 text-climate-fire border border-climate-fire/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 2</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">12 Bencana yang Saling Terkait</h2>
+                <p class="text-carbon-400 text-sm sm:text-base mt-2">Dampak konkret yang tidak lagi abstrak. Mereka saling mempengaruhi secara berantai dalam mekanisme kaskade destruktif.</p>
+            </div>
+
+            <!-- Interaktif Dropdown Selector / Accordion of the 12 Disasters to maintain ALL text detail -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-4 space-y-2 bg-carbon-900/40 p-4 rounded-3xl border border-carbon-850 h-[650px] overflow-y-auto custom-scrollbar">
+                    <h4 class="text-xs font-bold text-climate-fire uppercase tracking-wider px-3 mb-3"><i class="fa-solid fa-list-ol mr-2"></i>Daftar Dampak Konkret:</h4>
+                    
+                    <button onclick="showDisaster(1)" id="btn-dis-1" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-between bg-climate-fire/15 text-climate-fire border border-climate-fire/20">
+                        <span>1. Panas yang Membunuh</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(2)" id="btn-dis-2" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>2. Kelaparan Global</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(3)" id="btn-dis-3" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>3. Tenggelamnya Kota</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(4)" id="btn-dis-4" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>4. Api yang Tak Terkendali</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(5)" id="btn-dis-5" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>5. Air Bersih Menghilang</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(6)" id="btn-dis-6" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>6. Kebangkitan Penyakit Purba</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(7)" id="btn-dis-7" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>7. Polusi Udara Tak Terlihat</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(8)" id="btn-dis-8" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>8. Ekonomi yang Runtuh</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(9)" id="btn-dis-9" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>9. Perang Iklim &amp; Konflik</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(10)" id="btn-dis-10" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>10. Eksodus Migrasi Massal</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(11)" id="btn-dis-11" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>11. Keruntuhan Sistemik</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                    <button onclick="showDisaster(12)" id="btn-dis-12" class="disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between">
+                        <span>12. Feedback Loops (Mekanisme)</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                </div>
+
+                <!-- Display Disaster Content Box -->
+                <div class="lg:col-span-8 glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850 h-[650px] flex flex-col justify-between relative overflow-hidden">
+                    <div id="disaster-display-box" class="space-y-6">
+                        <!-- Disaster content is dynamically rendered here via JS. Initial: Disaster 1 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agricultural Yield Decline Visualization (To emphasize points in Disaster 2) -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-bold text-climate-fire uppercase tracking-widest"><i class="fa-solid fa-seedling mr-1"></i>Analisis Pangan</span>
+                        <h4 class="font-display font-extrabold text-2xl text-white">Kerusakan Sektor Pertanian</h4>
+                        <p class="text-carbon-300 text-sm leading-relaxed">
+                            Bagi setiap kenaikan suhu global sebesar <strong class="text-white font-semibold">1°C</strong>, hasil panen komoditas pangan pokok dunia akan mengalami penurunan drastis secara eksponensial.
+                        </p>
+                        <p class="text-xs text-carbon-400">
+                            Pada tahun 2030 (hanya beberapa tahun lagi), total produksi pangan global diproyeksikan dapat menyusut sebesar <strong class="text-climate-alert font-bold">30%</strong> akibat cekaman kekeringan, degradasi unsur hara, dan ledakan populasi hama.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-7 h-64 sm:h-80">
+                        <canvas id="agricultureLossChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: BAGIAN 3 & 4 - MENGAPA KITA DIAM & APA YANG BISA KITA LAKUKAN -->
+        <div id="tab-bag34" class="tab-content hidden space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-climate-fire/10 text-climate-fire border border-climate-fire/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 3 &amp; 4</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Psikologi Diam &amp; Rencana Solusi Radikal</h2>
+                <p class="text-carbon-400 text-sm sm:text-base mt-2">Mengapa peradaban tampak tidak bertindak menghadapi ancaman nyata ini, dan bagaimana modalitas solusi yang telah kita miliki.</p>
+            </div>
+
+            <!-- Part 3: Mengapa Kita Tidak Bertindak -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                <h3 class="font-display font-extrabold text-xl text-white mb-6 border-b border-carbon-800 pb-4"><i class="fa-solid fa-brain text-climate-fire mr-2"></i>Mengapa Kita Pasif? Tiga Hambatan Kognitif</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                    <div class="p-5 bg-carbon-900/60 rounded-2xl border border-carbon-800 space-y-3">
+                        <div class="text-climate-fire text-lg font-bold flex items-center space-x-2">
+                            <span>01. Ilusi Jarak</span>
+                        </div>
+                        <p class="text-carbon-300 text-xs leading-relaxed">
+                            Otak manusia terbiasa mendeteksi bahaya langsung di depan mata. Kita merasa perubahan iklim adalah masalah masa depan ("nanti") atau wilayah lain ("di sana"). Padahal, banjir Pakistan 2022 dan kebakaran tahunan Asia Tenggara terjadi di sini dan saat ini.
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-carbon-900/60 rounded-2xl border border-carbon-800 space-y-3">
+                        <div class="text-climate-fire text-lg font-bold flex items-center space-x-2">
+                            <span>02. Bias Optimisme</span>
+                        </div>
+                        <p class="text-carbon-300 text-xs leading-relaxed">
+                            Secara evolusioner, otak kita memiliki proteksi mental untuk berasumsi hal-hal buruk tidak akan menimpa diri kita secara personal. Namun iklim tidak peduli optimisme kita; ia nondiskriminatif dan akan melanda siapapun secara merata.
+                        </p>
+                    </div>
+
+                    <div class="p-5 bg-carbon-900/60 rounded-2xl border border-carbon-800 space-y-3">
+                        <div class="text-climate-fire text-lg font-bold flex items-center space-x-2">
+                            <span>03. Ketidakberdayaan</span>
+                        </div>
+                        <p class="text-carbon-300 text-xs leading-relaxed">
+                            Rasa kerdil di hadapan krisis yang berskala global memicu sindrom kepasifan emosional. Namun Wallace-Wells mengingatkan: tidak ada tindakan yang terlalu kecil. Perubahan sistemik selalu diawali dari dorongan kolektif individu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 4: Apa yang Bisa Kita Lakukan -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Solusi Teknologi & Kecepatan Adopsi -->
+                <div class="lg:col-span-5 glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-climate-earth font-bold">Harapan Itu Masih Ada</span>
+                        <h3 class="font-display font-bold text-xl text-white mt-1 mb-4">Teknologi Pendukung Sudah Tersedia</h3>
+                        <p class="text-carbon-300 text-xs leading-relaxed mb-4">
+                            Kita tidak perlu menunggu keajaiban penemuan fiksi ilmiah di masa depan. Seluruh infrastruktur dasar penyelamatan peradaban telah siap diproduksi massal dengan efisiensi ekonomi tinggi.
+                        </p>
+                        
+                        <div class="space-y-3 text-xs">
+                            <div class="flex items-center justify-between border-b border-carbon-850 pb-2">
+                                <span class="text-carbon-400">Penurunan Biaya Panel Surya (2010–2020):</span>
+                                <span class="text-emerald-400 font-bold">-90%</span>
+                            </div>
+                            <div class="flex items-center justify-between border-b border-carbon-850 pb-2">
+                                <span class="text-carbon-400">Penjualan Mobil Listrik Baru Norwegia:</span>
+                                <span class="text-emerald-400 font-bold">80%</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-2">
+                                <span class="text-carbon-400">Suplai Energi Hijau Kosta Rika:</span>
+                                <span class="text-emerald-400 font-bold">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/20 text-[11px] text-carbon-200 mt-6">
+                        <strong>Kesimpulan Utama:</strong> Tantangan terbesar kita saat ini sama sekali bukan berada pada ketersediaan teknologi, melainkan murni pada kemauan politik (political will) global.
+                    </div>
+                </div>
+
+                <!-- Kebijakan Sistemik & Gaya Hidup -->
+                <div class="lg:col-span-7 glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850 space-y-6">
+                    <h3 class="font-display font-bold text-lg text-white"><i class="fa-solid fa-list-check text-climate-earth mr-2"></i>Langkah Taktis Penyelamatan yang Dibutuhkan</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <!-- Carbon Tax -->
+                        <div class="p-4 bg-carbon-900/40 rounded-xl border border-carbon-800">
+                            <p class="font-bold text-emerald-400"><i class="fa-solid fa-hand-holding-dollar mr-1"></i>1. Pajak Karbon (Carbon Tax)</p>
+                            <p class="text-carbon-400 mt-1">Mengenakan biaya mahal pada setiap emisi aktivitas polusi fosil industri kotor, sekaligus menyubsidi energi hijau agar jauh lebih ekonomis.</p>
+                        </div>
+                        <!-- Stop Subsidi -->
+                        <div class="p-4 bg-carbon-900/40 rounded-xl border border-carbon-800">
+                            <p class="font-bold text-emerald-400"><i class="fa-solid fa-ban mr-1"></i>2. Hentikan Subsidi Fosil</p>
+                            <p class="text-carbon-400 mt-1">Setiap tahun, pemerintah menggelontorkan <strong>$5 triliun</strong> subsidi bahan bakar fosil kotor. Alihkan dana ini sepenuhnya ke riset terbarukan.</p>
+                        </div>
+                        <!-- Investasi Masif -->
+                        <div class="p-4 bg-carbon-900/40 rounded-xl border border-carbon-800">
+                            <p class="font-bold text-emerald-400"><i class="fa-solid fa-circle-dollar-to-slot mr-1"></i>3. Investasi Masif Energi Bersih</p>
+                            <p class="text-carbon-400 mt-1">Menggulirkan program investasi infrastruktur hijau berskala global setara dengan <em>Marshall Plan</em> pasca-Perang Dunia II secara konstan.</p>
+                        </div>
+                        <!-- Perubahan Gaya Hidup -->
+                        <div class="p-4 bg-carbon-900/40 rounded-xl border border-carbon-800">
+                            <p class="font-bold text-emerald-400"><i class="fa-solid fa-leaf mr-1"></i>4. Perubahan Gaya Hidup Jujur</p>
+                            <p class="text-carbon-400 mt-1">Kita tidak bisa terus mengonsumsi berlebih: kurangi makan daging sapi, batasi penerbangan pesawat jarak jauh, dan kurangi belanja barang fast-fashion.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-carbon-900/60 rounded-xl border border-carbon-800 text-xs">
+                        <p class="font-bold text-white"><i class="fa-solid fa-bullhorn text-climate-fire mr-1"></i>5. Menuntut Aksi Politik</p>
+                        <p class="text-carbon-400 mt-1">Aksi individu itu penting, namun perubahan sistemik jauh lebih penting. Gunakan hak pilih politik untuk memilih pemimpin yang serius berkomitmen menangani krisis iklim demi generasi masa depan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: SKENARIO MASA DEPAN, KUIS JAWABAN & PENUTUP -->
+        <div id="tab-bag5" class="tab-content hidden space-y-12">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-climate-fire/10 text-climate-fire border border-climate-fire/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 5 &amp; Penutup</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Skenario Masa Depan &amp; Komitmen Kita</h2>
+                <p class="text-carbon-400 text-sm sm:text-base mt-2">Bumi yang tidak layak huni adalah pilihan keputusan kita hari ini, bukan takdir yang tidak bisa diubah.</p>
+            </div>
+
+            <!-- Scenario Picker Widget -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                <h3 class="font-display font-bold text-lg sm:text-xl text-white mb-2">Simulasi Tiga Skenario Masa Depan Kita</h3>
+                <p class="text-carbon-400 text-xs sm:text-sm mb-6">Pilihlah salah satu skenario kebijakan di bawah ini untuk melihat proyeksi bentuk dunia yang diwarisi anak cucu kita pada tahun 2100.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="flex flex-col space-y-2">
+                            <button onclick="setScenario(1)" id="btn-scen-1" class="scenario-btn text-left p-3.5 rounded-xl border border-climate-alert bg-climate-alert/15 text-climate-alert transition-all flex items-center justify-between font-bold text-xs sm:text-sm">
+                                <span>Skenario 1: Status Quo (Tanpa Tindakan)</span>
+                                <i class="fa-solid fa-circle-exclamation text-xs"></i>
+                            </button>
+                            <button onclick="setScenario(2)" id="btn-scen-2" class="scenario-btn text-left p-3.5 rounded-xl border border-carbon-800 text-carbon-400 hover:text-white transition-all flex items-center justify-between font-bold text-xs sm:text-sm">
+                                <span>Skenario 2: Minimum (Setengah Hati)</span>
+                                <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                            </button>
+                            <button onclick="setScenario(3)" id="btn-scen-3" class="scenario-btn text-left p-3.5 rounded-xl border border-carbon-800 text-carbon-400 hover:text-white transition-all flex items-center justify-between font-bold text-xs sm:text-sm">
+                                <span>Skenario 3: Radikal (Penyelamatan Sekarang)</span>
+                                <i class="fa-solid fa-circle-check text-xs"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-4 bg-carbon-900 rounded-xl border border-carbon-800">
+                            <span class="text-[10px] font-bold text-carbon-500 uppercase block mb-1">Status Proyeksi Suhu Global:</span>
+                            <span id="scenario-temp" class="text-3xl font-display font-black text-climate-alert tracking-tight">+4.0°C Kenaikan</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-carbon-950 p-6 rounded-2xl border border-carbon-800 flex flex-col justify-between h-80">
+                        <div class="flex justify-between items-center border-b border-carbon-900 pb-3">
+                            <span class="text-xs uppercase font-bold text-carbon-400">Konsekuensi Peradaban:</span>
+                            <span id="scenario-badge" class="text-[10px] px-2 py-0.5 rounded bg-climate-alert/10 text-climate-alert border border-climate-alert/20 font-bold">MUTLAK TIDAK LAYAK HUNI</span>
+                        </div>
+                        
+                        <p id="scenario-desc" class="text-xs sm:text-sm text-carbon-300 leading-relaxed py-4 flex-1 flex items-center">
+                            Wilayah tropis bumi tidak lagi dapat ditinggali oleh manusia akibat melampaui batas wet-bulb temperature. Keruntuhan sistemik melanda rantai pasok global secara permanen, memicu kemiskinan massal dan kepunahan peradaban modern seperti yang kita kenal hari ini.
+                        </p>
+                        
+                        <div class="flex justify-around items-center border-t border-carbon-900 pt-4 text-xs text-carbon-400">
+                            <span id="scenario-refugees"><i class="fa-solid fa-person-walking-arrow-right mr-1 text-climate-alert"></i> <strong>&gt;1 Giga</strong> Pengungsi</span>
+                            <span id="scenario-food"><i class="fa-solid fa-wheat-awn-circle-exclamation mr-1 text-climate-alert"></i> <strong>-50%</strong> Panas Kelaparan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lifestyle Climate Impact Quiz -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Quiz Container -->
+                <div class="lg:col-span-7 glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850">
+                    <div id="quiz-intro-box">
+                        <span class="text-xs font-bold text-climate-fire uppercase tracking-wider">Evaluasi Gaya Hidup</span>
+                        <h3 class="font-display font-bold text-xl text-white mt-1 mb-3">Kalkulator Kontribusi &amp; Jejak Karbon Anda</h3>
+                        <p class="text-xs text-carbon-400 leading-relaxed mb-6">
+                            Buku ini menegaskan bahwa setiap aksi individu dan tuntutan politik kita berkontribusi terhadap skenario iklim masa depan. Mari ukur seberapa ramah lingkungan kebiasaan Anda sehari-hari.
+                        </p>
+                        <button onclick="startQuiz()" class="px-6 py-2.5 bg-gradient-to-r from-climate-fire to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-xl text-xs font-bold transition-all shadow-md">
+                            Mulai Evaluasi Mandiri
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Quiz Card -->
+                    <div id="quiz-question-box" class="hidden space-y-4">
+                        <div class="flex justify-between items-center text-xs text-carbon-400">
+                            <span id="quiz-progress-text">Pertanyaan 1 dari 5</span>
+                            <span id="quiz-question-points" class="font-semibold text-climate-fire">0 Poin</span>
+                        </div>
+                        <div class="w-full bg-carbon-850 h-1.5 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" style="width: 20%" class="bg-climate-fire h-full transition-all duration-300"></div>
+                        </div>
+                        
+                        <p id="quiz-question-text" class="text-xs sm:text-sm font-semibold text-carbon-200 py-3">
+                            Seberapa sering Anda mengonsumsi daging merah (khususnya daging sapi) dalam seminggu?
+                        </p>
+
+                        <div class="space-y-2">
+                            <!-- Answer options dynamically rendered -->
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Card -->
+                    <div id="quiz-result-box" class="hidden text-center space-y-4 py-4">
+                        <div id="quiz-result-icon" class="w-16 h-16 rounded-full bg-climate-alert/10 border border-climate-alert/20 text-climate-alert flex items-center justify-center text-3xl mx-auto">
+                            <i class="fa-solid fa-skull-crossbones"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-white">Hasil Evaluasi Jejak Iklim Anda</h4>
+                        <p id="quiz-eval-status" class="text-xs uppercase tracking-widest text-climate-alert font-bold">KONTRIBUSI EMISI TINGGI</p>
+                        <p id="quiz-eval-desc" class="text-xs text-carbon-400 leading-relaxed px-2">
+                            Gaya hidup dan keterlibatan politik Anda saat ini masih berada dalam jalur emisi Skenario 1 (Status Quo). Dibutuhkan perubahan kebiasaan konsumsi daging merah, pembatasan penerbangan, serta advokasi publik yang lebih aktif demi menekan laju emisi.
+                        </p>
+                        <button onclick="resetQuiz()" class="px-5 py-2 bg-carbon-900 hover:bg-carbon-850 text-carbon-300 border border-carbon-800 rounded-xl text-xs font-bold transition-all">
+                            Evaluasi Ulang
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Final Warning / Quote Box -->
+                <div class="lg:col-span-5 glassmorphism rounded-3xl p-6 sm:p-8 border border-carbon-850 relative overflow-hidden flex flex-col justify-between h-[360px] fire-glow">
+                    <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-climate-fire/5 rounded-full blur-3xl"></div>
+                    <div>
+                        <span class="text-[10px] font-bold text-climate-fire uppercase tracking-widest block mb-2">Pesan Untuk Generasi Kita</span>
+                        <p class="text-xs sm:text-sm text-carbon-300 leading-relaxed italic">
+                            "Kita tidak mewarisi bumi dari leluhur kita. Kita meminjamnya dari anak-anak kita. Dan saat ini, kita sedang merampoknya secara paksa di siang bolong."
+                        </p>
+                    </div>
+                    
+                    <div class="border-t border-carbon-800 pt-4 space-y-2 text-xs">
+                        <p class="text-carbon-400">
+                            Kita adalah generasi pertama yang merasakan dampak nyata kehancuran iklim, sekaligus generasi terakhir yang memiliki kuasa penuh untuk berbuat sesuatu sebelum melewati batas *tipping points* bumi yang tidak dapat dihentikan kembali.
+                        </p>
+                        <p class="text-white font-bold text-right text-[10px] sm:text-xs">
+                            — David Wallace-Wells
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-carbon-900 bg-carbon-950 py-12 text-center text-xs text-carbon-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <p>Infografis interaktif ini disusun secara lengkap merujuk pada teks asli buku <em>"The Uninhabitable Earth: Life After Warming"</em> oleh David Wallace-Wells (2019).</p>
+            <p>&copy; 2026 Proyek Edukasi Remaja Mandiri. Dirancang untuk kebaikan masa depan peradaban kita.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC SECTION -->
+    <script>
+        // Tab switching system
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            // Show target content
+            const target = document.getElementById(tabId);
+            target.classList.remove('hidden');
+            target.classList.add('block');
+
+            // Reset navigation button designs
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.className = "tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-carbon-400 hover:text-slate-200 hover:bg-carbon-900 border border-transparent";
+            });
+
+            // Set active button design
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.className = "tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 tab-btn-active border border-climate-fire/30";
+        }
+
+        // 12 Disasters Data Store (Maintains ALL exact text from original files)
+        const disastersData = {
+            1: {
+                title: "1. Panas yang Membunuh",
+                icon: "fa-temperature-high",
+                badge: "Wet-Bulb 35°C",
+                badgeColor: "border-climate-alert/20 bg-climate-alert/10 text-climate-alert",
+                desc: `Tubuh manusia bisa bertahan dalam berbagai kondisi ekstrem. Tapi ada satu batas fisik yang tidak bisa kita lewati secara biologis: wet-bulb temperature sebesar 35°C.<br><br>Ini adalah kombinasi mematikan antara suhu tinggi dan kelembaban ekstrem di mana tubuh manusia sama sekali tidak bisa lagi mendinginkan dirinya sendiri melalui sekresi keringat. Pada kondisi ini, seseorang yang paling sehat sekalipun akan meninggal akibat serangan sengatan panas (*heatstroke*) dalam waktu 6 jam saja, meskipun dia sedang duduk tenang di bawah tempat teduh ber-AC pasif dengan air minum melimpah.<br><br>Sampai beberapa dekade lalu, kondisi alam ekstrem ini hampir tidak pernah tercatat terjadi di bumi. Sekarang, beberapa wilayah padat di Timur Tengah dan Asia Selatan telah mulai menghadapinya beberapa kali dalam setahun. Pada tahun 2070, jika kita terus melaju di jalur emisi saat ini, wilayah yang dihuni oleh 1 miliar orang akan mengalami kondisi mematikan ini secara reguler setiap tahun.`
+            },
+            2: {
+                title: "2. Kelaparan Global",
+                icon: "fa-wheat-awn-circle-exclamation",
+                badge: "Sektor Pangan Anjlok",
+                badgeColor: "border-orange-500/20 bg-orange-500/10 text-orange-500",
+                desc: `"Kita bisa menanam lebih banyak makanan dengan teknologi pertanian modern, kan?" Sayangnya, hukum alam tidak sesederhana itu.<br><br>Untuk setiap kenaikan suhu global rata-rata sebesar 1°C, hasil panen gandum global akan turun rata-rata sebesar 10%. Untuk jagung susut sebesar 10–15%, dan untuk padi anjlok sebesar 10%.<br><br>Angka ini belum menghitung eskalasi kaskade berupa kekeringan ekstrem yang parah, bencana banjir bandang mendadak yang merendam persawahan, ledakan populasi hama serangga yang berkembang biak jauh lebih cepat di suhu hangat, serta degradasi intensif unsur hara tanah organik.<br><br>Hasil penelitian memproyeksikan bahwa pada tahun 2030 (hanya beberapa tahun lagi dari sekarang), total produksi pangan global bisa anjlok hingga 30%, sementara populasi manusia terus bertambah pesat. Ini adalah resep kelaparan massal global.`
+            },
+            3: {
+                title: "3. Tenggelamnya Kota-Kota Pesisir",
+                icon: "fa-water",
+                badge: "Naik 2 - 7 Meter",
+                badgeColor: "border-climate-ice/20 bg-climate-ice/10 text-climate-ice",
+                desc: `Kenaikan permukaan laut akibat pemanasan global bukan sekadar tentang pantai yang terkikis secara perlahan di akhir pekan.<br><br>Pada tahun 2100, jika emisi tidak ditekan secara radikal, laut diproyeksikan akan naik setinggi 2 hingga 7 meter. Kenaikan setinggi 7 meter ini sudah lebih dari cukup untuk menenggelamkan seluruh negara Bangladesh (160 juta jiwa), sebagian besar wilayah subur Florida, kota Amsterdam, Venesia, Bangkok, Ho Chi Minh, dan tentu saja, Jakarta.<br><br>Namun kenyataan yang lebih menakutkan adalah: pencairan lapisan es di Greenland dan Antartika telah terkunci (*locked-in*) untuk terus mencair selama berabad-abad ke depan. Bahkan jika kita menghentikan seluruh emisi hari ini, laut akan tetap merangkak naik. Kita telah resmi mengunci kenaikan permukaan air laut global untuk 1.000 tahun ke depan.`
+            },
+            4: {
+                title: "4. Api yang Tak Terkendali (Wildfires)",
+                icon: "fa-fire-alt",
+                badge: "Lingkaran Setan Api",
+                badgeColor: "border-climate-alert/20 bg-climate-alert/10 text-climate-alert",
+                desc: `Tahun 2019: Australia terbakar masif, menghanguskan 46 juta acre hutan serta membunuh lebih dari 1 miliar hewan. Tahun 2020: California membara, mengubah langit siang kota San Francisco menjadi oranye apokaliptik pekat. Tahun 2023: Kanada membara dahsyat hingga kabut asap beracunnya menyelimuti New York sejauh 2.000 km.<br><br>Rentetan kejadian ini bukanlah sebuah kebetulan atau anomali cuaca biasa. Ini adalah tren global baru. Setiap kenaikan suhu sebesar 1°C menyebabkan:<br>1. Musim kebakaran hutan berlangsung 3 minggu lebih panjang.<br>2. Total luasan wilayah yang terbakar meluas 2 kali lipat.<br>3. Intensitas daya kobaran api menguat sebesar 50%.<br><br>Hal ini melahirkan lingkaran setan yang mengerikan (*loop setan*): kebakaran hutan melepaskan simpanan karbon CO2 dalam jumlah masif ke udara, yang kemudian menaikkan suhu bumi, memicu kekeringan baru, dan akhirnya melahirkan kobaran api kebakaran yang jauh lebih dahsyat.`
+            },
+            5: {
+                title: "5. Air Bersih yang Menghilang",
+                icon: "fa-droplet-slash",
+                badge: "5 Miliar Krisis Air",
+                badgeColor: "border-climate-ice/20 bg-climate-ice/10 text-climate-ice",
+                desc: `Saat ini, sebanyak 2 miliar orang telah hidup di wilayah yang mengalami kelangkaan air bersih secara rutin. Pada tahun 2050, jumlah ini diproyeksikan melonjak hingga 5 miliar orang (lebih dari setengah total populasi manusia).<br><br>Gletser pegunungan Himalaya—yang selama ini mengalirkan pasokan air bersih bagi lebih dari 2 miliar orang di benua Asia—sedang mencair dengan kecepatan luar biasa. Dalam kurun waktu 30 tahun ke depan, aliran sungai-sungai raksasa Asia seperti sungai Gangga, Indus, Brahmaputra, Mekong, Yangtze, dan Yellow River akan menyusut secara drastis.<br><br>Danau Chad di Afrika bahkan telah menyusut sebanyak 90% sejak tahun 1960-an akibat krisis penguapan. Di Afrika Selatan, kota Cape Town hampir sepenuhnya kehabisan pasokan air bersih total pada tahun 2018 dalam skenario kritis yang mereka sebut sebagai "Day Zero".`
+            },
+            6: {
+                title: "6. Kebangkitan Penyakit Purba",
+                icon: "fa-biohazard",
+                badge: "Patogen Permafrost",
+                badgeColor: "border-yellow-500/20 bg-yellow-500/10 text-yellow-500",
+                desc: `Lapisan tanah beku abadi kutub (*permafrost*) yang telah membeku selama puluhan ribu tahun kini mulai mencair dengan cepat. Di dalam es abadi ini, terkunci berbagai patogen penyakit kuno.<br><br>Pada tahun 2016 di Siberia, seorang anak meninggal dunia secara misterius akibat infeksi penyakit anthrax. Setelah diteliti, anthrax tersebut ternyata berasal dari bangkai rusa kutub yang terinfeksi dan membeku 75 tahun lalu, yang kemudian mencair akibat gelombang panas ekstrem Siberia.<br><br>Yang jauh lebih mengkhawatirkan adalah: kita tidak tahu persis jenis virus dan bakteri purba apa lagi yang terkubur di dalam sana. Kuman purba yang telah punah ribuan tahun lalu tersebut belum pernah dihadapi oleh peradaban modern, yang berarti sistem kekebalan tubuh manusia saat ini sama sekali tidak memiliki pertahanan biologis untuk melawannya. Pada saat yang sama, pemanasan global memperluas persebaran nyamuk pembawa penyakit Malaria dan Dengue ke wilayah-wilayah utara yang dulu dingin.`
+            },
+            7: {
+                title: "7. Polusi Udara yang Tidak Terlihat",
+                icon: "fa-smog",
+                badge: "7 Juta Kematian / Tahun",
+                badgeColor: "border-carbon-400/20 bg-carbon-900 text-carbon-300",
+                desc: `Polusi udara yang dihasilkan murni dari pembakaran bahan bakar fosil minyak dan batu bara membunuh sedikitnya 7 juta orang setiap tahunnya saat ini. Jumlah korban jiwa ini jauh lebih masif jika dibandingkan dengan angka kematian gabungan akibat penyakit HIV, malaria, dan tuberkulosis.<br><br>Seiring meningkatnya suhu rata-rata global, polusi udara akan memburuk secara signifikan. Cuaca panas ekstrem mempercepat reaksi kimia pembentukan ozon permukaan tanah yang sangat beracun dan merusak paru-paru manusia secara permanen.<br><br>Di India, polusi udara yang pekat saat ini telah berhasil memangkas rata-rata harapan hidup warga negaranya sejauh 5 tahun lebih pendek murni karena partikel mikroskopis yang merusak organ pernapasan.`
+            },
+            8: {
+                title: "8. Ekonomi yang Runtuh",
+                icon: "fa-chart-line-down",
+                badge: "Ekonomi Menyusut 50%",
+                badgeColor: "border-climate-alert/20 bg-climate-alert/10 text-climate-alert",
+                desc: `Kerusakan lingkungan akibat perubahan iklim bukanlah isu marjinal di luar kalkulasi keuangan. Setiap kenaikan suhu bumi sebesar 1°C akan memotong pertumbuhan ekonomi global sebanyak 1–2%.<br><br>Pada skenario kenaikan suhu sebesar 3°C (jalur emisi yang sedang kita lalui saat ini), ukuran ekonomi global diproyeksikan akan 50% lebih kecil dibandingkan dengan potensi pertumbuhan dunia tanpa dampak pemanasan global ekstrem.<br><br>Ini bukan tentang pertumbuhan yang melambat biasa, melainkan kemiskinan massal yang menetap, hancurnya ratusan juta lapangan kerja, kehancuran sektor asuransi, dan ketidakstabilan finansial skala besar yang belum pernah dialami peradaban manusia sebelumnya.`
+            },
+            9: {
+                title: "9. Konflik & Perang Iklim",
+                icon: "fa-shield-halved",
+                badge: "Risiko Konflik +20%",
+                badgeColor: "border-climate-alert/20 bg-climate-alert/10 text-climate-alert",
+                desc: `Setiap kenaikan suhu global sebesar 0.5°C secara statistik terbukti meningkatkan probabilitas pecahnya konflik bersenjata dan kekerasan sosial sebesar 10–20%.<br><br>Konflik bersenjata berkepanjangan di Suriah—yang menewaskan lebih dari 500.000 jiwa serta memicu krisis pengungsian masal terbesar ke benua Eropa pasca-Perang Dunia II—sebenarnya dipicu sebagian oleh bencana kekeringan ekstrem terburuk dalam kurun waktu 900 tahun terakhir. Kekeringan merusak pertanian suriah, memaksa 1,5 juta petani melakukan migrasi paksa ke wilayah urban yang padat dan miskin.<br><br>Ini baru tahap awal. Ketika sumber daya air bersih, pasokan pangan, dan tanah subur yang layak huni semakin langka secara global, konflik militer dan sosial akan meledak di berbagai belahan bumi.`
+            },
+            10: {
+                title: "10. Eksodus Migrasi Massal",
+                icon: "fa-people-group",
+                badge: "143 Juta Pengungsi",
+                badgeColor: "border-yellow-500/20 bg-yellow-500/10 text-yellow-500",
+                desc: `Lembaga Bank Dunia memproyeksikan bahwa sedikitnya akan ada 143 juta orang yang dipaksa menjadi pengungsi iklim pada tahun 2050 mendatang akibat tempat tinggal mereka hancur, kekeringan parah, atau terendam air laut.<br><br>Sebagai bahan perbandingan yang adekuat: krisis pengungsi perang Suriah yang sempat mengguncang stabilitas sosial politik seluruh benua Eropa "hanya" melibatkan sekitar 6 juta orang pengungsi.<br><br>Bayangkan tekanan sosial-politik, gejolak ekonomi, dan sentimen keamanan global ketika dunia harus mengelola arus pengungsian masal dengan skala 20 kali lipat lebih besar dari krisis pengungsi Suriah tersebut. Ke mana mereka akan pergi? Negara mana yang siap menampung mereka? Tidak ada institusi global yang memiliki jawabannya hari ini.`
+            },
+            11: {
+                title: "11. Keruntuhan Sistemik",
+                icon: "fa-circle-nodes",
+                badge: "Efek Domino Global",
+                badgeColor: "border-climate-fire/20 bg-climate-fire/10 text-climate-fire",
+                desc: `Kita hidup di dunia modern yang saling terikat erat dalam rantai pasok global (*global supply chain*) yang sangat efisien namun sangat rapuh. Satu bencana badai ekstrem di Taiwan dapat langsung melumpuhkan produksi industri semikonduktor dunia secara global.<br><br>Satu musim kekeringan parah di wilayah lumbung padi dunia dapat seketika melambungkan harga komoditas pangan pokok secara global. Satu gelombang panas ekstrem dapat mematikan gardu listrik, memicu kerusakan pendingin logistik, yang menyebabkan pembusukan makanan masal dan berujung pada kelaparan.<br><br>Ini adalah efek domino sistemik. Ketika satu komponen vital peradaban runtuh akibat bencana iklim ekstrem, kegagalan berantai akan dengan sangat cepat meruntuhkan sistem peradaban global lainnya secara beruntun.`
+            },
+            12: {
+                title: "12. Feedback Loops & Tipping Points",
+                icon: "fa-arrows-spin",
+                badge: "Mekanisme Auto-Kerusakan",
+                badgeColor: "border-climate-alert/20 bg-climate-alert/10 text-climate-alert",
+                desc: `Inilah mekanisme alam paling menakutkan yang disebut sebagai tipping points (titik tiada kembali)—sebuah titik di mana kerusakan iklim berjalan otomatis secara mandiri tanpa bisa lagi dihentikan oleh manusia, meskipun kita menghentikan emisi karbon menjadi nol mutlak.<br><br>Beberapa mekanisme lingkaran setan (*feedback loops*) meliputi:<br>1. Pencairan Es Kutub: Es yang mencair mengurangi daya pantul bumi (albedo). Lebih sedikit panas dipantulkan, lebih banyak panas diserap samudera, mempercepat pencairan es lebih masif.<br>2. Pencairan Permafrost: Es mencair melepaskan metana (gas rumah kaca yang 80 kali lebih kuat dari CO2), meningkatkan suhu bumi, memicu pencairan permafrost baru.<br>3. Kebakaran Hutan: Hutan terbakar melepaskan CO2 masif, meningkatkan suhu, memicu kebakaran baru.<br><br>Kita tidak pernah tahu persis di mana garis batas *tipping points* ini berada. Kita bisa jadi telah melewatinya tanpa sadar.`
+            }
+        };
+
+        // Render Disaster Detail
+        function showDisaster(id) {
+            const data = disastersData[id];
+            const box = document.getElementById('disaster-display-box');
+            
+            // Update active button classes
+            const btns = document.querySelectorAll('.disaster-btn');
+            btns.forEach(btn => {
+                btn.className = "disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold text-carbon-300 hover:bg-carbon-900 transition-all flex items-center justify-between border border-transparent";
+            });
+            
+            const activeBtn = document.getElementById(`btn-dis-${id}`);
+            activeBtn.className = "disaster-btn w-full text-left px-4 py-3 rounded-xl text-xs font-semibold transition-all flex items-center justify-between bg-climate-fire/15 text-climate-fire border border-climate-fire/20";
+
+            box.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-carbon-800 pb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-climate-fire/10 border border-climate-fire/20 flex items-center justify-center text-climate-fire text-lg">
+                                <i class="fa-solid ${data.icon}"></i>
+                            </div>
+                            <h3 class="font-display font-extrabold text-xl text-white">${data.title}</h3>
+                        </div>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${data.badgeColor} uppercase tracking-wider self-start sm:self-center">${data.badge}</span>
+                    </div>
+                    <div class="text-xs sm:text-sm text-carbon-300 leading-relaxed space-y-4">
+                        ${data.desc}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Set initial disaster show
+        showDisaster(1);
+
+        // Scenario Simulator Logic
+        const scenarios = {
+            1: {
+                temp: "+4.0°C Kenaikan",
+                badge: "MUTLAK TIDAK LAYAK HUNI",
+                badgeClass: "text-[10px] px-2 py-0.5 rounded bg-climate-alert/10 text-climate-alert border border-climate-alert/20 font-bold",
+                desc: "Wilayah tropis bumi tidak lagi dapat ditinggali oleh manusia akibat melampaui batas wet-bulb temperature. Keruntuhan sistemik melanda rantai pasok global secara permanen, memicu kemiskinan massal, kelaparan, perang iklim perebutan sisa air, dan berakhirnya peradaban modern seperti yang kita kenal.",
+                refugees: "<i class='fa-solid fa-person-walking-arrow-right mr-1 text-climate-alert'></i> <strong>&gt;1 Giga</strong> Pengungsi",
+                food: "<i class='fa-solid fa-wheat-awn-circle-exclamation mr-1 text-climate-alert'></i> <strong>-50%</strong> Panas Kelaparan"
+            },
+            2: {
+                temp: "+2.5°C s/d +3.0°C",
+                badge: "WASPADA ADAPTASI EKSTREM",
+                badgeClass: "text-[10px] px-2 py-0.5 rounded bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 font-bold",
+                desc: "Dunia dipenuhi penderitaan fisik ekstrem, runtuhnya sebagian kota pesisir, serta gangguan rantai pangan yang konstan. Peradaban manusia masih bisa bertahan hidup dengan melakukan adaptasi berbiaya luar biasa tinggi yang menekan angka kesejahteraan publik.",
+                refugees: "<i class='fa-solid fa-person-walking-arrow-right mr-1 text-yellow-400'></i> <strong>143 Juta</strong> Pengungsi",
+                food: "<i class='fa-solid fa-wheat-awn-circle-exclamation mr-1 text-yellow-400'></i> <strong>-30%</strong> Gagal Panen"
+            },
+            3: {
+                temp: "+1.5°C s/d +2.0°C",
+                badge: "TERKENDALI (TARGET OPTIMAL)",
+                badgeClass: "text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold",
+                desc: "Dunia masih mengalami dampak kenaikan iklim berupa badai ekstrem dan hilangnya gletser minor, namun tetap berada dalam batas kendali adaptasi manusia. Kita berhasil mentransformasi energi bersih secara radikal dan mewariskan dunia yang hijau serta berkelanjutan.",
+                refugees: "<i class='fa-solid fa-person-walking-arrow-right mr-1 text-emerald-400'></i> <strong>Ditekan</strong> Maksimal",
+                food: "<i class='fa-solid fa-wheat-awn-circle-exclamation mr-1 text-emerald-400'></i> <strong>Terkendali</strong> Mitigasi"
+            }
+        };
+
+        function setScenario(id) {
+            const data = scenarios[id];
+            
+            // Set active scenario button color styles
+            const btns = document.querySelectorAll('.scenario-btn');
+            btns.forEach(btn => {
+                btn.className = "scenario-btn text-left p-3.5 rounded-xl border border-carbon-800 text-carbon-400 hover:text-white transition-all flex items-center justify-between font-bold text-xs sm:text-sm bg-transparent";
+            });
+
+            const activeBtn = document.getElementById(`btn-scen-${id}`);
+            if (id === 1) {
+                activeBtn.className = "scenario-btn text-left p-3.5 rounded-xl border border-climate-alert bg-climate-alert/15 text-climate-alert transition-all flex items-center justify-between font-bold text-xs sm:text-sm";
+            } else if (id === 2) {
+                activeBtn.className = "scenario-btn text-left p-3.5 rounded-xl border border-yellow-500 bg-yellow-500/10 text-yellow-500 transition-all flex items-center justify-between font-bold text-xs sm:text-sm";
+            } else {
+                activeBtn.className = "scenario-btn text-left p-3.5 rounded-xl border border-emerald-500 bg-emerald-500/10 text-emerald-400 transition-all flex items-center justify-between font-bold text-xs sm:text-sm";
+            }
+
+            // Update details
+            document.getElementById('scenario-temp').innerText = data.temp;
+            
+            const badge = document.getElementById('scenario-badge');
+            badge.innerText = data.badge;
+            badge.className = data.badgeClass;
+
+            document.getElementById('scenario-desc').innerText = data.desc;
+            document.getElementById('scenario-refugees').innerHTML = data.refugees;
+            document.getElementById('scenario-food').innerHTML = data.food;
+        }
+
+        // Self-Assessment Carbon Footprint Quiz Data
+        const quizData = [
+            {
+                q: "Seberapa sering Anda mengonsumsi daging sapi/kambing dalam seminggu?",
+                opts: [
+                    { t: "Setiap hari atau hampir setiap hari.", p: 2 },
+                    { t: "Hanya sesekali (1-3 kali seminggu).", p: 1 },
+                    { t: "Jarang sekali atau vegetarian/vegan harian.", p: 0 }
+                ]
+            },
+            {
+                q: "Berapa kali Anda melakukan penerbangan pesawat jarak jauh dalam setahun?",
+                opts: [
+                    { t: "Sering (lebih dari 4 kali setahun).", p: 2 },
+                    { t: "Sesekali (1-3 kali setahun).", p: 1 },
+                    { t: "Hampir tidak pernah / memanfaatkan transportasi darat.", p: 0 }
+                ]
+            },
+            {
+                q: "Bagaimana modalitas transportasi utama Anda saat bepergian rutin harian?",
+                opts: [
+                    { t: "Mobil pribadi bermesin fosil bensin/solar.", p: 2 },
+                    { t: "Sepeda motor pribadi atau taksi online.", p: 1 },
+                    { t: "Kendaraan umum listrik, berjalan kaki, bersepeda, atau EV.", p: 0 }
+                ]
+            },
+            {
+                q: "Seberapa peduli Anda dalam membatasi pembelanjaan barang baru non-esensial (fast-fashion/gawai baru)?",
+                opts: [
+                    { t: "Sering membeli barang baru demi mengikuti tren terbaru.", p: 2 },
+                    { t: "Membeli sewajarnya jika ada barang yang rusak.", p: 1 },
+                    { t: "Sangat selektif, mengutamakan daur ulang atau barang bekas berkualitas.", p: 0 }
+                ]
+            },
+            {
+                q: "Seberapa aktif Anda menyuarakan, mendukung, atau memilih kebijakan/pemimpin yang pro-lingkungan hidup?",
+                opts: [
+                    { t: "Tidak pernah peduli dengan isu politik lingkungan hidup.", p: 2 },
+                    { t: "Menaruh perhatian pasif tanpa terlibat langsung.", p: 1 },
+                    { t: "Sangat aktif mengadvokasi, mendonasikan, atau memilih opsi politik hijau.", p: 0 }
+                ]
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let totalScore = 0;
+
+        function startQuiz() {
+            document.getElementById('quiz-intro-box').classList.add('hidden');
+            document.getElementById('quiz-question-box').classList.remove('hidden');
+            currentQuestionIdx = 0;
+            totalScore = 0;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const currentQ = quizData[currentQuestionIdx];
+            document.getElementById('quiz-progress-text').innerText = `Pertanyaan ${currentQuestionIdx + 1} dari 5`;
+            document.getElementById('quiz-question-points').innerText = `${totalScore} Poin Terakumulasi`;
+            document.getElementById('quiz-progress-bar').style.width = `${(currentQuestionIdx + 1) * 20}%`;
+            document.getElementById('quiz-question-text').innerText = currentQ.q;
+
+            const optsBox = document.getElementById('quiz-question-box').querySelector('.space-y-2');
+            optsBox.innerHTML = '';
+
+            currentQ.opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-xl border border-carbon-800 text-xs text-carbon-300 hover:bg-carbon-900 hover:border-carbon-750 transition-all flex items-center justify-between";
+                btn.onclick = () => submitAnswer(opt.p);
+                btn.innerHTML = `
+                    <span>${opt.t}</span>
+                    <i class="fa-regular fa-circle text-carbon-800"></i>
+                `;
+                optsBox.appendChild(btn);
+            });
+        }
+
+        function submitAnswer(points) {
+            totalScore += points;
+            currentQuestionIdx++;
+
+            if (currentQuestionIdx < quizData.length) {
+                renderQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-question-box').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result-box');
+            resultBox.classList.remove('hidden');
+
+            const icon = document.getElementById('quiz-result-icon');
+            const status = document.getElementById('quiz-eval-status');
+            const desc = document.getElementById('quiz-eval-desc');
+
+            if (totalScore >= 7) {
+                icon.innerHTML = `<i class="fa-solid fa-skull-crossbones"></i>`;
+                icon.className = "w-16 h-16 rounded-full bg-climate-alert/10 border border-climate-alert/20 text-climate-alert flex items-center justify-center text-3xl mx-auto";
+                status.innerText = "JEJAK EMISI TINGGI (SKENARIO 1)";
+                status.className = "text-xs uppercase tracking-widest text-climate-alert font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Kebiasaan konsumsi, gaya hidup, serta kesadaran politik iklim Anda saat ini masih berada dalam lintasan pemanasan global +4°C. Dibutuhkan komitmen radikal untuk mengurangi makan daging, penerbangan fosil, serta tuntutan politik hijau.`;
+            } else if (totalScore >= 4 && totalScore < 7) {
+                icon.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+                icon.className = "w-16 h-16 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 flex items-center justify-center text-3xl mx-auto";
+                status.innerText = "JEJAK EMISI SEDANG (SKENARIO 2)";
+                status.className = "text-xs uppercase tracking-widest text-yellow-500 font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Gaya hidup Anda berada di ambang batas aman, mendukung skenario adaptasi ekstrem +2.5°C. Anda telah berupaya melakukan perubahan gaya hidup, namun masih memerlukan optimalisasi advokasi aksi iklim.`;
+            } else {
+                icon.innerHTML = `<i class="fa-solid fa-seedling"></i>`;
+                icon.className = "w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto";
+                status.innerText = "JEJAK EMISI RENDAH (SKENARIO 3 - AMAN)";
+                status.className = "text-xs uppercase tracking-widest text-emerald-400 font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Selamat! Pola konsumsi dan aksi nyata Anda selaras dengan target optimal Perjanjian Paris menahan laju kenaikan suhu di bawah +1.5°C. Sebarkan inspirasi ini ke komunitas Anda!`;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-intro-box').classList.remove('hidden');
+        }
+
+        // Initialize Charts and Settings
+        window.onload = function() {
+            // Setup Temperature Chart (Tab 1)
+            const tempCtx = document.getElementById('temperatureChart').getContext('2d');
+            new Chart(tempCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1880', '1920', '1960', '1992 (Al Gore)', '2000', '2020', '2050 Proyeksi', '2100 Proyeksi'],
+                    datasets: [
+                        {
+                            label: 'Proyeksi Jalur Emisi Fosil Saat Ini (Skenario 1)',
+                            data: [0.0, 0.1, 0.3, 0.6, 0.75, 1.25, 2.2, 4.0],
+                            borderColor: '#ef4444', // Red
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Proyeksi Skenario Kompromi Paris (Skenario 3)',
+                            data: [0.0, 0.1, 0.3, 0.6, 0.75, 1.25, 1.5, 1.7],
+                            borderColor: '#10b981', // Emerald
+                            backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                            borderWidth: 2,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Inter',
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#0c0f1d',
+                            titleColor: '#ffffff',
+                            bodyColor: '#94a3b8',
+                            borderColor: '#181d30',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(37, 45, 71, 0.3)' },
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function(value) { return '+' + value + '°C'; }
+                            }
+                        },
+                        x: {
+                            grid: { color: 'rgba(37, 45, 71, 0.1)' },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+
+            // Setup Agriculture Loss Chart (Tab 2)
+            const agCtx = document.getElementById('agricultureLossChart').getContext('2d');
+            new Chart(agCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Gandum', 'Jagung', 'Padi'],
+                    datasets: [{
+                        label: 'Persentase Penurunan Hasil Panen Per 1°C Kenaikan Suhu',
+                        data: [-10, -12.5, -10],
+                        backgroundColor: [
+                            'rgba(249, 115, 22, 0.65)', // Orange
+                            'rgba(239, 68, 68, 0.65)',  // Red
+                            'rgba(234, 179, 8, 0.65)'   // Yellow
+                        ],
+                        borderColor: [
+                            '#f97316',
+                            '#ef4444',
+                            '#eab308'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0c0f1d',
+                            titleColor: '#ffffff',
+                            bodyColor: '#cbd5e1'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(37, 45, 71, 0.3)' },
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function(value) { return value + '%'; }
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

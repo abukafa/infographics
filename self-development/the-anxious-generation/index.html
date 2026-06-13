@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anxious Generation - Infografis Interaktif</title>
+    <!-- Google Fonts: Inter & Sora -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Sora', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            danger: '#f43f5e', // rose-500
+                            safe: '#10b981', // emerald-500
+                            darkbg: '#0f172a', // slate-900
+                            glass: 'rgba(30, 41, 59, 0.7)',
+                            accent: '#6366f1' // indigo-500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+        }
+        .tab-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neo-shadow {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+        }
+        .neo-shadow-danger {
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.6);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-indigo-500 selection:text-white custom-scrollbar">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 glassmorphism border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                    <i class="fa-solid fa-brain-circuit text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">THE ANXIOUS GENERATION</span>
+                    <p class="text-xs text-rose-400 font-semibold tracking-widest uppercase">Eksplorasi Interaktif</p>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-2 text-sm text-slate-400 bg-slate-950/60 p-1.5 rounded-full border border-slate-800">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                    Buku Asli: NYT Bestseller (Maret 2024)
+                </span>
+                <span class="px-3 py-1 text-xs text-slate-400">
+                    Penulis: Jonathan Haidt
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Title Section -->
+    <section class="relative overflow-hidden py-16 lg:py-24 border-b border-slate-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950/20 via-slate-950 to-slate-950">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1200&q=80')] opacity-[0.02] mix-blend-overlay"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full glassmorphism text-xs text-rose-400 mb-6 border border-rose-500/20">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                <span class="font-semibold uppercase tracking-wider">Epidemi Kesehatan Mental Remaja Global</span>
+            </div>
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-8xl tracking-tight mb-6 leading-tight">
+                Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-500">Cemas</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-light mb-8">
+                Berdasarkan karya penelitian komprehensif <strong class="text-indigo-400 font-semibold">Jonathan Haidt</strong> (Profesor Psikologi Sosial di NYU Stern School of Business).
+            </p>
+            
+            <!-- Quick Stat Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 text-left">
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-rose-500">
+                    <span class="text-slate-400 text-xs block font-semibold mb-1">Depresi Remaja Perempuan</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-rose-400">+145%</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-amber-500">
+                    <span class="text-slate-400 text-xs block font-semibold mb-1">Kecemasan Remaja</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-amber-400">+139%</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-red-500">
+                    <span class="text-slate-400 text-xs block font-semibold mb-1">Kasus Self-Harm</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-red-400">+189%</span>
+                </div>
+                <div class="glassmorphism p-4 rounded-2xl border-l-4 border-orange-500">
+                    <span class="text-slate-400 text-xs block font-semibold mb-1">Kasus Bunuh Diri Perempuan</span>
+                    <span class="text-2xl sm:text-3xl font-display font-extrabold text-orange-400">+151%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Tab Bar Navigation -->
+    <div class="sticky top-20 z-40 bg-slate-950/95 border-b border-slate-800 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 overflow-x-auto custom-scrollbar">
+            <nav class="flex space-x-1 py-4 min-w-[760px] md:min-w-0 md:justify-center" aria-label="Tabs">
+                <button onclick="switchTab('tab-home')" id="btn-tab-home" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 bg-indigo-600/20 text-indigo-300 border border-indigo-500/30">
+                    <i class="fa-solid fa-home"></i>
+                    <span>Beranda & Grafik Utama</span>
+                </button>
+                <button onclick="switchTab('tab-rewiring')" id="btn-tab-rewiring" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900">
+                    <i class="fa-solid fa-mobile-retro"></i>
+                    <span>Bab 1-2: Great Rewiring</span>
+                </button>
+                <button onclick="switchTab('tab-damage')" id="btn-tab-damage" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <span>Bab 3-4: Mengapa Merusak?</span>
+                </button>
+                <button onclick="switchTab('tab-collective')" id="btn-tab-collective" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Bab 5-6: Solusi Kolektif</span>
+                </button>
+                <button onclick="switchTab('tab-guide')" id="btn-tab-guide" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Panduan & Kuis Refleksi</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Dynamic Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- TAB 1: HOME & GRAFIK -->
+        <div id="tab-home" class="tab-content block space-y-12">
+            
+            <!-- Book Metadata and Intro -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <div class="lg:col-span-4 glassmorphism rounded-3xl p-8 flex flex-col justify-between neo-shadow relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                    <div>
+                        <div class="mb-6">
+                            <span class="text-xs uppercase tracking-widest text-indigo-400 font-bold">Tentang Buku Asli</span>
+                            <h3 class="font-display font-extrabold text-2xl mt-1 text-white">The Anxious Generation</h3>
+                            <p class="text-sm text-slate-400 italic mt-1">"How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness"</p>
+                        </div>
+                        <div class="space-y-4 text-slate-300 text-sm">
+                            <p><strong>Penerbitan:</strong> Maret 2024</p>
+                            <p><strong>Pencapaian:</strong> #1 New York Times Bestseller</p>
+                            <p><strong>Metodologi:</strong> 4 tahun penelitian intensif, analisis data dari puluhan negara, ratusan studi akademis, dan ribuan wawancara langsung dengan remaja, guru, dan orang tua.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center space-x-4">
+                        <img src="https://placehold.co/120x150/1e1e2f/ffffff?text=J.+Haidt" alt="Jonathan Haidt Placeholder" class="w-12 h-16 object-cover rounded-lg shadow-md border border-slate-700" onerror="this.src='https://placehold.co/120x150/1e293b/a5f3fc?text=Jonathan+Haidt'">
+                        <div>
+                            <p class="font-display font-bold text-sm text-white">Jonathan Haidt</p>
+                            <p class="text-xs text-slate-400">Profesor Psikologi Sosial di NYU Stern School of Business. Penulis buku terlaris *The Righteous Mind* (2012) & *The Coddling of the American Mind* (2018).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 glassmorphism rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-rose-500 font-bold">Kisah Pembuka</span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl mt-1 mb-4 text-white">Grafik yang Mengubah Segalanya</h2>
+                        <div class="prose prose-invert max-w-none text-slate-300 text-sm sm:text-base space-y-4">
+                            <p>
+                                Tahun 2019. Jonathan Haidt sedang mempresentasikan data di sebuah konferensi pendidikan. Dia menampilkan satu grafik sederhana: <strong class="text-rose-400">tingkat depresi pada remaja Amerika dari tahun 2000 hingga 2018.</strong>
+                            </p>
+                            <p>
+                                Dari tahun 2000 hingga 2010, grafik itu relatif datar. Namun, di sekitar tahun <strong class="text-rose-400">2010–2012</strong>, terjadi anomali ekstrem. Garis tersebut tiba-tiba <strong class="text-rose-500 underline decoration-wavy decoration-2">melonjak tajam ke atas</strong> dan mendaki konstan tanpa henti.
+                            </p>
+                            <blockquote class="border-l-4 border-indigo-500 pl-4 italic text-slate-400 py-1 bg-slate-900/40 rounded-r-lg">
+                                "Ruangan konferensi seketika terdiam. Ini bukan sekadar kenaikan kecil atau fluktuasi normal. Ini adalah epidemi kesehatan mental pada skala yang belum pernah terjadi dalam sejarah modern."
+                            </blockquote>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-950/20 p-4 rounded-2xl border border-indigo-500/20 mt-6 flex items-start space-x-3 text-xs sm:text-sm">
+                        <i class="fa-solid fa-circle-info text-indigo-400 mt-1"></i>
+                        <p class="text-slate-300">
+                            <strong>Pertanyaan Kunci:</strong> Apa yang terjadi antara 2010–2012? Antara tahun tersebut, masa kanak-kanak bermigrasi secara fundamental dari <em>"play-based"</em> (bermain bebas di alam fisik) ke <em>"phone-based"</em> (bermain virtual di layar gawai).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Chart Section -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 neo-shadow-danger">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-6">
+                    <div>
+                        <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">Visualisasi Data: Tren Gangguan Mental Remaja (2000 - 2018)</h3>
+                        <p class="text-xs sm:text-sm text-slate-400">Gunakan tab di bawah untuk melihat perbedaan persentase kenaikan dari titik dasar 2010.</p>
+                    </div>
+                    <div class="mt-4 lg:mt-0 flex flex-wrap gap-2 text-xs">
+                        <span class="px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full font-semibold">Gadis Depresi +145%</span>
+                        <span class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full font-semibold">Kecemasan +139%</span>
+                        <span class="px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-full font-semibold">Self-Harm +189%</span>
+                        <span class="px-3 py-1 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full font-semibold">Bunuh Diri Gadis +151%</span>
+                    </div>
+                </div>
+                
+                <div class="w-full h-80 sm:h-96 lg:h-[450px]">
+                    <canvas id="mentalHealthChart"></canvas>
+                </div>
+                <p class="text-xs text-slate-500 mt-4 italic text-center">Data disadur dari visualisasi riset global Jonathan Haidt yang melingkupi tren di Amerika, Inggris, Kanada, Skandinavia, dan Australia.</p>
+            </div>
+        </div>
+
+        <!-- TAB 2: THE GREAT REWIRING -->
+        <div id="tab-rewiring" class="tab-content hidden space-y-12">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 1</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">The Great Rewiring</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Transformasi fundamental masa kanak-kanak dari ranah luar ruangan ke dunia layar virtual yang memicu perubahan struktural otak remaja.</p>
+            </div>
+
+            <!-- Compare Play-Based vs Phone-Based (Interactive Toggle) -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-slate-800">
+                    <div>
+                        <h3 class="font-display font-extrabold text-lg sm:text-xl text-white">Studi Komparatif Generasi</h3>
+                        <p class="text-xs sm:text-sm text-slate-400">Klik tombol di bawah untuk melihat perbedaan kontras skenario keseharian anak.</p>
+                    </div>
+                    <div class="mt-4 sm:mt-0 inline-flex p-1 bg-slate-950 rounded-xl border border-slate-800">
+                        <button onclick="toggleChildhood('era-1995')" id="btn-era-1995" class="px-4 py-2 text-xs font-bold rounded-lg bg-indigo-500 text-white transition-all">Masa Kecil 1995 (Fisik)</button>
+                        <button onclick="toggleChildhood('era-2015')" id="btn-era-2015" class="px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-slate-200 transition-all">Masa Kecil 2015 (Gawai)</button>
+                    </div>
+                </div>
+
+                <!-- Era 1995 Content -->
+                <div id="content-era-1995" class="grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 items-center">
+                    <div class="md:col-span-5 space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl shadow-lg shadow-emerald-500/10">
+                            <i class="fa-solid fa-bicycle"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-emerald-400">Masa Kecil 1995 (Sarah - Usia 12 Tahun)</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Bermain di luar rumah tanpa gawai, bersosialisasi secara langsung, menghadapi konflik mandiri, dan melatih ketahanan diri (*resilience*) secara organik.
+                        </p>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-check text-emerald-400"></i>
+                                <span>Kembali ke rumah saat hari mulai gelap</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-check text-emerald-400"></i>
+                                <span>Menyelesaikan sengketa permainan secara mandiri</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-check text-emerald-400"></i>
+                                <span>Tidak ada bayangan gawai atau notifikasi di kamar</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 space-y-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-emerald-500 font-display font-extrabold text-2xl">01</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Interaksi Fisik Berbasis Risiko Menengah</h5>
+                                <p class="text-xs text-slate-400 mt-1">Lutut lecet karena jatuh dari sepeda melatih sistem imun psikologis bahwa penderitaan fisik ringan itu sementara dan bisa dilewati.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 border-t border-slate-800 pt-4">
+                            <span class="text-emerald-500 font-display font-extrabold text-2xl">02</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Negosiasi Demokratis Spontan</h5>
+                                <p class="text-xs text-slate-400 mt-1">Tanpa mediasi orang tua, anak belajar mendeteksi intonasi vokal, mikro-ekspresi wajah, dan gestur tubuh saat tawar-menawar aturan main.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 border-t border-slate-800 pt-4">
+                            <span class="text-emerald-500 font-display font-extrabold text-2xl">03</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Batas Ruang dan Waktu yang Jelas</h5>
+                                <p class="text-xs text-slate-400 mt-1">Kehidupan sosial berhenti saat memasuki rumah. Tidur malam berlangsung damai tanpa intrusi desas-desus atau drama dunia maya.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Era 2015 Content -->
+                <div id="content-era-2015" class="hidden grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 items-center">
+                    <div class="md:col-span-5 space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 text-2xl shadow-lg shadow-rose-500/10">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-rose-400">Masa Kecil 2015 (Emma - Usia 12 Tahun)</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Mengunci diri di kamar setelah sekolah, dikepung notifikasi gawai, kecanduan visualisasi algoritma, dihantui FOMO (*Fear of Missing Out*), dan terasing secara emosional.
+                        </p>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-xmark text-rose-400"></i>
+                                <span>Mengonsumsi media sosial berjam-jam secara soliter</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-xmark text-rose-400"></i>
+                                <span>Membandingkan diri dengan filter realitas palsu</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-circle-xmark text-rose-400"></i>
+                                <span>Paparan sinar biru dari layar di ranjang hingga larut malam</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 space-y-4 bg-slate-900/50 p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-rose-500 font-display font-extrabold text-2xl">01</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Kecemasan Komparasi Sosial Menetap</h5>
+                                <p class="text-xs text-slate-400 mt-1">Melihat foto pesta teman di Instagram di mana ia tidak diundang memicu penolakan sosial eksponensial di area otak yang memetakan rasa sakit fisik.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 border-t border-slate-800 pt-4">
+                            <span class="text-rose-500 font-display font-extrabold text-2xl">02</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Hiper-Stimulasi Snapchat & TikTok</h5>
+                                <p class="text-xs text-slate-400 mt-1">Kewajiban membalas puluhan pesan kilat agar tidak kehilangan status pertemanan digital merusak sistem kerja memori jangka pendek.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4 border-t border-slate-800 pt-4">
+                            <span class="text-rose-500 font-display font-extrabold text-2xl">03</span>
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-200">Drama Tanpa Batas Ruang</h5>
+                                <p class="text-xs text-slate-400 mt-1">Dunia maya tidak pernah tidur. Sekalipun pintu kamar tertutup rapat, perundungan siber (*cyber-bullying*) tetap sanggup mengikutinya hingga ke atas ranjang.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Global Shifts Infographic cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl border-t-4 border-indigo-500">
+                    <span class="text-slate-400 font-bold text-xs uppercase">Evolusi Penetrasi Gawai</span>
+                    <h3 class="font-display font-bold text-xl text-white mt-2 mb-4">Pergeseran 1: Ponsel Pintar Menjadi Universal</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <div>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-indigo-500/10 text-indigo-400">
+                                        Tahun 2010 (Awal Transformasi)
+                                    </span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-sm font-bold text-slate-300">20% Remaja</span>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden h-2.5 text-xs flex rounded-full bg-slate-800">
+                                <div style="width:20%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"></div>
+                            </div>
+                        </div>
+
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <div>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-indigo-500/10 text-indigo-400">
+                                        Tahun 2015 (Puncak Adopsi Gawai)
+                                    </span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-sm font-bold text-indigo-400">73% Remaja</span>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden h-2.5 text-xs flex rounded-full bg-slate-800">
+                                <div style="width:73%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-400"></div>
+                            </div>
+                        </div>
+
+                        <div class="relative pt-1">
+                            <div class="flex mb-2 items-center justify-between">
+                                <div>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full bg-indigo-500/20 text-indigo-300">
+                                        Tahun 2023 (Saturasi Total)
+                                    </span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-sm font-bold text-indigo-300">95% Remaja</span>
+                                </div>
+                            </div>
+                            <div class="overflow-hidden h-2.5 text-xs flex rounded-full bg-slate-800">
+                                <div style="width:95%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-300"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl border-t-4 border-rose-500">
+                    <span class="text-slate-400 font-bold text-xs uppercase">Evolusi Arsitektur Adiktif</span>
+                    <h3 class="font-display font-bold text-xl text-white mt-2 mb-4">Pergeseran 2: Evolusi Media Sosial yang Manipulatif</h3>
+                    
+                    <div class="relative border-l-2 border-slate-800 pl-4 space-y-4 text-xs sm:text-sm">
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-slate-600"></div>
+                            <p class="font-bold text-slate-200">2010</p>
+                            <p class="text-slate-400">Facebook masih dominan di komputer meja (*desktop*), fokus menghubungkan jejaring sosial riil.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-rose-500"></div>
+                            <p class="font-bold text-slate-200">2012</p>
+                            <p class="text-slate-400">Instagram diakuisisi Facebook. Fokus bergeser dari kata-kata ke visual-sentris, memicu gelombang komparasi penampilan.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-rose-500"></div>
+                            <p class="font-bold text-slate-200">2013</p>
+                            <p class="text-slate-400">Snapchat memperkenalkan fitur *Stories*. Konten hilang dalam 24 jam melahirkan kecemasan tertinggal (*FOMO*).</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-red-600"></div>
+                            <p class="font-bold text-indigo-400 font-bold">2015</p>
+                            <p class="text-slate-400">Saturasi fitur psikologi adiktif: guliran tanpa batas (*infinite scroll*), pemutaran otomatis (*autoplay*), dan notifikasi tiada henti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: MENGAPA PHONE-BASED CHILDHOOD MERUSAK -->
+        <div id="tab-damage" class="tab-content hidden space-y-12">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 2</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Empat Alasan Fundamental Kerusakan</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Dampak sistemik yang ditimbulkan oleh lingkungan berbasis gawai terhadap organ otak, emosi, dan ketahanan sosial remaja.</p>
+            </div>
+
+            <!-- Interactive Dose-Response Calculator (Simulator) -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8 neo-shadow-danger">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-bold uppercase text-rose-500">Simulator Hubungan Dosis-Respon</span>
+                        <h3 class="font-display font-bold text-2xl text-white">Berapa Jam Paparan Layar Anak Anda?</h3>
+                        <p class="text-slate-400 text-sm">
+                            Haidt memaparkan korelasi kausalitas yang kokoh antara kuantitas waktu konsumsi layar harian dengan lonjakan risiko kecemasan serta depresi secara matematis.
+                        </p>
+                        
+                        <!-- Range Slider -->
+                        <div class="space-y-3 pt-4">
+                            <div class="flex justify-between items-center text-sm font-semibold">
+                                <span class="text-slate-400">Waktu Layar Hiburan:</span>
+                                <span id="hours-display" class="text-rose-400 text-lg font-bold">4 Jam / Hari</span>
+                            </div>
+                            <input type="range" id="screen-hours" min="0" max="8" value="4" step="1" oninput="calculateRisk(this.value)" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                            <div class="flex justify-between text-[10px] text-slate-500">
+                                <span>0 Jam</span>
+                                <span>2 Jam</span>
+                                <span>4 Jam</span>
+                                <span>6 Jam</span>
+                                <span>8+ Jam</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950/60 p-6 rounded-2xl border border-slate-800 text-center space-y-6">
+                        <div class="inline-flex flex-col items-center">
+                            <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1">Estimasi Risiko Depresi Anak</span>
+                            <span id="risk-multiplier" class="text-5xl sm:text-6xl font-display font-black text-rose-400 tracking-tight transition-all">+30%</span>
+                            <span id="risk-status" class="text-xs px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full font-bold mt-3">RISIKO MENINGKAT</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 text-left border-t border-slate-900 pt-6">
+                            <div class="p-3 bg-slate-900/40 rounded-xl">
+                                <span class="text-slate-500 text-[10px] uppercase font-bold">Sistem Dopamin</span>
+                                <p id="dopamine-impact" class="text-xs text-slate-300 mt-1 font-medium">Bekerja di atas ambang batas normal secara berulang.</p>
+                            </div>
+                            <div class="p-3 bg-slate-900/40 rounded-xl">
+                                <span class="text-slate-500 text-[10px] uppercase font-bold">Fokus Otak Jangka Panjang</span>
+                                <p id="focus-impact" class="text-xs text-slate-300 mt-1 font-medium">Kemampuan mendalam mengalami penurunan minor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed 4 Reasons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Alasan 1 -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center justify-center text-rose-400 text-xl shadow-md">
+                        <i class="fa-solid fa-users-slash"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg sm:text-xl text-white">Alasan 1: Gangguan Keterampilan Sosial</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Manusia purba hingga modern dirancang belajar berkomunikasi melalui umpan balik mikro-ekspresi dan bahasa tubuh fisik secara aktual.
+                    </p>
+                    <div class="bg-slate-950/40 p-4 rounded-xl space-y-2 text-xs">
+                        <p class="text-slate-300"><strong class="text-emerald-400">Interaksi Riil:</strong> Belajar empati instan dengan membaca perubahan paras lawan bicara serta belajar rekonsiliasi sengketa seketika.</p>
+                        <p class="text-slate-400 border-t border-slate-900 pt-2"><strong class="text-rose-400">Interaksi Maya:</strong> Nir-isyarat nonverbal, mudah memicu kesalahpahaman, mengamplifikasi perundungan siber (*cyber bullying*), serta menghasilkan hubungan permukaan (*superficial*).</p>
+                    </div>
+                </div>
+
+                <!-- Alasan 2 -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center justify-center text-rose-400 text-xl shadow-md">
+                        <i class="fa-solid fa-bed"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg sm:text-xl text-white">Alasan 2: Degradasi Jam Tidur Alami</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Pola biologis remaja membutuhkan tidur optimal 9-10 jam. Keberadaan gawai menggeser siklus alami ini ke titik nadir 6-7 jam saja.
+                    </p>
+                    <div class="bg-slate-950/40 p-4 rounded-xl space-y-3 text-xs text-slate-300">
+                        <div class="flex justify-between items-center">
+                            <span>Adanya gawai di atas ranjang:</span>
+                            <span class="text-rose-400 font-bold">+50% Risiko Depresi</span>
+                        </div>
+                        <p class="text-slate-400 border-t border-slate-900 pt-2">Paparan sinar biru dari LCD menekan sekresi melatonin (hormon kantuk alami), menjaga otak tetap terangsang meskipun dalam kondisi letih.</p>
+                    </div>
+                </div>
+
+                <!-- Alasan 3 -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center justify-center text-rose-400 text-xl shadow-md">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg sm:text-xl text-white">Alasan 3: Fragmentasi Perhatian (Distraksi Kronis)</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Pertumbuhan korteks prefrontal (pengatur fokus & impuls diri) menuntut latihan konsentrasi mendalam (*deep focus*) untuk terbentuk secara optimal.
+                    </p>
+                    <div class="bg-slate-950/40 p-4 rounded-xl space-y-2 text-xs">
+                        <div class="flex justify-between text-slate-300 font-bold">
+                            <span>Pengecekan Gawai Remaja:</span>
+                            <span class="text-rose-400 font-display">150 Kali / Hari</span>
+                        </div>
+                        <p class="text-slate-400 mt-1">Setara dengan distraksi interuptif satu kali setiap 6 menit. Akibatnya, otak remaja tidak pernah berada pada fase kontemplatif yang bermakna.</p>
+                    </div>
+                </div>
+
+                <!-- Alasan 4 -->
+                <div class="glassmorphism p-6 sm:p-8 rounded-3xl space-y-4">
+                    <div class="w-12 h-12 bg-rose-500/10 border border-rose-500/20 rounded-2xl flex items-center justify-center text-rose-400 text-xl shadow-md">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg sm:text-xl text-white">Alasan 4: Manipulasi Dopamin & Jerat Kecanduan</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Arsitektur media sosial dikembangkan oleh jajaran pakar psikologi perilaku industri teknologi raksasa dengan satu gol tunggal: menyita atensi pengguna.
+                    </p>
+                    <blockquote class="border-l-4 border-rose-500 pl-4 italic text-slate-400 py-1 text-xs bg-slate-900/60 rounded-r-lg">
+                        "Kami sadar sejak awal bahwa kami mendesain candu... Pertanyaan utamanya: Bagaimana kami merampas waktu dan perhatian Anda sebanyak-banyaknya?" <br>
+                        <span class="block text-right text-[10px] text-slate-500 font-bold mt-1">— Sean Parker (Presiden Pertama Facebook)</span>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: COLLECTIVE ACTION & 4 NORMA FUNDAMENTAL -->
+        <div id="tab-collective" class="tab-content hidden space-y-12">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 3 & 4</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Dilema Aksi Kolektif & 4 Norma Penyelamat</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Mengapa upaya membendung bahaya gawai tidak bisa diselesaikan sendirian oleh satu keluarga, dan bagaimana kita mengubah norma sosial secara massal.</p>
+            </div>
+
+            <!-- Interactive Collective Action Pact Simulator -->
+            <div class="glassmorphism rounded-3xl p-6 sm:p-8">
+                <h3 class="font-display font-bold text-xl text-white mb-2">Simulasi Dilema Tindakan Kolektif</h3>
+                <p class="text-slate-400 text-xs sm:text-sm mb-6">Sesuaikan persentase orang tua di lingkungan sekolah anak Anda yang sepakat menolak gawai di bawah usia 14 tahun, lalu lihat reaksinya.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-6">
+                        <div class="space-y-2">
+                            <label class="block text-xs font-bold text-indigo-400 uppercase">Kesepakatan Orang Tua Satu Kelas:</label>
+                            <div class="flex items-center space-x-3">
+                                <button onclick="setAgreement(10)" class="agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all">10%</button>
+                                <button onclick="setAgreement(30)" class="agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all">30% (Transisi)</button>
+                                <button onclick="setAgreement(75)" class="agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-500 text-white transition-all">75% (Kolektif)</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <h4 class="text-sm font-bold text-slate-200">Konsekuensi Sosial pada Anak Anda:</h4>
+                            <div id="pact-scenario-card" class="p-4 rounded-xl bg-slate-900/60 border border-indigo-500/20 text-xs sm:text-sm leading-relaxed text-slate-300">
+                                <!-- Dynamic content based on agreement selection -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between h-64">
+                        <div class="flex justify-between items-center border-b border-slate-900 pb-4">
+                            <span class="text-xs uppercase font-bold text-slate-400">Arus Tekanan Sosial</span>
+                            <span id="social-status-badge" class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">AMAN & SEHAT</span>
+                        </div>
+                        
+                        <div class="flex-1 flex flex-col justify-center py-4">
+                            <!-- Visual Graphic representation -->
+                            <div class="flex items-center justify-around">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500 flex items-center justify-center text-indigo-400">
+                                        <i class="fa-solid fa-person"></i>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 mt-2">Anak Anda</span>
+                                </div>
+                                <div class="flex-1 h-0.5 border-t border-dashed border-indigo-500 mx-4 relative">
+                                    <div id="social-arrow" class="absolute right-0 -top-1 w-2 h-2 border-t-2 border-r-2 border-indigo-500 rotate-45"></div>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div id="peer-icon-container" class="w-12 h-12 rounded-full bg-indigo-500/10 border border-indigo-500 flex items-center justify-center text-indigo-400">
+                                        <i class="fa-solid fa-users"></i>
+                                    </div>
+                                    <span id="peer-label" class="text-[10px] text-slate-400 mt-2">Teman Sebaya</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p id="pact-verdict" class="text-xs italic text-slate-500 text-center">"Gerakan kolektif meringankan beban pengucilan anak di ruang publik kelas."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The 4 Fundamental Norms cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Norma 1 -->
+                <div class="glassmorphism p-6 rounded-2xl border-b-4 border-indigo-500 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase">Norma 1</span>
+                        <h4 class="font-display font-bold text-lg text-white">Tanpa Ponsel Pintar &lt; Usia 14</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Batasi penggunaan perangkat komunikasi murni ke ponsel biasa (*dumbphone* atau *flip phone*) hanya untuk fungsi esensial telepon/SMS darurat. Tunda akses internet tak terbatas.
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-4 block border-t border-slate-900 pt-3">Melindungi pembentukan identitas dini anak.</span>
+                </div>
+
+                <!-- Norma 2 -->
+                <div class="glassmorphism p-6 rounded-2xl border-b-4 border-indigo-500 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase">Norma 2</span>
+                        <h4 class="font-display font-bold text-lg text-white">Tanpa Media Sosial &lt; Usia 16</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Instagram, TikTok, dan Snapchat dirancang dengan algoritma manipulasi penolakan. Tunda pendaftaran hingga kedewasaan kognitif terbentuk sempurna pada usia 16 tahun.
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-4 block border-t border-slate-900 pt-3">Studi membuktikan risiko kecemasan turun 3x lipat.</span>
+                </div>
+
+                <!-- Norma 3 -->
+                <div class="glassmorphism p-6 rounded-2xl border-b-4 border-indigo-500 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase">Norma 3</span>
+                        <h4 class="font-display font-bold text-lg text-white">Sekolah Bebas Ponsel</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Melarang total gawai selama jam pelajaran, istirahat makan siang, dan di selasar koridor. Gawai wajib disimpan di loker terpisah sejak pagi hari.
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-4 block border-t border-slate-900 pt-3">Pemicu kenaikan nilai akademis & interaksi riil.</span>
+                </div>
+
+                <!-- Norma 4 -->
+                <div class="glassmorphism p-6 rounded-2xl border-b-4 border-indigo-500 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase">Norma 4</span>
+                        <h4 class="font-display font-bold text-lg text-white">Bermain Bebas &amp; Tanggung Jawab</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            Gantikan waktu layar dengan aktivitas di dunia fisik: memanjat pohon, bersepeda mandiri, mengurus pekerjaan rumah tangga, atau memegang tanggung jawab memelihara hewan.
+                        </p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 mt-4 block border-t border-slate-900 pt-3">Membangun resiliensi psikologis autentik.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: PANDUAN PRAKTIS & KUIS REFLEKSI -->
+        <div id="tab-guide" class="tab-content hidden space-y-12">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-xs font-semibold uppercase tracking-wider">Bagian 5 & 6</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-3">Panduan Langkah Konkret &amp; Kuis Refleksi</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Daftar tindakan taktis yang dapat segera diaplikasikan di rumah, sekolah, maupun kebijakan publik nasional.</p>
+            </div>
+
+            <!-- Interaktif Multi-Stakeholder Guideline Accordion -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Guidelines Accordion Side -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="font-display font-bold text-xl text-white mb-2">Panduan Berdasarkan Kelompok</h3>
+                    
+                    <!-- Accordion Item 1 -->
+                    <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800">
+                        <button onclick="toggleAccordion('acc-parent')" class="w-full px-6 py-4 flex items-center justify-between text-left font-display font-bold text-sm sm:text-base text-white hover:bg-slate-900/40 transition-all">
+                            <span><i class="fa-solid fa-people-roof text-indigo-400 mr-2"></i> Orang Tua Berdasarkan Kelompok Usia</span>
+                            <i id="icon-acc-parent" class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                        </button>
+                        <div id="body-acc-parent" class="px-6 pb-6 pt-2 space-y-4 text-xs sm:text-sm text-slate-300 border-t border-slate-800/40">
+                            <div>
+                                <h4 class="font-bold text-indigo-400 text-xs sm:text-sm">A. Anak di Bawah 10 Tahun</h4>
+                                <ul class="list-disc pl-5 mt-1 text-xs text-slate-400 space-y-1">
+                                    <li><strong>Larangan Keras Gawai Pribadi:</strong> Tablet/ponsel murni milik bersama, hanya diakses di ruang keluarga.</li>
+                                    <li><strong>Batas Durasi Ketat:</strong> Maksimal 1 jam/hari untuk &lt; 6 tahun, dan 2 jam untuk usia 6-10 tahun.</li>
+                                    <li><strong>Bebaskan Gerakan Fisik:</strong> Minimal 2 jam bermain di luar ruangan setiap hari tanpa struktur pengawasan kaku.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t border-slate-800/50 pt-3">
+                                <h4 class="font-bold text-indigo-400 text-xs sm:text-sm">B. Anak Usia 10-14 Tahun (*Middle School*)</h4>
+                                <ul class="list-disc pl-5 mt-1 text-xs text-slate-400 space-y-1">
+                                    <li>Gunakan ponsel jadul (*flip phone*) tanpa akses internet tanpa batas jika anak membutuhkan alat hubung darurat.</li>
+                                    <li>Instalasi *Parental Control* ketat pada komputer rumah, blokir akses jejaring media sosial.</li>
+                                    <li>Deklarasikan <strong class="text-rose-400">"Device-Free Zones"</strong>: Dilarang membawa ponsel di meja makan makan malam dan wilayah kamar tidur tidur.</li>
+                                </ul>
+                            </div>
+                            <div class="border-t border-slate-800/50 pt-3">
+                                <h4 class="font-bold text-indigo-400 text-xs sm:text-sm">C. Anak Usia 14-18 Tahun (*High School*)</h4>
+                                <ul class="list-disc pl-5 mt-1 text-xs text-slate-400 space-y-1">
+                                    <li>Tetap kunci gawai di luar kamar setelah jam 10 malam.</li>
+                                    <li>Tanamkan literasi media: jelaskan skenario trik kerja algoritma jerat atensi anak.</li>
+                                    <li><strong>Menjadi Teladan (*Model Behavior*):</strong> Orang tua wajib menaruh gawai pribadi saat waktu kumpul keluarga.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800">
+                        <button onclick="toggleAccordion('acc-school')" class="w-full px-6 py-4 flex items-center justify-between text-left font-display font-bold text-sm sm:text-base text-white hover:bg-slate-900/40 transition-all">
+                            <span><i class="fa-solid fa-school text-indigo-400 mr-2"></i> Rekomendasi Pihak Sekolah</span>
+                            <i id="icon-acc-school" class="fa-solid fa-chevron-right text-xs transition-transform duration-300"></i>
+                        </button>
+                        <div id="body-acc-school" class="hidden px-6 pb-6 pt-2 space-y-3 text-xs sm:text-sm text-slate-300 border-t border-slate-800/40">
+                            <p>
+                                <strong>1. Kebijakan Bebas Gawai Total:</strong> Kewajiban menyimpan gawai di wadah seluler kelas atau loker pengaman sepanjang jam sekolah.
+                            </p>
+                            <p>
+                                <strong>2. Tambah Durasi Istirahat Bermain Bebas (*Recess*):</strong> Memberikan ruang gerak berinteraksi emosional langsung antar murid tanpa perantara layar.
+                            </p>
+                            <p>
+                                <strong>3. Pengajaran Kecakapan Riil (*Life Skills*):</strong> Kurikulum tambahan memasak, tata kelola keuangan dasar, serta simulasi resolusi konflik tatap muka.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800">
+                        <button onclick="toggleAccordion('acc-govt')" class="w-full px-6 py-4 flex items-center justify-between text-left font-display font-bold text-sm sm:text-base text-white hover:bg-slate-900/40 transition-all">
+                            <span><i class="fa-solid fa-building-shield text-indigo-400 mr-2"></i> Rekomendasi Regulasi Pemerintah</span>
+                            <i id="icon-acc-govt" class="fa-solid fa-chevron-right text-xs transition-transform duration-300"></i>
+                        </button>
+                        <div id="body-acc-govt" class="hidden px-6 pb-6 pt-2 space-y-3 text-xs sm:text-sm text-slate-300 border-t border-slate-800/40">
+                            <p>
+                                <strong>1. Batasan Umur Registrasi:</strong> Menaikkan batas usia registrasi media sosial dari 13 tahun menjadi 16 tahun lengkap dengan metode verifikasi identitas mutakhir.
+                            </p>
+                            <p>
+                                <strong>2. Larang Fitur Adiktif Spesifik pada Anak-anak:</strong> Pelarangan fungsi visualisasi jumlah *likes*, pemutaran instan (*autoplay*), dan algoritma penggulir tanpa ujung (*infinite scroll*).
+                            </p>
+                            <p>
+                                <strong>3. Tuntutan Hukum Atensi Manipulatif:</strong> Membuka ruang yurisdiksi pertanggungjawaban ganti rugi perdata kepada korporasi teknologi atas cedera mentalitas anak-anak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quiz Side -->
+                <div class="lg:col-span-5 glassmorphism rounded-3xl p-6 sm:p-8 neo-shadow">
+                    <div id="quiz-intro-box">
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase">Evaluasi Mandiri</span>
+                        <h3 class="font-display font-bold text-lg text-white mt-1 mb-3">Kuis Refleksi: Tingkat Ketergantungan Layar</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Mari ukur sejauh mana paparan gawai merasuki keseharian Anda atau keluarga Anda berdasarkan poin evaluasi di buku *The Anxious Generation*.
+                        </p>
+                        <button onclick="startQuiz()" class="w-full py-2.5 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white rounded-xl text-xs font-bold transition-all shadow-md">
+                            Mulai Evaluasi
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Quiz Card -->
+                    <div id="quiz-question-box" class="hidden space-y-4">
+                        <div class="flex justify-between items-center text-xs text-slate-400">
+                            <span id="quiz-progress-text">Pertanyaan 1 dari 5</span>
+                            <span id="quiz-question-points" class="font-semibold text-indigo-400">0 Poin</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" style="width: 20%" class="bg-indigo-500 h-full transition-all duration-300"></div>
+                        </div>
+                        
+                        <p id="quiz-question-text" class="text-xs sm:text-sm font-semibold text-slate-100 py-3">
+                            Apakah anak (atau Anda) meletakkan/mengisi daya gawai di dalam kamar tidur saat malam hari?
+                        </p>
+
+                        <div class="space-y-2">
+                            <button onclick="submitAnswer(2)" class="w-full text-left p-3 rounded-xl border border-slate-800 text-xs text-slate-300 hover:bg-slate-900/60 hover:border-slate-700 transition-all flex items-center justify-between">
+                                <span>Ya, Selalu berada di sisi tempat tidur.</span>
+                                <i class="fa-regular fa-circle text-slate-600"></i>
+                            </button>
+                            <button onclick="submitAnswer(1)" class="w-full text-left p-3 rounded-xl border border-slate-800 text-xs text-slate-300 hover:bg-slate-900/60 hover:border-slate-700 transition-all flex items-center justify-between">
+                                <span>Kadang-kadang, jika terpaksa atau alarm menyala.</span>
+                                <i class="fa-regular fa-circle text-slate-600"></i>
+                            </button>
+                            <button onclick="submitAnswer(0)" class="w-full text-left p-3 rounded-xl border border-slate-800 text-xs text-slate-300 hover:bg-slate-900/60 hover:border-slate-700 transition-all flex items-center justify-between">
+                                <span>Tidak, gawai selalu ditaruh di luar kamar tidur.</span>
+                                <i class="fa-regular fa-circle text-slate-600"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Card -->
+                    <div id="quiz-result-box" class="hidden text-center space-y-4 py-4">
+                        <div class="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mx-auto">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-white">Hasil Evaluasi Anda</h4>
+                        <p id="quiz-eval-status" class="text-xs uppercase tracking-widest text-rose-400 font-bold">PAPARAN RISIKO TINGGI</p>
+                        <p id="quiz-eval-desc" class="text-xs text-slate-400 leading-relaxed px-2">
+                            Pola hidup yang diterapkan sangat dekat dengan pemicu fragmentasi perhatian klinis dan kecemasan depresi. Disarankan segera menerapkan 4 norma fundamental penyelamat.
+                        </p>
+                        <button onclick="resetQuiz()" class="w-full py-2 bg-slate-900 hover:bg-slate-850 text-slate-300 border border-slate-800 rounded-xl text-xs font-bold transition-all">
+                            Evaluasi Ulang
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific Evidence Banner Callout -->
+            <div class="glassmorphism p-6 sm:p-8 rounded-3xl border-l-4 border-amber-500 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-amber-500/5 rounded-full blur-3xl"></div>
+                <h4 class="font-display font-bold text-white text-lg mb-2">4 Bukti Kausalitas yang Tidak Bisa Diabaikan</h4>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-4xl mb-4">
+                    Jonathan Haidt menekankan ini bukan sekadar korelasi statistik biasa (*correlation*), melainkan kausalitas aktual (*causation*):
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="bg-slate-950/60 p-3 rounded-xl">
+                        <p class="font-bold text-amber-400">1. Keselarasan Waktu</p>
+                        <p class="text-slate-400 mt-1">Krisis pecah persis saat penetrasi kamera depan ponsel & platform gawai universal meluas tahun 2010–2012.</p>
+                    </div>
+                    <div class="bg-slate-950/60 p-3 rounded-xl">
+                        <p class="font-bold text-amber-400">2. Hubungan Dosis-Respon</p>
+                        <p class="text-slate-400 mt-1">Semakin bertambah jam pemakaian, persentase indikasi klinis depresi terbukti naik berlipat ganda.</p>
+                    </div>
+                    <div class="bg-slate-950/60 p-3 rounded-xl">
+                        <p class="font-bold text-amber-400">3. Eksperimen Alami</p>
+                        <p class="text-slate-400 mt-1">Sekolah-sekolah pelopor pelarangan total gawai mencatatkan penurunan drastis tingkat kecemasan murid.</p>
+                    </div>
+                    <div class="bg-slate-950/60 p-3 rounded-xl">
+                        <p class="font-bold text-amber-400">4. Pemindaian Neurosains</p>
+                        <p class="text-slate-400 mt-1">Pemindaian MRI membuktikan paparan layar mengubah struktur kontrol impuls fisik otak secara signifikan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <p>Infografis interaktif ini disusun secara lengkap merujuk pada teks asli buku <em>"The Anxious Generation"</em> oleh Jonathan Haidt (2024).</p>
+            <p>&copy; 2026 Proyek Edukasi Remaja Mandiri. Dirancang untuk kebaikan masa depan generasi penerus kita.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC SECTION -->
+    <script>
+        // Tab switching system
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+            contents.forEach(el => el.classList.remove('block'));
+
+            // Show target content
+            const target = document.getElementById(tabId);
+            target.classList.remove('hidden');
+            target.classList.add('block');
+
+            // Reset navigation button designs
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.className = "tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 text-slate-400 hover:text-slate-200 hover:bg-slate-900";
+            });
+
+            // Set active button design
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.className = "tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 bg-indigo-600/20 text-indigo-300 border border-indigo-500/30";
+        }
+
+        // Toggle Childhood Era (1995 vs 2015)
+        function toggleChildhood(era) {
+            const btn95 = document.getElementById('btn-era-1995');
+            const btn15 = document.getElementById('btn-era-2015');
+            const content95 = document.getElementById('content-era-1995');
+            const content15 = document.getElementById('content-era-2015');
+
+            if (era === 'era-1995') {
+                btn95.className = "px-4 py-2 text-xs font-bold rounded-lg bg-indigo-500 text-white transition-all";
+                btn15.className = "px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-slate-200 transition-all";
+                content95.classList.remove('hidden');
+                content95.classList.add('grid');
+                content15.classList.add('hidden');
+                content15.classList.remove('grid');
+            } else {
+                btn15.className = "px-4 py-2 text-xs font-bold rounded-lg bg-rose-500 text-white transition-all";
+                btn95.className = "px-4 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-slate-200 transition-all";
+                content15.classList.remove('hidden');
+                content15.classList.add('grid');
+                content95.classList.add('hidden');
+                content95.classList.remove('grid');
+            }
+        }
+
+        // Dose-Response Risk Calculator
+        function calculateRisk(hours) {
+            const hDisplay = document.getElementById('hours-display');
+            const riskMult = document.getElementById('risk-multiplier');
+            const riskStatus = document.getElementById('risk-status');
+            const dopamineImpact = document.getElementById('dopamine-impact');
+            const focusImpact = document.getElementById('focus-impact');
+
+            hDisplay.innerText = `${hours} Jam / Hari`;
+
+            let riskPercentage = "+0%";
+            let statusText = "RISIKO NORMAL";
+            let statusClass = "text-xs px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full font-bold mt-3";
+            let dopamineMsg = "Bekerja pada tingkat pelepasan hormon normal harian.";
+            let focusMsg = "Kemampuan memproses konsentrasi mendalam optimal.";
+
+            if (hours >= 1 && hours < 3) {
+                riskPercentage = "+15%";
+                statusText = "RISIKO MINOR";
+                statusClass = "text-xs px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full font-bold mt-3";
+                dopamineMsg = "Sedikit lonjakan dopamin ringan akibat interaksi pendek.";
+                focusMsg = "Kapasitas fokus jangka panjang masih terjaga baik.";
+            } else if (hours >= 3 && hours < 5) {
+                riskPercentage = "+30%";
+                statusText = "RISIKO MENINGKAT";
+                statusClass = "text-xs px-3 py-1 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full font-bold mt-3";
+                dopamineMsg = "Bekerja di atas ambang batas normal secara berulang.";
+                focusMsg = "Kemampuan memproses konsentrasi mendalam mengalami penurunan minor.";
+            } else if (hours >= 5) {
+                riskPercentage = "+100%+";
+                statusText = "RISIKO TINGGI (BAHAYA EKSTREM)";
+                statusClass = "text-xs px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full font-bold mt-3";
+                dopamineMsg = "Kecanduan level parah. Reseptor dopamin rentan mengalami desensitisasi.";
+                focusMsg = "Mengalami hambatan perkembangan korteks prefrontal (sulit fokus & impulsif).";
+            }
+
+            riskMult.innerText = riskPercentage;
+            riskStatus.innerText = statusText;
+            riskStatus.className = statusClass;
+            dopamineImpact.innerText = dopamineMsg;
+            focusImpact.innerText = focusMsg;
+        }
+
+        // Collective Action Pact Simulator
+        function setAgreement(percentage) {
+            const scenarioCard = document.getElementById('pact-scenario-card');
+            const badge = document.getElementById('social-status-badge');
+            const arrow = document.getElementById('social-arrow');
+            const peerIconContainer = document.getElementById('peer-icon-container');
+            const peerLabel = document.getElementById('peer-label');
+            const verdict = document.getElementById('pact-verdict');
+
+            // Reset classes
+            const btns = document.querySelectorAll('.agreement-btn');
+            btns.forEach(btn => {
+                btn.className = "agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-all";
+            });
+
+            // Set active class on target button based on value
+            const targetBtn = Array.from(btns).find(btn => btn.innerText.includes(percentage + "%"));
+            if (targetBtn) {
+                if (percentage === 75) {
+                    targetBtn.className = "agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-500 text-white transition-all";
+                } else if (percentage === 30) {
+                    targetBtn.className = "agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-white transition-all";
+                } else {
+                    targetBtn.className = "agreement-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-rose-500 text-white transition-all";
+                }
+            }
+
+            if (percentage === 10) {
+                scenarioCard.innerHTML = `
+                    <p class="text-rose-400 font-bold mb-1">Anak Menjadi Terasing &amp; Kena Bullying:</p>
+                    Anak Anda adalah satu-satunya anak tanpa gawai pintar di kelasnya. Koordinasi obrolan &amp; acara kelompok dilakukan sepenuhnya via WhatsApp / Snapchat. Anak merasa minder, malu, marah pada keputusan Anda, hingga akhirnya Anda pun terpaksa menyerah kalah dalam 2 minggu.
+                `;
+                badge.innerText = "SANGAT RENTAN";
+                badge.className = "text-xs px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 font-bold";
+                peerIconContainer.className = "w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500 flex items-center justify-center text-rose-400";
+                peerLabel.innerText = "Semua Teman Gawai (+)";
+                verdict.innerText = "Tanpa pakta bersama, keputusan individu memicu trauma pengucilan.";
+            } else if (percentage === 30) {
+                scenarioCard.innerHTML = `
+                    <p class="text-amber-400 font-bold mb-1">Mulai Terbentuk Blok Kelompok Kecil:</p>
+                    Ada beberapa kelompok anak lain yang juga dipasangi pengawasan serupa. Tekanan sosial untuk lekas membeli ponsel sedikit melemah, namun kecenderungan pembentukan sirkel eksklusif dunia digital masih sangat kental mengancam.
+                `;
+                badge.innerText = "WASPADA TRANSISI";
+                badge.className = "text-xs px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold";
+                peerIconContainer.className = "w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500 flex items-center justify-center text-amber-400";
+                peerLabel.innerText = "Teman Mulai Seimbang";
+                verdict.innerText = "Langkah transisi yang menjanjikan, namun butuh penggalangan massa tambahan.";
+            } else {
+                scenarioCard.innerHTML = `
+                    <p class="text-emerald-400 font-bold mb-1">Aman, Sehat, Kembali Bermain Riil:</p>
+                    Sebagian besar wali murid sepakat menolak kepemilikan gawai pintar. Anak Anda tidak merasa minder karena teman-teman sebayanya juga membawa ponsel jadul biasa. Komunikasi sengketa permainan berpindah kembali secara organik ke pelataran taman bermain fisik.
+                `;
+                badge.innerText = "AMAN & SEHAT";
+                badge.className = "text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold";
+                peerIconContainer.className = "w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500 flex items-center justify-center text-emerald-400";
+                peerLabel.innerText = "Tanpa Gawai Pintar";
+                verdict.innerText = "Gerakan kolektif meringankan beban pengucilan anak di ruang publik kelas.";
+            }
+        }
+
+        // Accordion Controls
+        function toggleAccordion(accId) {
+            const body = document.getElementById(`body-${accId}`);
+            const icon = document.getElementById(`icon-${accId}`);
+
+            if (body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-right');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                body.classList.add('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-right');
+            }
+        }
+
+        // Self-Assessment Quiz Logic
+        const quizData = [
+            {
+                q: "Apakah anak (atau Anda) meletakkan/mengisi daya gawai di dalam kamar tidur saat malam hari?",
+                opts: [
+                    { t: "Ya, selalu berada di sisi tempat tidur.", p: 2 },
+                    { t: "Kadang-kadang, jika terpaksa atau alarm menyala.", p: 1 },
+                    { t: "Tidak, gawai selalu ditaruh di luar kamar tidur.", p: 0 }
+                ]
+            },
+            {
+                q: "Berapa jam rata-hari konsumsi layar hiburan (sosmed/game/streaming) anak Anda?",
+                opts: [
+                    { t: "Lebih dari 4 Jam sehari.", p: 2 },
+                    { t: "Antara 2 sampai 4 Jam sehari.", p: 1 },
+                    { t: "Kurang dari 2 Jam sehari.", p: 0 }
+                ]
+            },
+            {
+                q: "Kapan rencana pengenalan akun media sosial mandiri (Instagram/TikTok/Snapchat)?",
+                opts: [
+                    { t: "Sebelum usia 13 tahun (atau sudah memiliki).", p: 2 },
+                    { t: "Antara usia 14 sampai 15 tahun.", p: 1 },
+                    { t: "Setelah menginjak usia 16 tahun ke atas.", p: 0 }
+                ]
+            },
+            {
+                q: "Berapa sering anak Anda bermain bebas di luar ruangan bersama teman sebaya tanpa kontrol gawai?",
+                opts: [
+                    { t: "Sangat jarang (kurang dari sekali seminggu).", p: 2 },
+                    { t: "Kadang-kadang (2-3 kali seminggu).", p: 1 },
+                    { t: "Hampir setiap hari rutin.", p: 0 }
+                ]
+            },
+            {
+                q: "Apakah sekolah anak menerapkan aturan larangan gawai sama sekali sepanjang jam belajar?",
+                opts: [
+                    { t: "Tidak, ponsel bebas dipakai saat jam istirahat/koridor.", p: 2 },
+                    { t: "Ada pembatasan ketat tapi sesekali masih ada celah.", p: 1 },
+                    { t: "Ya, wajib diletakkan di loker tertutup sejak pagi hari.", p: 0 }
+                ]
+            }
+        ];
+
+        let currentQuestionIdx = 0;
+        let totalScore = 0;
+
+        function startQuiz() {
+            document.getElementById('quiz-intro-box').classList.add('hidden');
+            document.getElementById('quiz-question-box').classList.remove('hidden');
+            currentQuestionIdx = 0;
+            totalScore = 0;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const currentQ = quizData[currentQuestionIdx];
+            document.getElementById('quiz-progress-text').innerText = `Pertanyaan ${currentQuestionIdx + 1} dari 5`;
+            document.getElementById('quiz-question-points').innerText = `${totalScore} Poin Terkumpul`;
+            document.getElementById('quiz-progress-bar').style.width = `${(currentQuestionIdx + 1) * 20}%`;
+            document.getElementById('quiz-question-text').innerText = currentQ.q;
+
+            const optsBox = document.getElementById('quiz-question-box').querySelector('.space-y-2');
+            optsBox.innerHTML = '';
+
+            currentQ.opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-xl border border-slate-800 text-xs text-slate-300 hover:bg-slate-900/60 hover:border-slate-700 transition-all flex items-center justify-between";
+                btn.onclick = () => submitAnswer(opt.p);
+                btn.innerHTML = `
+                    <span>${opt.t}</span>
+                    <i class="fa-regular fa-circle text-slate-600"></i>
+                `;
+                optsBox.appendChild(btn);
+            });
+        }
+
+        function submitAnswer(points) {
+            totalScore += points;
+            currentQuestionIdx++;
+
+            if (currentQuestionIdx < quizData.length) {
+                renderQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-question-box').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result-box');
+            resultBox.classList.remove('hidden');
+
+            const status = document.getElementById('quiz-eval-status');
+            const desc = document.getElementById('quiz-eval-desc');
+
+            if (totalScore >= 7) {
+                status.innerText = "PAPARAN RISIKO TINGGI";
+                status.className = "text-xs uppercase tracking-widest text-rose-400 font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Pola hidup anak sangat dekat dengan pemicu fragmentasi fokus mental dan kecemasan depresi. Disarankan lekas berkomitmen menjalankan 4 norma fundamental penyeimbang.`;
+            } else if (totalScore >= 4 && totalScore < 7) {
+                status.innerText = "RISIKO MENENGAH (WASPADA)";
+                status.className = "text-xs uppercase tracking-widest text-amber-400 font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Anak sudah terpapar risiko distraksi berlebih, meskipun masih memiliki proteksi waktu fisik. Evaluasi kembali wilayah bebas gawai Anda.`;
+            } else {
+                status.innerText = "RISIKO MINIMAL (SEHAT)";
+                status.className = "text-xs uppercase tracking-widest text-emerald-400 font-bold";
+                desc.innerText = `Skor Anda: ${totalScore}/10. Selamat! Pola didik dan lingkungan anak telah mendekati model ideal penumbuhan resiliensi mental. Pertahankan pakta bebas gawai Anda.`;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-intro-box').classList.remove('hidden');
+        }
+
+        // Initialize Chart.js
+        window.onload = function() {
+            // Set initial collective action pact scenario
+            setAgreement(75);
+
+            // Chart Configuration
+            const ctx = document.getElementById('mentalHealthChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2000', '2002', '2004', '2006', '2008', '2010', '2012', '2014', '2016', '2018'],
+                    datasets: [
+                        {
+                            label: 'Depresi Remaja Perempuan',
+                            data: [0, 2, 1, 3, 2, 5, 25, 65, 110, 145],
+                            borderColor: '#f43f5e', // rose-500
+                            backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Tingkat Kecemasan',
+                            data: [1, 2, 0, 1, 3, 4, 20, 55, 95, 139],
+                            borderColor: '#fbbf24', // amber-400
+                            backgroundColor: 'rgba(251, 191, 36, 0.05)',
+                            borderWidth: 2,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Tindakan Self-Harm',
+                            data: [0, 1, 0, 2, 1, 3, 35, 80, 140, 189],
+                            borderColor: '#ef4444', // red-500
+                            borderDash: [5, 5],
+                            borderWidth: 2,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#94a3b8',
+                                font: {
+                                    family: 'Inter',
+                                    size: 11
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#1e293b',
+                            titleColor: '#ffffff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: '#475569',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                color: 'rgba(71, 85, 105, 0.2)'
+                            },
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(71, 85, 105, 0.1)'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

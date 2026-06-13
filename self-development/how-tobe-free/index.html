@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epictetus: How to Be Free - Infografis Interaktif</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        stoic: {
+                            bg: '#fbfaf7',      /* Cream lembut kertas kuno */
+                            dark: '#1c1917',    /* Arang hangat */
+                            accent: '#b45309',  /* Emas kuno */
+                            accentLight: '#fef3c7',
+                            muted: '#78716c',   /* Abu-abu batu hangat */
+                            paper: '#fffdfa',   /* Putih kertas bersih */
+                            red: '#991b1b',     /* Merah karat untuk hal luar kendali */
+                            green: '#14532d',   /* Hijau zaitun untuk hal dalam kendali */
+                            greenLight: '#dcfce7'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Lora', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        handwriting: ['Caveat', 'Architects Daughter', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- KaTeX untuk render rumus LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+    <style>
+        /* Gaya Khusus Efek Kertas Catatan Tempel (Paper Note) */
+        .paper-note {
+            background: #fffef0;
+            background-image: linear-gradient(#e1dec9 1px, transparent 1px);
+            background-size: 100% 1.6rem;
+            line-height: 1.6rem;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.03),
+                0 10px 15px -3px rgba(180, 83, 9, 0.05);
+            border-left: 4px solid #b45309;
+            transform: rotate(-0.5deg);
+            transition: all 0.3s ease;
+        }
+        .paper-note:hover {
+            transform: rotate(0.5deg) translateY(-4px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.08), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .paper-torn {
+            position: relative;
+            background: #fff;
+            border-bottom: 3px dashed #e7e5e4;
+        }
+        .paper-torn::after {
+            content: '';
+            position: absolute;
+            bottom: -8px; left: 0; right: 0;
+            height: 8px;
+            background-image: radial-gradient(circle, transparent 4px, #fff 5px);
+            background-size: 10px 16px;
+        }
+
+        /* Navigasi Scrollbar Custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1ede4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c2baab;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a89e8d;
+        }
+    </style>
+</head>
+<body class="bg-stoic-bg text-stoic-dark font-sans selection:bg-stoic-accentLight selection:text-stoic-accent min-h-screen flex flex-col">
+
+    <!-- Header / Banner Atas -->
+    <header class="border-b border-stone-200 py-6 px-4 md:px-8 bg-stoic-paper">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-stoic-accent text-stoic-bg p-3 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-compass-drafting text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-2xl md:text-3xl font-bold tracking-tight">ENCHIRIDION</h1>
+                    <p class="text-xs md:text-sm text-stoic-muted uppercase tracking-widest font-semibold">Panduan Berpikir Merdeka &bull; Epictetus</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs md:text-sm bg-stoic-accentLight text-stoic-accent px-4 py-2 rounded-full font-medium border border-amber-200">
+                <i class="fa-solid fa-feather-pointed"></i>
+                <span>"Budak yang Lebih Bebas dari Kaisar"</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Kontainer Utama Aplikasi -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 flex-grow w-full">
+        
+        <!-- Tab Navigasi Menu Utama -->
+        <nav class="flex flex-wrap border-b border-stone-300 mb-8 gap-1 md:gap-2">
+            <button onclick="switchTab('tab-beranda')" id="btn-tab-beranda" class="tab-btn px-4 py-3 text-sm md:text-base font-semibold border-b-2 border-stoic-accent text-stoic-accent transition-all flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Beranda</span>
+            </button>
+            <button onclick="switchTab('tab-dikotomi')" id="btn-tab-dikotomi" class="tab-btn px-4 py-3 text-sm md:text-base font-semibold border-b-2 border-transparent text-stoic-muted hover:text-stoic-dark hover:border-stone-300 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                <span>Dikotomi Kendali</span>
+            </button>
+            <button onclick="switchTab('tab-keinginan')" id="btn-tab-keinginan" class="tab-btn px-4 py-3 text-sm md:text-base font-semibold border-b-2 border-transparent text-stoic-muted hover:text-stoic-dark hover:border-stone-300 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-anchor-lock"></i>
+                <span>Keinginan & Peran</span>
+            </button>
+            <button onclick="switchTab('tab-mementomori')" id="btn-tab-mementomori" class="tab-btn px-4 py-3 text-sm md:text-base font-semibold border-b-2 border-transparent text-stoic-muted hover:text-stoic-dark hover:border-stone-300 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <span>Memento Mori & Cinta</span>
+            </button>
+            <button onclick="switchTab('tab-latihan')" id="btn-tab-latihan" class="tab-btn px-4 py-3 text-sm md:text-base font-semibold border-b-2 border-transparent text-stoic-muted hover:text-stoic-dark hover:border-stone-300 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-hands-holding"></i>
+                <span>Latihan Stoic</span>
+            </button>
+        </nav>
+
+        <!-- KONTEN TAB 1: BERANDA -->
+        <section id="tab-beranda" class="tab-content block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Kolom Kiri: Pengantar & Detail Buku -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-stoic-paper border border-stone-200 p-8 rounded-2xl shadow-sm">
+                        <span class="text-xs font-bold text-stoic-accent tracking-widest uppercase">Karya Klasik Filsafat Stoikisme</span>
+                        <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2 mb-4 leading-tight">How to Be Free</h2>
+                        <p class="text-lg text-stone-600 leading-relaxed mb-6 font-serif italic">
+                            "How to Be Free" (atau "Enchiridion" yang berarti buku saku) adalah kompilasi petunjuk praktis dari Epictetus untuk bertahan hidup dengan kepala tegak, jiwa tenang, dan kemerdekaan batin mutlak.
+                        </p>
+                        
+                        <!-- Timeline Singkat Penulis -->
+                        <div class="border-t border-stone-100 pt-6 space-y-4">
+                            <h3 class="font-bold text-lg uppercase tracking-wide text-stoic-dark flex items-center gap-2">
+                                <i class="fa-solid fa-scroll text-stoic-accent"></i>
+                                Latar Belakang Epictetus
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-stoic-bg p-4 rounded-xl border border-stone-200">
+                                    <span class="font-bold text-stoic-accent text-base">Asal-Usul</span>
+                                    <p class="text-stone-600 mt-1">Lahir sebagai budak di Hierapolis (Turki modern) sekitar tahun \(50\text{--}135\) Masehi. Pernah dipukuli tuannya hingga pincang seumur hidup.</p>
+                                </div>
+                                <div class="bg-stoic-bg p-4 rounded-xl border border-stone-200">
+                                    <span class="font-bold text-stoic-accent text-base">Dampak Global</span>
+                                    <p class="text-stone-600 mt-1">Dikutip oleh Kaisar Marcus Aurelius di medan perang, menginspirasi tokoh revolusioner, akademisi, hingga tentara selama hampir \(2000\) tahun.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pemicu Perenungan Pertama -->
+                    <div class="bg-stoic-dark text-stoic-bg p-8 rounded-2xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 text-stone-800 text-9xl opacity-30 select-none font-serif">“</div>
+                        <h3 class="font-serif text-2xl font-semibold text-amber-400 mb-2">Pelajaran Penting Roma Tahun 90 Masehi</h3>
+                        <p class="text-stone-300 leading-relaxed text-sm md:text-base">
+                            Epictetus membuktikan bahwa kebebasan tidak diukur dari hilangnya borgol besi di tangan Anda, melainkan bersihnya pikiran Anda dari belenggu ketakutan, amarah, opini fana, serta ekspektasi berlebih.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Visualisasi Quotes & Mini Widget -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <!-- Quote Utama dalam bentuk Paper Note yang Estetis -->
+                    <div class="paper-note p-8 rounded-sm relative">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-100 text-amber-800 text-[10px] font-mono uppercase px-2 py-0.5 rounded tracking-widest shadow-sm select-none border border-amber-200 rotate-1">
+                            Epictetus Enchiridion 1
+                        </div>
+                        <span class="text-xs text-stoic-muted font-mono block mb-2 mt-2">Diterjemahkan dari Bahasa Yunani:</span>
+                        <p class="font-serif text-xl md:text-2xl text-stone-800 font-bold italic leading-relaxed mb-4">
+                            "Ada hal-hal yang berada dalam kendali kita, dan ada hal-hal yang tidak. Kebebasan sejati dimulai ketika kita tahu perbedaannya."
+                        </p>
+                        <div class="text-right text-xs text-stoic-muted font-semibold tracking-wider font-mono">
+                            &mdash; Epictetus
+                        </div>
+                    </div>
+
+                    <!-- Mini Interactive Widget: Uji Beban Pikiran Anda -->
+                    <div class="bg-stoic-paper border border-stone-200 rounded-2xl p-6 shadow-sm">
+                        <h4 class="font-bold text-sm text-stoic-accent uppercase tracking-wider mb-3">
+                            <i class="fa-solid fa-bolt-lightning mr-1"></i> Uji Beban Pikiran Anda
+                        </h4>
+                        <p class="text-xs text-stone-500 mb-4">Klik hal-hal yang Anda cemaskan belakangan ini untuk mengukur porsi energi mental Anda:</p>
+                        
+                        <div class="space-y-2">
+                            <button onclick="toggleAnxiety('opini', this)" class="w-full text-left p-3 rounded-lg border border-stone-200 hover:border-stone-400 text-xs font-semibold transition-all flex items-center justify-between">
+                                <span>Bagaimana pendapat teman tentang gaya saya?</span>
+                                <span class="bg-stone-100 px-2 py-0.5 rounded text-stone-500 text-[10px]">Opini Orang Lain</span>
+                            </button>
+                            <button onclick="toggleAnxiety('kesehatan', this)" class="w-full text-left p-3 rounded-lg border border-stone-200 hover:border-stone-400 text-xs font-semibold transition-all flex items-center justify-between">
+                                <span>Kekhawatiran jatuh sakit di masa depan</span>
+                                <span class="bg-stone-100 px-2 py-0.5 rounded text-stone-500 text-[10px]">Kondisi Fisik</span>
+                            </button>
+                            <button onclick="toggleAnxiety('usaha', this)" class="w-full text-left p-3 rounded-lg border border-stone-200 hover:border-stone-400 text-xs font-semibold transition-all flex items-center justify-between">
+                                <span>Seberapa gigih saya belajar & bekerja keras hari ini</span>
+                                <span class="bg-stoic-greenLight px-2 py-0.5 rounded text-stoic-green text-[10px]">Tindakan Pribadi</span>
+                            </button>
+                            <button onclick="toggleAnxiety('hasil', this)" class="w-full text-left p-3 rounded-lg border border-stone-200 hover:border-stone-400 text-xs font-semibold transition-all flex items-center justify-between">
+                                <span>Apakah saya pasti lulus seleksi/promosi minggu depan?</span>
+                                <span class="bg-stone-100 px-2 py-0.5 rounded text-stone-500 text-[10px]">Hasil Akhir</span>
+                            </button>
+                        </div>
+
+                        <!-- Bar Peringatan Hasil Interaksi -->
+                        <div id="anxiety-result" class="mt-4 p-3 bg-stone-50 rounded-lg text-xs text-stone-600 flex items-start gap-2 hidden">
+                            <i class="fa-solid fa-circle-info text-stoic-accent mt-0.5"></i>
+                            <span id="anxiety-feedback">Silakan pilih salah satu kecemasan di atas untuk melihat tanggapan Stoic.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTEN TAB 2: DIKOTOMI KENDALI -->
+        <section id="tab-dikotomi" class="tab-content hidden">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-stoic-dark">Dikotomi Kendali</h2>
+                <p class="text-stoic-muted mt-2">Prinsip paling revolusioner dalam filsafat Stoic: Belajar mengabaikan apa yang tak bisa diubah, merawat dengan setia apa yang bisa diubah.</p>
+            </div>
+
+            <!-- Interaktif: Simulator Klasifikasi Dikotomi Kendali -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+                
+                <!-- Sisi Kiri: Panel Klasifikasi Praktis -->
+                <div class="lg:col-span-8 bg-stoic-paper border border-stone-200 p-6 md:p-8 rounded-2xl shadow-sm">
+                    <div class="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+                        <h3 class="font-bold text-lg text-stoic-dark flex items-center gap-2">
+                            <i class="fa-solid fa-shuffle text-stoic-accent"></i>
+                            Pilah Berdasarkan Dikotomi Kendali
+                        </h3>
+                        <button onclick="resetDichotomyGame()" class="text-xs bg-stone-100 text-stone-700 font-bold px-3 py-1.5 rounded-lg hover:bg-stone-200 transition-all">
+                            Reset Latihan
+                        </button>
+                    </div>
+
+                    <p class="text-sm text-stone-600 mb-6">Seret atau klik opsi di bawah ini untuk mengklasifikasikannya ke dalam kelompok yang tepat:</p>
+
+                    <!-- Tempat Opsi Tersedia -->
+                    <div id="game-options" class="flex flex-wrap gap-2 mb-8">
+                        <button onclick="classifyItem('Pikiran Saya', 'kendali')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Pikiran & Penilaian Saya</button>
+                        <button onclick="classifyItem('Reputasi', 'luar')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Reputasi / Kata Orang</button>
+                        <button onclick="classifyItem('Usaha Maksimal', 'kendali')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Seberapa Keras Saya Berusaha</button>
+                        <button onclick="classifyItem('Kesehatan Tubuh', 'luar')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Tubuh & Kesehatan Fisik</button>
+                        <button onclick="classifyItem('Respons Kritik', 'kendali')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Respons Terhadap Kritik</button>
+                        <button onclick="classifyItem('Cuaca & Alam', 'luar')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Cuaca / Bencana Alam</button>
+                        <button onclick="classifyItem('Hasil Seleksi', 'luar')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Hasil Akhir Pekerjaan</button>
+                        <button onclick="classifyItem('Masa Lalu', 'luar')" class="game-btn px-4 py-2 bg-stone-100 text-stone-800 text-sm font-semibold rounded-lg hover:bg-stone-200 transition-all border border-stone-300">Masa Lalu / Kesalahan Lama</button>
+                    </div>
+
+                    <!-- Kolom Hasil Pengelompokan -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-50/50 p-4 rounded-xl border border-stoic-green/20">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-stoic-green mb-3 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-check"></i> Dalam Kendali Penuh Kita
+                            </h4>
+                            <div id="list-kendali" class="space-y-2 min-h-[100px] flex flex-col justify-start">
+                                <!-- Terisi otomatis -->
+                                <p class="text-stone-400 text-xs italic m-auto select-none" id="kendali-placeholder">Belum ada item diklasifikasikan</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50/50 p-4 rounded-xl border border-stoic-red/20">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-stoic-red mb-3 flex items-center gap-1.5">
+                                <i class="fa-solid fa-circle-xmark"></i> Di Luar Kendali Kita
+                            </h4>
+                            <div id="list-luar" class="space-y-2 min-h-[100px] flex flex-col justify-start">
+                                <!-- Terisi otomatis -->
+                                <p class="text-stone-400 text-xs italic m-auto select-none" id="luar-placeholder">Belum ada item diklasifikasikan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sisi Kanan: Grafik Real-Time Visualisasi Chart.js -->
+                <div class="lg:col-span-4 bg-stoic-paper border border-stone-200 p-6 rounded-2xl shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-sm text-stoic-muted uppercase tracking-wider mb-2">Simulasi Alokasi Fokus Jiwa</h4>
+                        <p class="text-xs text-stone-500 mb-4">Grafik memperlihatkan tingkat kecemasan versus kedamaian batin Anda berdasarkan item yang Anda klasifikasikan.</p>
+                    </div>
+                    
+                    <div class="relative w-full aspect-square max-w-[280px] mx-auto">
+                        <canvas id="dichotomyChart"></canvas>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-stoic-bg rounded-xl border border-stone-100 text-xs text-stone-600">
+                        <span class="font-bold text-stoic-accent">Fakta Stoic:</span>
+                        <p class="mt-1">Penyebab utama penderitaan adalah menginvestasikan energi emosional berlebih pada pilar <span class="text-stoic-red font-semibold">"Di Luar Kendali Kita"</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian Teori Mendalam: Penjelasan Bab 1 & 2 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-stoic-paper p-6 md:p-8 border border-stone-200 rounded-2xl shadow-sm">
+                    <h3 class="font-serif text-2xl font-bold text-stoic-dark mb-4">Dua Orang yang Kehilangan Pekerjaan</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4">
+                        Epictetus menceritakan perbandingan krusial bagaimana persepsi bertindak sebagai pengubah takdir. Dua orang kehilangan pekerjaan di hari yang sama:
+                    </p>
+                    <ul class="space-y-3 text-sm text-stone-600">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-chevron-right text-stoic-red mt-1"></i>
+                            <span><strong>Orang Pertama (Penderita):</strong> Merasa hidupnya hancur, terobsesi dengan reputasi masa depan, dan terus bertanya "Mengapa ini menimpa saya?".</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-chevron-right text-stoic-green mt-1"></i>
+                            <span><strong>Orang Kedua (Merdeka):</strong> Memahami PHK ini di luar kendali fisiknya. Ia memindahkan fokusnya untuk melamar pekerjaan baru dan mencari tantangan anyar.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-stoic-paper p-6 md:p-8 border border-stone-200 rounded-2xl shadow-sm space-y-4">
+                    <h3 class="font-serif text-2xl font-bold text-stoic-dark">Persepsi & Filosofi Cangkir Pecah</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed">
+                        Epictetus memberikan analogi sederhana: saat Anda membeli sebuah cangkir kesayangan, ingatkan diri Anda bahwa benda tersebut pada dasarnya memang bisa pecah. Ketika suatu hari cangkir itu jatuh dan hancur, Anda tidak akan terkejut atau meratap panjang.
+                    </p>
+                    <div class="p-4 bg-stoic-accentLight/40 rounded-xl border border-amber-200 text-xs text-stoic-accent flex items-start gap-2">
+                        <i class="fa-solid fa-mug-saucer text-lg mt-0.5"></i>
+                        <span>
+                            <strong>Pelajaran Cangkir Pecah:</strong> Sifat alami cangkir adalah rapuh. Sama seperti kesehatan, relasi manusia, dan harta benda. Bersyukur selagi memiliki, melepas rela saat waktunya habis.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kutipan Khusus Paper Note untuk Penutup Bab -->
+            <div class="max-w-2xl mx-auto mt-12">
+                <div class="paper-note p-6 rounded-sm relative">
+                    <p class="font-serif text-lg md:text-xl text-stone-800 italic font-semibold leading-relaxed">
+                        "Manusia tidak terganggu oleh peristiwa itu sendiri, melainkan oleh pandangan mereka tentang peristiwa tersebut."
+                    </p>
+                    <div class="text-right text-xs text-stoic-muted font-mono mt-2">- Bab 5, Enchiridion</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- KONTEN TAB 3: KEINGINAN & PERAN -->
+        <section id="tab-keinginan" class="tab-content hidden space-y-12">
+            
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-stoic-dark">Keinginan & Peran Hidup</h2>
+                <p class="text-stoic-muted mt-2">Dua Penjara Terbesar Kehidupan Manusia Modern: Mengejar Keinginan Liar dan Menolak Memainkan Peran Takdir dengan Sempurna.</p>
+            </div>
+
+            <!-- Visualisasi Formula Teori Stoic -->
+            <div class="bg-stoic-paper border border-stone-200 rounded-2xl p-8 max-w-3xl mx-auto shadow-sm text-center space-y-6">
+                <span class="text-xs font-bold text-stoic-accent tracking-widest uppercase block">Formula Matematika Jiwa Stoic</span>
+                
+                <!-- LaTeX Rendered Equation -->
+                <div class="text-2xl md:text-4xl py-4 font-serif text-stoic-red font-bold">
+                    Keinginan + Keengganan = Penderitaan
+                </div>
+
+                <p class="text-sm text-stone-600 leading-relaxed max-w-2xl mx-auto">
+                    Ketergantungan kebahagiaan kita pada hal fana di luar kendali (Keinginan) dipadu ketakutan dan penolakan keras kita terhadap rintangan alamiah (Keengganan) akan selalu melahirkan rantai penderitaan mental yang tak berujung.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left pt-4">
+                    <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                        <span class="font-bold text-stoic-red text-xs uppercase tracking-wider block mb-1">Dua Rantai Jiwa:</span>
+                        <p class="text-xs text-stone-600 leading-relaxed"><strong>Keinginan:</strong> Ingin kaya raya, disukai semua orang, terobsesi jabatan tinggi.</p>
+                        <p class="text-xs text-stone-600 leading-relaxed mt-1"><strong>Keengganan:</strong> Menolak menjadi tua, menyangkal kegagalan, menghindari kenyataan pahit.</p>
+                    </div>
+                    <div class="bg-stoic-accentLight/30 p-4 rounded-xl border border-amber-200">
+                        <span class="font-bold text-stoic-accent text-xs uppercase tracking-wider block mb-1">Solusi Epictetus:</span>
+                        <p class="text-xs text-stone-800 leading-relaxed">
+                            Pindahkan seluruh dorongan keinginan Anda untuk hanya berfokus pada apa yang berada dalam kuasa mutlak pikiran Anda sendiri.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analogi Penting: Kisah Lampu Minyak & Panggung Sandiwara -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Kotak Kisah Lampu Minyak -->
+                <div class="lg:col-span-6 bg-stoic-paper border border-stone-200 p-8 rounded-2xl flex flex-col justify-between shadow-sm">
+                    <div class="space-y-4">
+                        <div class="bg-amber-100 text-stoic-accent w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-inner">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-stoic-dark">Kisah Lampu Tanah Liat Epictetus</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            Epictetus memiliki lampu minyak sederhana di kamarnya yang tiba-tiba dicuri orang. Menanggapi murid-muridnya yang marah, Epictetus hanya tersenyum dan berkata: 
+                            <br><strong class="text-stoic-accent">"Esok saya akan membeli lampu tanah liat yang jauh lebih murah, sehingga pencuri itu tak akan repot-repot mencurinya kembali."</strong>
+                        </p>
+                    </div>
+                    <div class="mt-6 border-t border-stone-100 pt-4 text-xs text-stoic-muted italic">
+                        "Pencuri bisa merampas lampunya, tapi tak akan pernah bisa mencuri ketenangan pikirannya."
+                    </div>
+                </div>
+
+                <!-- Kotak Teori Peran Drama Kehidupan -->
+                <div class="lg:col-span-6 bg-stoic-paper border border-stone-200 p-8 rounded-2xl flex flex-col justify-between shadow-sm">
+                    <div class="space-y-4">
+                        <div class="bg-emerald-100 text-stoic-green w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-inner">
+                            <i class="fa-solid fa-masks-theater"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-stoic-dark">Hidup Adalah Sebuah Pentas Sandiwara</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            Anda tidak memilih dari keluarga mana Anda lahir, rupa tubuh Anda, atau kesialan yang menimpa Anda hari ini. Semua itu adalah peran yang ditulis oleh Penulis Naskah Semesta. Tugas tunggal Anda adalah memainkan peran apa pun yang diberikan itu sebaik mungkin.
+                        </p>
+                    </div>
+                    <div class="mt-6 border-t border-stone-100 pt-4 text-xs text-stoic-muted italic">
+                        "Anda tak bisa mengubah naskah, tapi Anda berhak memainkannya dengan keunggulan karakter."
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paper Note Quotes Spesial -->
+            <div class="max-w-2xl mx-auto">
+                <div class="paper-note p-6 rounded-sm relative shadow-md">
+                    <p class="font-serif text-lg md:text-xl text-stone-800 italic font-semibold leading-relaxed">
+                        "Jika dia ingin Anda memainkan peran sebagai pengemis, mainkan dengan sangat baik; begitu pula jika Anda harus berperan sebagai orang cacat, pejabat, atau orang biasa."
+                    </p>
+                    <div class="text-right text-xs text-stoic-muted font-mono mt-2">&mdash; Epictetus, Enchiridion 17</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- KONTEN TAB 4: MEMENTO MORI & CINTA -->
+        <section id="tab-mementomori" class="tab-content hidden space-y-12">
+            
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-stoic-dark">Memento Mori & Cinta Tanpa Terikat</h2>
+                <p class="text-stoic-muted mt-2">Menghayati Kematian Sebagai Guru Kebijaksanaan Terbaik untuk Menyayangi Tanpa Terjerumus dalam Belenggu Kepemilikan Posesif.</p>
+            </div>
+
+            <!-- Latihan Interaktif: Kalkulator Impermanensi (Menghargai Waktu Hadir) -->
+            <div class="bg-stoic-paper border border-stone-200 rounded-2xl p-6 md:p-8 max-w-4xl mx-auto shadow-sm">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-stone-200 pb-4 mb-6">
+                    <div>
+                        <h3 class="font-serif text-xl font-bold text-stoic-dark flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-stoic-accent"></i>
+                            Kalkulator Kehadiran Impermanensi
+                        </h3>
+                        <p class="text-xs text-stone-500 mt-0.5">Simulasikan sisa waktu kebersamaan nyata Anda bersama orang tercinta.</p>
+                    </div>
+                    <span class="text-xs bg-amber-100 text-stoic-accent px-3 py-1 rounded-full font-bold">Latihan Kesadaran</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                    <!-- Input Form -->
+                    <div class="space-y-4 md:col-span-1">
+                        <div>
+                            <label class="block text-xs font-bold text-stoic-muted uppercase tracking-wider mb-1">Nama Orang Tercinta</label>
+                            <input type="text" id="target-name" placeholder="Misal: Anak, Orang Tua, Pasangan" class="w-full bg-stoic-bg border border-stone-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-stoic-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-stoic-muted uppercase tracking-wider mb-1">Rata-rata Bertemu Setahun (Hari)</label>
+                            <input type="number" id="meet-days" value="10" min="1" max="365" class="w-full bg-stoic-bg border border-stone-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-stoic-accent">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-stoic-muted uppercase tracking-wider mb-1">Estimasi Sisa Tahun Bersama</label>
+                            <input type="number" id="meet-years" value="20" min="1" max="100" class="w-full bg-stoic-bg border border-stone-300 rounded-lg p-2.5 text-sm focus:outline-none focus:border-stoic-accent">
+                        </div>
+                        <button onclick="calculateImpermanence()" class="w-full bg-stoic-accent hover:bg-amber-800 text-stoic-bg font-bold py-2.5 rounded-lg text-sm transition-all shadow">
+                            Hitung Sisa Momen
+                        </button>
+                    </div>
+
+                    <!-- Hasil Output Grafis / Visualisasi -->
+                    <div class="md:col-span-2 bg-stone-50 p-6 rounded-xl border border-stone-200 flex flex-col justify-center items-center min-h-[220px] relative overflow-hidden">
+                        <div id="calc-result" class="text-center space-y-4">
+                            <i class="fa-regular fa-calendar-days text-4xl text-stoic-accent"></i>
+                            <p class="text-sm text-stone-600 max-w-sm">Isi data di sebelah kiri dan klik hitung untuk menyadari betapa ringkih dan berharganya waktu yang Anda miliki saat ini.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perbandingan Pendekatan Dua Jenis Cinta -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Cinta Posesif -->
+                <div class="bg-stoic-paper border border-stone-200 p-6 md:p-8 rounded-2xl relative shadow-sm">
+                    <span class="text-xs font-bold text-stoic-red uppercase tracking-wider block mb-2">Jenis 1: Cinta Posesif (Terikat Buta)</span>
+                    <h3 class="font-serif text-2xl font-bold text-stone-800 mb-4">"Saya Butuh Kamu Agar Bahagia"</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4">
+                        Menganggap orang lain sebagai properti hak milik pribadi. Ketergantungan buta ini melahirkan ketakutan konstan akan ditinggalkan, rasa cemburu yang merusak, dan potensi kehancuran jiwa yang masif saat kehilangan mendadak benar-benar terjadi.
+                    </p>
+                    <div class="bg-red-50 p-3 rounded-lg text-xs text-stoic-red border border-red-200">
+                        <strong>Kelemahan:</strong> Mengabaikan hukum alam semesta bahwa setiap manusia adalah makhluk fana yang dapat ditarik kembali oleh sang waktu.
+                    </div>
+                </div>
+
+                <!-- Cinta Bebas -->
+                <div class="bg-stoic-paper border border-stone-200 p-6 md:p-8 rounded-2xl relative shadow-sm">
+                    <span class="text-xs font-bold text-stoic-green uppercase tracking-wider block mb-2">Jenis 2: Cinta Bebas (Tulus Mandiri)</span>
+                    <h3 class="font-serif text-2xl font-bold text-stone-800 mb-4">"Saya Bersyukur Bersamamu Saat Ini"</h3>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-4">
+                        Menyayangi orang lain dengan kesadaran penuh bahwa mereka adalah titipan sementara dari alam semesta. Pendekatan ini membuat Anda hadir sepenuhnya tanpa distorsi pikiran buruk masa depan, mencintai tanpa pamrih kepemilikan.
+                    </p>
+                    <div class="bg-green-50 p-3 rounded-lg text-xs text-stoic-green border border-green-200">
+                        <strong>Kekuatan:</strong> Melahirkan rasa hormat sejati, membuang konflik superfisial, serta melatih ketegaran saat perpisahan datang.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paper Note Quotes Spesial -->
+            <div class="max-w-2xl mx-auto">
+                <div class="paper-note p-6 rounded-sm relative shadow-md">
+                    <p class="font-serif text-lg md:text-xl text-stone-800 italic font-semibold leading-relaxed">
+                        "Ketika Anda mencium anak Anda sebelum tidur, katakanlah di dalam hati Anda: 'Esok hari dia mungkin saja meninggal.' Ini bukan hal buruk, melainkan kebenaran mutlak agar Anda memeluknya dengan kesadaran utuh malam ini."
+                    </p>
+                    <div class="text-right text-xs text-stoic-muted font-mono mt-2">&mdash; Epictetus, Enchiridion 11</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- KONTEN TAB 5: LATIHAN SPIRTUAL & JURNAL -->
+        <section id="tab-latihan" class="tab-content hidden space-y-12">
+            
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-stoic-dark">Latihan Spiritual Harian</h2>
+                <p class="text-stoic-muted mt-2">"Filosofi tanpa tindakan harian adalah kesia-siaan." Mari latih jiwa merdeka Anda melalui simulator Jurnal Stoic di bawah ini.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Sisi Kiri: Simulator Jurnal & Konseling Stoic -->
+                <div class="lg:col-span-7 bg-stoic-paper border border-stone-200 p-6 md:p-8 rounded-2xl shadow-sm">
+                    <h3 class="font-serif text-2xl font-bold text-stoic-dark mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-feather text-stoic-accent"></i>
+                        Jurnal Stoic & Konselor Epictetus
+                    </h3>
+                    <p class="text-xs text-stone-500 mb-6">Tuliskan kecemasan, rintangan, atau amarah yang Anda alami hari ini. Epictetus akan memandu pikiran Anda agar bebas kembali.</p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-stoic-muted uppercase tracking-wider mb-1">Apa yang mengganggu Anda hari ini?</label>
+                            <textarea id="journal-input" rows="3" placeholder="Misal: Saya takut tidak lulus ujian besok pagi, atau seseorang tadi mengejek performa kerja saya di depan umum." class="w-full bg-stoic-bg border border-stone-300 rounded-lg p-3 text-sm focus:outline-none focus:border-stoic-accent"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-stoic-muted uppercase tracking-wider mb-1">Apakah pemicu masalah ini bisa Anda ubah secara langsung?</label>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="setJournalControl(true, this)" class="ctrl-btn px-4 py-2 border border-stone-300 text-sm font-semibold rounded-lg hover:bg-stone-50 transition-all text-center">
+                                    <i class="fa-solid fa-circle-check text-stoic-green mr-1"></i> Ya, Bisa Saya Ubah
+                                </button>
+                                <button onclick="setJournalControl(false, this)" class="ctrl-btn px-4 py-2 border border-stone-300 text-sm font-semibold rounded-lg hover:bg-stone-50 transition-all text-center">
+                                    <i class="fa-solid fa-circle-xmark text-stoic-red mr-1"></i> Tidak Bisa
+                                </button>
+                            </div>
+                        </div>
+
+                        <button onclick="submitJournal()" class="w-full bg-stoic-accent hover:bg-amber-800 text-stoic-bg font-bold py-3 rounded-lg text-sm transition-all shadow">
+                            Konsultasikan Ke Epictetus
+                        </button>
+                    </div>
+
+                    <!-- Panel Output Respons Epictetus -->
+                    <div id="journal-response" class="mt-6 p-6 bg-amber-50/50 rounded-xl border border-amber-200 hidden relative overflow-hidden">
+                        <div class="absolute right-3 top-3 text-amber-200 text-5xl opacity-40">
+                            <i class="fa-solid fa-quote-right"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-stoic-accent mb-2">Tanggapan Epictetus:</h4>
+                        <p id="journal-feedback-text" class="text-sm text-stone-700 italic leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Sisi Kanan: Panduan Ringkas Latihan Harian -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <!-- 5 Tanda Anda Menjadi Lebih Bebas Checklist -->
+                    <div class="bg-stoic-paper border border-stone-200 p-6 rounded-2xl shadow-sm">
+                        <h4 class="font-bold text-sm text-stoic-accent uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-clipboard-check mr-1"></i> 5 Tanda Kebebasan Sejati
+                        </h4>
+                        <ul class="space-y-3 text-xs md:text-sm text-stone-600">
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" class="rounded border-stone-300 text-stoic-accent focus:ring-stoic-accent mt-1">
+                                <span><strong>Tidak Mudah Tersinggung:</strong> Sadar bahwa kata-kata buruk orang lain di luar kuasa kendali Anda.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" class="rounded border-stone-300 text-stoic-accent focus:ring-stoic-accent mt-1">
+                                <span><strong>Mandiri Validasi:</strong> Anda tidak membutuhkan pujian dari luar untuk merasa bermartabat dan berharga.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" class="rounded border-stone-300 text-stoic-accent focus:ring-stoic-accent mt-1">
+                                <span><strong>Damai dengan Kehilangan:</strong> Menganggap semua kepemilikan adalah pinjaman sementara dari alam.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" class="rounded border-stone-300 text-stoic-accent focus:ring-stoic-accent mt-1">
+                                <span><strong>Menghidupkan Masa Kini:</strong> Berhenti menunda kedamaian pikiran demi masa depan yang tidak pasti.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" class="rounded border-stone-300 text-stoic-accent focus:ring-stoic-accent mt-1">
+                                <span><strong>Berhenti Menyalahkan:</strong> Memahami bahwa penderitaan mental lahir dari penilaian buruk kita sendiri.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quote Catatan Tempel Kertas Kuning -->
+                    <div class="paper-note p-6 rounded-sm relative shadow-md">
+                        <p class="font-serif text-lg text-stone-800 italic font-semibold leading-relaxed">
+                            "Mulai detik ini, mulailah melangkah dan jalani hidup Anda sebagai orang yang merdeka."
+                        </p>
+                        <div class="text-right text-xs text-stoic-muted font-mono mt-2">&mdash; Bab Akhir, Enchiridion</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-stone-200 py-8 px-4 text-center text-xs text-stoic-muted bg-stoic-paper">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p class="font-serif italic text-sm text-stone-500">"Kunci kebebasan batin adalah kemampuan memilah apa yang ada dalam kendali dari apa yang di luar kendali."</p>
+            <p>&copy; 2026 Karya Adaptasi Stoikisme Interaktif. Dibuat berdasarkan panduan legendaris Epictetus.</p>
+        </div>
+    </footer>
+
+    <!-- Logika Interaktif Javascript -->
+    <script>
+        // Logika Tab Switching
+        function switchTab(tabId) {
+            // Sembunyikan semua konten tab
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+
+            // Tampilkan tab yang dipilih
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.remove('hidden');
+                targetTab.classList.add('block');
+            }
+
+            // Atur gaya tombol aktif
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-stoic-accent', 'text-stoic-accent');
+                btn.classList.add('border-transparent', 'text-stoic-muted');
+            });
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-stoic-muted');
+                activeBtn.classList.add('border-stoic-accent', 'text-stoic-accent');
+            }
+        }
+
+        // Widget 1: Uji Beban Pikiran
+        function toggleAnxiety(type, element) {
+            const feedbackContainer = document.getElementById('anxiety-result');
+            const feedbackText = document.getElementById('anxiety-feedback');
+            
+            // Atur gaya aktif tombol
+            const buttons = element.parentNode.querySelectorAll('button');
+            buttons.forEach(b => b.classList.remove('bg-amber-50', 'border-stoic-accent'));
+            element.classList.add('bg-amber-50', 'border-stoic-accent');
+
+            feedbackContainer.classList.remove('hidden');
+
+            // Tanggapan kontekstual Stoic
+            if (type === 'opini') {
+                feedbackText.innerHTML = "<strong>Respons Epictetus:</strong> Opini orang lain berada di luar kendali Anda. Menaruh kebahagiaan Anda pada pikiran mereka adalah perbudakan sukarela.";
+            } else if (type === 'kesehatan') {
+                feedbackText.innerHTML = "<strong>Respons Epictetus:</strong> Tubuh Anda rapuh secara alami. Terima impermanensi fisik ini dengan tenang, dan rawatlah respons batin Anda saat sakit.";
+            } else if (type === 'usaha') {
+                feedbackText.innerHTML = "<strong>Respons Epictetus:</strong> Luar biasa! Seberapa gigih Anda berupaya sepenuhnya ada di dalam kendali Anda. Inilah tempat terbaik menginvestasikan energi hidup Anda.";
+            } else if (type === 'hasil') {
+                feedbackText.innerHTML = "<strong>Respons Epictetus:</strong> Hasil akhir seleksi dipengaruhi oleh keputusan pihak lain. Kerjakan bagian Anda sebaik mungkin, lalu ikhlaskan hasilnya.";
+            }
+        }
+
+        // Widget 2: Game Dikotomi Kendali & Chart.js
+        let dichotomyChart = null;
+        let kendaliCount = 0;
+        let luarCount = 0;
+
+        // Inisialisasi Chart saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            initChart();
+        });
+
+        function initChart() {
+            const ctx = document.getElementById('dichotomyChart').getContext('2d');
+            dichotomyChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Dalam Kendali (Damai)', 'Luar Kendali (Anxiety)'],
+                    datasets: [{
+                        data: [1, 1], // Data awal berimbang
+                        backgroundColor: ['#14532d', '#991b1b'],
+                        borderColor: ['#fbfaf7', '#fbfaf7'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#1c1917',
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart() {
+            if (dichotomyChart) {
+                // Hindari pembagian dengan nol
+                const values = (kendaliCount === 0 && luarCount === 0) ? [1, 1] : [kendaliCount, luarCount];
+                dichotomyChart.data.datasets[0].data = values;
+                dichotomyChart.update();
+            }
+        }
+
+        function classifyItem(name, type) {
+            // Nonaktifkan tombol yang diklik dari daftar opsi
+            const buttons = document.querySelectorAll('#game-options button');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(name) || btn.innerText === name) {
+                    btn.classList.add('opacity-40', 'pointer-events-none');
+                }
+            });
+
+            // Tambahkan ke daftar yang sesuai
+            if (type === 'kendali') {
+                const list = document.getElementById('list-kendali');
+                const placeholder = document.getElementById('kendali-placeholder');
+                if (placeholder) placeholder.classList.add('hidden');
+                
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-2 bg-green-100/60 text-stoic-green rounded-lg text-xs font-semibold animate-pulse";
+                div.innerHTML = `<span>${name}</span> <i class="fa-solid fa-circle-check"></i>`;
+                list.appendChild(div);
+                
+                kendaliCount++;
+            } else {
+                const list = document.getElementById('list-luar');
+                const placeholder = document.getElementById('luar-placeholder');
+                if (placeholder) placeholder.classList.add('hidden');
+                
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-2 bg-red-100/60 text-stoic-red rounded-lg text-xs font-semibold animate-pulse";
+                div.innerHTML = `<span>${name}</span> <i class="fa-solid fa-circle-xmark"></i>`;
+                list.appendChild(div);
+                
+                luarCount++;
+            }
+
+            // Perbarui visualisasi chart
+            updateChart();
+        }
+
+        function resetDichotomyGame() {
+            // Kosongkan daftar hasil
+            document.getElementById('list-kendali').innerHTML = '<p class="text-stone-400 text-xs italic m-auto select-none" id="kendali-placeholder">Belum ada item diklasifikasikan</p>';
+            document.getElementById('list-luar').innerHTML = '<p class="text-stone-400 text-xs italic m-auto select-none" id="luar-placeholder">Belum ada item diklasifikasikan</p>';
+            
+            // Aktifkan kembali semua tombol opsi
+            const buttons = document.querySelectorAll('#game-options button');
+            buttons.forEach(btn => {
+                btn.classList.remove('opacity-40', 'pointer-events-none');
+            });
+
+            // Atur ulang data chart
+            kendaliCount = 0;
+            luarCount = 0;
+            updateChart();
+        }
+
+        // Widget 3: Kalkulator Impermanensi
+        function calculateImpermanence() {
+            const name = document.getElementById('target-name').value || 'Orang Tercinta';
+            const meetDays = parseInt(document.getElementById('meet-days').value) || 10;
+            const meetYears = parseInt(document.getElementById('meet-years').value) || 20;
+            
+            const totalDays = meetDays * meetYears;
+            
+            const container = document.getElementById('calc-result');
+            container.innerHTML = `
+                <div class="space-y-4 animate-fadeIn">
+                    <div class="bg-amber-100 text-stoic-accent px-4 py-2 rounded-full inline-block text-xs font-bold">
+                        Hasil Analisis Kematian & Waktu
+                    </div>
+                    <h4 class="font-serif text-3xl font-bold text-stoic-dark">
+                        Sisa Kebersamaan Nyata Anda:
+                    </h4>
+                    <p class="text-5xl font-extrabold text-stoic-accent font-serif my-4">
+                        ${totalDays.toLocaleString()} <span class="text-2xl font-normal text-stoic-muted">Hari</span>
+                    </p>
+                    <p class="text-xs md:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
+                        Anda memperkirakan sisa tahun bersama <strong>${name}</strong> adalah ${meetYears} tahun. Namun secara riil, Anda hanya akan memandangnya, mengobrol, dan bersamanya secara fisik selama sekitar <strong>${totalDays} hari</strong> secara penuh.
+                    </p>
+                    <div class="pt-4 border-t border-stone-200 text-xs text-stoic-muted font-mono italic max-w-xs mx-auto">
+                        "Jangan habiskan waktu yang sangat sedikit ini dengan bermain gawai atau memikirkan hal lain di luar percakapan Anda."
+                    </div>
+                </div>
+            `;
+        }
+
+        // Widget 4: Simulator Jurnal & Konseling
+        let isJournalControl = null;
+
+        function setJournalControl(control, element) {
+            isJournalControl = control;
+            const buttons = element.parentNode.querySelectorAll('button');
+            buttons.forEach(btn => btn.classList.remove('bg-stone-200', 'border-stoic-accent'));
+            element.classList.add('bg-stone-200', 'border-stoic-accent');
+        }
+
+        function submitJournal() {
+            const input = document.getElementById('journal-input').value.trim();
+            const responseContainer = document.getElementById('journal-response');
+            const responseText = document.getElementById('journal-feedback-text');
+
+            if (!input) {
+                // Gunakan modal internal pengganti alert
+                alert("Silakan tulis kekhawatiran Anda terlebih dahulu pada bidang jurnal!");
+                return;
+            }
+
+            if (isJournalControl === null) {
+                alert("Silakan pilih opsi kendali terlebih dahulu!");
+                return;
+            }
+
+            responseContainer.classList.remove('hidden');
+
+            if (isJournalControl === true) {
+                responseText.innerHTML = `
+                    "Masalah yang Anda tuliskan ('${input}') sebagian besar berada dalam pengaruh langsung tindakan Anda. 
+                    <br><br>
+                    <strong>Saran Epictetus:</strong> Jangan buang waktu meratap atau menyalahkan takdir. Mulailah bertindak secara sadar, bersihkan niat buruk, dan fokuslah pada aksi kecil terbaik yang dapat Anda tempuh hari ini. Hasilnya biarkan alam semesta yang mengaturnya."
+                `;
+            } else {
+                responseText.innerHTML = `
+                    "Anda menyadari bahwa tantangan ini ('${input}') di luar kuasa kendali langsung Anda. 
+                    <br><br>
+                    <strong>Saran Epictetus:</strong> Berteriak atau marah tidak akan mengubah cuaca, melunakkan keras kepala orang lain, atau memutar balik waktu masa lalu. Katakan dengan berani: <em>'Hal ini sama sekali bukan bagian dari urusan batiniah saya.'</em> Lepaskan kekhawatiran ini secara sadar dan investasikan waktu Anda untuk tersenyum kembali."
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

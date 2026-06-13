@@ -280,6 +280,16 @@
             colorText = "text-indigo-600";
             colorBadge = "text-indigo-500";
             borderHover = "hover:border-indigo-500";
+          } else if (card.color === "stone") {
+            colorBg = "bg-stone-100";
+            colorText = "text-stone-600";
+            colorBadge = "text-stone-500";
+            borderHover = "hover:border-stone-500";
+          } else {
+            colorBg = `bg-${card.color}-100`;
+            colorText = `text-${card.color}-600`;
+            colorBadge = `text-${card.color}-500`;
+            borderHover = `hover:border-${card.color}-500`;
           }
 
           const catLabel = formatCategoryLabel(card.category);

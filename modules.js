@@ -241,5 +241,41 @@ const modulesData = [
     "path": "self-development/filsafat-logika/index.html",
     "icon": "lightbulb",
     "color": "indigo"
+  },
+  {
+    "title": "Neuro-Fokus & Atensi",
+    "description": "Jelajahi peta interaktif otak untuk memahami bagian utama yang mengelola konsentrasi",
+    "author": "By. Abu Kafa",
+    "category": "popular-science",
+    "path": "popular-science/neuro-fokus/index.html",
+    "icon": "brain",
+    "color": "purple"
+  },
+  {
+    "title": "The Uninhabitable Earth",
+    "description": "Eksplorasi tentang bagaimana perubahan iklim akan mempengaruhi kehidupan di bumi",
+    "author": "Book by. David Wallace-Wells",
+    "category": "popular-science",
+    "path": "popular-science/the-uninhabitable-earth/index.html",
+    "icon": "earth",
+    "color": "purple"
+  },
+  {
+    "title": "The Anxious Generation",
+    "description": "Menganalisis penurunan drastis kesehatan mental remaja",
+    "author": "Book by. Jonathan Haidt",
+    "category": "self-development",
+    "path": "self-development/the-anxious-generation/index.html",
+    "icon": "users",
+    "color": "purple"
+  },
+  {
+    "title": "How to be Free",
+    "description": "Panduan untuk meraih kebebasan sejati menurut filosofi Stoikisme Epictetus.",
+    "author": "Book by. Epictetus",
+    "category": "self-development",
+    "path": "self-development/how-tobe-free/index.html",
+    "icon": "circle-user",
+    "color": "stone"
   }
 ];

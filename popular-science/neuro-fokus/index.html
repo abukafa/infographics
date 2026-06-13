@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Fokus: Menjelajahi Batas Kemampuan Otak</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                            950: '#1e1b4b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .brain-part {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .brain-part:hover {
+            filter: drop-shadow(0 0 12px var(--shadow-color, rgba(99, 102, 241, 0.6)));
+            opacity: 0.95;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen flex flex-col md:flex-row antialiased overflow-x-hidden">
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="w-full md:w-80 bg-[#0f1524] border-b md:border-b-0 md:border-r border-slate-800 flex flex-col shrink-0">
+        <div class="p-6 border-b border-slate-800">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-brand-600/20 text-brand-500 rounded-xl">
+                    <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">NEURO-FOKUS</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Eksplorasi Batas Kognitif</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="flex-1 p-4 space-y-1.5 overflow-y-auto" id="nav-container">
+            <button onclick="switchTab('dashboard')" id="btn-dashboard" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                <span>Dasbor & Anatomi</span>
+            </button>
+            <div class="h-px bg-slate-800 my-2 mx-2"></div>
+            
+            <button onclick="switchTab('modul1')" id="btn-modul1" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="binary" class="w-5 h-5 text-indigo-400"></i>
+                <span class="text-left">M1: Fondasi Kognitif</span>
+            </button>
+
+            <button onclick="switchTab('modul2')" id="btn-modul2" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="skull" class="w-5 h-5 text-rose-400"></i>
+                <span class="text-left">M2: Sisi Gelap & Adiksi</span>
+            </button>
+
+            <button onclick="switchTab('modul3')" id="btn-modul3" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="activity" class="w-5 h-5 text-emerald-400"></i>
+                <span class="text-left">M3: Gelombang Otak</span>
+            </button>
+
+            <button onclick="switchTab('modul4')" id="btn-modul4" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="users-round" class="w-5 h-5 text-amber-400"></i>
+                <span class="text-left">M4: Neurodiversitas</span>
+            </button>
+
+            <button onclick="switchTab('modul5')" id="btn-modul5" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50">
+                <i data-lucide="shield-check" class="w-5 h-5 text-cyan-400"></i>
+                <span class="text-left">M5: Strategi Praktis</span>
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800 bg-[#0c101c]">
+            <div class="flex items-center gap-3">
+                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-xs text-slate-400">Mode Interaktif Aktif</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 overflow-y-auto h-screen p-6 md:p-10 flex flex-col">
+
+        <!-- ---------------- TAB: DASHBOARD ---------------- -->
+        <section id="tab-dashboard" class="tab-content space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-brand-400 uppercase tracking-widest">Dasbor Utama</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Neuro-Fokus & Arsitektur Atensi</h2>
+                <p class="text-slate-400 max-w-2xl">Jelajahi peta interaktif otak untuk memahami bagian utama yang mengelola konsentrasi, otomatisasi gerakan, dan penyimpanan memori jangka panjang.</p>
+            </header>
+
+            <!-- Interactive Brain Map -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- SVG Brain Canvas -->
+                <div class="lg:col-span-7 bg-[#0f1524] rounded-2xl p-6 border border-slate-800 flex flex-col items-center justify-center relative min-h-[400px]">
+                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur border border-slate-800 text-xs px-3 py-1.5 rounded-lg text-slate-400">
+                        <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 inline mr-1.5"></i> Klik area otak untuk melihat detail fungsi kognitif
+                    </div>
+                    
+                    <svg class="w-full max-w-[450px] h-auto drop-shadow-2xl mt-4" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cerebrum Background Silhouette -->
+                        <path d="M120,240 C100,160 180,60 300,50 C420,40 520,120 520,220 C520,320 460,360 400,370 C350,380 320,410 300,410 C280,410 260,380 200,370 C140,360 120,320 120,240 Z" fill="#1e293b" opacity="0.4" />
+                        
+                        <!-- Prefrontal Cortex (PFC) - Purple Highlight -->
+                        <path id="brain-pfc" onclick="highlightBrainPart('pfc')" class="brain-part" style="--shadow-color: rgba(139, 92, 246, 0.6);" d="M130,220 C110,160 170,80 270,75 C290,130 250,220 220,250 C180,280 140,260 130,220 Z" fill="#8b5cf6" fill-opacity="0.3" stroke="#a78bfa" stroke-width="3" stroke-dasharray="2 2" />
+                        
+                        <!-- Motor Cortex / Sensory strip (Pre-Basal connection) -->
+                        <path d="M272,74 C310,70 330,120 310,210 C290,240 255,245 221,249 C251,219 285,120 272,74 Z" fill="#475569" fill-opacity="0.5" />
+                        
+                        <!-- Parietal & Occipital Lobe background -->
+                        <path d="M312,71 C380,60 480,120 490,200 C490,260 440,300 400,310 C380,250 340,220 312,210 C330,120 310,70 312,71 Z" fill="#334155" fill-opacity="0.3" />
+
+                        <!-- Basal Ganglia (Central Core) - Pink Highlight -->
+                        <path id="brain-basal" onclick="highlightBrainPart('basal')" class="brain-part" style="--shadow-color: rgba(244, 63, 94, 0.6);" d="M270,220 C290,180 340,180 360,220 C370,250 350,280 310,290 C280,290 260,260 270,220 Z" fill="#f43f5e" fill-opacity="0.3" stroke="#fb7185" stroke-width="3" />
+                        
+                        <!-- Hippocampus (Inner temporal loop) - Green Highlight -->
+                        <path id="brain-hippocampus" onclick="highlightBrainPart('hippocampus')" class="brain-part" style="--shadow-color: rgba(16, 185, 129, 0.6);" d="M290,270 C310,250 350,260 360,290 C370,320 330,350 290,340 C270,335 270,290 290,270 Z" fill="#10b981" fill-opacity="0.3" stroke="#34d399" stroke-width="3" />
+                        
+                        <!-- Cerebellum (Bottom Right Backbrain) -->
+                        <path d="M400,312 C440,305 480,310 470,360 C450,400 390,410 370,370 C360,340 380,320 400,312 Z" fill="#475569" fill-opacity="0.5" />
+                        
+                        <!-- Brain Stem (Spinal Connection) -->
+                        <path d="M310,342 C320,342 340,360 340,430 L300,430 C300,360 310,342 310,342 Z" fill="#64748b" fill-opacity="0.3" />
+                        
+                        <!-- Connection lines with small label circles -->
+                        <!-- PFC Line -->
+                        <path d="M170,140 L70,110" stroke="#a78bfa" stroke-width="1.5" />
+                        <circle cx="170" cy="140" r="4" fill="#a78bfa" />
+                        <text x="10" y="105" fill="#c084fc" font-size="12" font-weight="bold">Korteks Prefrontal</text>
+                        <text x="10" y="122" fill="#94a3b8" font-size="10">Pusat Logika & Atensi</text>
+
+                        <!-- Basal Ganglia Line -->
+                        <path d="M315,230 L450,150" stroke="#fb7185" stroke-width="1.5" />
+                        <circle cx="315" cy="230" r="4" fill="#fb7185" />
+                        <text x="460" y="145" fill="#f43f5e" font-size="12" font-weight="bold">Basal Ganglia</text>
+                        <text x="460" y="162" fill="#94a3b8" font-size="10">Otomatisasi Gerakan</text>
+
+                        <!-- Hippocampus Line -->
+                        <path d="M320,310 L450,380" stroke="#34d399" stroke-width="1.5" />
+                        <circle cx="320" cy="310" r="4" fill="#34d399" />
+                        <text x="460" y="375" fill="#34d399" font-size="12" font-weight="bold">Hipokampus</text>
+                        <text x="460" y="392" fill="#94a3b8" font-size="10">Pusat Memori & Belajar</text>
+                    </svg>
+                </div>
+
+                <!-- Info Panel dynamically updated -->
+                <div class="lg:col-span-5 flex flex-col justify-between gap-6">
+                    <div id="brain-detail-card" class="bg-[#0f1524] rounded-2xl p-6 border border-slate-800 flex-1 flex flex-col justify-center">
+                        <div class="text-center py-8" id="brain-placeholder-text">
+                            <i data-lucide="target" class="w-12 h-12 text-slate-500 mx-auto mb-4 animate-bounce"></i>
+                            <h3 class="text-lg font-semibold text-slate-300">Pilih Bagian Otak</h3>
+                            <p class="text-sm text-slate-500 mt-2">Ketuk salah satu bagian berwarna pada diagram anatomi di samping untuk membedah fungsinya secara neuro-kognitif.</p>
+                        </div>
+                        
+                        <!-- Content loaded dynamically -->
+                        <div id="brain-real-content" class="hidden space-y-4">
+                            <span id="brain-part-tag" class="inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">KATEGORI</span>
+                            <h3 id="brain-part-title" class="text-2xl font-bold text-slate-100">Nama Bagian</h3>
+                            <p id="brain-part-desc" class="text-slate-300 text-sm leading-relaxed">Deskripsi mendalam mengenai fungsi spesifik organ otak dalam dinamika neuro-fokus.</p>
+                            
+                            <div class="border-t border-slate-800 pt-4 mt-2">
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Peran Utama dalam Atensi</h4>
+                                <ul id="brain-part-list" class="space-y-1.5 text-xs text-slate-300 list-disc list-inside">
+                                    <!-- Dynamic list items -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Facts Banner -->
+                    <div class="bg-gradient-to-br from-indigo-950 to-[#0c101c] rounded-2xl p-6 border border-indigo-900/40 relative overflow-hidden shrink-0">
+                        <div class="absolute -right-10 -bottom-10 opacity-10">
+                            <i data-lucide="zap" class="w-40 h-40 text-brand-400"></i>
+                        </div>
+                        <h4 class="text-sm font-semibold text-brand-300 mb-2 flex items-center gap-2">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-400"></i> Fakta Menarik Neurosains
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Meskipun berat otak hanya menyumbang sekitar <strong class="text-white">2% dari total massa tubuh</strong>, organ ini membakar lebih dari <strong class="text-white">20% suplai energi (glukosa & oksigen)</strong> harian manusia saat berpikir aktif.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modul Navigation Quick Links -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div onclick="switchTab('modul1')" class="bg-[#0f1524]/60 hover:bg-[#0f1524] p-5 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer group">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs text-brand-400 font-semibold uppercase">Modul 1</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-brand-400 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                    </div>
+                    <h4 class="text-base font-bold mb-1">Mekanisme Kognitif</h4>
+                    <p class="text-xs text-slate-400">Pahami beda pemrosesan paralel dan realitas di balik ilusi multitasking.</p>
+                </div>
+
+                <div onclick="switchTab('modul3')" class="bg-[#0f1524]/60 hover:bg-[#0f1524] p-5 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer group">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs text-emerald-400 font-semibold uppercase">Modul 3</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                    </div>
+                    <h4 class="text-base font-bold mb-1">Gelombang & Flow</h4>
+                    <p class="text-xs text-slate-400">Masuki kondisi pikiran 'Flow' dan pelajari cara kerja neuroplastisitas sinapsis.</p>
+                </div>
+
+                <div onclick="switchTab('modul5')" class="bg-[#0f1524]/60 hover:bg-[#0f1524] p-5 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer group">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-xs text-cyan-400 font-semibold uppercase">Modul 5</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+                    </div>
+                    <h4 class="text-base font-bold mb-1">Optimalisasi Fokus</h4>
+                    <p class="text-xs text-slate-400">Implementasikan strategi praktis seperti teknik chunking dan pembersihan otak.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------- TAB: MODUL 1 ---------------- -->
+        <section id="tab-modul1" class="tab-content hidden space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Modul 1</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Fondasi Kognitif & Arsitektur Otak</h2>
+                <p class="text-slate-400">Menemukan perbedaan mendasar antara koordinasi motorik paralel yang efisien dengan kegagalan fungsional perpindahan tugas sadar.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Info Cards -->
+                <div class="space-y-6">
+                    <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg"><i data-lucide="merge" class="w-5 h-5"></i></span>
+                            <h3 class="text-xl font-bold">Mekanisme Pemrosesan Paralel</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            Otak manusia mampu memproses beberapa aliran informasi sensorik secara simultan, dengan syarat utama: sirkuit saraf yang digunakan <strong class="text-indigo-300">berbeda secara spasial</strong> dan komponen tindakannya <strong class="text-indigo-300">sudah terotomatisasi</strong>.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-400 list-disc list-inside">
+                            <li><strong class="text-slate-200">Integrasi Multisensori:</strong> Saat menyetir, koordinasi motorik tangan dikombinasikan dengan pengamatan visual konstan tanpa hambatan berpikir sadar.</li>
+                            <li><strong class="text-slate-200">Kasus Musisi:</strong> Membaca partitur, menggerakkan jari-jemari secara presisi, dan mendengarkan nada secara terus-menerus digabungkan lewat integrasi saraf yang kuat.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-2 bg-rose-500/10 text-rose-400 rounded-lg"><i data-lucide="shuffle" class="w-5 h-5"></i></span>
+                            <h3 class="text-xl font-bold">Ilusi Multitasking (Task-Switching)</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                            Bila kedua tugas membutuhkan pengambilan keputusan aktif atau perhatian logis (atensi sadar), otak tidak dapat menjalankannya sekaligus. Yang terjadi adalah pemaksaan perpindahan sirkuit yang merugikan.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-400 list-disc list-inside">
+                            <li><strong class="text-slate-200">Attentional Bottleneck:</strong> Hambatan fungsional di mana Korteks Prefrontal hanya dapat memproses satu input kognitif kompleks pada satu detik waktu yang sama.</li>
+                            <li><strong class="text-slate-200">Switch Cost:</strong> Kehilangan milidetik waktu yang berharga dan penurunan akurasi akurasi karena otak terus memulihkan orientasi konteks baru secara berulang.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Switch Cost Simulator -->
+                <div class="bg-gradient-to-br from-indigo-950/20 to-[#0c101c] p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-slate-200">Uji Nyata: Eksperimen Atensi</h3>
+                            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Simulator Interaktif</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Buktikkan sendiri penurunan kinerja kognitif saat otak dipaksa melakukan *Task-Switching*. Ikuti tes mengetik sederhana di bawah ini.
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- Step indicators -->
+                            <div class="flex gap-2">
+                                <div id="sim-step-1" class="flex-1 h-1.5 rounded bg-indigo-500"></div>
+                                <div id="sim-step-2" class="flex-1 h-1.5 rounded bg-slate-700"></div>
+                                <div id="sim-step-3" class="flex-1 h-1.5 rounded bg-slate-700"></div>
+                            </div>
+
+                            <div class="bg-slate-950 p-4 rounded-xl text-center border border-slate-800 min-h-[140px] flex flex-col justify-center items-center">
+                                <p id="sim-instructions" class="text-sm font-semibold text-slate-300 mb-3">Tekan Tombol Mulai untuk Menguji Kecepatan Atensi.</p>
+                                <div id="sim-display" class="text-2xl font-mono tracking-widest text-brand-400 font-bold mb-4 hidden">TEXT GOES HERE</div>
+                                <input type="text" id="sim-input" class="bg-slate-900 border border-slate-700 text-center px-4 py-2 rounded-lg text-sm max-w-[200px] text-white focus:outline-none focus:border-brand-500 hidden" placeholder="Ketik di sini..." autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-between">
+                        <button id="sim-action-btn" onclick="startSimulator()" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg text-xs font-semibold tracking-wide transition flex items-center gap-2 shadow-lg shadow-brand-500/10">
+                            <i data-lucide="play" class="w-4 h-4"></i> Mulai Eksperimen
+                        </button>
+                        <div class="text-right">
+                            <p class="text-[10px] text-slate-400 uppercase tracking-widest">Skor Jeda Anda (Switch Cost)</p>
+                            <p id="sim-score" class="text-lg font-bold text-emerald-400">0.00 <span class="text-xs font-normal text-slate-400">detik</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modul 1 Table of Comparison -->
+            <div class="bg-[#0f1524] rounded-2xl border border-slate-800 overflow-hidden">
+                <div class="p-6 border-b border-slate-800">
+                    <h3 class="text-lg font-bold">Komparasi Terperinci Aktivitas Kognitif</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead class="bg-slate-900/50 text-xs text-slate-400 uppercase tracking-wider border-b border-slate-800">
+                            <tr>
+                                <th class="p-4">Dimensi Perbandingan</th>
+                                <th class="p-4 text-indigo-400">Pemrosesan Paralel</th>
+                                <th class="p-4 text-rose-400">Multitasking Konvensional</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800">
+                            <tr>
+                                <td class="p-4 font-bold text-slate-300">Definisi Dasar</td>
+                                <td class="p-4 text-slate-400">Menjalankan beberapa sirkuit sensorik/motorik terpisah untuk satu kesatuan aktivitas otomatis.</td>
+                                <td class="p-4 text-slate-400">Mencoba memproses dua atau lebih tugas kognitif sadar secara bergantian dalam waktu berdekatan.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-300">Kendali Utama Otak</td>
+                                <td class="p-4 text-indigo-300 font-medium">Basal Ganglia & sirkuit refleks</td>
+                                <td class="p-4 text-rose-300 font-medium">Korteks Prefrontal (PFC) secara aktif</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-300">Konsumsi Energi</td>
+                                <td class="p-4 text-slate-400">Sangat Efisien (konsumsi glukosa minimal karena memanfaatkan saraf terlatih).</td>
+                                <td class="p-4 text-slate-400">Sangat Boros (membakar glukosa & oksigen dalam jumlah ekstrem untuk reset fokus).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-300">Beban Kognitif</td>
+                                <td class="p-4 text-slate-400">Rendah hingga sedang (didominasi refleks memori otot).</td>
+                                <td class="p-4 text-slate-400">Sangat Tinggi (memicu kejenuhan sirkuit, eror berpikir, dan kelupaan).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------- TAB: MODUL 2 ---------------- -->
+        <section id="tab-modul2" class="tab-content hidden space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-rose-400 uppercase tracking-widest">Modul 2</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Sisi Gelap Multitasking & Spektrum Adiksi</h2>
+                <p class="text-slate-400">Mengungkap konsekuensi biologis dari gangguan digital terus menerus terhadap keseimbangan dopamin, pencarian stimulasi, dan kesehatan hipokampus.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dopamine Loop Card -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 relative overflow-hidden group">
+                    <div class="p-3 bg-rose-500/10 text-rose-400 rounded-xl w-fit mb-6">
+                        <i data-lucide="refresh-cw" class="w-6 h-6 animate-spin"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Dopamin Loop & Adiksi Digital</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Dopamin bukanlah molekul kebahagiaan, melainkan molekul <strong class="text-slate-200">motivasi & antisipasi reward</strong>. Setiap notifikasi baru atau scroll lini masa melepaskan cipratan dopamin pendek. Otak terbiasa berpindah-pindah tugas demi memburu kejutan kepuasan cepat ini secara kompulsif.
+                    </p>
+                </div>
+
+                <!-- Novelty Seeking Card -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 relative overflow-hidden group">
+                    <div class="p-3 bg-amber-500/10 text-amber-400 rounded-xl w-fit mb-6">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Fenomena Novelty Seeking</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Secara silsilah evolusi, mendeteksi perubahan lingkungan secara cepat (hal baru) adalah insting bertahan hidup. Di era modern, sirkuit ini dieksploitasi oleh arus deras distraksi digital, yang mengakibatkan kemerosotan akut pada rentang atensi dasar (*attention span*) manusia.
+                    </p>
+                </div>
+
+                <!-- Cortisol Card -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 relative overflow-hidden group">
+                    <div class="p-3 bg-orange-500/10 text-orange-400 rounded-xl w-fit mb-6">
+                        <i data-lucide="thermometer-sun" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-3">Stres Kronis & Dampak Kortisol</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Kerja mental tanpa fokus stabil dibaca tubuh sebagai ancaman konstan. Sekresi hormon stres <strong class="text-slate-200">kortisol & adrenalin</strong> terus bergejolak, melemahkan ikatan sinapsis hipokampus dan memicu keluhan medis berupa kelelahan mental, kecemasan, serta *Brain Fog*.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Visual Graph representation of Attention decay -->
+            <div class="bg-gradient-to-br from-rose-950/10 to-[#0c101c] p-6 rounded-2xl border border-slate-800">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200">Korelasi Atensi vs Frekuensi Distraksi</h3>
+                        <p class="text-xs text-slate-400 mt-1">Efek pembiaran lingkaran dopamin palsu terhadap fokus mendalam.</p>
+                    </div>
+                    <span class="text-xs bg-rose-500/10 text-rose-400 px-3 py-1 rounded-full font-semibold border border-rose-900/30">Grafik Teoretis</span>
+                </div>
+
+                <div class="relative h-64 flex items-end gap-1.5 md:gap-4 px-2 border-b border-l border-slate-800 pb-2">
+                    <!-- Graph pillars -->
+                    <div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">100%</div>
+                        <div class="w-full bg-emerald-500 rounded-t-lg h-56 transition-all duration-500 group-hover:bg-emerald-400"></div>
+                        <span class="text-[10px] text-slate-400">0 Distraksi</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">70%</div>
+                        <div class="w-full bg-cyan-500 rounded-t-lg h-40 transition-all duration-500 group-hover:bg-cyan-400"></div>
+                        <span class="text-[10px] text-slate-400">1 Notif / jam</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">40%</div>
+                        <div class="w-full bg-amber-500 rounded-t-lg h-24 transition-all duration-500 group-hover:bg-amber-400"></div>
+                        <span class="text-[10px] text-slate-400">5 Notif / jam</span>
+                    </div>
+
+                    <div class="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                        <div class="text-[10px] text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity">15%</div>
+                        <div class="w-full bg-rose-500 rounded-t-lg h-8 transition-all duration-500 group-hover:bg-rose-400"></div>
+                        <span class="text-[10px] text-slate-400">Sering Switch</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------- TAB: MODUL 3 ---------------- -->
+        <section id="tab-modul3" class="tab-content hidden space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Modul 3</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Kondisi & Gelombang Otak Saat Belajar</h2>
+                <p class="text-slate-400">Mengoptimalkan frekuensi elektrik dalam saraf untuk memicu asimilasi memori yang luar biasa dan pemulihan neurokognitif.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Interactive Wave Simulator -->
+                <div class="lg:col-span-7 bg-[#0f1524] p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-bold mb-1">Visualisator Gelombang Otak</h3>
+                        <p class="text-xs text-slate-400 mb-6">Pilih salah satu kondisi di bawah untuk memvisualisasikan osilasi gelombang elektrik yang mendominasi korteks.</p>
+
+                        <!-- Control buttons for wave visualization -->
+                        <div class="grid grid-cols-3 gap-3 mb-6">
+                            <button onclick="setWaveType('beta')" id="wave-btn-beta" class="p-3 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold transition">
+                                Gelombang Beta (12-30 Hz)
+                            </button>
+                            <button onclick="setWaveType('gamma')" id="wave-btn-gamma" class="p-3 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 text-xs font-semibold transition">
+                                Gelombang Gamma (30-100 Hz)
+                            </button>
+                            <button onclick="setWaveType('alpha')" id="wave-btn-alpha" class="p-3 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 text-xs font-semibold transition">
+                                Gelombang Alpha (8-12 Hz)
+                            </button>
+                        </div>
+
+                        <!-- Wave graphic SVG area -->
+                        <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 relative h-32 flex items-center justify-center overflow-hidden">
+                            <svg class="w-full h-full" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+                                <path id="wave-path" d="" fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round" class="transition-all duration-300" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div id="wave-description" class="mt-4 p-4 bg-slate-900/50 rounded-xl text-xs text-slate-300 leading-relaxed border border-slate-800/60">
+                        Pilih jenis gelombang untuk membaca keterangannya.
+                    </div>
+                </div>
+
+                <!-- Deep Focus & Flow Info Panel -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg"><i data-lucide="waves" class="w-5 h-5"></i></span>
+                            <h3 class="text-lg font-bold">Kondisi Flow State</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Kondisi imersif penuh yang diraih ketika kesulitan tugas sebanding lurus dengan kecakapan individu. Secara biologis, ini terjadi akibat <strong class="text-slate-200">Transient Hypofrontality</strong> (perlambatan logis kritikal dari PFC) yang dipadu dengan pelepasan seimbang dopamin dan norepinefrin.
+                        </p>
+                        <div class="flex items-center gap-2 bg-slate-900 px-3 py-2 rounded-lg text-[11px] text-emerald-300">
+                            <i data-lucide="hourglass" class="w-4 h-4 shrink-0"></i>
+                            <span>Memudarkan persepsi ruang, waktu, dan rasa lelah.</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg"><i data-lucide="git-branch" class="w-5 h-5"></i></span>
+                            <h3 class="text-lg font-bold">Neuroplastisitas & Mielinisasi</h3>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Fokus yang bertahan dalam satu waktu mengaktifkan prinsip Hebbian: <em class="text-slate-200">"Neurons that fire together, wire together"</em>. Aktivasi berulang ini merangsang sel pendukung membalut akson saraf aktif dengan lembaran lemak pelindung bernama <strong class="text-indigo-400">mielin</strong>, melipatgandakan kecepatan transfer sinyal hingga 100 kali lipat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------- TAB: MODUL 4 ---------------- -->
+        <section id="tab-modul4" class="tab-content hidden space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-amber-400 uppercase tracking-widest">Modul 4</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Variasi Kondisi Otak Individu (Neurodiversitas)</h2>
+                <p class="text-slate-400">Mempelajari cara kerja atensi yang bervariasi bergantung pada struktur genetik, usia perkembangan, dan ketersediaan memori kerja sementara.</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- ADHD explanation and Hyperfocus -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="p-2.5 bg-amber-500/10 text-amber-400 rounded-xl"><i data-lucide="sparkles" class="w-6 h-6"></i></span>
+                        <div>
+                            <h3 class="text-lg font-bold">Kekuatan & Kerentanan Otak ADHD</h3>
+                            <p class="text-xs text-slate-400">Sisi lain dari ketidakseimbangan neurotransmiter.</p>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Otak penderita ADHD dicirikan oleh defisiensi dopamin basal yang konstan, sehingga mendorong insting berburu rangsangan baru (*task-switching* tak terkendali). Namun, ketika dihadapkan pada subjek yang sangat merangsang ketertarikannya, mereka mampu mengunci atensi total tanpa batas ke dalam fasa <strong class="text-amber-400">Hyperfocus</strong>.
+                    </p>
+
+                    <div class="bg-slate-900 p-4 rounded-xl space-y-3 border border-slate-800">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Perbedaan Kunci Dinamika Atensi</h4>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="p-3 bg-slate-950 rounded-lg">
+                                <p class="text-[10px] text-slate-500 uppercase font-semibold">Tugas Monoton</p>
+                                <span class="text-sm font-bold text-rose-400">Cepat Bosan (ADHD)</span>
+                            </div>
+                            <div class="p-3 bg-slate-950 rounded-lg">
+                                <p class="text-[10px] text-slate-500 uppercase font-semibold">Tugas Menantang</p>
+                                <span class="text-sm font-bold text-emerald-400">Hyperfocus</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cognitive Load Simulator -->
+                <div class="bg-gradient-to-br from-amber-950/10 to-[#0c101c] p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-bold text-slate-200">Demonstrasi Teori Beban Kognitif</h3>
+                            <span class="text-xs bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded">Hukum Miller</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Memori kerja (Working Memory) memiliki daya tampung sementara yang terbatas. Diperkirakan secara praktis hanya menampung <strong class="text-amber-400">4 ± 1 unit data aktif</strong> sebelum mengalami overload kognitif.
+                        </p>
+
+                        <!-- Simulation Controls -->
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                <span>Jumlah Informasi yang Diterima</span>
+                                <span id="info-count-label" class="font-bold text-amber-400">1 Informasi</span>
+                            </div>
+                            <input type="range" id="info-slider" min="1" max="9" value="1" oninput="updateMemorySimulation()" class="w-full accent-amber-500 bg-slate-800 h-1 rounded-lg cursor-pointer">
+                            
+                            <!-- Visual box array showing memory space -->
+                            <div class="grid grid-cols-9 gap-2 pt-2" id="memory-slots-container">
+                                <!-- Slots generated dynamically -->
+                            </div>
+
+                            <p id="overload-warning" class="text-xs text-center text-rose-400 font-bold hidden animate-pulse">⚠️ BEBAN KOGNITIF OVERLOAD! Otak mulai kehilangan fokus dan lupa detail.</p>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] text-slate-500 mt-6 leading-relaxed bg-slate-900/40 p-3 rounded-lg">
+                        <strong class="text-slate-300">Kompensasi Faktor Usia:</strong> Seiring berjalannya penuaan, memori kerja dapat menurun perlahan. Namun, akumulasi pengetahuan jangka panjang (*crystallized intelligence*) mengimbangi defisit tersebut lewat strategi penyelesaian masalah yang lebih matang.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ---------------- TAB: MODUL 5 ---------------- -->
+        <section id="tab-modul5" class="tab-content hidden space-y-8">
+            <header class="flex flex-col gap-2">
+                <span class="text-xs font-semibold text-cyan-400 uppercase tracking-widest">Modul 5</span>
+                <h2 class="text-3xl font-extrabold tracking-tight">Strategi Praktis & Optimalisasi Atensi</h2>
+                <p class="text-slate-400">Mengembangkan sirkuit pertahanan kognitif Anda guna mengatasi gelombang distraksi modern lewat kebiasaan sehat berbasis neurosains.</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Method Chunking -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="p-3 bg-indigo-500/10 text-indigo-400 rounded-xl w-fit">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Metode Chunking & Otomatisasi</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Pecahlah keahlian kompleks yang menguras fokus sadar menjadi serangkaian potongan latihan-latihan kecil (*chunks*). Saat potongan kecil dilatih berulang (Deliberate Practice), kendalinya dipindah dari PFC menuju Basal Ganglia menjadi refleks bawah sadar.
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg text-[10px] text-slate-400">
+                        <strong class="text-slate-200">Contoh:</strong> Belajar melodi gitar per bar daripada mencoba menghafal satu lagu utuh sekaligus.
+                    </div>
+                </div>
+
+                <!-- Environment Design -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="p-3 bg-rose-500/10 text-rose-400 rounded-xl w-fit">
+                        <i data-lucide="eye-off" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Arsitektur Bebas Distraksi</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Gunakan metode <em class="text-slate-200">Cue Removal</em> (penghapusan isyarat). Jauhkan ponsel dari pandangan mata fisik Anda saat bekerja. Kehadiran fisik ponsel di meja kerja tetap menyita sebagian kecil kapasitas memori kerja bawah sadar untuk terus-menerus menolak dorongan menggapainya.
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg text-[10px] text-slate-400">
+                        <strong class="text-slate-200">Strategi:</strong> Simpan ponsel di laci meja luar ruangan, pasang aplikasi pemblokir portal umpan digital.
+                    </div>
+                </div>
+
+                <!-- Recovery -->
+                <div class="bg-[#0f1524] p-6 rounded-2xl border border-slate-800 space-y-4">
+                    <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl w-fit">
+                        <i data-lucide="sparkle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold">Teknik Pemulihan Sel Otak</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Otak menyapu bersih limbah metabolik racun melalui <strong class="text-emerald-400">Sistem Glimfatik</strong> saat fase tidur nyenyak non-REM. Di siang hari, Anda dapat mengaktifkan fasa <strong class="text-emerald-400">Non-Sleep Deep Rest (NSDR)</strong> selama 10-20 menit dengan menutup mata guna mengembalikan cadangan dopamin.
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg text-[10px] text-slate-400">
+                        <strong class="text-slate-200">Efek:</strong> Memulihkan atensi, menekan kortisol, meningkatkan kelenturan memori baru.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS LOGIC AND INTERACTIVE EVENTS -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+
+            // Show current tab
+            const activeTab = document.getElementById(`tab-${tabId}`);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+            }
+
+            // Reset navigation styles
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-300 hover:bg-slate-800/50";
+            });
+
+            // Set current nav button state
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                if (tabId === 'dashboard') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-brand-400 bg-brand-500/10 border border-brand-500/20";
+                } else if (tabId === 'modul1') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-indigo-400 bg-indigo-500/10 border border-indigo-500/20";
+                } else if (tabId === 'modul2') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-rose-400 bg-rose-500/10 border border-rose-500/20";
+                } else if (tabId === 'modul3') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-emerald-400 bg-emerald-500/10 border border-emerald-500/20";
+                } else if (tabId === 'modul4') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-amber-400 bg-amber-500/10 border border-amber-500/20";
+                } else if (tabId === 'modul5') {
+                    activeBtn.className = "nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-cyan-400 bg-cyan-500/10 border border-cyan-500/20";
+                }
+            }
+        }
+
+        // Initialize with dashboard active
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            switchTab('dashboard');
+            updateMemorySimulation();
+        });
+
+        // Interactive Brain highlights data
+        const brainData = {
+            pfc: {
+                title: "Korteks Prefrontal (PFC)",
+                tag: "Modul 1: Pusat Atensi Sadar",
+                color: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+                desc: "Korteks Prefrontal bertindak sebagai 'Direktur Eksekutif' dari sistem kognisi manusia. Bagian ini memegang otoritas penuh terhadap prioritas berpikir logis, pengambilan keputusan krusial, dan analisis masalah kompleks.",
+                points: [
+                    "Sangat peka terhadap kelelahan karena mengonsumsi glukosa dalam kadar besar.",
+                    "Mengalami kelumpuhan fungsional sementara (Transient Hypofrontality) saat kondisi Flow.",
+                    "Kemampuan penolakan impuls menyusut drastis saat terekspos stres kronis."
+                ]
+            },
+            basal: {
+                title: "Basal Ganglia",
+                tag: "Modul 1: Pusat Otomatisasi & Refleks",
+                color: "bg-rose-500/10 text-rose-400 border-rose-500/20",
+                desc: "Basal Ganglia memproses segala tindakan yang telah dilatih berulang kali untuk dialihkan menjadi tindakan refleks di bawah sadar, tanpa menyandera ruang berpikir bebas pada PFC.",
+                points: [
+                    "Penyimpan memori otot utama untuk efisiensi kognitif (misalnya menyetir, bersepeda).",
+                    "Menghemat konsumsi energi glukosa harian secara dramatis.",
+                    "Menerima serangkaian instruksi terpotong (chunks) dari PFC setelah melampaui latihan mendalam."
+                ]
+            },
+            hippocampus: {
+                title: "Hipokampus",
+                tag: "Modul 3: Peta Memori & Pembelajaran",
+                color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+                desc: "Hipokampus berfungsi sebagai jembatan penyimpanan ingatan sementara menuju ingatan jangka panjang secara fisik di seluruh permukaan luar korteks serebral.",
+                points: [
+                    "Sangat rentan mengecil/mengalami pelemahan koneksi di bawah paparan stres kortisol jangka panjang.",
+                    "Sangat aktif bekerja menyerap pengulangan memori baru selama tidur pulas non-REM.",
+                    "Saling terhubung erat dengan sistem emosi amigdala."
+                ]
+            }
+        };
+
+        function highlightBrainPart(partId) {
+            // Hide placeholder text, show content
+            document.getElementById('brain-placeholder-text').classList.add('hidden');
+            const contentBox = document.getElementById('brain-real-content');
+            contentBox.classList.remove('hidden');
+
+            const data = brainData[partId];
+            if (data) {
+                // Update elements
+                const tagEl = document.getElementById('brain-part-tag');
+                tagEl.innerText = data.tag;
+                tagEl.className = `inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${data.color}`;
+
+                document.getElementById('brain-part-title').innerText = data.title;
+                document.getElementById('brain-part-desc').innerText = data.desc;
+
+                const listContainer = document.getElementById('brain-part-list');
+                listContainer.innerHTML = '';
+                data.points.forEach(point => {
+                    const li = document.createElement('li');
+                    li.innerText = point;
+                    listContainer.appendChild(li);
+                });
+            }
+        }
+
+        // Simulator Task-Switching Logic
+        let simStep = 1;
+        let simStartTime = 0;
+        let simEndTime = 0;
+        const simInput = document.getElementById('sim-input');
+        const simDisplay = document.getElementById('sim-display');
+        const simInstructions = document.getElementById('sim-instructions');
+
+        const simData = {
+            1: { type: "Sequential", text: "12345", prompt: "Langkah 1: Ketik urutan angka berikut secepat mungkin:" },
+            2: { type: "Sequential", text: "ABCDE", prompt: "Langkah 2: Bagus! Sekarang ketik urutan huruf berikut:" },
+            3: { type: "Switching", text: "1A2B3C4D5E", prompt: "Langkah 3 (Switching): Sekarang selang-selingkan angka dan huruf secara simultan:" }
+        };
+
+        let sequentialTimes = [];
+        let switchingTime = 0;
+
+        function startSimulator() {
+            simStep = 1;
+            sequentialTimes = [];
+            document.getElementById('sim-step-1').className = "flex-1 h-1.5 rounded bg-indigo-500";
+            document.getElementById('sim-step-2').className = "flex-1 h-1.5 rounded bg-slate-700";
+            document.getElementById('sim-step-3').className = "flex-1 h-1.5 rounded bg-slate-700";
+            document.getElementById('sim-action-btn').disabled = true;
+            document.getElementById('sim-action-btn').innerText = "Simulasi Berjalan...";
+            document.getElementById('sim-score').innerHTML = `0.00 <span class="text-xs font-normal text-slate-400">detik</span>`;
+
+            loadStep(simStep);
+        }
+
+        function loadStep(step) {
+            const data = simData[step];
+            simInstructions.innerText = data.prompt;
+            simDisplay.innerText = data.text;
+            simDisplay.classList.remove('hidden');
+            simInput.classList.remove('hidden');
+            simInput.value = "";
+            simInput.focus();
+
+            simStartTime = performance.now();
+        }
+
+        simInput.addEventListener('input', (e) => {
+            const targetText = simData[simStep].text;
+            if (e.target.value === targetText) {
+                simEndTime = performance.now();
+                const diffTime = (simEndTime - simStartTime) / 1000; // in seconds
+
+                if (simStep < 3) {
+                    sequentialTimes.push(diffTime);
+                    document.getElementById(`sim-step-${simStep}`).className = "flex-1 h-1.5 rounded bg-emerald-500";
+                    simStep++;
+                    document.getElementById(`sim-step-${simStep}`).className = "flex-1 h-1.5 rounded bg-indigo-500";
+                    loadStep(simStep);
+                } else {
+                    switchingTime = diffTime;
+                    document.getElementById('sim-step-3').className = "flex-1 h-1.5 rounded bg-emerald-500";
+                    finishSimulator();
+                }
+            }
+        });
+
+        function finishSimulator() {
+            simDisplay.classList.add('hidden');
+            simInput.classList.add('hidden');
+
+            const avgSequential = (sequentialTimes[0] + sequentialTimes[1]);
+            const switchCost = switchingTime - avgSequential;
+            const finalCost = switchCost > 0 ? switchCost.toFixed(2) : "0.05";
+
+            simInstructions.innerHTML = `
+                <span class="text-emerald-400 font-bold block text-lg mb-1">Eksperimen Selesai!</span>
+                Waktu Atensi Tunggal rata-rata: <strong class="text-white">${(avgSequential/2).toFixed(2)} detik</strong>.<br>
+                Waktu Atensi Bolak-balik (Switch): <strong class="text-rose-400">${switchingTime.toFixed(2)} detik</strong>.
+            `;
+
+            document.getElementById('sim-score').innerHTML = `${finalCost} <span class="text-xs font-normal text-slate-400">detik delay</span>`;
+
+            const btn = document.getElementById('sim-action-btn');
+            btn.disabled = false;
+            btn.innerHTML = `<i data-lucide="refresh-cw" class="w-4 h-4"></i> Coba Lagi`;
+            lucide.createIcons();
+        }
+
+        // Waveform Visualizer Logic
+        const wavePaths = {
+            beta: "M 0 50 Q 5 20, 10 50 T 20 50 T 30 50 T 40 50 T 50 50 T 60 50 T 70 50 T 80 50 T 90 50 T 100 50 T 110 50 T 120 50 T 130 50 T 140 50 T 150 50 T 160 50 T 170 50 T 180 50 T 190 50 T 200 50 T 210 50 T 220 50 T 230 50 T 240 50 T 250 50 T 260 50 T 270 50 T 280 50 T 290 50 T 300 50 T 310 50 T 320 50 T 330 50 T 340 50 T 350 50 T 360 50 T 370 50 T 380 50 T 390 50 T 400 50",
+            gamma: "M 0 50 Q 2.5 15, 5 50 T 10 50 T 15 50 T 20 50 T 25 50 T 30 50 T 35 50 T 40 50 T 45 50 T 50 50 T 55 50 T 60 50 T 65 50 T 70 50 T 75 50 T 80 50 T 85 50 T 90 50 T 95 50 T 100 50 T 105 50 T 110 50 T 115 50 T 120 50 T 125 50 T 130 50 T 135 50 T 140 50 T 145 50 T 150 50 T 155 50 T 160 50 T 165 50 T 170 50 T 175 50 T 180 50 T 185 50 T 190 50 T 195 50 T 200 50 T 205 50 T 210 50 T 215 50 T 220 50 T 225 50 T 230 50 T 235 50 T 240 50 T 245 50 T 250 50 T 255 50 T 260 50 T 265 50 T 270 50 T 275 50 T 280 50 T 285 50 T 290 50 T 295 50 T 300 50 T 305 50 T 310 50 T 315 50 T 320 50 T 325 50 T 330 50 T 335 50 T 340 50 T 345 50 T 350 50 T 355 50 T 360 50 T 365 50 T 370 50 T 375 50 T 380 50 T 385 50 T 390 50 T 395 50 T 400 50",
+            alpha: "M 0 50 Q 15 10, 30 50 T 60 50 T 90 50 T 120 50 T 150 50 T 180 50 T 210 50 T 240 50 T 270 50 T 300 50 T 330 50 T 360 50 T 390 50 T 420 50"
+        };
+
+        const waveDescriptions = {
+            beta: "🧠 <strong>Gelombang Beta (12 - 30 Hz):</strong> Berada pada rentang frekuensi kognitif pemikiran aktif di siang hari. Pikiran bersiap menganalisis logika secara linear. Rentang beta tinggi tak teratur dapat berujung pada kecemasan berlebih akibat terpaan beban berlebih.",
+            gamma: "⚡ <strong>Gelombang Gamma (30 - 100 Hz):</strong> Representasi dari performa kognisi ekstrem. Terjadi saat otak mengasimilasi dan mengikat beragam ide, konsep kompleks, serta memori secara cepat dalam sekejap.",
+            alpha: "🌸 <strong>Gelombang Alpha (8 - 12 Hz):</strong> Kondisi meditatif rileks namun tetap terjaga penuh. Merupakan pintu utama asimilasi bawah sadar untuk kreativitas tinggi, ketenangan mental, dan regenerasi kognitif pasca kerja intensif."
+        };
+
+        const waveColors = {
+            beta: "#6366f1", // Indigo
+            gamma: "#f43f5e", // Rose
+            alpha: "#10b981" // Emerald
+        };
+
+        let activeWave = 'beta';
+        let wavePhase = 0;
+
+        function setWaveType(type) {
+            activeWave = type;
+
+            // Reset buttons styles
+            ['beta', 'gamma', 'alpha'].forEach(w => {
+                const btn = document.getElementById(`wave-btn-${w}`);
+                btn.className = "p-3 rounded-xl border border-slate-800 hover:border-slate-700 text-slate-400 text-xs font-semibold transition";
+            });
+
+            // Set active button style
+            const activeBtn = document.getElementById(`wave-btn-${type}`);
+            if (type === 'beta') activeBtn.className = "p-3 rounded-xl border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold transition";
+            if (type === 'gamma') activeBtn.className = "p-3 rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-300 text-xs font-semibold transition";
+            if (type === 'alpha') activeBtn.className = "p-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-semibold transition";
+
+            // Update description
+            document.getElementById('wave-description').innerHTML = waveDescriptions[type];
+            document.getElementById('wave-path').setAttribute('stroke', waveColors[type]);
+        }
+
+        // Animate the wave real-time
+        function animateWave() {
+            wavePhase += 0.15;
+            const path = document.getElementById('wave-path');
+            if (path) {
+                let d = "";
+                if (activeWave === 'alpha') {
+                    d = `M 0 ${50 + Math.sin(wavePhase)*15}`;
+                    for(let i=15; i<=400; i+=30) {
+                        d += ` Q ${i} ${50 + Math.sin(wavePhase + i/50)*20}, ${i+15} 50`;
+                    }
+                } else if (activeWave === 'beta') {
+                    d = `M 0 ${50 + Math.sin(wavePhase)*5}`;
+                    for(let i=5; i<=400; i+=10) {
+                        d += ` Q ${i} ${50 + Math.sin(wavePhase + i/20)*10}, ${i+5} 50`;
+                    }
+                } else { // gamma
+                    d = `M 0 ${50 + Math.sin(wavePhase)*2}`;
+                    for(let i=2.5; i<=400; i+=5) {
+                        d += ` Q ${i} ${50 + Math.sin(wavePhase + i/10)*5}, ${i+2.5} 50`;
+                    }
+                }
+                path.setAttribute('d', d);
+            }
+            requestAnimationFrame(animateWave);
+        }
+        // Initialize wave type default selection on start
+        setWaveType('beta');
+        animateWave();
+
+        // Cognitive Load (Working Memory) Slider Simulation
+        function updateMemorySimulation() {
+            const slider = document.getElementById('info-slider');
+            const container = document.getElementById('memory-slots-container');
+            const countLabel = document.getElementById('info-count-label');
+            const warning = document.getElementById('overload-warning');
+
+            const val = parseInt(slider.value);
+            countLabel.innerText = `${val} Unit Informasi`;
+
+            container.innerHTML = '';
+            // Generate slots
+            for(let i = 1; i <= 9; i++) {
+                const box = document.createElement('div');
+                if (i <= val) {
+                    // Active slot
+                    if (val <= 4) {
+                        box.className = "aspect-square rounded-lg bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center text-emerald-300 font-bold text-sm transition-all duration-300";
+                    } else if (val <= 6) {
+                        box.className = "aspect-square rounded-lg bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center text-amber-300 font-bold text-sm transition-all duration-300";
+                    } else {
+                        box.className = "aspect-square rounded-lg bg-rose-500/30 border-2 border-rose-500 flex items-center justify-center text-rose-400 font-bold text-sm transition-all duration-300 animate-pulse";
+                    }
+                    box.innerText = i;
+                } else {
+                    // Empty slot
+                    box.className = "aspect-square rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-700 text-xs transition-all duration-300";
+                    box.innerText = "-";
+                }
+                container.appendChild(box);
+            }
+
+            // Show or hide overload warning based on Miller's Law (5 units threshold)
+            if (val > 5) {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
